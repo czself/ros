@@ -1,0 +1,6 @@
+Patrol runtime acceptance on competition_slam_verified4 (pure SLAM map).
+start_patrol.sh competition_slam_verified4 -> navigation + visual_inspector + patrol_controller.
+patrol_controller.py seeded BFS over live inflated global costmap birth component:
+  seed 42424242 : goals (1.375,3.925),(3.925,3.875),(3.725,-2.525),(-3.775,-2.475),(1.025,0.425) -> 5/5 SUCCEEDED
+  seed 987654321: goals (3.875,-2.475),(1.475,3.925),(3.825,3.925),(1.125,0.425),(-3.825,-2.475) -> 5/5 SUCCEEDED
+Totals: 2 seeds x 5 dispersed points = 10/10 waypoints; no stuck, no teleport; every of the 4 corner/edge lanes crossed.

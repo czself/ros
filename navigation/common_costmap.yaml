@@ -1,0 +1,36 @@
+# Axle-ground origin, body and wheel collision envelope with margin.
+footprint: [[0.09, 0.19], [0.09, -0.19], [-0.34, -0.19], [-0.34, 0.19]]
+# The polygon is expressed at the drive-axle base_footprint.  It contains
+# the bumper, chassis, casters, and the outside of both wheels.  Keep a small
+# physical margin so a raster cell on the wall boundary is never treated as
+# a legal pose.
+footprint_padding: 0.02
+transform_tolerance: 0.5
+obstacle_layer:
+  observation_sources: laser depth
+  obstacle_range: 4.5
+  raytrace_range: 5.0
+  laser:
+    data_type: LaserScan
+    topic: /scan
+    sensor_frame: lidar_link
+    marking: true
+    clearing: true
+    inf_is_valid: true
+    observation_persistence: 0.0
+  depth:
+    data_type: PointCloud2
+    topic: /camera/depth/points
+    sensor_frame: camera_optical_frame
+    marking: true
+    clearing: true
+    min_obstacle_height: 0.16
+    max_obstacle_height: 1.6
+    obstacle_range: 3.0
+    raytrace_range: 3.5
+    observation_persistence: 0.0
+inflation_layer:
+  # The global and local files override this independently.  A non-zero
+  # common default is important when a caller loads only this file.
+  inflation_radius: 0.30
+  cost_scaling_factor: 5.0

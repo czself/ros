@@ -1,0 +1,41 @@
+{
+  "map_file": "/home/sz/game/maps/competition_slam_verified.pgm",
+  "sha256": "1b4bd6555e5962b49bedd15e6a73d8b8221478ec9cb3393977a048b25b325e5d",
+  "truth_sha256": "d8b8f224a057a89679ca7ff2eecb321c1c38d87a91f953bd50dfe3ada0a8b5b3",
+  "truth_pixel_equal": false,
+  "truth_normalized_equal": false,
+  "size": [
+    224,
+    224
+  ],
+  "mode": "L",
+  "resolution": "0.050000",
+  "origin": "[-6.000000, -6.000000, 0.000000]",
+  "occupied_cells": 3006,
+  "free_cells": 23485,
+  "unknown_cells": 23685,
+  "known_fraction": 0.527961575255102,
+  "publisher": "/slam_gmapping",
+  "route": "manual_frontier_partial",
+  "stop_reason": "operator_blocked",
+  "publisher_before": "/slam_gmapping",
+  "publisher_after": "/slam_gmapping",
+  "topic_rates": "scan=10.050,depth_points=14.815",
+  "session_id": "20260919T_frontier",
+  "birth_pose": "4.0833,-3.9583,1.5708",
+  "tf_authorities": [
+    "/camera_to_optical",
+    "/chassis_to_camera",
+    "/chassis_to_lidar",
+    "/model_state_odom"
+  ],
+  "trajectory_file": "/home/sz/game/maps/competition_slam_verified.trajectory.json",
+  "trajectory_frame": "chassis",
+  "trajectory_sha256": "e3f3fa2c1a8ab3fd9e8c50fa13c15a9e677a21c4b5bb1eda604290e997e4aa9a",
+  "mapper_sha256": "not-applicable-manual-teleop",
+  "survey_log_sha256": "not-applicable-manual-teleop",
+  "birth_chassis": "4.0833,-4.0833,1.5708",
+  "birth_axle": "4.0833,-3.9583,1.5708",
+  "tf_evidence": "node-name inventory only; TF message authority not captured in original session",
+  "coverage_note": "operator manual teleop supplement; unknown cells remain and full-world coverage is not claimed"
+}

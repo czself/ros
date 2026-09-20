@@ -1,0 +1,19 @@
+global_costmap:
+  global_frame: map
+  robot_base_frame: base_footprint
+  update_frequency: 2.0
+  publish_frequency: 1.0
+  rolling_window: false
+  track_unknown_space: true
+  static_layer:
+    subscribe_to_updates: true
+  inflation_layer:
+    # Path layer: small enough that the ~0.55-0.7 m gates stay on the Navfn
+    # navigable cost surface (a big radius closes them and Navfn detours the
+    # whole arena, which reads as 'slow and stuck').  DWA keeps the body off
+    # the walls at the local layer.
+    inflation_radius: 0.30
+    cost_scaling_factor: 5.0
+  plugins:
+    - {name: static_layer, type: "costmap_2d::StaticLayer"}
+    - {name: inflation_layer, type: "costmap_2d::InflationLayer"}

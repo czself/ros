@@ -1,0 +1,19 @@
+{
+  "workflow_id": "game-navigation-20260919-001",
+  "project": "game",
+  "context_dir": "docs/agent_context",
+  "current_task": "task005",
+  "current_stage": "approved",
+  "status": "running",
+  "iteration": 2,
+  "last_decision": "APPROVED",
+  "next_agent": "orchestrator",
+  "max_revisions_per_task": 3,
+  "gates": {
+    "gate_a_slam": "APPROVED_20260920",
+    "gate_b_navigation": "APPROVED_20260920",
+    "patrol_runtime_acceptance": "APPROVED_20260920",
+    "dynamic_obstacle_runtime_test": "APPROVED_20260920"
+  },
+  "updated_at": "2026-09-20T03:10:00+08:00"
+}

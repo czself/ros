@@ -1,0 +1,20 @@
+local_costmap:
+  global_frame: odom
+  robot_base_frame: base_footprint
+  update_frequency: 8.0
+  publish_frequency: 4.0
+  rolling_window: true
+  width: 5.0
+  height: 5.0
+  resolution: 0.05
+  transform_tolerance: 0.5
+  inflation_layer:
+    # The arena has ~0.55-0.7 m gates between the box rows and the robot is
+    # ~0.42 m wide, so any inflation above ~0.1 m closes the intended west
+    # passage and forces huge detours plus corner pockets.  The footprint is
+    # the hard collision test; DWA weights keep the robot off the walls.
+    inflation_radius: 0.10
+    cost_scaling_factor: 3.0
+  plugins:
+    - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation_layer, type: "costmap_2d::InflationLayer"}

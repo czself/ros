@@ -1,0 +1,344 @@
+<sdf version='1.7'>
+  <world name='competition_world'>
+    <useSimTime>true</useSimTime>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 16.666667 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation><range>1000</range><constant>0.9</constant><linear>0.01</linear><quadratic>0.001</quadratic></attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot><inner_angle>0</inner_angle><outer_angle>0</outer_angle><falloff>0</falloff></spot>
+    </light>
+    <model name='competition_ground'>
+      <static>1</static>
+      <link name='link'>
+        <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry><box><size>10 10 0.16666667</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface>
+        </collision>
+        <visual name='visual'>
+          <geometry><box><size>10 10 0.16666667</size></box></geometry>
+          <material>
+            <script>
+              <uri>model://competition_ground/materials/scripts</uri>
+              <uri>model://competition_ground/materials/textures</uri>
+              <name>CompetitionGround/Ground</name>
+            </script>
+            <pbr><metal><albedo_map>model://competition_ground/materials/textures/map.png</albedo_map></metal></pbr>
+          </material>
+        </visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <link name='north_wall'>
+        <pose>0 4.75 0.91666667 0 -0 0</pose>
+        <collision name='c'><geometry><box><size>9.5 0.16666667 1.6666667</size></box></geometry><max_contacts>10</max_contacts><surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <visual name='v'><geometry><box><size>9.5 0.16666667 1.6666667</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.8 0.8 0.8 1</diffuse></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <link name='south_wall'>
+        <pose>0 -4.75 0.91666667 0 -0 0</pose>
+        <collision name='c'><geometry><box><size>9.5 0.16666667 1.6666667</size></box></geometry><max_contacts>10</max_contacts><surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <visual name='v'><geometry><box><size>9.5 0.16666667 1.6666667</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.8 0.8 0.8 1</diffuse></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <link name='west_wall'>
+        <pose>-4.75 0 0.91666667 0 -0 0</pose>
+        <collision name='c'><geometry><box><size>0.16666667 9.5 1.6666667</size></box></geometry><max_contacts>10</max_contacts><surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <visual name='v'><geometry><box><size>0.16666667 9.5 1.6666667</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.8 0.8 0.8 1</diffuse></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <link name='east_wall'>
+        <pose>4.75 0 0.91666667 0 -0 0</pose>
+        <collision name='c'><geometry><box><size>0.16666667 9.5 1.6666667</size></box></geometry><max_contacts>10</max_contacts><surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <visual name='v'><geometry><box><size>0.16666667 9.5 1.6666667</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.8 0.8 0.8 1</diffuse></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_area_1'>
+      <static>1</static>
+      <pose>-0.42751167 2.2530833 0.16666667 0 -0 1.57483</pose>
+      <link name='link'>
+        <visual name='visual'><geometry><mesh><scale>1.6666667 1.6666667 1.6666667</scale><uri>model://ro1/meshes/ro1.dae</uri></mesh></geometry></visual>
+        <collision name='collision'><geometry><box><size>1 0.5 2.8333333</size></box></geometry><max_contacts>10</max_contacts><surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_area_2'>
+      <static>1</static>
+      <pose>2.7609833 2.3392 0.16666667 0.101628 0.000426 -1.57498</pose>
+      <link name='link'>
+        <visual name='visual'><geometry><mesh><scale>1.6666667 1.6666667 1.6666667</scale><uri>model://ro2/meshes/ro2.dae</uri></mesh></geometry></visual>
+        <collision name='collision'><geometry><box><size>1 0.5 2.8333333</size></box></geometry><max_contacts>10</max_contacts><surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='my_car'>
+      <pose>4.0833 -4.0833 0.083333333 0 0 1.5708</pose>
+      <link name='chassis'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial><mass>1.2</mass><inertia><ixx>0.0034</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0063</iyy><iyz>0</iyz><izz>0.0087</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <collision name='body_collision'><pose>0 0 0.125 0 -0 0</pose><geometry><box><size>0.4 0.28333333 0.11666667</size></box></geometry><max_contacts>10</max_contacts><surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <collision name='caster_front'><pose>0.15 0 0.025 0 -0 0</pose><geometry><sphere><radius>0.025</radius></sphere></geometry><surface><friction><ode><mu>0.01</mu><mu2>0.01</mu2></ode><torsional><ode/></torsional></friction><contact><ode/></contact><bounce/></surface><max_contacts>10</max_contacts></collision>
+        <collision name='caster_back'><pose>-0.15 0 0.025 0 -0 0</pose><geometry><sphere><radius>0.025</radius></sphere></geometry><surface><friction><ode><mu>0.01</mu><mu2>0.01</mu2></ode><torsional><ode/></torsional></friction><contact><ode/></contact><bounce/></surface><max_contacts>10</max_contacts></collision>
+        <visual name='body_lower'><pose>0 0 0.125 0 -0 0</pose><geometry><box><size>0.4 0.28333333 0.11666667</size></box></geometry><material><ambient>0.85 0.45 0.05 1</ambient><diffuse>1 0.58 0.1 1</diffuse><specular>0.5 0.5 0.5 1</specular></material></visual>
+        <visual name='body_upper'><pose>-0.016666667 0 0.20833333 0 -0 0</pose><geometry><box><size>0.33333333 0.25 0.058333333</size></box></geometry><material><ambient>0.12 0.12 0.14 1</ambient><diffuse>0.22 0.23 0.27 1</diffuse><specular>0.6 0.6 0.65 1</specular></material></visual>
+        <visual name='bumper'><pose>0.20833333 0 0.091666667 0 -0 0</pose><geometry><box><size>0.025 0.26666667 0.05</size></box></geometry><material><ambient>0.05 0.05 0.05 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+        <visual name='camera_mount'><pose>0.125 0 0.25833333 0 -0 0</pose><geometry><box><size>0.05 0.066666667 0.041666667</size></box></geometry><material><ambient>0.05 0.05 0.05 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+        <visual name='camera_body'><pose>0.14166667 0 0.30833333 0 -0 0</pose><geometry><box><size>0.058333333 0.15 0.05</size></box></geometry><material><ambient>0.08 0.08 0.1 1</ambient><diffuse>0.15 0.16 0.2 1</diffuse><specular>0.7 0.7 0.75 1</specular></material></visual>
+        <visual name='camera_lens'><pose>0.175 0 0.30833333 3.14159 1.57079 3.14159</pose><geometry><cylinder><radius>0.018333333</radius><length>0.013333333</length></cylinder></geometry><material><ambient>0.02 0.05 0.15 1</ambient><diffuse>0.05 0.15 0.45 1</diffuse><specular>1 1 1 1</specular><emissive>0.02 0.05 0.15 1</emissive></material></visual>
+        <visual name='lidar_mast'><pose>-0.083333333 0 0.235 0 -0 0</pose><geometry><cylinder><radius>0.013333333</radius><length>0.07</length></cylinder></geometry><material><ambient>0.5 0.08 0.05 1</ambient><diffuse>0.8 0.15 0.1 1</diffuse></material></visual>
+        <visual name='lidar_base'><pose>-0.083333333 0 0.27 0 -0 0</pose><geometry><cylinder><radius>0.063333333</radius><length>0.041666667</length></cylinder></geometry><material><ambient>0.03 0.03 0.035 1</ambient><diffuse>0.08 0.08 0.1 1</diffuse></material></visual>
+        <visual name='lidar_head'><pose>-0.083333333 0 0.30 0 -0 0</pose><geometry><cylinder><radius>0.046666667</radius><length>0.046666667</length></cylinder></geometry><material><ambient>0.1 0.1 0.12 1</ambient><diffuse>0.2 0.21 0.25 1</diffuse></material></visual>
+        <visual name='lidar_window'><pose>-0.083333333 0 0.295 0 -0 0</pose><geometry><cylinder><radius>0.0475</radius><length>0.016666667</length></cylinder></geometry><material><ambient>0.05 0.08 0.12 1</ambient><diffuse>0.1 0.2 0.35 1</diffuse><specular>1 1 1 1</specular></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <link name='left_wheel'>
+        <pose>0.125 0.15833333 0.055 0 -0 0</pose>
+        <inertial><mass>0.15</mass><inertia><ixx>0.0001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0001</iyy><iyz>0</iyz><izz>0.0001</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <collision name='collision'><pose>0 0 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.055</radius><length>0.036666667</length></cylinder></geometry><surface><friction><ode><mu>1.5</mu><mu2>1.5</mu2></ode><torsional><ode/></torsional></friction><contact><ode/></contact><bounce/></surface><max_contacts>10</max_contacts></collision>
+        <visual name='visual'><pose>0 0 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.055</radius><length>0.036666667</length></cylinder></geometry><material><ambient>0.02 0.02 0.02 1</ambient><diffuse>0.05 0.05 0.05 1</diffuse></material></visual>
+        <visual name='hub'><pose>0 0.02 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.023333333</radius><length>0.0033333333</length></cylinder></geometry><material><ambient>0.5 0.5 0.52 1</ambient><diffuse>0.75 0.75 0.78 1</diffuse></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <joint name='left_wheel_joint' type='revolute'>
+        <parent>chassis</parent><child>left_wheel</child><pose>0 0 0 0 -0 0</pose>
+        <axis><xyz>0 1 0</xyz><limit><lower>-1e+16</lower><upper>1e+16</upper></limit><dynamics><spring_reference>0</spring_reference><spring_stiffness>0</spring_stiffness></dynamics></axis>
+      </joint>
+      <link name='right_wheel'>
+        <pose>0.125 -0.15833333 0.055 0 -0 0</pose>
+        <inertial><mass>0.15</mass><inertia><ixx>0.0001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0001</iyy><iyz>0</iyz><izz>0.0001</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <collision name='collision'><pose>0 0 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.055</radius><length>0.036666667</length></cylinder></geometry><surface><friction><ode><mu>1.5</mu><mu2>1.5</mu2></ode><torsional><ode/></torsional></friction><contact><ode/></contact><bounce/></surface><max_contacts>10</max_contacts></collision>
+        <visual name='visual'><pose>0 0 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.055</radius><length>0.036666667</length></cylinder></geometry><material><ambient>0.02 0.02 0.02 1</ambient><diffuse>0.05 0.05 0.05 1</diffuse></material></visual>
+        <visual name='hub'><pose>0 -0.02 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.023333333</radius><length>0.0033333333</length></cylinder></geometry><material><ambient>0.5 0.5 0.52 1</ambient><diffuse>0.75 0.75 0.78 1</diffuse></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <joint name='right_wheel_joint' type='revolute'>
+        <parent>chassis</parent><child>right_wheel</child><pose>0 0 0 0 -0 0</pose>
+        <axis><xyz>0 1 0</xyz><limit><lower>-1e+16</lower><upper>1e+16</upper></limit><dynamics><spring_reference>0</spring_reference><spring_stiffness>0</spring_stiffness></dynamics></axis>
+      </joint>
+      <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>1</alwaysOn><updateRate>50</updateRate><legacyMode>0</legacyMode>
+        <leftJoint>left_wheel_joint</leftJoint><rightJoint>right_wheel_joint</rightJoint>
+        <wheelSeparation>0.31666667</wheelSeparation><wheelDiameter>0.11</wheelDiameter><wheelTorque>10</wheelTorque><wheelAcceleration>1.0</wheelAcceleration>
+        <commandTopic>cmd_vel</commandTopic><odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame><robotBaseFrame>chassis</robotBaseFrame>
+        <publishTf>0</publishTf><publishOdomTF>0</publishOdomTF>
+        <publishWheelTF>0</publishWheelTF><publishWheelJointState>1</publishWheelJointState>
+      </plugin>
+      <link name='camera_link'>
+        <pose>0.175 0 0.30833333 0 -0 0</pose>
+        <inertial><mass>0.01</mass><inertia><ixx>1e-06</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1e-06</iyy><iyz>0</iyz><izz>1e-06</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <sensor name='depth_camera' type='depth'>
+          <always_on>1</always_on><update_rate>15</update_rate><visualize>0</visualize>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+            <clip><near>0.05</near><far>8.0</far></clip>
+          </camera>
+          <plugin name='depth_camera_plugin' filename='libgazebo_ros_depth_camera.so'>
+            <alwaysOn>1</alwaysOn><updateRate>15</updateRate>
+            <cameraName>camera</cameraName><frameName>camera_optical_frame</frameName>
+            <imageTopicName>image_raw</imageTopicName>
+            <depthImageTopicName>depth/image_raw</depthImageTopicName>
+            <pointCloudTopicName>depth/points</pointCloudTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <hackBaseline>0</hackBaseline>
+          </plugin>
+        </sensor>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <joint name='camera_joint' type='fixed'><parent>chassis</parent><child>camera_link</child></joint>
+      <link name='lidar_link'>
+        <pose>-0.083333333 0 0.30 0 -0 0</pose>
+        <inertial><mass>0.01</mass><inertia><ixx>1e-06</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1e-06</iyy><iyz>0</iyz><izz>1e-06</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <sensor name='lidar' type='ray'>
+          <always_on>1</always_on><update_rate>10</update_rate><visualize>0</visualize>
+          <ray><scan><horizontal><samples>360</samples><resolution>1</resolution><min_angle>-3.14159</min_angle><max_angle>3.14159</max_angle></horizontal><vertical><samples>1</samples><min_angle>0</min_angle><max_angle>0</max_angle></vertical></scan><range><min>0.06</min><max>8</max><resolution>0.01</resolution></range></ray>
+          <plugin name='lidar_plugin' filename='libgazebo_ros_laser.so'><topicName>scan</topicName><frameName>lidar_link</frameName></plugin>
+        </sensor>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <joint name='lidar_joint' type='fixed'><parent>chassis</parent><child>lidar_link</child></joint>
+    </model>
+    <model name='wall_H580'>
+      <static>1</static>
+      <pose>-0.66666667 -3.3283333 0.25 0 0 0.0000</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>8 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>8 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_4.0m'>
+      <static>1</static>
+      <pose>-0.0505 -1.85 0.25 0 0 0.0000</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>6.6666667 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>6.6666667 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_3.2m'>
+      <static>1</static>
+      <pose>-0.6355 -0.4075 0.25 0 0 0.0000</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>5.3333333 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>5.3333333 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_2.2m'>
+      <static>1</static>
+      <pose>-1.4385 3.3715 0.25 0 0 0.0000</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>3.6666667 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>3.6666667 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_1.0m'>
+      <static>1</static>
+      <pose>-3.3106667 -1.1425 0.25 0 0 1.5708</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>1.6666667 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>1.6666667 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_1.5m'>
+      <static>1</static>
+      <pose>-3.3511667 2.225 0.25 0 0 1.5708</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>2.5 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>2.5 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_3.0m'>
+      <static>1</static>
+      <pose>3.2766667 0.72066667 0.25 0 0 1.5708</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>5 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>5 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_1.5m_clone'>
+      <static>1</static>
+      <pose>0.433 2.1951667 0.25 0 0 1.5708</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>2.5 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>2.5 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_2.3m'>
+      <static>1</static>
+      <pose>-1.5051667 1.0285 0.25 0 0 0.0000</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>3.8333333 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>3.8333333 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='low_wall_0.8m'>
+      <static>1</static>
+      <pose>2.6683333 3.3123333 0.25 0 0 0.0000</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>1.3333333 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>1.3333333 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <model name='vertical_wall_2.3m'>
+      <static>1</static>
+      <pose>1.9728333 1.4851667 0.25 0 0 1.5708</pose>
+      <link name='link'>
+        <visual name='v'><geometry><box><size>3.8333333 0.13333333 0.5</size></box></geometry>
+          <material><ambient>0.85 0.85 0.85 1</ambient><diffuse>0.9 0.9 0.9 1</diffuse></material></visual>
+        <collision name='c'><geometry><box><size>3.8333333 0.13333333 0.5</size></box></geometry>
+          <max_contacts>10</max_contacts>
+          <surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+    </model>
+
+    <!-- Competition visual elements. They are visual-only road furniture, so the
+         established wall collision topology used by mapping/navigation is unchanged. -->
+    <model name='lane_markings'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='center_line_1'><pose>3.9166667 2.5 0.093333333 0 0 1.5708</pose><geometry><box><size>1 0.083333333 0.02</size></box></geometry><material><ambient>0.95 0.78 0.08 1</ambient><diffuse>1 0.82 0.10 1</diffuse></material></visual>
+        <visual name='center_line_2'><pose>3.9166667 1 0.093333333 0 0 1.5708</pose><geometry><box><size>1 0.083333333 0.02</size></box></geometry><material><ambient>0.95 0.78 0.08 1</ambient><diffuse>1 0.82 0.10 1</diffuse></material></visual>
+        <visual name='center_line_3'><pose>3.9166667 -0.5 0.093333333 0 0 1.5708</pose><geometry><box><size>1 0.083333333 0.02</size></box></geometry><material><ambient>0.95 0.78 0.08 1</ambient><diffuse>1 0.82 0.10 1</diffuse></material></visual>
+        <visual name='center_line_4'><pose>3.9166667 -2 0.093333333 0 0 1.5708</pose><geometry><box><size>1 0.083333333 0.02</size></box></geometry><material><ambient>0.95 0.78 0.08 1</ambient><diffuse>1 0.82 0.10 1</diffuse></material></visual>
+        <visual name='stop_line'><pose>3.9166667 3.25 0.093333333 0 0 0</pose><geometry><box><size>0.96666667 0.083333333 0.02</size></box></geometry><material><ambient>0.95 0.95 0.95 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene><ambient>0.4 0.4 0.4 1</ambient><background>0.7 0.7 0.7 1</background><shadows>1</shadows></scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg><longitude_deg>0</longitude_deg><elevation>0</elevation><heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>9.8794167 -3.9742833 16.3937 0 0.887643 2.36419</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

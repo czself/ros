@@ -1,0 +1,90 @@
+<sdf version='1.7'>
+<model name='my_car'>
+      <pose>0 0 0 0 0 0</pose>
+      <link name='chassis'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial><mass>1.2</mass><inertia><ixx>0.0034</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0063</iyy><iyz>0</iyz><izz>0.0087</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <collision name='body_collision'><pose>0 0 0.125 0 -0 0</pose><geometry><box><size>0.4 0.28333333 0.11666667</size></box></geometry><max_contacts>10</max_contacts><surface><contact><ode/></contact><bounce/><friction><torsional><ode/></torsional><ode/></friction></surface></collision>
+        <collision name='caster_front'><pose>0.15 0 0.025 0 -0 0</pose><geometry><sphere><radius>0.025</radius></sphere></geometry><surface><friction><ode><mu>0.01</mu><mu2>0.01</mu2></ode><torsional><ode/></torsional></friction><contact><ode/></contact><bounce/></surface><max_contacts>10</max_contacts></collision>
+        <collision name='caster_back'><pose>-0.15 0 0.025 0 -0 0</pose><geometry><sphere><radius>0.025</radius></sphere></geometry><surface><friction><ode><mu>0.01</mu><mu2>0.01</mu2></ode><torsional><ode/></torsional></friction><contact><ode/></contact><bounce/></surface><max_contacts>10</max_contacts></collision>
+        <visual name='body_lower'><pose>0 0 0.125 0 -0 0</pose><geometry><box><size>0.4 0.28333333 0.11666667</size></box></geometry><material><ambient>0.85 0.45 0.05 1</ambient><diffuse>1 0.58 0.1 1</diffuse><specular>0.5 0.5 0.5 1</specular></material></visual>
+        <visual name='body_upper'><pose>-0.016666667 0 0.20833333 0 -0 0</pose><geometry><box><size>0.33333333 0.25 0.058333333</size></box></geometry><material><ambient>0.12 0.12 0.14 1</ambient><diffuse>0.22 0.23 0.27 1</diffuse><specular>0.6 0.6 0.65 1</specular></material></visual>
+        <visual name='bumper'><pose>0.20833333 0 0.091666667 0 -0 0</pose><geometry><box><size>0.025 0.26666667 0.05</size></box></geometry><material><ambient>0.05 0.05 0.05 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+        <visual name='camera_mount'><pose>0.125 0 0.25833333 0 -0 0</pose><geometry><box><size>0.05 0.066666667 0.041666667</size></box></geometry><material><ambient>0.05 0.05 0.05 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+        <visual name='camera_body'><pose>0.14166667 0 0.30833333 0 -0 0</pose><geometry><box><size>0.058333333 0.15 0.05</size></box></geometry><material><ambient>0.08 0.08 0.1 1</ambient><diffuse>0.15 0.16 0.2 1</diffuse><specular>0.7 0.7 0.75 1</specular></material></visual>
+        <visual name='camera_lens'><pose>0.175 0 0.30833333 3.14159 1.57079 3.14159</pose><geometry><cylinder><radius>0.018333333</radius><length>0.013333333</length></cylinder></geometry><material><ambient>0.02 0.05 0.15 1</ambient><diffuse>0.05 0.15 0.45 1</diffuse><specular>1 1 1 1</specular><emissive>0.02 0.05 0.15 1</emissive></material></visual>
+        <visual name='lidar_mast'><pose>-0.083333333 0 0.235 0 -0 0</pose><geometry><cylinder><radius>0.013333333</radius><length>0.07</length></cylinder></geometry><material><ambient>0.5 0.08 0.05 1</ambient><diffuse>0.8 0.15 0.1 1</diffuse></material></visual>
+        <visual name='lidar_base'><pose>-0.083333333 0 0.27 0 -0 0</pose><geometry><cylinder><radius>0.063333333</radius><length>0.041666667</length></cylinder></geometry><material><ambient>0.03 0.03 0.035 1</ambient><diffuse>0.08 0.08 0.1 1</diffuse></material></visual>
+        <visual name='lidar_head'><pose>-0.083333333 0 0.30 0 -0 0</pose><geometry><cylinder><radius>0.046666667</radius><length>0.046666667</length></cylinder></geometry><material><ambient>0.1 0.1 0.12 1</ambient><diffuse>0.2 0.21 0.25 1</diffuse></material></visual>
+        <visual name='lidar_window'><pose>-0.083333333 0 0.295 0 -0 0</pose><geometry><cylinder><radius>0.0475</radius><length>0.016666667</length></cylinder></geometry><material><ambient>0.05 0.08 0.12 1</ambient><diffuse>0.1 0.2 0.35 1</diffuse><specular>1 1 1 1</specular></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <link name='left_wheel'>
+        <pose>0.125 0.15833333 0.055 0 -0 0</pose>
+        <inertial><mass>0.15</mass><inertia><ixx>0.0001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0001</iyy><iyz>0</iyz><izz>0.0001</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <collision name='collision'><pose>0 0 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.055</radius><length>0.036666667</length></cylinder></geometry><surface><friction><ode><mu>1.5</mu><mu2>1.5</mu2></ode><torsional><ode/></torsional></friction><contact><ode/></contact><bounce/></surface><max_contacts>10</max_contacts></collision>
+        <visual name='visual'><pose>0 0 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.055</radius><length>0.036666667</length></cylinder></geometry><material><ambient>0.02 0.02 0.02 1</ambient><diffuse>0.05 0.05 0.05 1</diffuse></material></visual>
+        <visual name='hub'><pose>0 0.02 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.023333333</radius><length>0.0033333333</length></cylinder></geometry><material><ambient>0.5 0.5 0.52 1</ambient><diffuse>0.75 0.75 0.78 1</diffuse></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <joint name='left_wheel_joint' type='revolute'>
+        <parent>chassis</parent><child>left_wheel</child><pose>0 0 0 0 -0 0</pose>
+        <axis><xyz>0 1 0</xyz><limit><lower>-1e+16</lower><upper>1e+16</upper></limit><dynamics><spring_reference>0</spring_reference><spring_stiffness>0</spring_stiffness></dynamics></axis>
+      </joint>
+      <link name='right_wheel'>
+        <pose>0.125 -0.15833333 0.055 0 -0 0</pose>
+        <inertial><mass>0.15</mass><inertia><ixx>0.0001</ixx><ixy>0</ixy><ixz>0</ixz><iyy>0.0001</iyy><iyz>0</iyz><izz>0.0001</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <collision name='collision'><pose>0 0 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.055</radius><length>0.036666667</length></cylinder></geometry><surface><friction><ode><mu>1.5</mu><mu2>1.5</mu2></ode><torsional><ode/></torsional></friction><contact><ode/></contact><bounce/></surface><max_contacts>10</max_contacts></collision>
+        <visual name='visual'><pose>0 0 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.055</radius><length>0.036666667</length></cylinder></geometry><material><ambient>0.02 0.02 0.02 1</ambient><diffuse>0.05 0.05 0.05 1</diffuse></material></visual>
+        <visual name='hub'><pose>0 -0.02 0 1.5708 -0 0</pose><geometry><cylinder><radius>0.023333333</radius><length>0.0033333333</length></cylinder></geometry><material><ambient>0.5 0.5 0.52 1</ambient><diffuse>0.75 0.75 0.78 1</diffuse></material></visual>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <joint name='right_wheel_joint' type='revolute'>
+        <parent>chassis</parent><child>right_wheel</child><pose>0 0 0 0 -0 0</pose>
+        <axis><xyz>0 1 0</xyz><limit><lower>-1e+16</lower><upper>1e+16</upper></limit><dynamics><spring_reference>0</spring_reference><spring_stiffness>0</spring_stiffness></dynamics></axis>
+      </joint>
+      <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>1</alwaysOn><updateRate>50</updateRate><legacyMode>0</legacyMode>
+        <leftJoint>left_wheel_joint</leftJoint><rightJoint>right_wheel_joint</rightJoint>
+        <wheelSeparation>0.31666667</wheelSeparation><wheelDiameter>0.11</wheelDiameter><wheelTorque>10</wheelTorque><wheelAcceleration>1.0</wheelAcceleration>
+        <commandTopic>cmd_vel</commandTopic><odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame><robotBaseFrame>chassis</robotBaseFrame>
+        <publishTf>0</publishTf><publishOdomTF>0</publishOdomTF>
+        <publishWheelTF>0</publishWheelTF><publishWheelJointState>1</publishWheelJointState>
+      </plugin>
+      <link name='camera_link'>
+        <pose>0.175 0 0.30833333 0 -0 0</pose>
+        <inertial><mass>0.01</mass><inertia><ixx>1e-06</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1e-06</iyy><iyz>0</iyz><izz>1e-06</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <sensor name='depth_camera' type='depth'>
+          <always_on>1</always_on><update_rate>15</update_rate><visualize>0</visualize>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+            <clip><near>0.05</near><far>8.0</far></clip>
+          </camera>
+          <plugin name='depth_camera_plugin' filename='libgazebo_ros_depth_camera.so'>
+            <alwaysOn>1</alwaysOn><updateRate>15</updateRate>
+            <cameraName>camera</cameraName><frameName>camera_optical_frame</frameName>
+            <imageTopicName>image_raw</imageTopicName>
+            <depthImageTopicName>depth/image_raw</depthImageTopicName>
+            <pointCloudTopicName>depth/points</pointCloudTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <hackBaseline>0</hackBaseline>
+          </plugin>
+        </sensor>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <joint name='camera_joint' type='fixed'><parent>chassis</parent><child>camera_link</child></joint>
+      <link name='lidar_link'>
+        <pose>-0.083333333 0 0.30 0 -0 0</pose>
+        <inertial><mass>0.01</mass><inertia><ixx>1e-06</ixx><ixy>0</ixy><ixz>0</ixz><iyy>1e-06</iyy><iyz>0</iyz><izz>1e-06</izz></inertia><pose>0 0 0 0 -0 0</pose></inertial>
+        <sensor name='lidar' type='ray'>
+          <always_on>1</always_on><update_rate>10</update_rate><visualize>0</visualize>
+          <ray><scan><horizontal><samples>360</samples><resolution>1</resolution><min_angle>-3.14159</min_angle><max_angle>3.14159</max_angle></horizontal><vertical><samples>1</samples><min_angle>0</min_angle><max_angle>0</max_angle></vertical></scan><range><min>0.06</min><max>8</max><resolution>0.01</resolution></range></ray>
+          <plugin name='lidar_plugin' filename='libgazebo_ros_laser.so'><topicName>scan</topicName><frameName>lidar_link</frameName></plugin>
+        </sensor>
+        <self_collide>0</self_collide><enable_wind>0</enable_wind><kinematic>0</kinematic>
+      </link>
+      <joint name='lidar_joint' type='fixed'><parent>chassis</parent><child>lidar_link</child></joint>
+    </model>
+</sdf>

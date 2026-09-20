@@ -1,0 +1,98 @@
+{
+  "tool": "scripts/coverage_report.py",
+  "kind": "static_map_coverage_report",
+  "warning": "STATIC MAP REPORT ONLY: this report is derived from a saved map image. It does not run the live mapper, the /map publisher, the frontier planner, or any costmap, and it cannot prove runtime coverage. Gate A acceptance still requires runtime frontier/costmap evidence captured from the live session.",
+  "input_hashes": {
+    "pgm": "d2a2723a6ad40c39ab689fa60453ef36d8c0f15ccb5d7efa3a1bddac8685d0a5",
+    "yaml": "b2b3c2a6eea9bb2c3ff7142b9bede1e4d512d39c78dc0df813658f20914f694b",
+    "pgm_file": "/home/sz/game/maps/competition_slam_verified4.pgm",
+    "yaml_file": "/home/sz/game/maps/competition_slam_verified4.yaml"
+  },
+  "size": [
+    224,
+    224
+  ],
+  "resolution": 0.05,
+  "negate": 0,
+  "origin": [
+    -6.0,
+    -6.0,
+    0.0
+  ],
+  "classification_thresholds": {
+    "occupied_max": 64,
+    "unknown_max": 229,
+    "free_min": 230
+  },
+  "birth": {
+    "world": [
+      4.0833,
+      -4.0833
+    ],
+    "pixel": [
+      202,
+      185
+    ],
+    "cell": "free"
+  },
+  "inflate_radius_m": 0.4,
+  "inflate_cells": 8,
+  "counts": {
+    "occupied_cells": 2910,
+    "free_cells": 23635,
+    "unknown_cells": 23631,
+    "total_cells": 50176
+  },
+  "reachable_free_cells": 8489,
+  "frontier_cells": 0,
+  "unknown_component_count": 6,
+  "reachable_frontier_component_ids": [],
+  "blocked_or_unreachable_component_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "unknown_components": [
+    {
+      "id": 1,
+      "cells": 14384,
+      "frontier_cells": 0,
+      "touches_reachable_frontier": false
+    },
+    {
+      "id": 2,
+      "cells": 3551,
+      "frontier_cells": 0,
+      "touches_reachable_frontier": false
+    },
+    {
+      "id": 3,
+      "cells": 5689,
+      "frontier_cells": 0,
+      "touches_reachable_frontier": false
+    },
+    {
+      "id": 4,
+      "cells": 3,
+      "frontier_cells": 0,
+      "touches_reachable_frontier": false
+    },
+    {
+      "id": 5,
+      "cells": 3,
+      "frontier_cells": 0,
+      "touches_reachable_frontier": false
+    },
+    {
+      "id": 6,
+      "cells": 1,
+      "frontier_cells": 0,
+      "touches_reachable_frontier": false
+    }
+  ],
+  "note": "Counts are over the full map canvas. reachable_free_cells counts raw-free cells reachable from the birth seed on the 8-neighbour grid after occupied inflation. frontier_cells counts unknown cells 8-adjacent to that reachable component. gate_a_candidate is true only when frontier_cells == 0 and the birth seed is free; it is a static precondition and not runtime acceptance evidence.",
+  "gate_a_candidate": true
+}

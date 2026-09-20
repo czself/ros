@@ -1,0 +1,123 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz/Map
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Alpha: 0.85
+      Draw Behind: false
+      Color Scheme: map
+      Use Timestamp: false
+    - Class: rviz/LaserScan
+      Enabled: true
+      Name: LaserScan
+      Topic: /scan
+      Size (m): 0.03
+      Style: Points
+      Color: 255; 0; 0
+    - Class: rviz/Map
+      Enabled: true
+      Name: GlobalCostmapInflation
+      Topic: /move_base/global_costmap/costmap
+      Alpha: 0.55
+      Draw Behind: false
+      Color Scheme: costmap
+      Use Timestamp: false
+    - Class: rviz/Map
+      Enabled: true
+      Name: LocalCostmapInflation
+      Topic: /move_base/local_costmap/costmap
+      Alpha: 0.65
+      Draw Behind: false
+      Color Scheme: costmap
+      Use Timestamp: false
+    - Class: rviz/Image
+      Enabled: true
+      Name: Camera
+      Topic: /camera/image_raw
+      Transport Hint: raw
+      Value: true
+    - Class: rviz/Image
+      Enabled: true
+      Name: DepthImage
+      Topic: /camera/depth/image_raw
+      Transport Hint: raw
+      Normalize Range: true
+      Min Value: 0.0
+      Max Value: 8.0
+      Value: true
+    - Class: rviz/PointCloud2
+      Enabled: true
+      Name: DepthPointCloud
+      Topic: /camera/depth/points
+      Queue Size: 5
+      Size (Pixels): 2
+      Style: Points
+      Color Transformer: RGB8
+      Use Fixed Frame: true
+      Selectable: true
+    - Class: rviz/Path
+      Enabled: true
+      Name: Global Plan
+      Topic: /move_base/NavfnROS/plan
+      Color: 0; 170; 255
+    - Class: rviz/Path
+      Enabled: true
+      Name: Local Plan
+      Topic: /move_base/DWAPlannerROS/local_plan
+      Color: 255; 220; 0
+    - Class: rviz/Polygon
+      Enabled: true
+      Name: Robot Footprint
+      Topic: /move_base/local_costmap/footprint
+      Color: 0; 255; 0
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: map
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: false
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+      X std deviation: 0.5
+      Y std deviation: 0.5
+      Theta std deviation: 0.261799
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+  Name: root
+  Value: true
+  Views:
+    Current:
+      Class: rviz/TopDownOrtho
+      Scale: 65
+      Angle: 0
+      X: 0
+      Y: 0
+Window Geometry:
+  Camera:
+    Collapsed: false
+    Left: 1
+    Top: 1
+    Width: 384
+    Height: 288
+  DepthImage:
+    Collapsed: false
+    Left: 385
+    Top: 1
+    Width: 384
+    Height: 288
+  Displays:
+    Collapsed: false
+    Left: 0
+    Top: 0
+    Width: 420
+    Height: 850
+  Height: 850
+  Width: 1250

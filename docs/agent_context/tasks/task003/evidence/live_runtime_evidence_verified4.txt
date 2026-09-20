@@ -1,0 +1,11 @@
+Live runtime evidence captured 2026-09-20 after full_survey_117 route_complete.
+- rostopic info /map: Publishers: * /slam_gmapping only (Subscribers: None). No map_server/amcl/move_base/explore nodes present.
+- /map publish rate: 2.525 Hz, /scan rate: 10.000 Hz, /camera/depth/points: 14.870 Hz (from manifest topic_rates).
+- /slam_gmapping node alive (rosnode ping ok).
+- Coverage (static report over the live saved map): frontier_cells=0, gate_a_candidate=true,
+  occupied=2910, free=23635, unknown=23631 of 50176, reachable_free_cells=8489.
+- truth_pixel_equal=false, truth_normalized_equal=false; image sha256 d2a2723a6ad40c39ab689fa60453ef36d8c0f15ccb5d7efa3a1bddac8685d0a5.
+
+Truth-clean cross-check (informational, not an acceptance metric):
+truth-free (lane) cells on the SLAM map: 21173/32245 known (65.7%), 11072 unknown;
+these unknown cells lie outside the reachable component (no reachable frontier in the coverage report).

@@ -1,0 +1,10 @@
+Live navigation runtime evidence on map competition_slam_verified4 (pure SLAM, Gate A approved map).
+- /map publisher: /map_server only. /map error? (move_base subscribes /map; no other map publisher).
+- /my_car/cmd_vel publisher: /cmd_vel_watchdog only; subscriber: /gazebo.
+- /my_car/cmd_vel_nav publisher: /move_base only; subscriber: /cmd_vel_watchdog.
+- TF: map->odom by /amcl, /slam_gmapping absent; odom->base_footprint by /model_state_odom; chassis/camera/lidar static TF by the launch TF publishers (check_foundation passed).
+- check_foundation.py passed=true; local_costmap_histogram {0:8774, 99:964, 100:262} (free/inflated/lethal cells).
+- AMCL birth lock: map->base_footprint (4.084,-3.954,1.576), error ~0.002-0.004 m from birth (4.0833,-3.9583,1.5708).
+- Seeds on verified4 map (single fixed-birth, no-teleport run each):
+   712345678: 5/5 SUCCEEDED  | 777001133: 5/5 SUCCEEDED | 998877665: 4/5 (goal (4.075,-0.825) ABORTED 0.33m short; same-corridor goal (4.075,-1.925) succeeded right after; ad-hoc repro of that order 3/3 SUCCEEDED -> transient near-goal DWA abort, not unreachability).
+- RViz screenshots captured on DISPLAY=:1 during these sessions.

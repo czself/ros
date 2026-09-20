@@ -1,0 +1,6 @@
+Patrol runtime acceptance on competition_slam_verified4 (pure SLAM map).
+start_patrol.sh competition_slam_verified4 -> nav + visual_inspector + patrol_controller.
+patrol_controller.py _seed:=42424242: sampled 5 goals from live inflated global costmap birth component, truly-free clearance 0.4m, separated >1m.
+Result: 5/5 SUCCEEDED. waypoints: (1.375,3.925),(3.925,3.875),(3.725,-2.525),(-3.775,-2.475),(1.025,0.425). no teleport; fixed birth start.
+Second seed 987654321: goals=(3.875,-2.475),(1.475,3.925),(3.825,3.925),(1.125,0.425),(-3.825,-2.475). Result 5/5 SUCCEEDED.
+Patrol acceptance: 2/2 seeds 5/5 (10/10 waypoints) on competition_slam_verified4.

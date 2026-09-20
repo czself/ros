@@ -1,0 +1,75 @@
+{
+  "route": [
+    "w1 NE",
+    "w2 NW",
+    "w3 SW",
+    "w4 past-birth",
+    "w5 reverse-into-bay"
+  ],
+  "results": [
+    {
+      "wp": "w1 NE",
+      "state": 3,
+      "secs": 19.2
+    },
+    {
+      "wp": "w2 NW",
+      "state": 3,
+      "secs": 39.2
+    },
+    {
+      "wp": "w3 SW",
+      "state": 3,
+      "secs": 38.9
+    },
+    {
+      "wp": "w4 past-birth",
+      "state": 3,
+      "secs": 19.9
+    },
+    {
+      "wp": "w5 reverse-into-bay",
+      "state": 3,
+      "secs": 13.1
+    },
+    {
+      "wp": "correct0",
+      "state": 3,
+      "secs": 0
+    },
+    {
+      "wp": "correct1",
+      "state": 3,
+      "secs": 0
+    },
+    {
+      "wp": "correct2",
+      "state": 3,
+      "secs": 0
+    },
+    {
+      "wp": "correct3",
+      "state": 3,
+      "secs": 0
+    }
+  ],
+  "final_pose": [
+    4.027,
+    -3.913,
+    135.0
+  ],
+  "birth_offset_m": 0.073,
+  "heading_err_deg": 3.1,
+  "total_s": 130.8,
+  "reverse_cmds": [
+    1630,
+    2578
+  ],
+  "passed": true,
+  "final_pose_corrected": [
+    4.027,
+    -3.912,
+    93.1
+  ],
+  "note": "final yaw recomputed with correct quaternion formula (earlier 135 deg was a measurement bug)"
+}

@@ -1,0 +1,36 @@
+<launch>
+  <arg name="map_file" />
+  <arg name="observation_sources" default="laser depth" />
+  <arg name="initial_x" default="4.08329954" />
+  <arg name="initial_y" default="-3.9583" />
+  <arg name="initial_yaw" default="1.5708" />
+  <include file="/root/navigation/robot.launch" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" required="true" />
+  <node pkg="amcl" type="amcl" name="amcl" output="screen" required="true" clear_params="true">
+    <param name="global_frame_id" value="map" />
+    <param name="odom_frame_id" value="odom" />
+    <param name="base_frame_id" value="base_footprint" />
+    <param name="tf_broadcast" value="true" />
+    <param name="min_particles" value="500" />
+    <param name="max_particles" value="2000" />
+    <param name="update_min_d" value="0.04" />
+    <param name="update_min_a" value="0.06" />
+    <param name="transform_tolerance" value="0.5" />
+    <param name="laser_model_type" value="likelihood_field" />
+    <param name="laser_max_beams" value="90" />
+    <param name="odom_model_type" value="diff-corrected" />
+    <param name="odom_alpha1" value="0.01" />
+    <param name="odom_alpha2" value="0.01" />
+    <param name="odom_alpha3" value="0.01" />
+    <param name="odom_alpha4" value="0.01" />
+    <param name="initial_pose_x" value="$(arg initial_x)" />
+    <param name="initial_pose_y" value="$(arg initial_y)" />
+    <param name="initial_pose_a" value="$(arg initial_yaw)" />
+    <param name="initial_cov_xx" value="0.01" />
+    <param name="initial_cov_yy" value="0.01" />
+    <param name="initial_cov_aa" value="0.01" />
+  </node>
+  <include file="/root/navigation/planner.launch">
+    <arg name="observation_sources" value="$(arg observation_sources)" />
+  </include>
+</launch>

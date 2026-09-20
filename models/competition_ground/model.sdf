@@ -1,0 +1,98 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="competition_ground">
+    <static>true</static>
+
+    <!-- 地图 地面 link -->
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box><size>6.0 6.0 0.1</size></box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box><size>6.0 6.0 0.1</size></box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://competition_ground/materials/scripts</uri>
+            <uri>model://competition_ground/materials/textures</uri>
+            <name>CompetitionGround/Ground</name>
+          </script>
+          <pbr>
+            <metal>
+              <albedo_map>model://competition_ground/materials/textures/map.png</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+    </link>
+
+    <!-- north -->
+    <link name="north_wall">
+      <pose>0.0005 2.8415 0.55 0 0 0</pose>
+      <collision name="c">
+        <geometry><box><size>5.7277 0.1000 1.0</size></box></geometry>
+      </collision>
+      <visual name="v">
+        <geometry><box><size>5.7277 0.1000 1.0</size></box></geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.8 0.8 0.8 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- south -->
+    <link name="south_wall">
+      <pose>0.0005 -2.8581 0.55 0 0 0</pose>
+      <collision name="c">
+        <geometry><box><size>5.7277 0.1000 1.0</size></box></geometry>
+      </collision>
+      <visual name="v">
+        <geometry><box><size>5.7277 0.1000 1.0</size></box></geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.8 0.8 0.8 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- west -->
+    <link name="west_wall">
+      <pose>-2.8485 -0.0088 0.55 0 0 0</pose>
+      <collision name="c">
+        <geometry><box><size>0.1000 5.7302 1.0</size></box></geometry>
+      </collision>
+      <visual name="v">
+        <geometry><box><size>0.1000 5.7302 1.0</size></box></geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.8 0.8 0.8 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- east -->
+    <link name="east_wall">
+      <pose>2.8485 -0.0088 0.55 0 0 0</pose>
+      <collision name="c">
+        <geometry><box><size>0.1000 5.7302 1.0</size></box></geometry>
+      </collision>
+      <visual name="v">
+        <geometry><box><size>0.1000 5.7302 1.0</size></box></geometry>
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.8 0.8 0.8 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+    </link>
+
+  </model>
+</sdf>

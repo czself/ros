@@ -1,0 +1,63 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz/Map
+      Name: SLAM Map
+      Topic: /map
+      Color Scheme: map
+      Alpha: 1
+      Enabled: true
+    - Class: rviz/Map
+      Name: Local Costmap
+      Topic: /move_base/local_costmap/costmap
+      Color Scheme: costmap
+      Alpha: 0.55
+      Enabled: false
+    - Class: rviz/LaserScan
+      Name: Laser Scan
+      Topic: /scan
+      Style: Points
+      Size (m): 0.025
+      Color: 255; 0; 0
+      Enabled: true
+    - Class: rviz/MarkerArray
+      Name: Frontiers
+      Marker Topic: /explore/frontiers
+      Enabled: false
+    - Class: rviz/Path
+      Name: Global Plan
+      Topic: /move_base/NavfnROS/plan
+      Color: 0; 170; 255
+      Line Style: Lines
+      Line Width: 0.03
+      Enabled: false
+    - Class: rviz/Path
+      Name: Local Plan
+      Topic: /move_base/DWAPlannerROS/local_plan
+      Color: 255; 220; 0
+      Line Style: Lines
+      Line Width: 0.04
+      Enabled: false
+    - Class: rviz/TF
+      Name: TF
+      Enabled: true
+      Marker Scale: 0.35
+  Global Options:
+    Background Color: 45; 45; 45
+    Fixed Frame: map
+    Frame Rate: 30
+  Views:
+    Current:
+      Class: rviz/TopDownOrtho
+      Name: TopDownOrtho
+      Scale: 90
+      Angle: 0
+      X: 0
+      Y: 0
+      Z: 0
+Window Geometry:
+  Width: 1100
+  Height: 750

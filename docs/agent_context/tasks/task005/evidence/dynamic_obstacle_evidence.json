@@ -1,0 +1,87 @@
+{
+  "map": "competition_slam_verified4",
+  "scene": "heading-relative",
+  "obstacle_radius": 0.25,
+  "start": [
+    4.084,
+    -3.956
+  ],
+  "heading_deg": 90.1,
+  "goal": [
+    4.071,
+    4.044
+  ],
+  "obstacle_initial": [
+    4.08,
+    -1.756
+  ],
+  "events": [
+    {
+      "phase": "obstacle_spawned_on_heading",
+      "placed": true,
+      "model_pose": [
+        true,
+        4.080135094212208,
+        -1.75570446309654
+      ]
+    },
+    {
+      "phase": "approach",
+      "advanced_m": 1.64,
+      "goal_state": 1,
+      "scan_hit_m": 3.196,
+      "costmap_max_at_obstacle": 100
+    },
+    {
+      "phase": "blocked_near_obstacle",
+      "robot_pose": [
+        4.08,
+        -2.31
+      ],
+      "robot_stopped": true,
+      "scan_hit_m": 3.064,
+      "costmap_max_at_obstacle": 100
+    },
+    {
+      "phase": "dynamic_off_0",
+      "robot_pose": [
+        4.06,
+        -2.12
+      ],
+      "start_dist_moved": 1.84
+    },
+    {
+      "phase": "dynamic_back_0",
+      "robot_pose": [
+        4.07,
+        -2.19
+      ]
+    },
+    {
+      "phase": "dynamic_off_1",
+      "robot_pose": [
+        4.07,
+        -2.17
+      ],
+      "start_dist_moved": 1.79
+    },
+    {
+      "phase": "dynamic_back_1",
+      "robot_pose": [
+        4.08,
+        -2.23
+      ]
+    },
+    {
+      "phase": "final_goal_after_obstacle_removed",
+      "goal_state": 3,
+      "elapsed_s": 18.2
+    }
+  ],
+  "checks": {
+    "robot_advanced_to_obstacle": true,
+    "braked_within_1.6m": true,
+    "robot_stopped": true
+  },
+  "passed": true
+}
