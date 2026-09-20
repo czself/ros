@@ -370,10 +370,10 @@ def main(argv=None):
         ),
         epilog=(
             "examples:\n"
-            "  coverage_report.py --yaml maps/competition_slam_verified.yaml "
+            "  coverage_report.py --yaml maps/competition_slam_verified4.yaml "
             "--birth 4.0833,-4.0833\n"
-            "  coverage_report.py --yaml maps/competition_slam_verified.yaml "
-            "--pgm maps/competition_slam_verified.pgm --birth 4.0833,-4.0833 "
+            "  coverage_report.py --yaml maps/competition_slam_verified4.yaml "
+            "--pgm maps/competition_slam_verified4.pgm --birth 4.0833,-4.0833 "
             "--inflate-radius-m 0.40 --output /tmp/coverage.json\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,

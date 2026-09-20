@@ -1,4 +1,0 @@
-== watchdog/model_state/odom processes ==
-root      127790 14.1  0.0 879412 46992 ?        Ssl  13:23   0:10 python3 /root/model_state_odom.py
-root      127803 10.5  0.0 796104 42060 ?        Ssl  13:23   0:08 python3 /root/cmd_vel_watchdog.py
-== TF check ==

@@ -13,7 +13,7 @@
 6. 重启仿真后，以保存地图开始定位导航：`./scripts/start_navigation.sh /root/ros1_ws/maps/competition_navigation_safe.yaml`
    `competition_navigation_safe` 是把当前 world 的碰撞几何叠加到测量地图上的导航安全图，
    用于防止 SLAM 的自由单元覆盖实体墙；它不是纯 SLAM 产物。若只做 SLAM 证据验收，
-   使用 `competition_slam_verified`，不要把两者混称。
+   使用 `competition_slam_verified4`，不要把两者混称。
 7. 在 RViz 点击 `2D Pose Estimate`，将定位箭头放在小车实际初始位置；随后点击 `2D Nav Goal` 验证避障。
 8. 自动多点巡检与相机检测：`./scripts/start_patrol.sh competition_navigation_safe`。巡检每次
    都从实时全局膨胀代价地图的出生点连通安全区域随机抽取 5 个目标；如需复现一条
