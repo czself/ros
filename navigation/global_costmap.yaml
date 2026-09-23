@@ -1,6 +1,12 @@
 global_costmap:
   global_frame: map
   robot_base_frame: base_footprint
+  # Define the measured vehicle polygon at this namespace.  A stale
+  # robot_radius parameter otherwise takes precedence and makes both the
+  # planner and RViz costmap use a 0.46 m circular footprint.
+  footprint: [[0.042, 0.085], [0.042, -0.085], [-0.147, -0.085], [-0.147, 0.085]]
+  footprint_padding: 0.02
+  robot_radius: 0.0
   update_frequency: 2.0
   publish_frequency: 1.0
   rolling_window: false
