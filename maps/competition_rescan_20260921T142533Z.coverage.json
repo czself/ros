@@ -1,0 +1,63 @@
+{
+  "tool": "scripts/coverage_report.py",
+  "kind": "static_map_coverage_report",
+  "warning": "STATIC MAP REPORT ONLY: this report is derived from a saved map image. It does not run the live mapper, the /map publisher, the frontier planner, or any costmap, and it cannot prove runtime coverage. Gate A acceptance still requires runtime frontier/costmap evidence captured from the live session.",
+  "input_hashes": {
+    "pgm": "24b1aaf3bccbd575d602985b4c165fdd6a622b7d05b46aa1b96b4f065094973d",
+    "yaml": "772bd66f84215d44634d37b46dd9f1ca98b9acac26b6b68b03307e207cb3a8b7",
+    "pgm_file": "/home/sz/game/maps/competition_rescan_20260921T142533Z.pgm",
+    "yaml_file": "/home/sz/game/maps/competition_rescan_20260921T142533Z.yaml"
+  },
+  "size": [
+    224,
+    224
+  ],
+  "resolution": 0.05,
+  "negate": 0,
+  "origin": [
+    -6.0,
+    -6.0,
+    0.0
+  ],
+  "classification_thresholds": {
+    "occupied_max": 64,
+    "unknown_max": 229,
+    "free_min": 230
+  },
+  "birth": {
+    "world": [
+      1.71499,
+      -1.71499
+    ],
+    "pixel": [
+      154,
+      137
+    ],
+    "cell": "free"
+  },
+  "inflate_radius_m": 0.1,
+  "inflate_cells": 2,
+  "counts": {
+    "occupied_cells": 570,
+    "free_cells": 6372,
+    "unknown_cells": 43234,
+    "total_cells": 50176
+  },
+  "reachable_free_cells": 5279,
+  "frontier_cells": 0,
+  "unknown_component_count": 1,
+  "reachable_frontier_component_ids": [],
+  "blocked_or_unreachable_component_ids": [
+    1
+  ],
+  "unknown_components": [
+    {
+      "id": 1,
+      "cells": 43234,
+      "frontier_cells": 0,
+      "touches_reachable_frontier": false
+    }
+  ],
+  "note": "Counts are over the full map canvas. reachable_free_cells counts raw-free cells reachable from the birth seed on the 8-neighbour grid after occupied inflation. frontier_cells counts unknown cells 8-adjacent to that reachable component. gate_a_candidate is true only when frontier_cells == 0 and the birth seed is free; it is a static precondition and not runtime acceptance evidence.",
+  "gate_a_candidate": true
+}

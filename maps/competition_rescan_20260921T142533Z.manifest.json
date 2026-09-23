@@ -1,0 +1,80 @@
+{
+  "map_file": "/home/sz/game/maps/competition_rescan_20260921T142533Z.pgm",
+  "sha256": "24b1aaf3bccbd575d602985b4c165fdd6a622b7d05b46aa1b96b4f065094973d",
+  "yaml_file": "/home/sz/game/maps/competition_rescan_20260921T142533Z.yaml",
+  "yaml_sha256": "772bd66f84215d44634d37b46dd9f1ca98b9acac26b6b68b03307e207cb3a8b7",
+  "truth_sha256": "d8b8f224a057a89679ca7ff2eecb321c1c38d87a91f953bd50dfe3ada0a8b5b3",
+  "truth_pixel_equal": false,
+  "truth_normalized_equal": false,
+  "size": [
+    224,
+    224
+  ],
+  "mode": "L",
+  "resolution": "0.050000",
+  "origin": "[-6.000000, -6.000000, 0.000000]",
+  "occupied_cells": 570,
+  "free_cells": 6372,
+  "unknown_cells": 43234,
+  "known_fraction": 0.13835299744897958,
+  "publisher": "/slam_gmapping",
+  "route": "wall_follower",
+  "stop_reason": "operator_requested",
+  "publisher_before": "/slam_gmapping",
+  "publisher_after": "/slam_gmapping",
+  "topic_rates": "scan=10.076,depth_points=14.493",
+  "session_id": "manual_session",
+  "session_start": "2026-09-21T14:36:33Z",
+  "session_end": "2026-09-21T14:36:57Z",
+  "birth_pose": "4.0833,-3.9583,1.5708",
+  "birth_pose_frame": "base_footprint",
+  "birth_chassis_configured": [
+    1.71499,
+    -1.71499,
+    1.5708
+  ],
+  "birth_axle_configured": [
+    1.71499,
+    -1.59995,
+    1.5708
+  ],
+  "birth_chassis_measured": null,
+  "tf_authorities": [
+    "/model_state_odom",
+    "/slam_gmapping"
+  ],
+  "trajectory_file": "/home/sz/game/maps/competition_rescan_20260921T142533Z.trajectory.json",
+  "trajectory_frame": "chassis",
+  "trajectory_sha256": "e3f3fa2c1a8ab3fd9e8c50fa13c15a9e677a21c4b5bb1eda604290e997e4aa9a",
+  "mapper_sha256": "not-applicable-manual-teleop",
+  "survey_log_sha256": "not-applicable-manual-teleop",
+  "artifacts": {
+    "trajectory": {
+      "file": "/home/sz/game/maps/competition_rescan_20260921T142533Z.trajectory.json",
+      "sha256": "e3f3fa2c1a8ab3fd9e8c50fa13c15a9e677a21c4b5bb1eda604290e997e4aa9a",
+      "verified": true
+    },
+    "mapper": {
+      "file": null,
+      "sha256": "not-applicable-manual-teleop",
+      "verified": false,
+      "verification": "manual_teleop_not_applicable"
+    },
+    "survey_log": {
+      "file": null,
+      "sha256": "not-applicable-manual-teleop",
+      "verified": false,
+      "verification": "manual_teleop_not_applicable"
+    }
+  },
+  "birth_chassis": "1.71499,-1.71499,1.5708",
+  "birth_axle": "1.71499,-1.59995,1.5708",
+  "tf_evidence": "message-level /tf and /tf_static caller IDs sampled at save",
+  "tf_evidence_file": "/home/sz/game/maps/competition_rescan_20260921T142533Z.tf_evidence.json",
+  "tf_evidence_sha256": "de46f64eefcb29b5168b90120bebc2b2fe0f06d6c06c3ee6272de2420a22c55b",
+  "coverage_report_file": "/home/sz/game/maps/competition_rescan_20260921T142533Z.coverage.json",
+  "coverage_report_sha256": "418f810433eb0d804e9a885985d621f367efbe43e38a849ebf8960edd3b50198",
+  "coverage_report_gate_a_candidate": true,
+  "coverage_report_frontier_cells": 0,
+  "coverage_note": "operator manual teleop supplement; coverage report required; full-world coverage is not claimed"
+}

@@ -1,0 +1,13 @@
+{
+  "workflow_id": "smart-community-20260921-001",
+  "project": "smart-community-gazebo",
+  "context_dir": "docs/agent_context",
+  "current_task": "task005",
+  "current_stage": "coding",
+  "status": "running",
+  "iteration": 0,
+  "last_decision": "APPROVED",
+  "next_agent": "coder",
+  "max_revisions_per_task": 3,
+  "updated_at": "2026-09-21T13:25:00+08:00"
+}

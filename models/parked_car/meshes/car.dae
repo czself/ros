@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor><author>sz</author><authoring_tool>Python</authoring_tool></contributor>
+    <created>2025-09-21</created>
+    <modified>2025-09-21</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="body_effect">
+      <profile_COMMON>
+        <newparam sid="bg_surface">
+          <surface type="2D"><init_from>bg_image</init_from></surface>
+        </newparam>
+        <newparam sid="bg_sampler">
+          <sampler2D><source>bg_surface</source></sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <diffuse><texture texture="bg_sampler" texcoord="UVMap"/></diffuse>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="bg_image" name="bg_image"><init_from>plate_bg.png</init_from></image>
+  </library_images>
+  <library_materials>
+    <material id="body_material" name="body_material">
+      <instance_effect url="#body_effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="car_mesh" name="car">
+      <mesh>
+        <source id="positions">
+          <float_array id="pos_array" count="24">-0.172500 -0.125000 -0.002500 -0.172500 0.125000 -0.002500 0.172500 -0.125000 -0.002500 0.172500 0.125000 -0.002500 -0.172500 -0.125000 0.002500 -0.172500 0.125000 0.002500 0.172500 -0.125000 0.002500 0.172500 0.125000 0.002500</float_array>
+          <technique_common>
+            <accessor source="#pos_array" count="8" stride="3">
+              <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="normals_src">
+          <float_array id="norm_array" count="108">0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 -1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0 0.0 0.0 1.0</float_array>
+          <technique_common>
+            <accessor source="#norm_array" count="36" stride="3">
+              <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="texcoords">
+          <float_array id="uv_array" count="72">0.0 0.0 0.0 1.0 1.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0</float_array>
+          <technique_common>
+            <accessor source="#uv_array" count="36" stride="2">
+              <param name="S" type="float"/><param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="vertices"><input semantic="POSITION" source="#positions"/></vertices>
+        <triangles material="body_material" count="12">
+          <input semantic="VERTEX" source="#vertices" offset="0"/>
+          <input semantic="NORMAL" source="#normals_src" offset="1"/>
+          <input semantic="TEXCOORD" source="#texcoords" offset="2" set="0"/>
+          <p>0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Car" name="Car" type="NODE">
+        <instance_geometry url="#car_mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="body_material" target="#body_material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene><instance_visual_scene url="#Scene"/></scene>
+</COLLADA>

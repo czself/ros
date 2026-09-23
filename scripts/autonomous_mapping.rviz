@@ -11,6 +11,13 @@ Visualization Manager:
       Alpha: 1
       Enabled: true
     - Class: rviz/Map
+      Name: Permanent White-Line Walls
+      Topic: /white_line_walls
+      Color Scheme: map
+      Alpha: 0.8
+      Draw Behind: false
+      Enabled: true
+    - Class: rviz/Map
       Name: Local Costmap
       Topic: /move_base/local_costmap/costmap
       Color Scheme: costmap

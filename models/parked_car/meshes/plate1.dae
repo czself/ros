@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>sz</author>
+      <authoring_tool>Blender 4.5.2</authoring_tool>
+    </contributor>
+    <created>2025-09-21T00:00:00</created>
+    <modified>2025-09-21T00:00:00</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="plate_effect">
+      <profile_COMMON>
+        <newparam sid="plate_surface">
+          <surface type="2D">
+            <init_from>plate_image</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="plate_sampler">
+          <sampler2D>
+            <source>plate_surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <texture texture="plate_sampler" texcoord="UVMap"/>
+            </diffuse>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="plate_image" name="plate_image">
+      <init_from>plate.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="plate_material" name="plate_material">
+      <instance_effect url="#plate_effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="box_mesh" name="box">
+      <mesh>
+        <source id="positions">
+          <float_array id="pos_array" count="24">
+            -0.0475 -0.015 -0.0025
+            -0.0475  0.015 -0.0025
+             0.0475 -0.015 -0.0025
+             0.0475  0.015 -0.0025
+            -0.0475 -0.015  0.0025
+            -0.0475  0.015  0.0025
+             0.0475 -0.015  0.0025
+             0.0475  0.015  0.0025
+          </float_array>
+          <technique_common>
+            <accessor source="#pos_array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="normals">
+          <float_array id="norm_array" count="24">
+            0 0 -1  0 0 -1  0 0 -1  0 0 -1
+            0 0  1  0 0  1  0 0  1  0 0  1
+          </float_array>
+          <technique_common>
+            <accessor source="#norm_array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="texcoords">
+          <float_array id="uv_array" count="16">
+            0 0  0 1  1 0  1 1
+            0 0  0 1  1 0  1 1
+          </float_array>
+          <technique_common>
+            <accessor source="#uv_array" count="8" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="vertices">
+          <input semantic="POSITION" source="#positions"/>
+        </vertices>
+        <triangles material="plate_material" count="12">
+          <input semantic="VERTEX" source="#vertices" offset="0"/>
+          <input semantic="NORMAL" source="#normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#texcoords" offset="2" set="0"/>
+          <!-- Bottom face (z-) -->
+          <p>0 0 0  2 1 2  1 2 1</p>
+          <p>1 2 1  2 3 2  3 3 3</p>
+          <!-- Top face (z+) -->
+          <p>4 4 4  5 5 5  6 6 6</p>
+          <p>5 5 5  7 7 7  6 6 6</p>
+          <!-- Front face (y-) -->
+          <p>0 0 0  4 4 4  2 2 2</p>
+          <p>2 2 2  4 4 4  6 6 6</p>
+          <!-- Back face (y+) -->
+          <p>1 1 1  3 3 3  5 5 5</p>
+          <p>3 3 3  7 7 7  5 5 5</p>
+          <!-- Left face (x-) -->
+          <p>0 0 0  1 1 1  4 4 4</p>
+          <p>1 1 1  5 5 5  4 4 4</p>
+          <!-- Right face (x+) -->
+          <p>2 2 2  6 6 6  3 3 3</p>
+          <p>3 3 3  6 6 6  7 7 7</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Box" name="Box" type="NODE">
+        <instance_geometry url="#box_mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="plate_material" target="#plate_material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

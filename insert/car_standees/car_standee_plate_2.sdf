@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <model name="car_standee_plate_2">
+    <static>true</static>
+    <link name="car_board">
+      <visual name="background_board"><pose>0 0 0.125 0 0 0</pose><geometry><box><size>0.345 0.005 0.25</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="car_image_front"><pose>0 -0.00255 0.125 0 0 0</pose><geometry><box><size>0.345 0.0001 0.25</size></box></geometry><material><script><uri>file://materials/scripts</uri><uri>file://materials/textures</uri><name>CarStandee/Background</name></script></material></visual>
+      <visual name="license_plate_front"><pose>0 -0.00265 0.112 0 0 0</pose><geometry><box><size>0.095 0.0001 0.03</size></box></geometry><material><script><uri>file://materials/scripts</uri><uri>file://materials/textures</uri><name>CarStandee/Plate2</name></script></material></visual>
+      <collision name="collision"><pose>0 0 0.125 0 0 0</pose><geometry><box><size>0.345 0.005 0.25</size></box></geometry></collision>
+    </link>
+  </model>
+</sdf>

@@ -38,16 +38,16 @@ class WallFollower:
         right = self.sector_distance(self.scan, -110, -70)
 
         if front < 0.42:
-            cmd.angular.z = 0.65  # Turn left away from an obstacle.
+            cmd.angular.z = 0.85  # Turn left away from an obstacle.
         elif right < 0.30:
-            cmd.linear.x = 0.07
-            cmd.angular.z = 0.35
+            cmd.linear.x = 0.16
+            cmd.angular.z = 0.48
         elif right > 0.62:
-            cmd.linear.x = 0.08
-            cmd.angular.z = -0.30
+            cmd.linear.x = 0.18
+            cmd.angular.z = -0.42
         else:
-            cmd.linear.x = 0.11
-            cmd.angular.z = (0.45 - right) * 0.9
+            cmd.linear.x = 0.22
+            cmd.angular.z = (0.45 - right) * 1.15
         return cmd
 
     def run(self):

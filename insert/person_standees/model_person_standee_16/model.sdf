@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="person_standee_16">
+    <static>1</static>
+    <link name="standee">
+      <visual name="standee_board">
+        <pose>0 0 0.075 0 0 0</pose>
+        <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+        <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+      </visual>
+      <visual name="person_image_front">
+        <pose>0 -0.00255 0.075 0 0 0</pose>
+        <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+        <material>
+          <script>
+            <uri>file:///root/person_standees/materials/scripts</uri>
+            <uri>file:///root/person_standees/materials/textures</uri>
+            <name>PersonStandee/Person16</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <pose>0 0 0.075 0 0 0</pose>
+        <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

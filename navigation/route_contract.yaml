@@ -1,0 +1,45 @@
+# Authoritative fixed route transcribed from 任务需求/复赛任务示意图.png.
+# Coordinates are lane centres in the Gazebo world/map frame.  Every segment
+# ends where the following one starts: a route runner must reject a contract
+# that would create an unapproved diagonal shortcut between arrows.
+scene: worlds/competition_classic.world
+status: diagram_route_pending_runtime_acceptance
+coordinate_frame: map
+birth_pose: {x: 1.714860, y: -1.599947, yaw: 1.606236}
+route_order:
+  # The ground texture is rotated relative to the task drawing: visual-left
+  # is world +y and visual-down is world -x.
+  - id: TOP_LEFT
+    action: visual_left
+    from: [1.70, -1.60]
+    to: [1.70, 1.70]
+    heading: 1.5708
+  - id: LEFT_DOWN
+    action: visual_down
+    from: [1.70, 1.70]
+    to: [-0.20, 1.70]
+    heading: 3.14159
+  - id: MIDDLE_RIGHT
+    action: visual_right
+    from: [-0.20, 1.70]
+    to: [-0.20, -0.45]
+    heading: -1.5708
+  - id: CENTER_DOWN
+    action: visual_down
+    from: [-0.20, -0.45]
+    to: [-1.70, -0.45]
+    heading: 3.14159
+  - id: BOTTOM_RIGHT
+    action: visual_right
+    from: [-1.70, -0.45]
+    to: [-1.70, -1.70]
+    heading: -1.5708
+  - id: RIGHT_UP_TO_FINISH
+    action: visual_up
+    from: [-1.70, -1.70]
+    to: [1.70, -1.70]
+    heading: 0.0
+lane_constraints:
+  white_line_contact: forbidden
+  white_line_crossing: forbidden
+  check_body_corners: true

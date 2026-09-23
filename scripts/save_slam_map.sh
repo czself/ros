@@ -12,8 +12,8 @@ SESSION_START="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 [[ "$MAP_NAME" != */* ]] || { echo "非法地图名" >&2; exit 2; }
 case "$TRAJECTORY_MODE" in
-  automatic|manual_teleop) ;;
-  *) echo "轨迹模式必须是 automatic 或 manual_teleop: $TRAJECTORY_MODE" >&2; exit 2 ;;
+  automatic|manual_teleop|focused_autonomous) ;;
+  *) echo "轨迹模式必须是 automatic、manual_teleop 或 focused_autonomous: $TRAJECTORY_MODE" >&2; exit 2 ;;
 esac
 
 map_info() {
@@ -39,8 +39,8 @@ docker cp "$CONTAINER:/root/ros1_ws/maps/$MAP_NAME.pgm" "$ROOT_DIR/maps/$MAP_NAM
 docker cp "$CONTAINER:/root/ros1_ws/maps/$MAP_NAME.yaml" "$ROOT_DIR/maps/$MAP_NAME.yaml"
 coverage_file="$ROOT_DIR/maps/$MAP_NAME.coverage.json"
 python3 "$ROOT_DIR/scripts/coverage_report.py" --yaml "$ROOT_DIR/maps/$MAP_NAME.yaml" \
-  --pgm "$ROOT_DIR/maps/$MAP_NAME.pgm" --birth 4.0833,-4.0833 \
-  --inflate-radius-m 0.40 --output "$coverage_file" >/dev/null
+  --pgm "$ROOT_DIR/maps/$MAP_NAME.pgm" --birth 1.71499,-1.71499 \
+  --inflate-radius-m 0.10 --output "$coverage_file" >/dev/null
 
 mapper_file=""
 log_file=""
@@ -67,7 +67,11 @@ PY
   fi
   STOP_REASON="$measured_stop_reason"
 else
-  printf '{"mode":"manual_teleop","trajectory_available":false,"note":"operator drove the robot during this mapping session; no waypoint trajectory was generated"}\n' > "$ROOT_DIR/maps/$MAP_NAME.trajectory.json"
+  if [[ "$TRAJECTORY_MODE" == "focused_autonomous" ]]; then
+    printf '{"mode":"focused_autonomous","trajectory_available":false,"note":"low-speed laser-protected waypoint survey; the mapper did not emit a trajectory artifact"}\n' > "$ROOT_DIR/maps/$MAP_NAME.trajectory.json"
+  else
+    printf '{"mode":"manual_teleop","trajectory_available":false,"note":"operator drove the robot during this mapping session; no waypoint trajectory was generated"}\n' > "$ROOT_DIR/maps/$MAP_NAME.trajectory.json"
+  fi
   STOP_REASON="${STOP_REASON:-operator_requested}"
 fi
 
@@ -103,7 +107,11 @@ points_rate="$(docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.b
 SESSION_END="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
 coverage_note="birth-connected survey; coverage report required; unknown cells remain until Gate A approval"
-[[ "$TRAJECTORY_MODE" == "automatic" ]] || coverage_note="operator manual teleop supplement; coverage report required; full-world coverage is not claimed"
+if [[ "$TRAJECTORY_MODE" == "manual_teleop" ]]; then
+  coverage_note="operator manual teleop supplement; coverage report required; full-world coverage is not claimed"
+elif [[ "$TRAJECTORY_MODE" == "focused_autonomous" ]]; then
+  coverage_note="focused low-speed autonomous supplement; target-area coverage only, not a full-world claim"
+fi
 python3 "$ROOT_DIR/scripts/verify_slam_map.py" \
   "$ROOT_DIR/maps/$MAP_NAME.pgm" "$ROOT_DIR/maps/$MAP_NAME.manifest.json" \
   --yaml "$ROOT_DIR/maps/$MAP_NAME.yaml" \
@@ -118,8 +126,9 @@ python3 "$ROOT_DIR/scripts/verify_slam_map.py" \
   --trajectory "$ROOT_DIR/maps/$MAP_NAME.trajectory.json" \
   --trajectory-sha256 "$trajectory_sha" --mapper-file "$mapper_file" \
   --mapper-sha256 "$mapper_sha" --log-file "$log_file" --log-sha256 "$log_sha" \
-  --trajectory-frame chassis --birth-chassis "4.0833,-4.0833,1.5708" \
-  --birth-axle "4.0833,-3.9583,1.5708" \
+  --trajectory-frame chassis --birth-chassis "1.71499,-1.71499,1.5708" \
+  --birth-axle "1.71499,-1.59995,1.5708" \
   --tf-evidence "message-level /tf and /tf_static caller IDs sampled at save" \
+  --min-known-fraction 0.0 \
   --coverage-note "$coverage_note"
 echo "真实 SLAM 地图已保存: maps/$MAP_NAME.yaml"

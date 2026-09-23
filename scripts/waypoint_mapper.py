@@ -10,12 +10,29 @@ from sensor_msgs.msg import LaserScan
 
 ROUTES = {
     'upper_left': [
-        (2.40, 2.40), (-2.40, 2.40), (-2.40, -1.62),
-        (-2.24, -1.62), (-2.24, 2.35), (-1.72, 2.35),
-        (-1.72, 2.40), (2.35, 2.40),
+        (1.70, 1.70), (-1.70, 1.70), (-1.70, -1.55),
+        (1.70, -1.55), (1.70, 1.70),
     ],
     'right_corridor': [
-        (2.40, 2.40), (2.40, -1.62), (2.35, -1.62), (2.35, 2.40),
+        (1.70, 1.70), (1.70, -1.55), (1.70, 1.70),
+    ],
+    # Centre lines of the portions not covered by the upper-left survey.
+    # This is deliberately a survey route, not the competition route: every
+    # leg is kept in a known driving aisle and the laser guard remains the
+    # final authority if a standee is closer than the chassis clearance.
+    'completion_aisles': [
+        (1.70, -0.72), (1.70, -0.12),
+        (0.92, -0.12), (-0.78, -0.12), (-1.55, -0.55),
+        (-0.88, -0.70), (-0.70, -1.23),
+        (0.30, -1.34), (1.70, -1.48),
+    ],
+    # Mapping-only sweep.  White paint is intentionally not a constraint here:
+    # it lets the laser observe both sides of the lower markings that are
+    # forbidden during the later navigation run.
+    'bottom_cross_scan': [
+        (0.90, -1.60), (0.10, -1.60), (-0.70, -1.60),
+        (-1.45, -1.60), (-1.45, -1.30), (-0.70, -1.30),
+        (0.10, -1.30), (0.90, -1.30), (1.65, -1.30),
     ],
 }
 LINEAR_SPEED = 0.08

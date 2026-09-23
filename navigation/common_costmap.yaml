@@ -1,9 +1,8 @@
-# Axle-ground origin, body and wheel collision envelope with margin.
-footprint: [[0.09, 0.19], [0.09, -0.19], [-0.34, -0.19], [-0.34, 0.19]]
-# The polygon is expressed at the drive-axle base_footprint.  It contains
-# the bumper, chassis, casters, and the outside of both wheels.  Keep a small
-# physical margin so a raster cell on the wall boundary is never treated as
-# a legal pose.
+# Axle-ground origin, measured from the embedded 4.2 m world model.  The
+# chassis is [-0.084, 0.084] m in its own x axis; the drive axle is at
+# x=0.0525 m and wheel outside edges are y=+-0.0742 m.  The polygon includes
+# a 1 cm safety margin and is expressed in base_footprint coordinates.
+footprint: [[0.042, 0.085], [0.042, -0.085], [-0.147, -0.085], [-0.147, 0.085]]
 footprint_padding: 0.02
 transform_tolerance: 0.5
 obstacle_layer:

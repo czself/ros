@@ -1,8 +1,8 @@
 <launch>
   <arg name="map_file" />
   <arg name="observation_sources" default="laser depth" />
-  <arg name="initial_x" default="4.08329954" />
-  <arg name="initial_y" default="-3.9583" />
+  <arg name="initial_x" default="1.71499" />
+  <arg name="initial_y" default="-1.71499" />
   <arg name="initial_yaw" default="1.5708" />
   <include file="/root/navigation/robot.launch" />
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" required="true" />

@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="parked_car_1">
+    <static>true</static>
+    <link name="link">
+      <visual name="body">
+        <pose>0 0 0.0025 0 0 0</pose>
+        <geometry>
+          <box><size>0.25 0.345 0.005</size></box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.4 0.85 1</ambient>
+          <diffuse>0.2 0.5 1.0 1</diffuse>
+        </material>
+      </visual>
+      <visual name="plate">
+        <pose>0.126 0 0.005 0 0 0</pose>
+        <geometry>
+          <box><size>0.002 0.095 0.03</size></box>
+        </geometry>
+        <material>
+          <ambient>0.0 0.0 0.6 1</ambient>
+          <diffuse>0.0 0.0 0.8 1</diffuse>
+        </material>
+      </visual>
+      <collision name="collision">
+        <pose>0 0 0.0025 0 0 0</pose>
+        <geometry>
+          <box><size>0.25 0.345 0.005</size></box>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+  <model name="parked_car_2">
+    <static>true</static>
+    <link name="link">
+      <visual name="body">
+        <pose>0 0 0.0025 0 0 0</pose>
+        <geometry>
+          <box><size>0.25 0.345 0.005</size></box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.4 0.85 1</ambient>
+          <diffuse>0.2 0.5 1.0 1</diffuse>
+        </material>
+      </visual>
+      <visual name="plate">
+        <pose>0.126 0 0.005 0 0 0</pose>
+        <geometry>
+          <box><size>0.002 0.095 0.03</size></box>
+        </geometry>
+        <material>
+          <ambient>0.0 0.0 0.6 1</ambient>
+          <diffuse>0.0 0.0 0.8 1</diffuse>
+        </material>
+      </visual>
+      <collision name="collision">
+        <pose>0 0 0.0025 0 0 0</pose>
+        <geometry>
+          <box><size>0.25 0.345 0.005</size></box>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+  <model name="parked_car_3">
+    <static>true</static>
+    <link name="link">
+      <visual name="body">
+        <pose>0 0 0.0025 0 0 0</pose>
+        <geometry>
+          <box><size>0.25 0.345 0.005</size></box>
+        </geometry>
+        <material>
+          <ambient>0.15 0.4 0.85 1</ambient>
+          <diffuse>0.2 0.5 1.0 1</diffuse>
+        </material>
+      </visual>
+      <visual name="plate">
+        <pose>0.126 0 0.005 0 0 0</pose>
+        <geometry>
+          <box><size>0.002 0.095 0.03</size></box>
+        </geometry>
+        <material>
+          <ambient>0.0 0.0 0.6 1</ambient>
+          <diffuse>0.0 0.0 0.8 1</diffuse>
+        </material>
+      </visual>
+      <collision name="collision">
+        <pose>0 0 0.0025 0 0 0</pose>
+        <geometry>
+          <box><size>0.25 0.345 0.005</size></box>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

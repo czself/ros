@@ -1,0 +1,51 @@
+material CarStandee/Background
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture car_background.png }
+    }
+  }
+}
+
+material CarStandee/Plate1
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture license_plate_1.png }
+    }
+  }
+}
+
+material CarStandee/Plate2
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture license_plate_2.png }
+    }
+  }
+}
+
+material CarStandee/Plate3
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture license_plate_3.png }
+    }
+  }
+}

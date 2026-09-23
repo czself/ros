@@ -1,0 +1,53 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz/Map
+      Enabled: true
+      Name: Map and ordinary white walls
+      Topic: /map
+      Alpha: 1
+      Color Scheme: map
+    - Class: rviz/Path
+      Enabled: true
+      Name: Required red route
+      Topic: /route/planned
+      Color: 255; 0; 0
+      Line Style: Lines
+      Line Width: 0.02
+    - Class: rviz/Path
+      Enabled: true
+      Name: Actual measured trajectory
+      Topic: /route/actual
+      Color: 0; 220; 255
+      Line Width: 0.02
+    - Class: rviz/Polygon
+      Enabled: true
+      Name: Actual full vehicle footprint
+      Topic: /route/footprint
+      Color: 0; 255; 0
+    - Class: rviz/LaserScan
+      Enabled: true
+      Name: Live laser
+      Topic: /scan
+      Size (m): 0.01
+      Color: 255; 180; 0
+  Enabled: true
+  Global Options:
+    Background Color: 75; 85; 85
+    Fixed Frame: odom
+  Tools:
+    - Class: rviz/Interact
+    - Class: rviz/MoveCamera
+  Views:
+    Current:
+      Class: rviz/TopDownOrtho
+      Scale: 170
+      Angle: 0
+      X: 0
+      Y: 0
+Window Geometry:
+  Width: 1100
+  Height: 950

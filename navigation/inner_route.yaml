@@ -1,0 +1,26 @@
+version: 1
+source: user_red_arrows_20260922
+frame: world
+mode: signals_ignored_ordinary_paint_forbidden
+birth_yaw: 1.606236
+# Texture row = (0.5-x/4.2)*11942; col = (0.5-y/4.2)*11942.
+# Parking bays at world negative y, L block on the right of the middle corridor.
+# Center corridor between texture rows ~462/1492 and ~677/1492 -> x ~0.50.
+# Cross corridor between columns ~604/1492 and ~816/1492 -> y ~0.10.
+points:
+  - [1.714860, -1.599947]
+  # 0.14 m tangent cut-ins at each right-angle corner shorten the route
+  # while keeping the full chassis inside the measured free corridors.
+  - [1.714860, 1.56]
+  - [1.574860, 1.70]
+  - [0.64, 1.70]
+  - [0.50, 1.56]
+  - [0.50, 0.24]
+  - [0.36, 0.10]
+  - [-0.06, 0.10]
+  - [-1.70, -0.04]
+  - [-1.70, -0.96]
+  - [-1.56, -1.10]
+  - [1.574860, -1.10]
+  - [1.714860, -1.24]
+  - [1.714860, -1.599947]

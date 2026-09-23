@@ -1,0 +1,49 @@
+{
+  "kind": "navigation_real_white_line_overlay",
+  "source_map": "maps/competition_rescan_full_20260922.pgm",
+  "source_map_sha256": "ab7e7a96937018770d616efeaf11bbc9b51e8ad7538fa039a57e12d635d9ee99",
+  "source_yaml": "maps/competition_rescan_full_20260922.yaml",
+  "ground_texture": "models/competition_ground/materials/textures/map.png",
+  "ground_texture_sha256": "afe618e46ea3205e3ab83a292a624de70eacc1672373c2331d8c1dc504e004ba",
+  "permanent_white_line_cells": 1711,
+  "conditional_exclusions": {
+    "start_line": [
+      "y",
+      -1.4,
+      1.7,
+      0.32,
+      0.055
+    ],
+    "stop_lines": [
+      [
+        "x",
+        -0.515,
+        0.0,
+        0.38,
+        0.055
+      ],
+      [
+        "y",
+        -0.29,
+        1.7,
+        0.32,
+        0.055
+      ]
+    ],
+    "zebra_pixel_boxes": [
+      [
+        388,
+        1934,
+        6138,
+        6706
+      ],
+      [
+        7543,
+        8111,
+        4898,
+        6444
+      ]
+    ]
+  },
+  "policy": "real ordinary white paint is lethal; conditional traffic markings are gated at runtime"
+}

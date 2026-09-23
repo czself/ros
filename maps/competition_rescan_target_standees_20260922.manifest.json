@@ -1,0 +1,83 @@
+{
+  "map_file": "/home/sz/game/maps/competition_rescan_target_standees_20260922.pgm",
+  "sha256": "5307b8f4295fb97c0a81025820a2e838aa132d484b7e342854f03f45e82f4502",
+  "yaml_file": "/home/sz/game/maps/competition_rescan_target_standees_20260922.yaml",
+  "yaml_sha256": "c6b7e2d4ce90d47c4eddfa5dc4219c64de9ccc5b8f9c29bd1bf4c6e323383fb5",
+  "truth_sha256": "d8b8f224a057a89679ca7ff2eecb321c1c38d87a91f953bd50dfe3ada0a8b5b3",
+  "truth_pixel_equal": false,
+  "truth_normalized_equal": false,
+  "size": [
+    224,
+    224
+  ],
+  "mode": "L",
+  "resolution": "0.050000",
+  "origin": "[-6.000000, -6.000000, 0.000000]",
+  "occupied_cells": 477,
+  "free_cells": 6356,
+  "unknown_cells": 43343,
+  "known_fraction": 0.13618064413265307,
+  "publisher": "/slam_gmapping",
+  "route": "focused_waypoint_scan",
+  "stop_reason": "target_area_scanned",
+  "publisher_before": "/slam_gmapping",
+  "publisher_after": "/slam_gmapping",
+  "topic_rates": "scan=10.025,depth_points=14.925",
+  "session_id": "focused_standees_20260922",
+  "session_start": "2026-09-22T08:19:33Z",
+  "session_end": "2026-09-22T08:19:56Z",
+  "birth_pose": "4.0833,-3.9583,1.5708",
+  "birth_pose_frame": "base_footprint",
+  "birth_chassis_configured": [
+    1.71499,
+    -1.71499,
+    1.5708
+  ],
+  "birth_axle_configured": [
+    1.71499,
+    -1.59995,
+    1.5708
+  ],
+  "birth_chassis_measured": null,
+  "tf_authorities": [
+    "/camera_to_optical",
+    "/chassis_to_camera",
+    "/chassis_to_lidar",
+    "/model_state_odom",
+    "/slam_gmapping"
+  ],
+  "trajectory_file": "/home/sz/game/maps/competition_rescan_target_standees_20260922.trajectory.json",
+  "trajectory_frame": "chassis",
+  "trajectory_sha256": "fccec45cc61822a6862ce4a6dfd3b7f55abf2b867b259ef06d8d5ac62acd9fa9",
+  "mapper_sha256": "not-applicable-manual-teleop",
+  "survey_log_sha256": "not-applicable-manual-teleop",
+  "artifacts": {
+    "trajectory": {
+      "file": "/home/sz/game/maps/competition_rescan_target_standees_20260922.trajectory.json",
+      "sha256": "fccec45cc61822a6862ce4a6dfd3b7f55abf2b867b259ef06d8d5ac62acd9fa9",
+      "verified": true
+    },
+    "mapper": {
+      "file": null,
+      "sha256": "not-applicable-manual-teleop",
+      "verified": false,
+      "verification": "focused_autonomous_not_applicable"
+    },
+    "survey_log": {
+      "file": null,
+      "sha256": "not-applicable-manual-teleop",
+      "verified": false,
+      "verification": "focused_autonomous_not_applicable"
+    }
+  },
+  "birth_chassis": "1.71499,-1.71499,1.5708",
+  "birth_axle": "1.71499,-1.59995,1.5708",
+  "tf_evidence": "message-level /tf and /tf_static caller IDs sampled at save",
+  "tf_evidence_file": "/home/sz/game/maps/competition_rescan_target_standees_20260922.tf_evidence.json",
+  "tf_evidence_sha256": "2dc0747b46afbd1cd28a379595e40a94a8433d186357bdd2ec5bbbf337b8a4df",
+  "coverage_report_file": "/home/sz/game/maps/competition_rescan_target_standees_20260922.coverage.json",
+  "coverage_report_sha256": "0a19e0965896c783aa0333a31f007934338a6f9a829b4d8f82457a515421ae74",
+  "coverage_report_gate_a_candidate": false,
+  "coverage_report_frontier_cells": 40,
+  "coverage_note": "focused low-speed autonomous supplement; target-area coverage only, not a full-world claim"
+}

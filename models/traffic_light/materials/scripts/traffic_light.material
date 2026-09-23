@@ -1,0 +1,72 @@
+material TrafficLight/RedOn
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture red_on.png }
+    }
+  }
+}
+material TrafficLight/RedOff
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture red_off.png }
+    }
+  }
+}
+material TrafficLight/YellowOn
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture yellow_on.png }
+    }
+  }
+}
+material TrafficLight/YellowOff
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture yellow_off.png }
+    }
+  }
+}
+material TrafficLight/GreenOn
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture green_on.png }
+    }
+  }
+}
+material TrafficLight/GreenOff
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit { texture green_off.png }
+    }
+  }
+}

@@ -16,7 +16,11 @@ class ModelStateOdom:
         self.legacy = rospy.Publisher('/my_car/odom', Odometry, queue_size=2)
         self.tf = tf2_ros.TransformBroadcaster()
         self.last = None
-        self.axle = 0.125
+        # The embedded competition-world model is scaled: both drive wheels
+        # are centred 5.25 cm ahead of the chassis origin.  This must match
+        # the world SDF, otherwise base_footprint, sensors and the costmaps
+        # describe three different robots.
+        self.axle = 0.0525
         rospy.Subscriber('/gazebo/model_states', ModelStates, self.callback, queue_size=1)
 
     def callback(self, msg):

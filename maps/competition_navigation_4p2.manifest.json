@@ -1,0 +1,34 @@
+{
+  "kind": "navigation_safety_overlay",
+  "pure_slam": false,
+  "source_map": {
+    "yaml": "/home/sz/game/maps/competition_ground_truth.yaml",
+    "pgm": "/home/sz/game/maps/competition_ground_truth.pgm",
+    "yaml_sha256": "87dae41336d766dc8191bacc5fbf26f0764498ac5782589837f623a35b96c568",
+    "pgm_sha256": "d8b8f224a057a89679ca7ff2eecb321c1c38d87a91f953bd50dfe3ada0a8b5b3"
+  },
+  "collision_world": {
+    "sdf": "/home/sz/game/worlds/competition_classic.world",
+    "sha256": "5ff809b85e88a9ebec1aa92784a6050aa5d8f1e6048cc474460fb0be57d41529",
+    "padding_m": 0.03
+  },
+  "output": {
+    "yaml": "/home/sz/game/maps/competition_navigation_4p2.yaml",
+    "pgm": "/home/sz/game/maps/competition_navigation_4p2.pgm",
+    "yaml_sha256": "18a9c3ba33493c8592651ae31bc917e5f25d937a7590f76fd82d74ba6f8c0aaa",
+    "pgm_sha256": "7bb6b29bfdec1742649454cf00655fee3dd644c7746eb92d60d4da23970654af",
+    "size": [
+      200,
+      200
+    ],
+    "origin": [
+      -5.0,
+      -5.0,
+      0.0
+    ],
+    "resolution": 0.05
+  },
+  "collision_overlay_cells": 1005,
+  "source_cells_changed_to_occupied": 881,
+  "warning": "Use for navigation safety only; it is not a pure SLAM artifact."
+}

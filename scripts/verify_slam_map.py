@@ -136,14 +136,15 @@ def main():
     trajectory_path = pathlib.Path(a.trajectory)
     trajectory_record = require_hash(a.trajectory, a.trajectory_sha256, 'trajectory')
     trajectory, trajectory_points = read_trajectory(trajectory_path)
-    manual_mode = (a.mapper_sha256 == MANUAL_ARTIFACT and a.log_sha256 == MANUAL_ARTIFACT)
-    if manual_mode:
+    artifactless_mode = (a.mapper_sha256 == MANUAL_ARTIFACT and a.log_sha256 == MANUAL_ARTIFACT)
+    if artifactless_mode:
+        mode = trajectory.get('mode')
+        if mode not in ('manual_teleop', 'focused_autonomous'):
+            raise SystemExit('rejected: artifactless hashes require manual_teleop or focused_autonomous trajectory')
         mapper_record = {'file': None, 'sha256': MANUAL_ARTIFACT, 'verified': False,
-                         'verification': 'manual_teleop_not_applicable'}
+                         'verification': '%s_not_applicable' % mode}
         log_record = {'file': None, 'sha256': MANUAL_ARTIFACT, 'verified': False,
-                      'verification': 'manual_teleop_not_applicable'}
-        if trajectory.get('mode') != 'manual_teleop':
-            raise SystemExit('rejected: manual artifact hashes require manual_teleop trajectory')
+                      'verification': '%s_not_applicable' % mode}
     else:
         if not trajectory_points:
             raise SystemExit('rejected: automatic trajectory has no measured points')

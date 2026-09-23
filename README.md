@@ -5,7 +5,7 @@
 
 ## 一次完整演示
 
-1. 启动场景：`./scripts/start_sim.sh`
+1. 启动场景：`./scripts/start_sim.sh`；修改 world 或模型后使用 `./scripts/start_sim.sh --restart` 强制重载。
 2. 打开 SLAM 视图：`./scripts/view_autonomous_mapping.sh`
 3. 启动真实建图：`./scripts/start_slam_mapping.sh`
 4. 用 `./scripts/teleop.sh` 低速覆盖所有可达走廊，RViz 同时录制 `/map`、`/scan` 和 TF；若使用自动路线则改用 `./scripts/start_autonomous_mapping.sh`。
@@ -20,6 +20,8 @@
    路线，可在容器内给 `patrol_controller` 传入 `_seed:=整数`。
 
 `maps/competition_ground_truth.yaml` 是用于调参和回归测试的真值地图，不能代替第 3 至第 5 步的 SLAM 录像或提交证据。
+
+重新扫图并导航建议执行 `./scripts/rescan_and_navigate.sh`：它会启动全新 GMapping、生成时间戳地图名，等待你用 `./scripts/teleop.sh` 覆盖通道，保存带 manifest 的地图后自动启动导航。`start_navigation.sh` 默认拒绝旧地图；仅调试旧图时显式设置 `ALLOW_LEGACY_MAP=1`。
 
 ## 复赛交付清单
 

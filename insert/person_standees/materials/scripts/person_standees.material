@@ -1,0 +1,270 @@
+material PersonStandee/Person01
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_01.png
+      }
+    }
+  }
+}
+material PersonStandee/Person02
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_02.png
+      }
+    }
+  }
+}
+material PersonStandee/Person03
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_03.png
+      }
+    }
+  }
+}
+material PersonStandee/Person04
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_04.png
+      }
+    }
+  }
+}
+material PersonStandee/Person05
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_05.png
+      }
+    }
+  }
+}
+material PersonStandee/Person06
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_06.png
+      }
+    }
+  }
+}
+material PersonStandee/Person07
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_07.png
+      }
+    }
+  }
+}
+material PersonStandee/Person08
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_08.png
+      }
+    }
+  }
+}
+material PersonStandee/Person09
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_09.png
+      }
+    }
+  }
+}
+material PersonStandee/Person10
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_10.png
+      }
+    }
+  }
+}
+material PersonStandee/Person11
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_11.png
+      }
+    }
+  }
+}
+material PersonStandee/Person12
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_12.png
+      }
+    }
+  }
+}
+material PersonStandee/Person13
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_13.png
+      }
+    }
+  }
+}
+material PersonStandee/Person14
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_14.png
+      }
+    }
+  }
+}
+material PersonStandee/Person15
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_15.png
+      }
+    }
+  }
+}
+material PersonStandee/Person16
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_16.png
+      }
+    }
+  }
+}
+material PersonStandee/PersonF1
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_F1.png
+      }
+    }
+  }
+}
+material PersonStandee/PersonF2
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      texture_unit
+      {
+        texture person_F2.png
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+scene: worlds/competition_classic.world
+status: draft_from_user_diagram
+scope: autonomous_route_and_traffic_compliance_only
+coordinate_frame: world
+mapping_source: models/competition_ground/materials/textures/map.png
+world_size_m: [4.2, 4.2]
+birth_pose:
+  x: 1.71499
+  y: -1.71499
+  yaw: 1.5708
+route_order:
+  - id: START_RIGHT_LANE
+    action: north
+    centerline: {x: 1.70}
+    from: [1.71499, -1.71499]
+    to: [1.70, 0.00]
+    heading: 1.5708
+    traffic_light: traffic_light_2
+    stop_line: NORTHBOUND
+  - id: TOP_WESTBOUND
+    action: west
+    centerline: {y: 0.00}
+    from: [1.70, 0.00]
+    to: [-1.70, 0.00]
+    heading: 3.14159
+    traffic_light: traffic_light_1
+    stop_line: WESTBOUND
+  - id: LEFT_RETURN
+    action: south
+    centerline: {x: -1.70}
+    from: [-1.70, 0.00]
+    to: [-1.70, -0.70]
+    heading: -1.5708
+  - id: MIDDLE_EASTBOUND
+    action: east
+    centerline: {y: -0.70}
+    from: [-1.70, -0.70]
+    to: [-0.70, -0.70]
+    heading: 0.0
+  - id: CENTER_DOWN
+    action: south
+    centerline: {x: -0.70}
+    from: [-0.70, -0.70]
+    to: [-0.70, -1.40]
+    heading: -1.5708
+  - id: BOTTOM_EASTBOUND
+    action: east
+    centerline: {y: -1.40}
+    from: [-0.70, -1.40]
+    to: [1.70, -1.40]
+    heading: 0.0
+  - id: FINISH_RIGHT_LANE
+    action: north
+    centerline: {x: 1.70}
+    from: [1.70, -1.40]
+    to: [1.70, 0.00]
+    heading: 1.5708
+    traffic_light: traffic_light_2
+    stop_line: NORTHBOUND
+lane_constraints:
+  nominal_width_m: 0.60
+  vehicle_boundary_clearance_m: 0.10
+  white_line_crossing: forbidden
+  white_line_contact: forbidden
+  check_body_corners: true
+  stop_line_gate_artifact: ../task001/artifacts/stop_line_measurements.yaml
+stop_line_constraints:
+  crossing_permission: GREEN_only
+  RED: stop_before_line
+  YELLOW: stop_before_line
+  GREEN: may_touch_and_cross
+traffic_lights:
+  traffic_light_1: [-1.109649420, 0.066644743, 0.035, 1.526553365]
+  traffic_light_2: [1.639769554, 0.329708397, 0.035, 0.049170261]
+notes:
+  - Route sequence is transcribed from 任务需求/复赛任务示意图.png.
+  - Waypoint coordinates are provisional until live lane-center validation.
+  - Person and plate recognition are intentionally out of scope.

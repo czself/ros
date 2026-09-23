@@ -1,0 +1,9 @@
+# Diagnostic rendering of the legacy 11.2 m SLAM map scaled uniformly into a
+# 4.2 m square.  It is NOT a valid navigation map for competition_classic:
+# its measurements were collected before the scene and vehicle were resized.
+image: competition_slam_verified4_scaled_4p2.pgm
+resolution: 0.018750000
+origin: [-2.100000, -2.100000, 0.000000]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196

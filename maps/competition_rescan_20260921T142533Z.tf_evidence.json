@@ -1,0 +1,40 @@
+{
+  "duration_sec": 3.0057904720306396,
+  "ended_wall_time": 1790001399.4875605,
+  "started_wall_time": 1790001396.48177,
+  "transforms": [
+    {
+      "caller_ids": [
+        "/model_state_odom"
+      ],
+      "child": "chassis",
+      "parent": "base_footprint",
+      "samples": 88,
+      "topics": [
+        "/tf"
+      ]
+    },
+    {
+      "caller_ids": [
+        "/slam_gmapping"
+      ],
+      "child": "odom",
+      "parent": "map",
+      "samples": 60,
+      "topics": [
+        "/tf"
+      ]
+    },
+    {
+      "caller_ids": [
+        "/model_state_odom"
+      ],
+      "child": "base_footprint",
+      "parent": "odom",
+      "samples": 88,
+      "topics": [
+        "/tf"
+      ]
+    }
+  ]
+}

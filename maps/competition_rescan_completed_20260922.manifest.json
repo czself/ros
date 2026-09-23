@@ -1,0 +1,24 @@
+{
+  "kind": "conservative_merged_focused_slam",
+  "merge_policy": "occupied_wins; free_only_if_observed_free; unknown_otherwise",
+  "inputs": [
+    {
+      "yaml": "/home/sz/game/maps/competition_rescan_target_standees_20260922.yaml",
+      "pgm_sha256": "5307b8f4295fb97c0a81025820a2e838aa132d484b7e342854f03f45e82f4502"
+    },
+    {
+      "yaml": "/home/sz/game/maps/competition_rescan_completion_20260922.yaml",
+      "pgm_sha256": "77e49cff04489f698aad161897899e9a3f75e30c65d701cdd1eba4be6886b2ef"
+    }
+  ],
+  "merged_pgm_sha256": "28f328eabd8b527737341a80b00d24e4c0f9e39ff327027411f2606c14435992",
+  "resolution": 0.05,
+  "origin": [
+    -6.0,
+    -6.0,
+    0.0
+  ],
+  "occupied_cells": 649,
+  "free_cells": 6278,
+  "unknown_cells": 43249
+}
