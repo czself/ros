@@ -140,10 +140,13 @@ class RouteExecutor:
         self.goal_events = []
         self.static_map = None
         self.costmap = None
+        self.local_costmap = None
         rospy.Subscriber('/map', OccupancyGrid,
                          lambda message: setattr(self, 'static_map', message), queue_size=1)
         rospy.Subscriber('/move_base/global_costmap/costmap', OccupancyGrid,
                          lambda message: setattr(self, 'costmap', message), queue_size=1)
+        rospy.Subscriber('/move_base/local_costmap/costmap', OccupancyGrid,
+                         lambda message: setattr(self, 'local_costmap', message), queue_size=1)
         self.route_vertices = bool(raw_contract.get('points')) and not photo_file
         self.status_pub = rospy.Publisher('/route/status', String, queue_size=1, latch=True)
         self.client = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
@@ -344,8 +347,131 @@ class RouteExecutor:
                 return False
         return True
 
-    def navigate_goal(self, name, x, y, yaw):
+    @staticmethod
+    def _angle_error(target, actual):
+        return math.atan2(math.sin(target - actual), math.cos(target - actual))
+
+    def rotation_sweep_clear(self, x, y, start_yaw, target_yaw, name, phase):
+        """Require both static and rolling grids to clear a stationary turn."""
+        try:
+            if self.costmap is None or (rospy.Time.now() - self.costmap.header.stamp).to_sec() > 1.0:
+                self.costmap = rospy.wait_for_message(
+                    '/move_base/global_costmap/costmap', OccupancyGrid, timeout=3.0)
+            if self.local_costmap is None or (rospy.Time.now() - self.local_costmap.header.stamp).to_sec() > 1.0:
+                self.local_costmap = rospy.wait_for_message(
+                    '/move_base/local_costmap/costmap', OccupancyGrid, timeout=3.0)
+            global_grid = self.costmap
+            local_grid = self.local_costmap
+            if global_grid.header.frame_id.lstrip('/') != 'map':
+                raise RuntimeError('global costmap is not in map frame')
+            local_frame = local_grid.header.frame_id.lstrip('/')
+            self.tf_listener.waitForTransform(local_frame, 'map', rospy.Time(0), rospy.Duration(1.0))
+            local_t, local_q = self.tf_listener.lookupTransform(
+                local_frame, 'map', rospy.Time(0))
+            local_offset = math.atan2(2 * (local_q[3] * local_q[2] + local_q[0] * local_q[1]),
+                                      1 - 2 * (local_q[1] * local_q[1] + local_q[2] * local_q[2]))
+            c, s = math.cos(local_offset), math.sin(local_offset)
+            local_x = local_t[0] + c * x - s * y
+            local_y = local_t[1] + s * x + c * y
+            local_start_yaw = start_yaw + local_offset
+            delta = self._angle_error(target_yaw, start_yaw)
+            sample_count = max(1, int(math.ceil(abs(delta) / 0.025)))
+            global_checker = GridFootprintChecker.from_message(
+                global_grid, DEFAULT_FOOTPRINT, safety_margin=0.01)
+            local_checker = GridFootprintChecker.from_message(
+                local_grid, DEFAULT_FOOTPRINT, safety_margin=0.01)
+            for index in range(sample_count + 1):
+                fraction = index / float(sample_count)
+                global_yaw = start_yaw + delta * fraction
+                local_yaw = local_start_yaw + delta * fraction
+                global_result = global_checker.check_pose(x, y, global_yaw)
+                if not global_result.safe:
+                    rospy.logwarn('%s %s rotation blocked by global costmap: %s cell=%s at %.3f rad',
+                                  name, phase, global_result.reason, global_result.cell, global_yaw)
+                    return False
+                local_result = local_checker.check_pose(local_x, local_y, local_yaw)
+                if not local_result.safe:
+                    rospy.logwarn('%s %s rotation blocked by local costmap: %s cell=%s at %.3f rad',
+                                  name, phase, local_result.reason, local_result.cell, local_yaw)
+                    return False
+            rospy.loginfo('%s %s rotation sweep clear: %.1f degrees in %d footprint samples',
+                          name, phase, math.degrees(delta), sample_count + 1)
+            return True
+        except (rospy.ROSException, tf.Exception, RuntimeError, ValueError) as error:
+            rospy.logwarn('%s %s rotation sweep unavailable: %s', name, phase, error)
+            return False
+
+    def rotate_in_place_to_yaw(self, name, target_yaw, phase, position_tolerance=0.035):
+        """Turn at the current physical point with one fixed, checked direction."""
+        try:
+            start_x, start_y, start_yaw = self.map_pose()
+            start_motion_pose = self.progress_pose()
+        except (tf.Exception, RuntimeError) as error:
+            rospy.logerr('%s %s turn pose unavailable: %s', name, phase, error)
+            return False
+        initial_error = self._angle_error(target_yaw, start_yaw)
+        if abs(initial_error) <= 0.025:
+            return True
+        if not self.rotation_sweep_clear(
+                start_x, start_y, start_yaw, target_yaw, name, phase):
+            return False
+
+        direction = 1.0 if initial_error > 0.0 else -1.0
+        deadline = time.monotonic() + abs(initial_error) / 0.12 + 8.0
+        last_yaw = start_yaw
+        last_yaw_progress = time.monotonic()
+        rate = rospy.Rate(20)
+        rospy.loginfo('%s %s turn starts at same point: %.1f degree error, direction=%+.0f',
+                      name, phase, math.degrees(initial_error), direction)
+        try:
+            while not rospy.is_shutdown() and time.monotonic() < deadline:
+                x, y, current_yaw = self.map_pose()
+                motion_pose = self.progress_pose()
+                error = self._angle_error(target_yaw, current_yaw)
+                if abs(error) <= 0.025:
+                    self.cmd_pub.publish(Twist())
+                    rospy.sleep(0.2)
+                    _, _, final_yaw = self.map_pose()
+                    final_motion_pose = self.progress_pose()
+                    position_drift = math.hypot(
+                        final_motion_pose[0] - start_motion_pose[0],
+                        final_motion_pose[1] - start_motion_pose[1])
+                    final_error = self._angle_error(target_yaw, final_yaw)
+                    if position_drift <= position_tolerance and abs(final_error) <= 0.04:
+                        rospy.loginfo('%s %s turn complete at same point: drift=%.3f m yaw_error=%.3f rad',
+                                      name, phase, position_drift, final_error)
+                        return True
+                    rospy.logwarn('%s %s turn settled outside tolerance: drift=%.3f m yaw_error=%.3f rad',
+                                  name, phase, position_drift, final_error)
+                    return False
+                if direction * error < -0.015:
+                    rospy.logwarn('%s %s turn overshot; stopping instead of reversing direction', name, phase)
+                    return False
+                position_drift = math.hypot(
+                    motion_pose[0] - start_motion_pose[0],
+                    motion_pose[1] - start_motion_pose[1])
+                if position_drift > position_tolerance:
+                    rospy.logwarn('%s %s turn drifted %.3f m; stopping', name, phase, position_drift)
+                    return False
+                if abs(self._angle_error(current_yaw, last_yaw)) > 0.008:
+                    last_yaw, last_yaw_progress = current_yaw, time.monotonic()
+                elif time.monotonic() - last_yaw_progress > 3.0:
+                    rospy.logwarn('%s %s turn made no heading progress; stopping', name, phase)
+                    return False
+                command = Twist()
+                command.angular.z = direction * min(0.15, max(0.06, 0.8 * abs(error)))
+                self.cmd_pub.publish(command)
+                rate.sleep()
+        except (tf.Exception, RuntimeError) as error:
+            rospy.logwarn('%s %s turn pose became unavailable: %s', name, phase, error)
+        finally:
+            self.cmd_pub.publish(Twist())
+        rospy.logwarn('%s %s turn timed out at same-point heading control', name, phase)
+        return False
+
+    def navigate_goal(self, name, x, y, yaw, previous=None):
         """One pose goal, guarded before dispatch and bounded by actual progress."""
+        position_first = self.photo_route and name == 'POINT_5' and previous is not None
         if self.photo_route and name.startswith('POINT_'):
             try:
                 from dynamic_reconfigure.client import Client
@@ -353,10 +479,8 @@ class RouteExecutor:
                     rospy.get_param('~photo_nav_xy_tolerance', 0.03))
                 photo_yaw_tolerance = float(
                     rospy.get_param('~photo_nav_heading_tolerance', 0.04))
-                # Photo capture needs a tight pose tolerance, but navigation
-                # still needs reverse samples through the route. The Round 17
-                # forward-only P5 trial caused repeated pure spins; keep the
-                # established P6->P7 forward-only restriction only.
+                # P5 first navigates to recorded XY with heading
+                # unconstrained, then uses the checked same-point yaw servo.
                 min_vel_x = -0.08
                 if name == 'POINT_5':
                     photo_xy_tolerance = min(
@@ -371,9 +495,15 @@ class RouteExecutor:
                         float(rospy.get_param('~point_3_nav_xy_tolerance', 0.05)))
                 if name == 'POINT_7':
                     min_vel_x = 0.0
+                if position_first:
+                    # The incoming leg is pre-aligned to its path bearing,
+                    # so forward motion can handle XY without DWA reversing
+                    # or trying to satisfy the camera yaw at a distance.
+                    min_vel_x = 0.0
+                navigation_yaw_tolerance = math.pi if position_first else photo_yaw_tolerance
                 Client('/move_base/DWAPlannerROS', timeout=3.0).update_configuration({
                     'xy_goal_tolerance': photo_xy_tolerance,
-                    'yaw_goal_tolerance': photo_yaw_tolerance,
+                    'yaw_goal_tolerance': navigation_yaw_tolerance,
                     # Keep reverse available except for the P6->P7 short leg.
                     'min_vel_x': min_vel_x,
                     # Keep the configured minimum translational threshold.
@@ -393,6 +523,17 @@ class RouteExecutor:
             if not self.validate_goal(name, x, y, yaw):
                 self.goal_events.append({'name': name, 'attempt': attempt, 'result': 'UNSAFE_GOAL'})
                 return False
+            if position_first:
+                try:
+                    current_x, current_y, _ = self.map_pose()
+                except (tf.Exception, RuntimeError) as error:
+                    rospy.logerr('%s path-bearing pose unavailable: %s', name, error)
+                    return False
+                path_bearing = math.atan2(y - current_y, x - current_x)
+                if not self.rotate_in_place_to_yaw(name, path_bearing, 'approach-bearing'):
+                    self.goal_events.append({'name': name, 'attempt': attempt,
+                                             'result': 'APPROACH_BEARING_FAILED'})
+                    return False
             start = time.monotonic()
             last_progress = start
             try:
@@ -426,6 +567,10 @@ class RouteExecutor:
                                      'duration_s': round(time.monotonic()-start, 2),
                                      'action_state': state, 'result': reason})
             if state == GoalStatus.SUCCEEDED:
+                if position_first and not self.rotate_in_place_to_yaw(
+                        name, yaw, 'camera-heading'):
+                    self.goal_events.append({'name': name, 'result': 'CAMERA_HEADING_FAILED'})
+                    return False
                 return True
             self.client.cancel_goal()
             self.client.wait_for_result(rospy.Duration(2.0))
@@ -468,7 +613,7 @@ class RouteExecutor:
                 self.status_pub.publish('GO:%02d/%02d:%s' % (photo_index, photo_total, name))
                 rospy.loginfo('photo point %d/%d start: %s (%.2f, %.2f)',
                               photo_index, photo_total, name, x, y)
-            if not self.navigate_goal(name, x, y, yaw):
+            if not self.navigate_goal(name, x, y, yaw, previous=previous):
                 self.status_pub.publish('FAILED:NAV:%s' % name)
                 rospy.logerr('route navigation failed: %s', name)
                 return False

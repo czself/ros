@@ -139,6 +139,28 @@ zero. Its calibrated Gazebo truth was about 5.6 cm and 0.088 rad from the
 contract HOME, so exact HOME acceptance remains open. Report and bag:
 `/home/sz/ros1_ws/navigation_diagnostics/20260926_round17_home_only_return_01/`.
 
+## Round 18 result and P5 turn plan
+
+Round 18 used the measured 0.13572 m effective wheel-separation setting and
+restored reverse sampling at P5. The encoder-vs-Gazebo error at P4 fell from
+21.5 cm / 10.6 degrees to 5.2 cm / 4.0 degrees, but the route still aborted
+at P5 twice. P1, P2, and P4 passed; P3 still cut the feet. No P6–P10 goals
+were sent. A one-shot HOME-only goal succeeded afterward, with Gazebo truth
+within 4.54 cm and 0.077 rad of contract HOME. See
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_round18_alpha02_wheel13572_reversep5_01/result_report.md`
+and `/home/sz/ros1_ws/navigation_diagnostics/20260926_round18_home_only_return_01/home_only_return_report.md`.
+
+The P4→P5 segment itself allows a checked in-place turn toward the segment
+bearing: recorded costmaps show at least 5.9 cm global and 14.2 cm local
+footprint clearance there. At the P5 failure pose, turning all the way to the
+camera yaw leaves only 1.4 cm true lethal clearance. The current implementation
+uses one MoveBase goal at the recorded P5 XY with yaw temporarily unconstrained,
+then runs a low-speed, fixed-direction yaw servo at the same physical pose.
+Before each servo it sweeps the full footprint against both current costmaps.
+The P4 path-bearing turn is also checked. The route keeps the same ten
+coordinates and sends no extra MoveBase pose goal; this is a candidate for the
+next full-route validation and is not yet accepted.
+
 ## Wheel odometry calibration candidate
 
 Round 17 joint-angle regression estimates an effective wheel separation near
@@ -152,5 +174,19 @@ not a complete fix.
 The test world and model now set the diff-drive effective separation to
 0.13572 m while leaving every route pose unchanged. The model source value is
 0.32314286 m before its 0.42 world scale; the adjusted Gazebo world uses the
-scaled 0.13572 m directly. Round 18 will validate this one geometry parameter
-with POINT_5 reverse enabled again.
+scaled 0.13572 m directly. Round 18 verified a large reduction in wheel-odom
+drift, but still aborted at P5; the correction is useful and insufficient by
+itself.
+
+## P5 same-point heading controller candidate
+
+Round 18's captured costmaps show a clear full-footprint sweep at P4 while
+turning toward the P4→P5 path bearing (about 5.9 cm global and 14.2 cm local
+clearance). Turning all the way to the photo yaw at P5 is much tighter; the
+recorded failures had only about 1.4 cm of lethal clearance. The executor now
+has a candidate P5 sequence: a low-speed, collision-checked heading turn at
+the current P4 position, one MoveBase goal to the recorded P5 XY with heading
+unconstrained during translation, then a fixed-direction same-position turn
+to P5's recorded camera yaw, also footprint-checked. It does not add another
+pose or change the ten recorded coordinates. The source passes Python syntax
+compilation; a full route run is still needed to validate the behavior.
