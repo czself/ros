@@ -229,3 +229,16 @@ This validates stable completion of all ten navigation goals and HOME return,
 but does not pass photo acceptance at POINT_5 or POINT_7. The P5/P7 image
 failures need pose-at-capture truth alignment before deciding whether to
 correct localization or adjust a recorded camera pose.
+
+The capture-time pose comparison narrows the photo misses: at P5, map TF was
+2.34 cm / 1.06 degrees from the saved pose, but calibrated Gazebo truth was
+7.70 cm / 1.74 degrees from TF and 6.38 cm from the saved XY. At P7, map TF
+was 1.78 cm / 1.98 degrees from the saved pose, while Gazebo truth differed
+from TF by 8.42 cm and was 9.21 cm from saved XY. P7 AMCL was fresh (about
+0.37 s old) and within roughly 0.5 cm of TF, so stale AMCL alone does not
+explain the error. No AMCL pose was recorded within two seconds of P5 capture.
+The wheel-separation correction improved encoder drift in Round 18, but
+Round 19 still has these local TF-to-truth offsets; the current data does not
+separate map registration error from scan-matching or odometry error. The
+next diagnosis should compare the capture-time laser scan against the
+occupancy map before touching the saved photo coordinates.
