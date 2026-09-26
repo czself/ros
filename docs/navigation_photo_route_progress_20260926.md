@@ -240,5 +240,27 @@ explain the error. No AMCL pose was recorded within two seconds of P5 capture.
 The wheel-separation correction improved encoder drift in Round 18, but
 Round 19 still has these local TF-to-truth offsets; the current data does not
 separate map registration error from scan-matching or odometry error. The
-next diagnosis should compare the capture-time laser scan against the
-occupancy map before touching the saved photo coordinates.
+capture-time scan-to-map check below provides the relevant evidence before
+any saved photo pose is changed.
+
+### Round 19 scan-to-map check
+
+A targeted check projected the P5/P7 capture-time `/scan` returns into the
+original `/map_local_navigation` grid using both the recorded TF pose and the
+calibrated Gazebo-truth pose. At P5, 221/354 TF-projected endpoints (62%) land
+on occupied cells, versus 20/354 (5.6%) for the Gazebo-truth projection; the
+median distance to an occupied cell is 2.5 cm versus 6.0 cm. At P7, the
+corresponding scores are 297/360 (82.5%) versus 30/360 (8.3%), with median
+distances 2.2 cm versus 5.8 cm. The white-line overlay gives the same ordering.
+This supports the TF/map pose over the current truth-to-map conversion; it
+does not support treating the earlier TF-to-truth residual as proof that the
+robot missed the saved point.
+
+Fitting the P5, P7, and HOME TF/truth pairs as one rigid correction gives
+about +3.93 cm X, +6.57 cm Y, and -1.055 degrees yaw, with residuals of 0.28,
+0.87, and 1.15 cm. This points to a Gazebo-to-map truth-registration offset
+rather than the wheel-separation value alone. The map resolution is 5 cm and
+capture-time AMCL data is missing at P5, so the fitted correction remains a
+registration hypothesis to verify. P5 and P7 photo framing still fails visual
+acceptance despite the strong scan-to-map agreement; inspect the camera frame
+and intended photo framing before changing the saved poses.
