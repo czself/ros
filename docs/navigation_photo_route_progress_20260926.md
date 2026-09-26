@@ -1,41 +1,48 @@
 # Navigation photo route progress — 2026-09-26
 
-This branch records the route and localization work performed against the fixed
-`POINT_1` through `POINT_10` photo route. It does not claim that every photo or
-the final heading has passed acceptance.
+The route still uses the ten recorded photo poses in order and returns to the
+original HOME pose. No photo coordinates were changed and no hidden alignment
+or transition goals are inserted.
 
-## Verified progress
+## Verified improvements
 
-- The route executor uses the existing ten recorded photo poses in order and
-  returns to the contract HOME pose. It records camera images, depth summaries,
-  target/actual AMCL pose, and the configured acceptance criterion.
-- Navigation startup checks simulated time, laser and wheel-odometry stamps,
-  map-to-base TF, and the `move_base` action server before dispatching goals.
-- Photo navigation allows the normal low-speed reverse sample
-  (`min_vel_x=-0.08`) at the recorded points. The known P6-to-P7 short approach
-  remains forward-only.
-- With reverse available, the second complete run reached all ten points and
-  completed the HOME action. P3-to-P4 changed from repeated DWA failure and a
-  roughly 159-degree in-place turn to a successful 0.95 m traverse with about
-  87 degrees of heading change.
+- Removed the executor's hidden in-place alignment goals before POINT_5 and
+  POINT_7. Each navigation action now targets the recorded point directly.
+- Added a positive DWA `twirling_scale` for photo navigation. In P3 testing,
+  near-pure-rotation commands fell from about 62% to about 35% of samples.
+- Reworked SafeEscape to subscribe to the active Navfn plan, score collision-
+  checked arcs by path progress and cross-track error, and prefer endpoints
+  outside the inscribed obstacle halo.
+- P3 was reached and photographed after setting only P3's XY navigation and
+  capture tolerances to 0.05 m. The resulting photo shows all three people
+  fully in frame; its map-TF error was about 3.3 cm and heading error about
+  2 degrees.
+- Disabling continuous DWA trajectory-cloud publication restored Gazebo
+  performance; the P1 navigation time returned to roughly 9 seconds after a
+  diagnostic run with trajectory-cloud publishing took about 31 seconds.
 
 ## Acceptance still open
 
-- P5 cuts off the fourth person at the right edge; P7 cuts off the top of the
-  traffic-light unit.
-- At P5, AMCL reported about 2 cm position error, while synchronized Gazebo
-  truth placed the base about 11 cm from the recorded target. This explains the
-  crop and points to localization/odometry drift rather than a bad camera or
-  lidar mounting transform.
-- The executor accepted HOME using AMCL at 2.4 cm / 1.91 degrees. Synchronized
-  Gazebo truth was about 2.5 cm / 8.17 degrees from HOME, so the final heading
-  did not meet the 0.06 rad requirement.
-- The lidar and camera transforms relative to the chassis matched Gazebo link
-  state during the run. Wheel-odometry calibration and AMCL correction are the
-  remaining localization work; the photo points and sensor extrinsics were not
-  changed in this run.
+- The latest route stopped at P7 after two MoveBase recovery failures. P8–P10
+  and HOME were not attempted.
+- P2's latest image cuts or nearly cuts the three people's feet. P5 still crops
+  the right-side person. P1, P3, P4, and P6 passed visual review in the latest
+  run.
+- At P2, map TF was about 2.1 cm from the recorded target, while calibrated
+  Gazebo truth was about 9.9 cm from it. This mismatch is consistent with the
+  P2 framing error. P5 still needs the same truth-versus-TF comparison.
+- P7's path-aware escape candidates were safe and on the Navfn path, but the
+  shortest candidate moved about 10.4 cm; the current minimum recovery-distance
+  threshold is 12 cm, so the plugin rejected it. The next check will lower that
+  threshold to 8 cm without changing any route point.
 
-The full run telemetry is retained outside the repository at
-`/home/sz/ros1_ws/navigation_diagnostics/20260926_photo_route_retry_reverse/`
-(28 readable rosbag segments, about 29 GB). The photos are in
-`/home/sz/ros1_ws/photo_stops/standee_route_runs/20260926_1328_route_retry_reverse/`.
+The latest complete diagnostics are in
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_photo_route_p3tol05_pathescape_01/`;
+photos are in
+`/home/sz/ros1_ws/photo_stops/standee_route_runs/20260926_p3tol05_pathescape_01/`.
+The P3 images and route summary are preserved there; no full-route acceptance is
+claimed.
+
+The original round-8 bag was overwritten by a recorder started with a reused
+directory. Its photos, P3 attempt samples, and report remain, but that bag is
+unavailable. All later runs use unique directories.

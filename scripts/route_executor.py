@@ -231,6 +231,10 @@ class RouteExecutor:
         yaw_error = math.atan2(math.sin(yaw - actual_yaw), math.cos(yaw - actual_yaw))
         xy_tolerance = float(rospy.get_param('~photo_position_tolerance', 0.06))
         yaw_tolerance = float(rospy.get_param('~photo_heading_tolerance', 0.06))
+        if name == 'POINT_3':
+            xy_tolerance = max(
+                xy_tolerance,
+                float(rospy.get_param('~point_3_photo_position_tolerance', 0.05)))
         if name == 'POINT_5':
             xy_tolerance = min(
                 xy_tolerance,
@@ -340,55 +344,8 @@ class RouteExecutor:
                 return False
         return True
 
-    def align_short_photo_leg(self, name, x, y):
-        """Turn in place toward a very short leg when that sweep is map-safe.
-
-        This does not add a route point: the alignment uses the robot's
-        current position, then the executor still navigates to the same
-        recorded photo pose. It avoids DWA combining a near-180 degree turn
-        with a 10–20 cm translation at P4->P5.
-        """
-        if name == 'POINT_1':
-            return True
-        try:
-            current_x, current_y, current_yaw = self.map_pose()
-        except (tf.Exception, RuntimeError) as error:
-            rospy.logwarn('cannot pre-align short leg to %s: %s', name, error)
-            return True
-        dx, dy = x - current_x, y - current_y
-        distance = math.hypot(dx, dy)
-        if distance < 0.05 or distance > float(rospy.get_param('~photo_prealign_max_distance', 0.30)):
-            return True
-        bearing = math.atan2(dy, dx)
-        turn = math.atan2(math.sin(bearing - current_yaw),
-                          math.cos(bearing - current_yaw))
-        if abs(turn) < float(rospy.get_param('~photo_prealign_min_turn', 0.70)):
-            return True
-        if self.static_map is None:
-            return True
-        checker = GridFootprintChecker.from_message(
-            self.static_map, DEFAULT_FOOTPRINT, safety_margin=0.04)
-        samples = max(1, int(math.ceil(abs(turn) / 0.10)))
-        sweep = [checker.check_pose(
-            current_x, current_y, current_yaw + turn * index / float(samples))
-                 for index in range(samples + 1)]
-        blocked = next((result for result in sweep if not result.safe), None)
-        if blocked is not None:
-            rospy.loginfo(
-                'skip in-place pre-alignment for %s: turn sweep is not clear (%s)',
-                name, blocked.reason)
-            return True
-        rospy.loginfo(
-            'short leg to %s: align at current position before translating (%.2f m, %.2f rad)',
-            name, distance, turn)
-        return self.navigate_goal('_ALIGN_FOR_' + name, current_x, current_y, bearing)
-
     def navigate_goal(self, name, x, y, yaw):
         """One pose goal, guarded before dispatch and bounded by actual progress."""
-        if (self.photo_route and name.startswith('POINT_')
-                and not self.align_short_photo_leg(name, x, y)):
-            rospy.logerr('safe in-place alignment failed before photo point %s', name)
-            return False
         if self.photo_route and name.startswith('POINT_'):
             try:
                 from dynamic_reconfigure.client import Client
@@ -408,6 +365,10 @@ class RouteExecutor:
                     photo_yaw_tolerance = min(
                         photo_yaw_tolerance,
                         float(rospy.get_param('~point_5_nav_heading_tolerance', 0.025)))
+                if name == 'POINT_3':
+                    photo_xy_tolerance = max(
+                        photo_xy_tolerance,
+                        float(rospy.get_param('~point_3_nav_xy_tolerance', 0.05)))
                 if name == 'POINT_7':
                     min_vel_x = 0.0
                 Client('/move_base/DWAPlannerROS', timeout=3.0).update_configuration({
@@ -416,7 +377,12 @@ class RouteExecutor:
                     # Keep reverse available where the planner needs it; the
                     # P6->P7 short approach is the one known exception.
                     'min_vel_x': min_vel_x,
-                    'min_vel_trans': 0.0,
+                    # Keep the configured minimum translational threshold.
+                    # This does not ban pure rotation, so twirling_scale
+                    # separately scores unnecessary spin trajectories.
+                    'min_vel_trans': 0.025,
+                    'twirling_scale': float(
+                        rospy.get_param('~photo_twirling_scale', 0.5)),
                 })
             except Exception as error:
                 rospy.logerr('could not set precise photo-point tolerances for %s: %s', name, error)

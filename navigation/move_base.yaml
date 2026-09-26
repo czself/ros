@@ -10,7 +10,7 @@ recovery_behaviors:
 conservative_clear:
   reset_distance: 0.5
 safe_escape:
-  max_distance: 0.30
+  max_distance: 0.32
   min_distance: 0.12
   safety_margin: 0.04
   speed: 0.10
@@ -54,6 +54,9 @@ DWAPlannerROS:
   vx_samples: 35
   vy_samples: 1
   vth_samples: 45
+  # Publishing every sampled trajectory cut Gazebo real-time factor during
+  # full route runs; enable it only for a short, isolated diagnostic window.
+  publish_traj_pc: false
   path_distance_bias: 18.0
   goal_distance_bias: 16.0
   occdist_scale: 0.25
