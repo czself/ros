@@ -93,10 +93,11 @@ stopped at P5. The current local map had lethal wall cells and scan returns
 corridor. See
 `/home/sz/ros1_ws/navigation_diagnostics/20260926_photo_route_alpha20_min12_pathaware_01/p5_no_progress_diagnosis.md`.
 
-As a targeted next test, POINT_5 now disables reverse velocity, matching the
-existing POINT_7 exception. This addresses the measured forward/reverse
-alternation without changing the route or inserting an alignment goal. It has
-not yet been run.
+Round 17 tested POINT_5 with reverse disabled. It did not reach the point and
+made DWA rotate in place more often: 84% of attempt 1 and 93% of attempt 2
+commands had near-zero translation, with 32 and 27 angular-velocity reversals.
+That setting has been reverted; POINT_5 again permits the configured reverse
+samples. POINT_7 retains its existing forward-only behavior.
 
 After the failed Round 16 route, navigation was restarted from the measured
 current Gazebo pose (no teleport) and the rebuilt higher-curvature plugin was
@@ -113,3 +114,27 @@ open. The full return-attempt bag is
 The original round-8 bag was overwritten by a recorder started with a reused
 directory. Its photos, P3 attempt samples, and report remain, but that bag is
 unavailable. All later runs use unique directories.
+
+## Round 17 result
+
+P1, P2, and P4 passed the photo criteria. P3's three people were visible, but
+their feet were cut off. P5 aborted twice and produced no photo; P6–P10 and the
+route's own HOME return were not attempted. The executor did not add any goal
+after the P5 failure. The bag is
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_round17_alpha02_escapev2_01/motion_0.bag`
+(303 seconds, 1,003,501 messages, 265.5 MB).
+
+P5 remained a valid Navfn goal, while local plans had zero or near-zero length.
+The first SafeEscape arc (`v=-0.12, w=1.10`, 0.194 m) improved path progress in
+AMCL's estimate but moved Gazebo truth farther from P5: true target distance
+increased from about 10.2 cm to 11.7 cm. The map estimate was 6–8 cm from
+truth. Two later SafeEscape probes found no collision-free arc (`endpoint_cost
+254`). This explains why the visual width of the road does not guarantee a
+safe turn: the local footprint map includes a nearby wall and the pose error
+is comparable to the remaining goal distance. Full detail is in
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_photo_route_alpha02_escapev2_01/p5_no_progress_diagnosis.md`.
+
+After Round 17, a separate HOME-only action returned `SUCCEEDED` with `cmd_vel`
+zero. Its calibrated Gazebo truth was about 5.6 cm and 0.088 rad from the
+contract HOME, so exact HOME acceptance remains open. Report and bag:
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_round17_home_only_return_01/`.
