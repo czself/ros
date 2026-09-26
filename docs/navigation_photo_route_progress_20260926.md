@@ -80,6 +80,36 @@ arcs. It applies an angular-rate penalty so a useful tight arc can pass while
 7 cm micro-arcs cannot. This revision compiles, but has not yet been loaded or
 tested in a route run.
 
+## Round 16 P5 diagnosis and HOME return
+
+The Round 16 bag confirms this is a short-goal control oscillation, not a DWA
+planner with no path. At P5 the Navfn path stayed valid and DWA published local
+plans, usually only two poses long. During both attempts, forward and reverse
+commands each appeared in roughly 40–50% of samples, while pure rotation was
+only 6–8%; net forward progress was near zero. SafeEscape's low-curvature-only
+revision found no collision-free long arc in the live costmap, so the route
+stopped at P5. The current local map had lethal wall cells and scan returns
+0.18–0.22 m away around the short P4→P5 turn, despite a roughly 0.7 m visual
+corridor. See
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_photo_route_alpha20_min12_pathaware_01/p5_no_progress_diagnosis.md`.
+
+As a targeted next test, POINT_5 now disables reverse velocity, matching the
+existing POINT_7 exception. This addresses the measured forward/reverse
+alternation without changing the route or inserting an alignment goal. It has
+not yet been run.
+
+After the failed Round 16 route, navigation was restarted from the measured
+current Gazebo pose (no teleport) and the rebuilt higher-curvature plugin was
+loaded. One HOME action succeeded under AMCL's 0.05 m / 0.10 rad tolerances,
+but truth at arrival was about 2.5 cm and 6.1 degrees from HOME. Tightening
+the final tolerances made MoveBase report success while truth still differed
+by about 4 cm and 5 degrees. With zero commanded velocity, the Gazebo chassis
+continued to yaw slowly (about 0.00042 rad/s). A later same-HOME correction
+ended in a 2.3 rad heading error and MoveBase oscillation abort. The vehicle
+was stationary afterward; the 10-point route and exact HOME acceptance remain
+open. The full return-attempt bag is
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_round16_final_home_relocalize_return_04/home_return_0.bag`.
+
 The original round-8 bag was overwritten by a recorder started with a reused
 directory. Its photos, P3 attempt samples, and report remain, but that bag is
 unavailable. All later runs use unique directories.

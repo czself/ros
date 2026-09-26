@@ -354,9 +354,11 @@ class RouteExecutor:
                 photo_yaw_tolerance = float(
                     rospy.get_param('~photo_nav_heading_tolerance', 0.04))
                 # Photo capture needs a tight pose tolerance, but navigation
-                # still needs the normal reverse samples to maneuver through
-                # the narrow route. Forward-only was needed for the short
-                # P6->P7 approach, so scope that restriction to POINT_7 only.
+                # still needs reverse samples through the route. In Round 16,
+                # DWA alternated forward/reverse on the short P4->P5 leg
+                # (nearly 180 degrees of heading change) with near-zero net
+                # progress, so make that turn forward-only. Keep P6->P7's
+                # existing forward-only restriction too.
                 min_vel_x = -0.08
                 if name == 'POINT_5':
                     photo_xy_tolerance = min(
@@ -369,13 +371,13 @@ class RouteExecutor:
                     photo_xy_tolerance = max(
                         photo_xy_tolerance,
                         float(rospy.get_param('~point_3_nav_xy_tolerance', 0.05)))
-                if name == 'POINT_7':
+                if name in ('POINT_5', 'POINT_7'):
                     min_vel_x = 0.0
                 Client('/move_base/DWAPlannerROS', timeout=3.0).update_configuration({
                     'xy_goal_tolerance': photo_xy_tolerance,
                     'yaw_goal_tolerance': photo_yaw_tolerance,
-                    # Keep reverse available where the planner needs it; the
-                    # P6->P7 short approach is the one known exception.
+                    # POINT_5 and POINT_7 disable reverse to avoid oscillating
+                    # on their short, sharp heading changes.
                     'min_vel_x': min_vel_x,
                     # Keep the configured minimum translational threshold.
                     # This does not ban pure rotation, so twirling_scale
