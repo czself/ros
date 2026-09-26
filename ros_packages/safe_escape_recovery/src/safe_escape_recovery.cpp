@@ -70,12 +70,14 @@ class SafeEscapeRecovery : public nav_core::RecoveryBehavior {
     PathProjection start_projection;
     const bool start_on_path = have_path && projectToPath(
         start.pose.position.x, start.pose.position.y, local_path, start_projection);
-    // A straight reverse is not enough at a corner.  Search short constant-
-    // curvature arcs in both directions; each candidate is checked against
-    // the complete footprint before it is ever sent to the drivetrain.
+    // Search low-curvature arcs in both directions; each candidate is checked
+    // against the complete footprint before it is sent to the drivetrain.
+    // Short, high-curvature arcs repeatedly produced tiny sideways loops on
+    // photo-route legs, so recovery must make useful forward progress without
+    // swinging the chassis sharply away from the global plan.
     for (double v : {-0.16, -0.12, 0.12, 0.16}) {
-      for (double w : {-1.10, -0.75, -0.38, 0.0, 0.38, 0.75, 1.10}) {
-        for (double duration : {0.60, 0.90, 1.20, 1.60, 2.00}) {
+      for (double w : {-0.38, 0.0, 0.38}) {
+        for (double duration : {1.20, 1.60, 2.00}) {
           double progress = 0.0;
           double end_x = 0.0, end_y = 0.0;
           unsigned char endpoint_cost = costmap_2d::LETHAL_OBSTACLE;
@@ -96,6 +98,11 @@ class SafeEscapeRecovery : public nav_core::RecoveryBehavior {
             cross_track = end_projection.cross_track;
             path_score = end_projection.arclength - start_projection.arclength -
                 2.0 * (end_projection.cross_track - start_projection.cross_track);
+            // Do not accept an arc that only changes pose locally or moves
+            // away from the active route. MoveBase will replan the same goal
+            // after recovery; an unhelpful arc just repeats the oscillation.
+            if (path_score < 0.03 ||
+                cross_track > start_projection.cross_track + 0.05) continue;
           }
           if (clear_endpoint) {
             const bool better_without_path =
@@ -136,7 +143,7 @@ class SafeEscapeRecovery : public nav_core::RecoveryBehavior {
     const bool leaves_global_path = start_on_path &&
         best_cross_track > start_projection.cross_track + 0.05;
     if (best_progress < min_distance_ || !found_clear_endpoint ||
-        (start_on_path && best_path_score < -0.10 && leaves_global_path)) {
+        (start_on_path && (best_path_score < 0.03 || leaves_global_path))) {
       ROS_WARN("Safe escape: no arc ends with enough footprint clearance");
       stop();
       return;
