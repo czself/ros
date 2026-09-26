@@ -138,3 +138,19 @@ After Round 17, a separate HOME-only action returned `SUCCEEDED` with `cmd_vel`
 zero. Its calibrated Gazebo truth was about 5.6 cm and 0.088 rad from the
 contract HOME, so exact HOME acceptance remains open. Report and bag:
 `/home/sz/ros1_ws/navigation_diagnostics/20260926_round17_home_only_return_01/`.
+
+## Wheel odometry calibration candidate
+
+Round 17 joint-angle regression estimates an effective wheel separation near
+0.140 m; the current plugin setting is 0.133 m. Replaying the same wheel
+increments offline with 0.13572 m reduced the P4 truth-versus-odometry error
+from about 21.5 cm / 10.6 degrees to 16.4 cm / 5.1 degrees, and reduced the
+first P5 escape error from about 24.3 cm / 19.6 degrees to 17.8 cm / 11.7
+degrees. Residual drift remains, so this is a conservative calibration test,
+not a complete fix.
+
+The test world and model now set the diff-drive effective separation to
+0.13572 m while leaving every route pose unchanged. The model source value is
+0.32314286 m before its 0.42 world scale; the adjusted Gazebo world uses the
+scaled 0.13572 m directly. Round 18 will validate this one geometry parameter
+with POINT_5 reverse enabled again.

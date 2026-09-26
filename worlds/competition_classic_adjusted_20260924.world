@@ -618,7 +618,7 @@
         <legacyMode>0</legacyMode>
         <leftJoint>left_wheel_joint</leftJoint>
         <rightJoint>right_wheel_joint</rightJoint>
-        <wheelSeparation>0.133000001</wheelSeparation>
+        <wheelSeparation>0.13572</wheelSeparation>
         <wheelDiameter>0.0462</wheelDiameter>
         <wheelTorque>10</wheelTorque>
         <wheelAcceleration>1.0</wheelAcceleration>
