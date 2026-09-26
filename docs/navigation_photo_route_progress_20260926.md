@@ -55,14 +55,30 @@ about 0.17 m and the saved heading reverses by almost 180 degrees. There was no
 DWA “failed to produce path” log at P5; its recovery sequence followed lack of
 useful progress rather than a confirmed absence of local trajectories.
 
-The recovery code now limits its candidate arcs to ±0.38 rad/s, samples only
-durations of 1.2–2.0 seconds, requires at least 0.12 m of travel, and rejects
-arcs with path score below 0.03 or more than 0.05 m extra cross-track error.
-No route coordinates changed. The ROS package compiled successfully inside
-the `ros1_modeling` container; the rebuilt plugin has not yet been loaded by a
-restarted MoveBase or validated in a new route run.
+The first recovery revision limited candidate arcs to ±0.38 rad/s. After the
+P5 failure in Round 16, the current candidate restores higher-curvature arcs
+for tight spaces, samples only durations of 1.2–2.0 seconds, requires at least
+0.12 m travel, penalizes angular speed, and rejects path score below 0.03 or
+more than 0.05 m extra cross-track error. No route coordinates changed. The
+package compiles inside `ros1_modeling`; route validation is pending.
 
 Photo acceptance is still open until P5/P7 pass and HOME truth is confirmed.
+
+## Round 16: recovery constraint check
+
+The first low-curvature-only revision reached P1–P4 faster (about 11, 14, 22,
+and 22 seconds) and did not execute the old repeated tight loops. It then failed
+at P5: attempt 1 ended `NO_PROGRESS`, attempt 2 aborted, and no P5 photo was
+taken. Both recovery probes found no collision-free long low-curvature arc
+(endpoint cost 254). P6–P10 were not attempted. The bag is preserved at
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_photo_route_alpha20_min12_pathaware_01/`.
+
+The next candidate keeps the 0.12 m minimum travel and the path-score/cross-
+track gates, starts duration sampling at 1.2 seconds, and restores higher
+curvature candidates only for cases where the local costmap rejects gentler
+arcs. It applies an angular-rate penalty so a useful tight arc can pass while
+7 cm micro-arcs cannot. This revision compiles, but has not yet been loaded or
+tested in a route run.
 
 The original round-8 bag was overwritten by a recorder started with a reused
 directory. Its photos, P3 attempt samples, and report remain, but that bag is

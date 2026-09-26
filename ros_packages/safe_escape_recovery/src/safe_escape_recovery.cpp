@@ -70,13 +70,12 @@ class SafeEscapeRecovery : public nav_core::RecoveryBehavior {
     PathProjection start_projection;
     const bool start_on_path = have_path && projectToPath(
         start.pose.position.x, start.pose.position.y, local_path, start_projection);
-    // Search low-curvature arcs in both directions; each candidate is checked
-    // against the complete footprint before it is sent to the drivetrain.
-    // Short, high-curvature arcs repeatedly produced tiny sideways loops on
-    // photo-route legs, so recovery must make useful forward progress without
-    // swinging the chassis sharply away from the global plan.
+    // Search checked arcs in both directions. The shortest high-curvature
+    // arcs repeatedly produced tiny sideways loops. Keep longer curved
+    // candidates for tight turns, but penalize angular speed and require real
+    // displacement plus progress along the current global plan.
     for (double v : {-0.16, -0.12, 0.12, 0.16}) {
-      for (double w : {-0.38, 0.0, 0.38}) {
+      for (double w : {-1.10, -0.75, -0.38, 0.0, 0.38, 0.75, 1.10}) {
         for (double duration : {1.20, 1.60, 2.00}) {
           double progress = 0.0;
           double end_x = 0.0, end_y = 0.0;
@@ -97,7 +96,8 @@ class SafeEscapeRecovery : public nav_core::RecoveryBehavior {
             if (!projectToPath(end_x, end_y, local_path, end_projection)) continue;
             cross_track = end_projection.cross_track;
             path_score = end_projection.arclength - start_projection.arclength -
-                2.0 * (end_projection.cross_track - start_projection.cross_track);
+                2.0 * (end_projection.cross_track - start_projection.cross_track) -
+                0.02 * std::abs(w) * duration;
             // Do not accept an arc that only changes pose locally or moves
             // away from the active route. MoveBase will replan the same goal
             // after recovery; an unhelpful arc just repeats the oscillation.
