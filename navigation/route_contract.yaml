@@ -2,7 +2,7 @@
 # Coordinates are lane centres in the Gazebo world/map frame.  Every segment
 # ends where the following one starts: a route runner must reject a contract
 # that would create an unapproved diagonal shortcut between arrows.
-scene: worlds/competition_classic.world
+scene: worlds/competition_classic_adjusted_20260924.world
 status: diagram_route_pending_runtime_acceptance
 coordinate_frame: map
 birth_pose: {x: 1.714860, y: -1.599947, yaw: 1.606236}

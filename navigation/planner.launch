@@ -1,16 +1,22 @@
 <launch>
   <arg name="observation_sources" default="laser depth" />
+  <arg name="global_observation_sources" default="" />
   <node pkg="move_base" type="move_base" name="move_base" output="screen" required="true" clear_params="true">
     <!-- The watchdog is launched by start_navigation.sh and is the only
          navigation-mode publisher connected to Gazebo.  Keeping this as a
          separate topic gives the diff-drive plugin a dead-man stop if
          move_base exits while a command is active. -->
     <remap from="cmd_vel" to="/my_car/cmd_vel_nav" />
+    <remap from="move_base_simple/goal" to="/sanitized_goal" />
     <rosparam file="/root/navigation/move_base.yaml" command="load" />
     <rosparam file="/root/navigation/common_costmap.yaml" command="load" ns="global_costmap" />
     <rosparam file="/root/navigation/global_costmap.yaml" command="load" />
     <rosparam file="/root/navigation/common_costmap.yaml" command="load" ns="local_costmap" />
     <rosparam file="/root/navigation/local_costmap.yaml" command="load" />
     <param name="local_costmap/obstacle_layer/observation_sources" value="$(arg observation_sources)" />
+    <!-- Dynamic sensor data belongs in the rolling local map. The global
+         plan uses the fixed static map so transient laser marks cannot make
+         a valid parking pose look occupied. -->
+    <param name="global_costmap/obstacle_layer/observation_sources" value="$(arg global_observation_sources)" />
   </node>
 </launch>

@@ -1,6 +1,7 @@
 <launch>
   <arg name="map_file" />
   <arg name="observation_sources" default="laser depth" />
+  <arg name="global_observation_sources" default="" />
   <arg name="initial_x" default="1.71499" />
   <arg name="initial_y" default="-1.71499" />
   <arg name="initial_yaw" default="1.5708" />
@@ -32,5 +33,6 @@
   </node>
   <include file="/root/navigation/planner.launch">
     <arg name="observation_sources" value="$(arg observation_sources)" />
+    <arg name="global_observation_sources" value="$(arg global_observation_sources)" />
   </include>
 </launch>

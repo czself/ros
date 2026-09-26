@@ -1,9 +1,9 @@
 # Axle-ground origin, measured from the embedded 4.2 m world model.  The
 # chassis is [-0.084, 0.084] m in its own x axis; the drive axle is at
-# x=0.0525 m and wheel outside edges are y=+-0.0742 m.  The polygon includes
-# a 1 cm safety margin and is expressed in base_footprint coordinates.
+# x=0.0525 m and wheel outside edges are y=+-0.0742 m. The polygon already
+# includes a 1 cm safety margin and is expressed in base_footprint coordinates.
 footprint: [[0.042, 0.085], [0.042, -0.085], [-0.147, -0.085], [-0.147, 0.085]]
-footprint_padding: 0.02
+footprint_padding: 0.0
 transform_tolerance: 0.5
 obstacle_layer:
   observation_sources: laser depth
@@ -16,6 +16,11 @@ obstacle_layer:
     marking: true
     clearing: true
     inf_is_valid: true
+    # The scanner reports +Inf for no return at its 3.36 m maximum.  With
+    # inf_is_valid those rays are converted to 3.36 m points for clearing;
+    # keep their endpoints outside marking range to avoid a phantom wall.
+    obstacle_range: 3.30
+    raytrace_range: 3.5
     observation_persistence: 0.0
   depth:
     data_type: PointCloud2
@@ -23,8 +28,11 @@ obstacle_layer:
     sensor_frame: camera_optical_frame
     marking: true
     clearing: true
-    min_obstacle_height: 0.16
-    max_obstacle_height: 1.6
+    # Project only obstacles that can meet the chassis.  The traffic-light
+    # crossbar starts around 0.375 m above ground; treating its overhead
+    # depth points as floor obstacles seals the otherwise open lane.
+    min_obstacle_height: 0.05
+    max_obstacle_height: 0.28
     obstacle_range: 3.0
     raytrace_range: 3.5
     observation_persistence: 0.0

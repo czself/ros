@@ -1,0 +1,1760 @@
+<sdf version='1.7'>
+  <world name='competition_world'>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 7 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='competition_ground'>
+      <static>1</static>
+      <link name='link'>
+        <pose>0 0 0 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>4.2 4.2 0.07</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>4.2 4.2 0.07</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://competition_ground/materials/scripts</uri>
+              <uri>model://competition_ground/materials/textures</uri>
+              <name>CompetitionGround/Ground</name>
+            </script>
+            <pbr>
+              <metal>
+                <albedo_map>model://competition_ground/materials/textures/map.png</albedo_map>
+              </metal>
+            </pbr>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='competition_boundary'>
+      <static>1</static>
+      <link name='north_wall'>
+        <pose>0 2.065 0.385 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>4.2 0.07 0.7</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>4.2 0.07 0.7</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='south_wall'>
+        <pose>0 -2.065 0.385 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>4.2 0.07 0.7</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>4.2 0.07 0.7</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='west_wall'>
+        <pose>-2.065 0 0.385 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.07 4.2 0.7</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.07 4.2 0.7</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='east_wall'>
+        <pose>2.065 0 0.385 0 -0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.07 4.2 0.7</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.07 4.2 0.7</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='my_car'>
+      <pose>1.714860 -1.599947 0.035000 0 -0 1.606236</pose>
+      <link name='chassis'>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <mass>1.2</mass>
+          <inertia>
+            <ixx>0.0034</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0063</iyy>
+            <iyz>0</iyz>
+            <izz>0.0087</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='body_collision'>
+          <pose>0 0 0.0525 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.168 0.119 0.049</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='caster_front'>
+          <pose>0.063 0 0.0105 0 -0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.0105</radius>
+            </sphere>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.01</mu>
+                <mu2>0.01</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='caster_back'>
+          <pose>-0.063 0 0.0105 0 -0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>0.0105</radius>
+            </sphere>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.01</mu>
+                <mu2>0.01</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='body_lower'>
+          <pose>0 0 0.0525 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.168 0.119 0.049</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.85 0.45 0.05 1</ambient>
+            <diffuse>1 0.58 0.1 1</diffuse>
+            <specular>0.5 0.5 0.5 1</specular>
+          </material>
+        </visual>
+        <visual name='body_upper'>
+          <pose>-0.007 0 0.0875 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.14 0.105 0.0245</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.12 0.12 0.14 1</ambient>
+            <diffuse>0.22 0.23 0.27 1</diffuse>
+            <specular>0.6 0.6 0.65 1</specular>
+          </material>
+        </visual>
+        <visual name='bumper'>
+          <pose>0.0875 0 0.0385 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.0105 0.112 0.021</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name='camera_mount'>
+          <pose>0.0525 0 0.1085 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.021 0.028 0.0175</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.05 0.05 0.05 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name='camera_body'>
+          <pose>0.0595 0 0.1295 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.0245 0.063 0.021</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.08 0.08 0.1 1</ambient>
+            <diffuse>0.15 0.16 0.2 1</diffuse>
+            <specular>0.7 0.7 0.75 1</specular>
+          </material>
+        </visual>
+        <visual name='camera_lens'>
+          <pose>0.0735 0 0.1295 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0077</radius>
+              <length>0.0056</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.02 0.05 0.15 1</ambient>
+            <diffuse>0.05 0.15 0.45 1</diffuse>
+            <specular>1 1 1 1</specular>
+            <emissive>0.02 0.05 0.15 1</emissive>
+          </material>
+        </visual>
+        <visual name='lidar_mast'>
+          <pose>-0.035 0 0.0987 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0056</radius>
+              <length>0.0294</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.08 0.05 1</ambient>
+            <diffuse>0.8 0.15 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name='lidar_base'>
+          <pose>-0.035 0 0.1134 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0266</radius>
+              <length>0.0175</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.03 0.03 0.035 1</ambient>
+            <diffuse>0.08 0.08 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name='lidar_head'>
+          <pose>-0.035 0 0.126 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0196</radius>
+              <length>0.0196</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.12 1</ambient>
+            <diffuse>0.2 0.21 0.25 1</diffuse>
+          </material>
+        </visual>
+        <visual name='lidar_window'>
+          <pose>-0.035 0 0.1239 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.01995</radius>
+              <length>0.007</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.05 0.08 0.12 1</ambient>
+            <diffuse>0.1 0.2 0.35 1</diffuse>
+            <specular>1 1 1 1</specular>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <link name='left_wheel'>
+        <pose>0.0525 0.0665 0.0231 0 -0 0</pose>
+        <inertial>
+          <mass>0.15</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0001</iyy>
+            <iyz>0</iyz>
+            <izz>0.0001</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0231</radius>
+              <length>0.0154</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.5</mu>
+                <mu2>1.5</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0231</radius>
+              <length>0.0154</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.02 0.02 0.02 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+        <visual name='hub'>
+          <pose>0 0.0084 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0098</radius>
+              <length>0.0014</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.52 1</ambient>
+            <diffuse>0.75 0.75 0.78 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_wheel_joint' type='revolute'>
+        <parent>chassis</parent>
+        <child>left_wheel</child>
+        <pose>0 0 0 0 -0 0</pose>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_wheel'>
+        <pose>0.0525 -0.0665 0.0231 0 -0 0</pose>
+        <inertial>
+          <mass>0.15</mass>
+          <inertia>
+            <ixx>0.0001</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0001</iyy>
+            <iyz>0</iyz>
+            <izz>0.0001</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0231</radius>
+              <length>0.0154</length>
+            </cylinder>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1.5</mu>
+                <mu2>1.5</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <pose>0 0 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0231</radius>
+              <length>0.0154</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.02 0.02 0.02 1</ambient>
+            <diffuse>0.05 0.05 0.05 1</diffuse>
+          </material>
+        </visual>
+        <visual name='hub'>
+          <pose>0 -0.0084 0 1.5708 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.0098</radius>
+              <length>0.0014</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.52 1</ambient>
+            <diffuse>0.75 0.75 0.78 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_wheel_joint' type='revolute'>
+        <parent>chassis</parent>
+        <child>right_wheel</child>
+        <pose>0 0 0 0 -0 0</pose>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
+        <alwaysOn>1</alwaysOn>
+        <updateRate>50</updateRate>
+        <legacyMode>0</legacyMode>
+        <leftJoint>left_wheel_joint</leftJoint>
+        <rightJoint>right_wheel_joint</rightJoint>
+        <wheelSeparation>0.133000001</wheelSeparation>
+        <wheelDiameter>0.0462</wheelDiameter>
+        <wheelTorque>10</wheelTorque>
+        <wheelAcceleration>1.0</wheelAcceleration>
+        <commandTopic>cmd_vel</commandTopic>
+        <!-- Wheel encoder integration only.  The adapter publishes navigation
+             /odom and TF, including a signed reverse velocity (the Noetic
+             plugin's encoder twist reports speed magnitude). -->
+        <odometryTopic>wheel_odom</odometryTopic>
+        <odometrySource>encoder</odometrySource>
+        <odometryFrame>odom</odometryFrame>
+        <robotBaseFrame>base_footprint</robotBaseFrame>
+        <publishTf>1</publishTf>
+        <publishOdomTF>0</publishOdomTF>
+        <publishWheelTF>0</publishWheelTF>
+        <publishWheelJointState>1</publishWheelJointState>
+      </plugin>
+      <link name='camera_link'>
+        <pose>0.0735 0 0.1295 0 -0 0</pose>
+        <inertial>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>1e-06</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e-06</iyy>
+            <iyz>0</iyz>
+            <izz>1e-06</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <sensor name='depth_camera' type='depth'>
+          <always_on>1</always_on>
+          <update_rate>15</update_rate>
+          <visualize>0</visualize>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.05</near>
+              <far>8</far>
+            </clip>
+          </camera>
+          <plugin name='depth_camera_plugin' filename='libgazebo_ros_depth_camera.so'>
+            <alwaysOn>1</alwaysOn>
+            <updateRate>15</updateRate>
+            <cameraName>camera</cameraName>
+            <frameName>camera_optical_frame</frameName>
+            <imageTopicName>image_raw</imageTopicName>
+            <depthImageTopicName>depth/image_raw</depthImageTopicName>
+            <pointCloudTopicName>depth/points</pointCloudTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <hackBaseline>0</hackBaseline>
+          </plugin>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='camera_joint' type='fixed'>
+        <parent>chassis</parent>
+        <child>camera_link</child>
+      </joint>
+      <link name='lidar_link'>
+        <pose>-0.035 0 0.126 0 -0 0</pose>
+        <inertial>
+          <mass>0.01</mass>
+          <inertia>
+            <ixx>1e-06</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e-06</iyy>
+            <iyz>0</iyz>
+            <izz>1e-06</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <sensor name='lidar' type='ray'>
+          <always_on>1</always_on>
+          <update_rate>10</update_rate>
+          <visualize>0</visualize>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>360</samples>
+                <resolution>1</resolution>
+                <min_angle>-3.14159</min_angle>
+                <max_angle>3.14159</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <min_angle>0</min_angle>
+                <max_angle>0</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.0252</min>
+              <max>3.36</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name='lidar_plugin' filename='libgazebo_ros_laser.so'>
+            <topicName>scan</topicName>
+            <frameName>lidar_link</frameName>
+          </plugin>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='lidar_joint' type='fixed'>
+        <parent>chassis</parent>
+        <child>lidar_link</child>
+      </joint>
+    </model>
+
+
+
+
+
+
+                <model name="traffic_light_1">
+      <static>true</static>
+      <pose>-1.110000 0.067000 0.035000 0 -0 1.527000</pose>
+      <link name="signal">
+        <visual name="lamp_housing"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="lamp_housing_collision"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry></collision>
+        <visual name="left_support"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_support"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_support_collision"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <collision name="right_support_collision"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <visual name="left_foot"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_foot"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_foot_collision"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <collision name="right_foot_collision"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <visual name="red_lamp"><pose>-0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/RedOn</name></script></material></visual>
+        <visual name="yellow_lamp"><pose>0 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/YellowOff</name></script></material></visual>
+        <visual name="green_lamp"><pose>0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/GreenOff</name></script></material></visual>
+      </link>
+    </model>
+    <!-- Legacy prebuilt GREEN/YELLOW variants are kept only as XML reference.
+         They are commented out so Gazebo never creates underground copies. -->
+    <!-- <model name="traffic_light_1_green">
+      <static>true</static>
+      <pose>-1.109649420 0.066644743 -1.0 0 0 1.526553365</pose>
+      <link name="signal">
+        <visual name="lamp_housing"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="lamp_housing_collision"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry></collision>
+        <visual name="left_support"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_support"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_support_collision"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <collision name="right_support_collision"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <visual name="left_foot"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_foot"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_foot_collision"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <collision name="right_foot_collision"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <visual name="red_lamp"><pose>-0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/RedOff</name></script></material></visual>
+        <visual name="yellow_lamp"><pose>0 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/YellowOff</name></script></material></visual>
+        <visual name="green_lamp"><pose>0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/GreenOn</name></script></material></visual>
+      </link>
+    </model>
+    <model name="traffic_light_1_yellow">
+      <static>true</static>
+      <pose>-1.109649420 0.066644743 -1.0 0 0 1.526553365</pose>
+      <link name="signal">
+        <visual name="lamp_housing"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="lamp_housing_collision"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry></collision>
+        <visual name="left_support"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_support"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_support_collision"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <collision name="right_support_collision"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <visual name="left_foot"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_foot"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_foot_collision"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <collision name="right_foot_collision"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <visual name="red_lamp"><pose>-0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/RedOff</name></script></material></visual>
+        <visual name="yellow_lamp"><pose>0 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/YellowOn</name></script></material></visual>
+        <visual name="green_lamp"><pose>0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/GreenOff</name></script></material></visual>
+      </link>
+    </model> -->
+    <model name="traffic_light_2">
+      <static>true</static>
+      <pose>1.640000 0.330000 0.035000 0 -0 0.049000</pose>
+      <link name="signal">
+        <visual name="lamp_housing"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="lamp_housing_collision"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry></collision>
+        <visual name="left_support"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_support"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_support_collision"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <collision name="right_support_collision"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <visual name="left_foot"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_foot"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_foot_collision"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <collision name="right_foot_collision"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <visual name="red_lamp"><pose>-0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/RedOn</name></script></material></visual>
+        <visual name="yellow_lamp"><pose>0 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/YellowOff</name></script></material></visual>
+        <visual name="green_lamp"><pose>0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/GreenOff</name></script></material></visual>
+      </link>
+    </model>
+    <!-- Legacy prebuilt GREEN/YELLOW variants are kept only as XML reference.
+         They are commented out so Gazebo never creates underground copies. -->
+    <!-- <model name="traffic_light_2_green">
+      <static>true</static>
+      <pose>1.639769554 0.329708397 -1.0 0 0 0.049170261</pose>
+      <link name="signal">
+        <visual name="lamp_housing"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="lamp_housing_collision"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry></collision>
+        <visual name="left_support"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_support"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_support_collision"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <collision name="right_support_collision"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <visual name="left_foot"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_foot"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_foot_collision"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <collision name="right_foot_collision"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <visual name="red_lamp"><pose>-0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/RedOff</name></script></material></visual>
+        <visual name="yellow_lamp"><pose>0 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/YellowOff</name></script></material></visual>
+        <visual name="green_lamp"><pose>0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/GreenOn</name></script></material></visual>
+      </link>
+    </model>
+    <model name="traffic_light_2_yellow">
+      <static>true</static>
+      <pose>1.639769554 0.329708397 -1.0 0 0 0.049170261</pose>
+      <link name="signal">
+        <visual name="lamp_housing"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="lamp_housing_collision"><pose>0 0 0.410 0 0 0</pose><geometry><box><size>0.640 0.025 0.140</size></box></geometry></collision>
+        <visual name="left_support"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_support"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_support_collision"><pose>-0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <collision name="right_support_collision"><pose>0.295 0 0.170 0 0 0</pose><geometry><box><size>0.025 0.025 0.340</size></box></geometry></collision>
+        <visual name="left_foot"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <visual name="right_foot"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry><material><ambient>0.015 0.015 0.015 1</ambient><diffuse>0.03 0.03 0.03 1</diffuse></material></visual>
+        <collision name="left_foot_collision"><pose>-0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <collision name="right_foot_collision"><pose>0.295 0 0.0125 0 0 0</pose><geometry><box><size>0.160 0.180 0.025</size></box></geometry></collision>
+        <visual name="red_lamp"><pose>-0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/RedOff</name></script></material></visual>
+        <visual name="yellow_lamp"><pose>0 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/YellowOn</name></script></material></visual>
+        <visual name="green_lamp"><pose>0.210 -0.018 0.410 0 0 0</pose><geometry><box><size>0.140 0.008 0.140</size></box></geometry><material><script><uri>file:///root/traffic_light/materials/scripts</uri><uri>file:///root/traffic_light/materials/textures</uri><name>TrafficLight/GreenOff</name></script></material></visual>
+      </link>
+    </model> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <model name='person_standee_01'><pose>1.115504861 1.309736729 0.035000000 0 0 -2.958000067</pose>
+        <static>1</static>
+          <pose>1.115504861 1.309736729 0.035000000 0 0 -2.958000067</pose>
+        <link name="standee">
+          <visual name="standee_board">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+            <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+          </visual>
+          <visual name="person_image_front">
+            <pose>0 -0.00255 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+            <material>
+              <script>
+                <uri>file:///root/person_standees/materials/scripts</uri>
+                <uri>file:///root/person_standees/materials/textures</uri>
+                <name>PersonStandee/Person01</name>
+              </script>
+            </material>
+          </visual>
+          <collision name="collision">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+          </collision>
+        </link>
+      </model>
+    <model name='person_standee_02'><pose>1.177493095 1.319037199 0.035000000 0 0 -2.949000032</pose>
+        <static>1</static>
+          <pose>1.177493095 1.319037199 0.035000000 0 0 -2.949000032</pose>
+        <link name="standee">
+          <visual name="standee_board">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+            <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+          </visual>
+          <visual name="person_image_front">
+            <pose>0 -0.00255 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+            <material>
+              <script>
+                <uri>file:///root/person_standees/materials/scripts</uri>
+                <uri>file:///root/person_standees/materials/textures</uri>
+                <name>PersonStandee/Person02</name>
+              </script>
+            </material>
+          </visual>
+          <collision name="collision">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+          </collision>
+        </link>
+      </model>
+    <model name='person_standee_03'><pose>-0.284125268 0.484067470 0.035000000 0 0 0.000000000</pose>
+      <static>1</static>
+      <pose>-0.284125268 0.484067470 0.035000000 0 0 0.000000000</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/Person03</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_04'><pose>0.117385186 0.861573577 0.035000000 0 0 1.663000021</pose>
+      <static>1</static>
+      <pose>0.117385186 0.861573577 0.035000000 0 0 1.663000021</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/Person04</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_05'><pose>1.040790915 1.309235215 0.035000000 0 0 3.138000000</pose>
+      <static>1</static>
+      <pose>1.040790915 1.309235215 0.035000000 0 0 3.138000000</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/Person05</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_06'><pose>1.284142971 1.058192611 0.035000000 0 0 1.553000081</pose>
+      <static>1</static>
+      <pose>1.284142971 1.058192611 0.035000000 0 0 1.553000081</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/Person06</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_07'><pose>1.279198527 0.992128134 0.035000000 0 0 1.616000113</pose>
+        <static>1</static>
+          <pose>1.279198527 0.992128134 0.035000000 0 0 1.616000113</pose>
+        <link name="standee">
+          <visual name="standee_board">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+            <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+          </visual>
+          <visual name="person_image_front">
+            <pose>0 -0.00255 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+            <material>
+              <script>
+                <uri>file:///root/person_standees/materials/scripts</uri>
+                <uri>file:///root/person_standees/materials/textures</uri>
+                <name>PersonStandee/Person07</name>
+              </script>
+            </material>
+          </visual>
+          <collision name="collision">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+          </collision>
+        </link>
+      </model>
+    <model name='person_standee_08'><pose>0.094049625 0.671373546 0.035000000 0 0 1.698000065</pose>
+        <static>1</static>
+          <pose>0.094049625 0.671373546 0.035000000 0 0 1.698000065</pose>
+        <link name="standee">
+          <visual name="standee_board">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+            <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+          </visual>
+          <visual name="person_image_front">
+            <pose>0 -0.00255 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+            <material>
+              <script>
+                <uri>file:///root/person_standees/materials/scripts</uri>
+                <uri>file:///root/person_standees/materials/textures</uri>
+                <name>PersonStandee/Person08</name>
+              </script>
+            </material>
+          </visual>
+          <collision name="collision">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+          </collision>
+        </link>
+      </model>
+    <model name='person_standee_09'><pose>-0.223586217 0.484632939 0.035000000 0 0 0.000000000</pose>
+      <static>1</static>
+      <pose>-0.223586217 0.484632939 0.035000000 0 0 0.000000000</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/Person09</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_10'><pose>0.103770643 0.732641459 0.035000000 0 0 1.505999949</pose>
+      <static>1</static>
+      <pose>0.103770643 0.732641459 0.035000000 0 0 1.505999949</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/Person10</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_11'><pose>0.880850494 0.806244195 0.035000000 0 0 -1.539000077</pose>
+      <static>1</static>
+      <pose>0.880850494 0.806244195 0.035000000 0 0 -1.539000077</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/Person11</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_12'><pose>0.894745469 0.742306292 0.035000000 0 0 -1.548999954</pose>
+      <static>1</static>
+      <pose>0.894745469 0.742306292 0.035000000 0 0 -1.548999954</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/Person12</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_13'><pose>0.880140007 0.883754313 0.035000000 0 0 -1.456000056</pose>
+        <static>1</static>
+          <pose>0.880140007 0.883754313 0.035000000 0 0 -1.456000056</pose>
+        <link name="standee">
+          <visual name="standee_board">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+            <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+          </visual>
+          <visual name="person_image_front">
+            <pose>0 -0.00255 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+            <material>
+              <script>
+                <uri>file:///root/person_standees/materials/scripts</uri>
+                <uri>file:///root/person_standees/materials/textures</uri>
+                <name>PersonStandee/Person13</name>
+              </script>
+            </material>
+          </visual>
+          <collision name="collision">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+          </collision>
+        </link>
+      </model>
+    <model name='person_standee_14'><pose>-0.045437578 0.473728955 0.035000000 0 0 0.000000000</pose>
+        <static>1</static>
+          <pose>-0.045437578 0.473728955 0.035000000 0 0 0.000000000</pose>
+        <link name="standee">
+          <visual name="standee_board">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+            <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+          </visual>
+          <visual name="person_image_front">
+            <pose>0 -0.00255 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+            <material>
+              <script>
+                <uri>file:///root/person_standees/materials/scripts</uri>
+                <uri>file:///root/person_standees/materials/textures</uri>
+                <name>PersonStandee/Person14</name>
+              </script>
+            </material>
+          </visual>
+          <collision name="collision">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+          </collision>
+        </link>
+      </model>
+    <model name='person_standee_15'><pose>-0.109251700 0.488266557 0.035000000 0 0 0.000000000</pose>
+        <static>1</static>
+          <pose>-0.109251700 0.488266557 0.035000000 0 0 0.000000000</pose>
+        <link name="standee">
+          <visual name="standee_board">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+            <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+          </visual>
+          <visual name="person_image_front">
+            <pose>0 -0.00255 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+            <material>
+              <script>
+                <uri>file:///root/person_standees/materials/scripts</uri>
+                <uri>file:///root/person_standees/materials/textures</uri>
+                <name>PersonStandee/Person15</name>
+              </script>
+            </material>
+          </visual>
+          <collision name="collision">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+          </collision>
+        </link>
+      </model>
+    <model name='person_standee_16'><pose>-0.170610875 0.487289608 0.035000000 0 0 0.000000000</pose>
+        <static>1</static>
+          <pose>-0.170610875 0.487289608 0.035000000 0 0 0.000000000</pose>
+        <link name="standee">
+          <visual name="standee_board">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+            <material><ambient>0.82 0.82 0.82 1</ambient><diffuse>0.92 0.92 0.92 1</diffuse></material>
+          </visual>
+          <visual name="person_image_front">
+            <pose>0 -0.00255 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.0001 0.15</size></box></geometry>
+            <material>
+              <script>
+                <uri>file:///root/person_standees/materials/scripts</uri>
+                <uri>file:///root/person_standees/materials/textures</uri>
+                <name>PersonStandee/Person16</name>
+              </script>
+            </material>
+          </visual>
+          <collision name="collision">
+            <pose>0 0 0.075 0 0 0</pose>
+            <geometry><box><size>0.045 0.005 0.15</size></box></geometry>
+          </collision>
+        </link>
+      </model>
+    <model name='person_standee_17'><pose>0.113939501 0.798103511 0.035000000 0 0 1.667000001</pose>
+      <static>1</static>
+      <pose>0.113939501 0.798103511 0.035000000 0 0 1.667000001</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/PersonF1</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='person_standee_18'><pose>1.281699181 1.122667909 0.035000000 0 0 1.592000045</pose>
+      <static>1</static>
+      <pose>1.281699181 1.122667909 0.035000000 0 0 1.592000045</pose>
+      <link name='standee'>
+        <visual name='standee_board'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.82 0.82 0.82 1</ambient>
+            <diffuse>0.92 0.92 0.92 1</diffuse>
+          </material>
+        </visual>
+        <visual name='person_image_front'>
+          <pose>0 -0.00255 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.0001 0.15</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file:///root/person_standees/materials/scripts</uri>
+              <uri>file:///root/person_standees/materials/textures</uri>
+              <name>PersonStandee/PersonF2</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <pose>0 0 0.075 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.045 0.005 0.15</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='car_standee_plate_1'><pose>-0.525000000 -1.552000000 0.035000000 0 0 -3.087000000</pose>
+    <static>true</static>
+    <link name="car_board">
+      <visual name="background_board"><pose>0 0 0.125 0 0 0</pose><geometry><box><size>0.345 0.005 0.25</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="car_image_front"><pose>0 -0.00255 0.125 0 0 0</pose><geometry><box><size>0.345 0.0001 0.25</size></box></geometry><material><script><uri>file:///root/car_standees/materials/scripts</uri><uri>file:///root/car_standees/materials/textures</uri><name>CarStandee/Background</name></script></material></visual>
+      <visual name="license_plate_front"><pose>0 -0.00265 0.112 0 0 0</pose><geometry><box><size>0.095 0.0001 0.03</size></box></geometry><material><script><uri>file:///root/car_standees/materials/scripts</uri><uri>file:///root/car_standees/materials/textures</uri><name>CarStandee/Plate1</name></script></material></visual>
+      <collision name="collision"><pose>0 0 0.125 0 0 0</pose><geometry><box><size>0.345 0.005 0.25</size></box></geometry></collision>
+    </link>
+  </model>
+
+    <model name='car_standee_plate_2'><pose>-1.088000000 -1.565000000 0.035000000 0 0 -3.121000000</pose>
+    <static>true</static>
+    <link name="car_board">
+      <visual name="background_board"><pose>0 0 0.125 0 0 0</pose><geometry><box><size>0.345 0.005 0.25</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="car_image_front"><pose>0 -0.00255 0.125 0 0 0</pose><geometry><box><size>0.345 0.0001 0.25</size></box></geometry><material><script><uri>file:///root/car_standees/materials/scripts</uri><uri>file:///root/car_standees/materials/textures</uri><name>CarStandee/Background</name></script></material></visual>
+      <visual name="license_plate_front"><pose>0 -0.00265 0.112 0 0 0</pose><geometry><box><size>0.095 0.0001 0.03</size></box></geometry><material><script><uri>file:///root/car_standees/materials/scripts</uri><uri>file:///root/car_standees/materials/textures</uri><name>CarStandee/Plate2</name></script></material></visual>
+      <collision name="collision"><pose>0 0 0.125 0 0 0</pose><geometry><box><size>0.345 0.005 0.25</size></box></geometry></collision>
+    </link>
+  </model>
+
+    <model name='car_standee_plate_3'><pose>-1.653000000 -1.573000000 0.035000000 0 0 3.093000000</pose>
+    <static>true</static>
+    <link name="car_board">
+      <visual name="background_board"><pose>0 0 0.125 0 0 0</pose><geometry><box><size>0.345 0.005 0.25</size></box></geometry><material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+      <visual name="car_image_front"><pose>0 -0.00255 0.125 0 0 0</pose><geometry><box><size>0.345 0.0001 0.25</size></box></geometry><material><script><uri>file:///root/car_standees/materials/scripts</uri><uri>file:///root/car_standees/materials/textures</uri><name>CarStandee/Background</name></script></material></visual>
+      <visual name="license_plate_front"><pose>0 -0.00265 0.112 0 0 0</pose><geometry><box><size>0.095 0.0001 0.03</size></box></geometry><material><script><uri>file:///root/car_standees/materials/scripts</uri><uri>file:///root/car_standees/materials/textures</uri><name>CarStandee/Plate3</name></script></material></visual>
+      <collision name="collision"><pose>0 0 0.125 0 0 0</pose><geometry><box><size>0.345 0.005 0.25</size></box></geometry></collision>
+    </link>
+  </model>
+
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>1.99933 -4.0845 5.07005 0 0.976001 2.0508</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <state world_name='competition_world'>
+      <sim_time>494 694000000</sim_time>
+      <real_time>495 276921940</real_time>
+      <wall_time>1789979041 687396972</wall_time>
+      <iterations>494694</iterations>
+            <model name='competition_boundary'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='east_wall'>
+          <pose>2.065 0 0.385 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='north_wall'>
+          <pose>0 2.065 0.385 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='south_wall'>
+          <pose>0 -2.065 0.385 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='west_wall'>
+          <pose>-2.065 0 0.385 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='competition_ground'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+                                          <light name='sun'>
+        <pose>0 0 7 0 -0 0</pose>
+      </light>
+    </state>
+    <useSimTime>1</useSimTime>
+  </world>
+</sdf>

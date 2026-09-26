@@ -3,7 +3,7 @@
 
 The node remains the sole navigation-mode publisher to Gazebo.  In addition
 to the dead-man timeout it enforces both competition stop lines using the
-Gazebo chassis pose.  RED, YELLOW, stale perception, or insufficient GREEN
+AMCL map-to-chassis pose. RED, YELLOW, stale perception, or insufficient GREEN
 time all stop the complete vehicle before its front edge reaches a line.
 """
 
@@ -16,7 +16,7 @@ import cv2
 import numpy as np
 
 import rospy
-from gazebo_msgs.msg import ModelStates
+import tf
 from geometry_msgs.msg import Twist
 from std_msgs.msg import Bool, Float32, String
 from tf.transformations import euler_from_quaternion
@@ -49,7 +49,7 @@ WHITE_PIXEL_THRESHOLD = 220
 # Chassis-origin footprint of the actual embedded competition-world car:
 # 0.168 m body length and 0.1484 m wheel-to-wheel outside width, with a
 # 1 cm buffer.  This intentionally differs from the base_footprint polygon
-# in common_costmap.yaml because Gazebo model_states reports chassis origin.
+# in common_costmap.yaml because this guard checks the chassis frame.
 FOOTPRINT = ((0.094, 0.085), (0.094, -0.085), (-0.094, -0.085), (-0.094, 0.085))
 FOOTPRINT_SAMPLE_STEP = 0.012
 WHITE_LINE_PREDICTION_SECONDS = 0.35
@@ -72,6 +72,7 @@ START_LINE = ('y', -1.400, 1.700, 0.32, 0.055)
 class CmdVelWatchdog:
     def __init__(self):
         self.enforce_traffic = rospy.get_param('~enforce_traffic', True)
+        self.enforce_white_lines = rospy.get_param('~enforce_white_lines', True)
         self.timeout = max(0.15, float(rospy.get_param('~timeout', 0.45)))
         self.lock = threading.Lock()
         self.latest = Twist()
@@ -79,6 +80,7 @@ class CmdVelWatchdog:
         self.received = False
         self.pose = None
         self.pose_wall = 0.0
+        self.tf_listener = tf.TransformListener()
         self.detected = 'NO_TRAFFIC_LIGHT'
         self.detected_count = 0
         self.detected_wall = 0.0
@@ -99,7 +101,6 @@ class CmdVelWatchdog:
             '/traffic_light/braking', Bool, queue_size=1, latch=True
         )
         rospy.Subscriber('/my_car/cmd_vel_nav', Twist, self.command_cb, queue_size=1)
-        rospy.Subscriber('/gazebo/model_states', ModelStates, self.pose_cb, queue_size=1)
         rospy.Subscriber(
             '/inspection/traffic_light', String, self.detection_cb, queue_size=1
         )
@@ -293,18 +294,17 @@ class CmdVelWatchdog:
             self.last_wall = time.monotonic()
             self.received = True
 
-    def pose_cb(self, message):
+    def update_pose(self):
         try:
-            index = message.name.index('my_car')
-        except ValueError:
+            stamp = self.tf_listener.getLatestCommonTime('map', 'chassis')
+            if (rospy.Time.now() - stamp).to_sec() > POSE_STALE_SECONDS:
+                return
+            position, quaternion = self.tf_listener.lookupTransform('map', 'chassis', stamp)
+        except (tf.Exception, tf.LookupException, tf.ConnectivityException):
             return
-        pose = message.pose[index]
-        quaternion = pose.orientation
-        yaw = euler_from_quaternion((
-            quaternion.x, quaternion.y, quaternion.z, quaternion.w
-        ))[2]
+        yaw = euler_from_quaternion(quaternion)[2]
         with self.lock:
-            self.pose = (pose.position.x, pose.position.y, yaw)
+            self.pose = (position[0], position[1], yaw)
             self.pose_wall = time.monotonic()
 
     def detection_cb(self, message):
@@ -419,12 +419,14 @@ class CmdVelWatchdog:
             self.last_gate_status = status
 
     def tick(self, _event):
+        self.update_pose()
         now = time.monotonic()
         with self.lock:
             fresh = self.received and now - self.last_wall <= self.timeout
             command = copy.deepcopy(self.latest) if fresh else self.zero()
             command, status = self.gate_command(command, now)
-            white_line_status = self.white_line_status(now, command)
+            white_line_status = (self.white_line_status(now, command)
+                                 if self.enforce_white_lines else None)
             if white_line_status:
                 # A predicted yaw sweep can hit paint too, so a white-line
                 # stop is fully stationary.  Traffic-signal stops still keep

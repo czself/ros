@@ -1,0 +1,7 @@
+<library path="lib/libsafe_escape_recovery">
+  <class name="safe_escape_recovery/SafeEscapeRecovery"
+         type="safe_escape_recovery::SafeEscapeRecovery"
+         base_class_type="nav_core::RecoveryBehavior">
+    <description>Drive a short footprint-checked distance out of a soft-cost trap.</description>
+  </class>
+</library>

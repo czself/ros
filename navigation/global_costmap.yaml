@@ -5,9 +5,10 @@ global_costmap:
   # robot_radius parameter otherwise takes precedence and makes both the
   # planner and RViz costmap use a 0.46 m circular footprint.
   footprint: [[0.042, 0.085], [0.042, -0.085], [-0.147, -0.085], [-0.147, 0.085]]
-  footprint_padding: 0.02
+  footprint_padding: 0.0
   robot_radius: 0.0
   update_frequency: 2.0
+  always_send_full_costmap: true
   publish_frequency: 1.0
   rolling_window: false
   track_unknown_space: true
@@ -18,8 +19,9 @@ global_costmap:
     # navigable cost surface (a big radius closes them and Navfn detours the
     # whole arena, which reads as 'slow and stuck').  DWA keeps the body off
     # the walls at the local layer.
-    inflation_radius: 0.30
+    inflation_radius: 0.25
     cost_scaling_factor: 5.0
   plugins:
     - {name: static_layer, type: "costmap_2d::StaticLayer"}
+    - {name: obstacle_layer, type: "costmap_2d::ObstacleLayer"}
     - {name: inflation_layer, type: "costmap_2d::InflationLayer"}

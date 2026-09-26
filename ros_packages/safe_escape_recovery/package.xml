@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>safe_escape_recovery</name>
+  <version>0.1.0</version>
+  <description>Footprint-checked short escape for move_base recovery.</description>
+  <maintainer email="sz@todo.todo">sz</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>nav_core</depend>
+  <depend>costmap_2d</depend>
+  <depend>base_local_planner</depend>
+  <depend>geometry_msgs</depend>
+  <depend>pluginlib</depend>
+  <depend>tf2_ros</depend>
+  <export>
+    <nav_core plugin="${prefix}/plugin.xml" />
+  </export>
+</package>
