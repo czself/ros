@@ -587,6 +587,10 @@ class RouteExecutor:
 
     def run(self):
         self.status_pub.publish('WAIT_MOVE_BASE')
+        if not rospy.get_param('/cmd_vel_watchdog/enforce_white_lines', False):
+            self.status_pub.publish('FAILED:WHITE_LINE_GUARD_DISABLED')
+            rospy.logerr('route refused: white-line gate is disabled')
+            return False
         ready = self.client.wait_for_server(rospy.Duration(30.0))
         if not ready:
             self.status_pub.publish('FAILED:NO_MOVE_BASE')

@@ -12,6 +12,7 @@ ENFORCE_TRAFFIC="${ENFORCE_TRAFFIC:-false}"
 [[ "$ENFORCE_TRAFFIC" == true || "$ENFORCE_TRAFFIC" == false ]] || { echo "ENFORCE_TRAFFIC 必须是 true 或 false" >&2; exit 2; }
 ENFORCE_WHITE_LINES="${ENFORCE_WHITE_LINES:-true}"
 [[ "$ENFORCE_WHITE_LINES" == true || "$ENFORCE_WHITE_LINES" == false ]] || { echo "ENFORCE_WHITE_LINES 必须是 true 或 false" >&2; exit 2; }
+[[ "$ENFORCE_WHITE_LINES" == true ]] || { echo "白线为禁行区域，导航不能关闭白线门禁。" >&2; exit 2; }
 MAP_BASENAME="$(basename "$MAP_FILE" .yaml)"
 [[ "$MAP_BASENAME" != */* ]] || { echo "非法地图名" >&2; exit 2; }
 docker ps --format '{{.Names}}' | grep -qx "$CONTAINER" || { echo "容器未运行" >&2; exit 1; }
@@ -70,11 +71,10 @@ fi
 docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; python3 /root/runtime_control.py reset'
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/wheel_encoder_odom.py >/root/wheel_encoder_odom.log 2>&1'
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/goal_sanitizer.py >/root/goal_sanitizer.log 2>&1'
-# rosparam survives node restarts.  While collecting data before the YOLO
+# rosparam survives node restarts. While collecting data before the YOLO
 # traffic-light gate is ready, signal-controlled stop lines and zebra crossings
-# remain traversable by default.  Set ENFORCE_TRAFFIC=true when perception is
-# ready; ordinary white-line checks can be independently disabled for the
-# recorded photo route, whose camera poses require crossing painted markings.
+# remain traversable by default. The white-line gate remains enabled for every
+# navigation route.
 docker exec "$CONTAINER" bash -lc "source /opt/ros/noetic/setup.bash; rosparam set /cmd_vel_watchdog/enforce_traffic $ENFORCE_TRAFFIC; rosparam set /cmd_vel_watchdog/enforce_white_lines $ENFORCE_WHITE_LINES"
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/cmd_vel_watchdog.py >/root/cmd_vel_watchdog.log 2>&1'
 docker exec -d "$CONTAINER" bash -lc "source /root/ros1_ws/devel/setup.bash; exec roslaunch /root/navigation/navigation.launch map_file:=/root/ros1_ws/maps/$MAP_BASENAME.yaml observation_sources:='$OBSERVATION_SOURCES' initial_x:=1.714860 initial_y:=-1.599947 initial_yaw:=1.606236 >/root/navigation.log 2>&1"

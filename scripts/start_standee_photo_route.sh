@@ -7,10 +7,14 @@ ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 MAP_FILE="${1:-/root/ros1_ws/maps/current_slam_preview_white_lines.yaml}"
 PHOTO_DIR="/root/ros1_ws/photo_stops/standee_route_runs/$(date +%Y%m%d_%H%M%S)"
 OBSERVATION_SOURCES="${OBSERVATION_SOURCES:-laser}"
-# The photo poses may cross painted lane/crosswalk markings. Keep the solid
-# obstacle guard, depth, and footprint checks enabled; treat paint as traversable
-# only in this photo route. Callers can override this to restore the gate.
-ENFORCE_WHITE_LINES="${ENFORCE_WHITE_LINES:-false}"
+# Painted white lines are forbidden during this photo route. The route must
+# remain in the drivable lanes, including when a caller supplies environment
+# variables.
+ENFORCE_WHITE_LINES="${ENFORCE_WHITE_LINES:-true}"
+if [[ "$ENFORCE_WHITE_LINES" != true ]]; then
+  echo "十点拍照路线禁止关闭白线门禁。" >&2
+  exit 2
+fi
 
 # AMCL localizes wheel odometry in the same saved map used for the route.
 # Traffic stop lines remain passable until YOLO traffic recognition is ready.

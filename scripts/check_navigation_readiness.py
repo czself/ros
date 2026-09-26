@@ -15,6 +15,8 @@ from sensor_msgs.msg import LaserScan
 def main():
     rospy.init_node('check_navigation_readiness', anonymous=True)
     listener = tf.TransformListener()
+    if not rospy.get_param('/cmd_vel_watchdog/enforce_white_lines', False):
+        raise SystemExit('Navigation readiness failed: white-line gate must be enabled.')
     deadline = time.monotonic() + 25.0
     last_error = 'waiting for simulation data'
     while not rospy.is_shutdown() and time.monotonic() < deadline:
@@ -39,7 +41,7 @@ def main():
             client = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
             if not client.wait_for_server(rospy.Duration(1.0)):
                 raise RuntimeError('move_base action server is not ready')
-            print('Navigation ready: sim time, laser, wheel odometry, AMCL TF, and move_base agree.',
+            print('Navigation ready: white-line gate, sim time, laser, wheel odometry, AMCL TF, and move_base agree.',
                   flush=True)
             return 0
         except Exception as error:
