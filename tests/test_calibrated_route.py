@@ -22,11 +22,16 @@ class CalibratedRouteTest(unittest.TestCase):
     def test_real_texture_preflight(self):
         self.assertEqual(preflight(self.geometry, self.points), [])
 
-    def test_screenshot_topology_and_same_birth(self):
+    def test_calibrated_topology_and_same_birth(self):
         np.testing.assert_array_equal(self.points[0], self.points[-1])
         actual = np.sign(np.diff(self.points, axis=0)).astype(int).tolist()
-        self.assertEqual(actual, [[0, 1], [-1, 0], [0, -1], [-1, 0],
-                                  [0, -1], [1, 0], [0, -1]])
+        # inner_route.yaml includes tangent cut-ins at the corners. Keep an
+        # explicit topology expectation so an accidental route edit is caught.
+        self.assertEqual(actual, [
+            [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1],
+            [-1, -1], [-1, 0], [-1, -1], [0, -1],
+            [1, -1], [1, 0], [1, -1], [0, -1],
+        ])
 
     def test_midsegment_paint_is_rejected(self):
         # Put one prohibited texture pixel at an otherwise clear segment's
@@ -63,7 +68,8 @@ class CalibratedRouteTest(unittest.TestCase):
             s = copy.deepcopy(samples[-1]); s.update(t=t, speed=0.)
             samples.append(s); t += .05
         return {'result': 'COMPLETE', 'planned': self.points.tolist(),
-                'completed_segments': list(range(7)), 'samples': samples}
+                'completed_segments': list(range(len(self.points) - 1)),
+                'samples': samples}
 
     def test_claimed_completion_without_trajectory_is_rejected(self):
         self.assertFalse(audit({'result': 'COMPLETE'}, self.geometry, self.points)['accepted'])
@@ -85,6 +91,14 @@ class CalibratedRouteTest(unittest.TestCase):
     def test_complete_measured_route_passes(self):
         report = audit(self.sample_record(), self.geometry, self.points)
         self.assertTrue(report['accepted'], report)
+
+    def test_truncated_completion_manifest_is_rejected(self):
+        record = self.sample_record()
+        record['completed_segments'] = record['completed_segments'][:7]
+        report = audit(record, self.geometry, self.points)
+        self.assertFalse(report['accepted'])
+        self.assertIn('completion manifest missing ordered segments',
+                      report['failures'])
 
     def test_stale_sensor_evidence_is_rejected(self):
         record = self.sample_record()

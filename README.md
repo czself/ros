@@ -3,6 +3,19 @@
 本工程用于展示 Gazebo 场景搭建、GMapping 自主建图、AMCL 定位、`move_base`
 多点导航与基于相机的红绿灯颜色识别。仿真运行在 Docker 容器 `ros1_modeling` 内。
 
+## 环境与目录
+
+运行脚本当前使用 ROS1 Noetic + Gazebo Classic。`scripts/start_sim.sh` 包含宿主路径 `/home/sz/ros1_ws`、`/home/sz/.gazebo` 和 `DISPLAY=:1`；换电脑时先核对容器挂载目录、X11 显示与依赖，再运行下方演示。
+
+| 路径 | 内容 |
+| --- | --- |
+| [worlds](worlds)、[models](models)、[insert](insert) | 世界文件、模型与立牌资源 |
+| [navigation](navigation) | ROS launch、代价地图、规划与路线参数 |
+| [scripts](scripts) | 启动脚本、建图、导航和视觉节点 |
+| [maps](maps) | 地图与建图证据文件 |
+| [docs](docs) | 技术方案与调试记录 |
+| [tests/README.md](tests/README.md) | 离线检查与 ROS 测试运行方法 |
+
 ## 一次完整演示
 
 1. 启动场景：`./scripts/start_sim.sh`；修改 world 或模型后使用 `./scripts/start_sim.sh --restart` 强制重载。

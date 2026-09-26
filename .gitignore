@@ -2,3 +2,22 @@ __pycache__/
 *.pyc
 *.pyo
 *.log
+
+# Python development environment and test caches
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Catkin / colcon workspace outputs
+/build/
+/devel/
+/install/
+/log/
+/logs/
+/.catkin_tools/
+
+# OS metadata
+.DS_Store
+Thumbs.db

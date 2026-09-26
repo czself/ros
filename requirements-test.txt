@@ -1,0 +1,5 @@
+# Dependencies for tests/test_calibrated_route.py (Python 3.12).
+# ROS-dependent tests use the dependencies supplied by the ROS environment.
+numpy==2.3.5
+opencv-python-headless==5.0.0.93
+PyYAML==6.0.3
