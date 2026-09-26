@@ -189,4 +189,43 @@ the current P4 position, one MoveBase goal to the recorded P5 XY with heading
 unconstrained during translation, then a fixed-direction same-position turn
 to P5's recorded camera yaw, also footprint-checked. It does not add another
 pose or change the ten recorded coordinates. The source passes Python syntax
-compilation; a full route run is still needed to validate the behavior.
+compilation. Round 19 has now validated this control sequence; the full-route
+result and remaining photo misses are recorded below.
+
+## Round 19 full-route result
+
+Round 19 ran the original POINT_1 through POINT_10 sequence, then returned to
+HOME. No photo coordinates were changed and no extra route point was added.
+Every goal completed; POINT_4's first MoveBase attempt aborted and the
+executor's same-goal retry succeeded. POINT_5 used one MoveBase XY goal and
+then the two footprint-checked same-position heading turns. The approach turn
+was 107.5 degrees and the camera-heading turn was 74.3 degrees, both in the
+same direction. Each ended with zero measured base drift and under 0.02 rad
+yaw error. This removed the earlier forward/reverse oscillation, but it still
+looks like a large deliberate turn because POINT_4 and POINT_5 are only about
+0.163 m apart and their recorded camera headings differ by almost 180 degrees.
+This is a pose-geometry requirement, not evidence that the road width itself
+prevents turning.
+
+Visual review against the saved acceptance criteria:
+
+- POINT_1: traffic light complete.
+- POINT_2–POINT_4: three people, full bodies.
+- POINT_5: only three of the required four people visible; fail.
+- POINT_6: five people, full bodies.
+- POINT_7: traffic-light top clipped by the image edge; fail.
+- POINT_8–POINT_10: license plates complete and legible.
+
+The route ended parked. The immediate Gazebo truth snapshot was 0.0352 m and
+0.0255 rad from contract HOME; fresh map TF was 0.0264 m and 0.0374 rad away.
+The base twist was zero and there were no active goals. The AMCL sample in
+that snapshot was stale, so it is not used as the final pose measurement.
+The complete bag passed `rosbag info` validation (430 s, 1,422,673 messages,
+390.7 MB) at
+`/home/sz/ros1_ws/navigation_diagnostics/20260926_round19_alpha02_p5_position_first_01/motion_0.bag`.
+The route log, photos, and final truth snapshot are in the same run directory.
+
+This validates stable completion of all ten navigation goals and HOME return,
+but does not pass photo acceptance at POINT_5 or POINT_7. The P5/P7 image
+failures need pose-at-capture truth alignment before deciding whether to
+correct localization or adjust a recorded camera pose.
