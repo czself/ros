@@ -4,7 +4,7 @@
 import re
 from pathlib import Path
 
-WORLD = Path('worlds/competition_classic.world')
+WORLD = Path('worlds/competition_classic_adjusted_20260924.world')
 ARCHIVE = Path('insert/person_standees/reserved_standees.sdf')
 RESERVED = ('01', '02', '07', '08', '13', '14', '15', '16')
 

@@ -46,7 +46,9 @@
       <plugin name='diff_drive' filename='libgazebo_ros_diff_drive.so'>
         <alwaysOn>1</alwaysOn><updateRate>50</updateRate><legacyMode>0</legacyMode>
         <leftJoint>left_wheel_joint</leftJoint><rightJoint>right_wheel_joint</rightJoint>
-        <wheelSeparation>0.31666667</wheelSeparation><wheelDiameter>0.11</wheelDiameter><wheelTorque>10</wheelTorque><wheelAcceleration>1.0</wheelAcceleration>
+        <!-- Effective encoder/drive separation calibrated from Gazebo joint
+             deltas is 0.13572 m after the 0.42 world scale. -->
+        <wheelSeparation>0.32314286</wheelSeparation><wheelDiameter>0.11</wheelDiameter><wheelTorque>10</wheelTorque><wheelAcceleration>1.0</wheelAcceleration>
         <commandTopic>cmd_vel</commandTopic><odometryTopic>odom</odometryTopic>
         <odometryFrame>odom</odometryFrame><robotBaseFrame>chassis</robotBaseFrame>
         <publishTf>0</publishTf><publishOdomTF>0</publishOdomTF>

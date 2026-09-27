@@ -5,7 +5,7 @@ from pathlib import Path
 import rospy
 from gazebo_msgs.srv import GetModelState, GetWorldProperties
 
-WORLD = Path('/root/competition_classic.world')
+WORLD = Path('/root/competition_classic_adjusted_20260924.world')
 CAR_DIR = Path('/root/car_standees')
 
 rospy.init_node('save_live_standees', anonymous=True)

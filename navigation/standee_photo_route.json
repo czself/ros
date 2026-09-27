@@ -1,0 +1,351 @@
+{
+  "version": 1,
+  "frame": "map",
+  "source_manifest": "/home/sz/ros1_ws/photo_stops/standee_capture_20260924/points.json",
+  "route_adjustments": [
+    {
+      "point": "POINT_10",
+      "reason": "Southward 4 cm adjustment gives the full vehicle footprint an additional 4 cm clearance from the occupied white-line cells; camera heading unchanged.",
+      "delta_m": {
+        "x": 0,
+        "y": -0.04
+      }
+    },
+    {
+      "point": "POINT_8",
+      "reason": "Move away from the car standee to fit the full vehicle with margins; preserve camera heading.",
+      "delta_m": {
+        "x": 0,
+        "y": 0.3129
+      }
+    },
+    {
+      "point": "POINT_6",
+      "reason": "Use the manually recorded, centered person-group pose.",
+      "source_image": "/root/ros1_ws/photo_stops/standee_capture_20260924/POINT_6_20260925_134318.png"
+    },
+    {
+      "point": "POINT_10",
+      "reason": "Use the manually recorded, directly-facing car pose.",
+      "source_image": "/root/ros1_ws/photo_stops/standee_capture_20260924/POINT_10_20260925_134431.png"
+    }
+  ],
+  "points": [
+    {
+      "name": "POINT_1",
+      "sequence": 1,
+      "target_hint": "traffic_light_standee",
+      "base_pose": {
+        "x": 1.7062,
+        "y": -0.5707,
+        "yaw": 1.6168,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": 1.7052,
+        "y": -0.5497,
+        "z": 0.1645,
+        "yaw": 0.046,
+        "quaternion": [
+          -0.70692,
+          -0.016269,
+          0.016271,
+          0.70692
+        ],
+        "view_direction_world": [
+          -0.046006,
+          0.998941,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "POINT_2",
+      "sequence": 2,
+      "target_hint": "person_standees",
+      "base_pose": {
+        "x": 1.6502,
+        "y": 1.079,
+        "yaw": -2.9764,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": 1.6295,
+        "y": 1.0755,
+        "z": 0.1645,
+        "yaw": 1.7359,
+        "quaternion": [
+          -0.457035,
+          -0.539547,
+          0.539526,
+          0.457077
+        ],
+        "view_direction_world": [
+          -0.986394,
+          -0.164399,
+          1.6e-05
+        ]
+      }
+    },
+    {
+      "name": "POINT_3",
+      "sequence": 3,
+      "target_hint": "person_standees",
+      "base_pose": {
+        "x": 1.1002,
+        "y": 1.6213,
+        "yaw": -1.4895,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": 1.1019,
+        "y": 1.6003,
+        "z": 0.1645,
+        "yaw": -3.0603,
+        "quaternion": [
+          0.028739,
+          -0.706522,
+          0.706523,
+          -0.02874
+        ],
+        "view_direction_world": [
+          0.081221,
+          -0.996696,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "POINT_4",
+      "sequence": 4,
+      "target_hint": "person_standees",
+      "base_pose": {
+        "x": 0.5463,
+        "y": 0.8263,
+        "yaw": 0.0304,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": 0.5673,
+        "y": 0.8269,
+        "z": 0.1645,
+        "yaw": -1.5404,
+        "quaternion": [
+          0.507532,
+          -0.492352,
+          0.492353,
+          -0.507532
+        ],
+        "view_direction_world": [
+          0.999539,
+          0.030356,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "POINT_5",
+      "sequence": 5,
+      "target_hint": "person_standees",
+      "base_pose": {
+        "x": 0.4804,
+        "y": 0.6776,
+        "yaw": -3.1381,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": 0.4594,
+        "y": 0.6775,
+        "z": 0.1645,
+        "yaw": 1.5743,
+        "quaternion": [
+          -0.499114,
+          -0.500885,
+          0.500885,
+          0.499114
+        ],
+        "view_direction_world": [
+          -0.999994,
+          -0.003542,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "POINT_6",
+      "sequence": 6,
+      "target_hint": "person_standees",
+      "base_pose": {
+        "x": -0.1657,
+        "y": 0.1601,
+        "yaw": 1.5003,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": -0.1642,
+        "y": 0.1811,
+        "z": 0.1645,
+        "yaw": -0.0705,
+        "quaternion": [
+          -0.706667,
+          0.024926,
+          -0.024926,
+          0.706667
+        ],
+        "view_direction_world": [
+          0.070457,
+          0.997515,
+          0.0
+        ]
+      },
+      "source_capture": {
+        "image": "/root/ros1_ws/photo_stops/standee_capture_20260924/POINT_6_20260925_134318.png",
+        "depth_file": "/root/ros1_ws/photo_stops/standee_capture_20260924/POINT_6_20260925_134318_depth.npy"
+      }
+    },
+    {
+      "name": "POINT_7",
+      "sequence": 7,
+      "target_hint": "traffic_light_standee",
+      "base_pose": {
+        "x": -0.3148,
+        "y": 0.065,
+        "yaw": -3.1177,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": -0.3358,
+        "y": 0.0645,
+        "z": 0.1645,
+        "yaw": 1.5947,
+        "quaternion": [
+          -0.493997,
+          -0.505932,
+          0.505947,
+          0.493982
+        ],
+        "view_direction_world": [
+          -0.999714,
+          -0.023899,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "POINT_8",
+      "sequence": 8,
+      "target_hint": "car_standee",
+      "base_pose": {
+        "x": -1.713,
+        "y": -0.8,
+        "yaw": -1.4114,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": -1.7097,
+        "y": -0.8207,
+        "z": 0.1645,
+        "yaw": -2.9822,
+        "quaternion": [
+          0.056307,
+          -0.704861,
+          0.704861,
+          -0.056307
+        ],
+        "view_direction_world": [
+          0.158755,
+          -0.987318,
+          -0.0
+        ]
+      }
+    },
+    {
+      "name": "POINT_9",
+      "sequence": 9,
+      "target_hint": "car_standee",
+      "base_pose": {
+        "x": -1.0846,
+        "y": -1.063,
+        "yaw": -1.4824,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": -1.0827,
+        "y": -1.084,
+        "z": 0.1645,
+        "yaw": -3.0532,
+        "quaternion": [
+          0.031245,
+          -0.706416,
+          0.706416,
+          -0.031244
+        ],
+        "view_direction_world": [
+          0.088286,
+          -0.996095,
+          0.0
+        ]
+      }
+    },
+    {
+      "name": "POINT_10",
+      "sequence": 10,
+      "target_hint": "car_standee",
+      "base_pose": {
+        "x": -0.5347,
+        "y": -1.0731,
+        "yaw": -1.4087,
+        "frame": "base_footprint"
+      },
+      "camera_pose": {
+        "frame": "camera_optical_frame",
+        "x": -0.5313,
+        "y": -1.0938,
+        "z": 0.1645,
+        "yaw": -2.9795,
+        "quaternion": [
+          0.057245,
+          -0.704786,
+          0.704786,
+          -0.057245
+        ],
+        "view_direction_world": [
+          0.161382,
+          -0.986892,
+          0.0
+        ]
+      },
+      "source_capture": {
+        "image": "/root/ros1_ws/photo_stops/standee_capture_20260924/POINT_10_20260925_134431.png",
+        "depth_file": "/root/ros1_ws/photo_stops/standee_capture_20260924/POINT_10_20260925_134431_depth.npy"
+      }
+    }
+  ],
+  "home_pose": {
+    "frame": "map",
+    "x": 1.71486,
+    "y": -1.599947,
+    "yaw": 1.606236
+  },
+  "photo_acceptance_criteria": {
+    "POINT_1": "红绿灯灯体完整入镜",
+    "POINT_2": "3个人，全部全身入镜",
+    "POINT_3": "3个人，全部全身入镜",
+    "POINT_4": "3个人，全部全身入镜",
+    "POINT_5": "4个人，全部全身入镜",
+    "POINT_6": "5个人，全部全身入镜",
+    "POINT_7": "红绿灯灯体完整入镜",
+    "POINT_8": "车牌完整、清晰入镜",
+    "POINT_9": "车牌完整、清晰入镜",
+    "POINT_10": "车牌完整、清晰入镜"
+  }
+}

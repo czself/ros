@@ -3,7 +3,7 @@
 import re
 from pathlib import Path
 
-WORLD = Path("worlds/competition_classic.world")
+WORLD = Path("worlds/competition_classic_adjusted_20260924.world")
 ROOT = Path("insert/person_standees")
 POSES = {
     "01": (-1.350, 1.500, 0.083, 0.000),

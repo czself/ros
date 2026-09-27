@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Small in-container lifecycle helper for mutually exclusive ROS modes."""
 import argparse, os, re, signal, subprocess, time
-NODES=('slam_gmapping','map_server','final_map_server','amcl','move_base','cmd_vel_watchdog','explore','autonomous_mapper','waypoint_mapper','patrol_controller','route_executor','inner_loop_navigator','visual_inspector','model_state_odom','sim_tf_relay','amcl_tf_relay','chassis_to_lidar','chassis_to_lidar_slam','chassis_to_lidar_mapping','chassis_to_camera','camera_to_optical','map_to_odom_sim')
+NODES=('slam_gmapping','map_server','final_map_server','amcl','move_base','cmd_vel_watchdog','goal_sanitizer','explore','autonomous_mapper','waypoint_mapper','patrol_controller','route_executor','car_teleop','inner_loop_navigator','visual_inspector','model_state_odom','wheel_encoder_odom','map_to_odom_anchor','sim_tf_relay','amcl_tf_relay','chassis_to_lidar','chassis_to_lidar_slam','chassis_to_lidar_mapping','chassis_to_camera','camera_to_optical','map_to_odom_sim')
 LAUNCH_RE=r'[r]oslaunch /root/navigation/(navigation|mapping_exploration|planner|robot)\.launch'
 STALE_NAME_RE=re.compile(r'^/(?:rviz_|tf_echo_|tf_monitor_|rostopic_|cmd_vel_throttle_)')
 def stop():

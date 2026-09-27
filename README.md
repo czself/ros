@@ -5,7 +5,7 @@
 
 ## 一次完整演示
 
-1. 启动场景：`./scripts/start_sim.sh`；修改 world 或模型后使用 `./scripts/start_sim.sh --restart` 强制重载。
+1. 启动场景：`./scripts/start_sim.sh`；修改 world 或模型后使用 `./scripts/start_sim.sh --restart` 强制重载。每次新启 Gazebo 时，会从 `insert/car_standees/plate_inventory/` 随机抽取三张不重复车牌。
 2. 打开 SLAM 视图：`./scripts/view_autonomous_mapping.sh`
 3. 启动真实建图：`./scripts/start_slam_mapping.sh`
 4. 用 `./scripts/teleop.sh` 低速覆盖所有可达走廊，RViz 同时录制 `/map`、`/scan` 和 TF；若使用自动路线则改用 `./scripts/start_autonomous_mapping.sh`。
@@ -25,7 +25,7 @@
 
 ## 复赛交付清单
 
-- `worlds/competition_classic.world`：可运行的比赛场景
+- `worlds/competition_classic_adjusted_20260924.world`：当前比赛场景；启动脚本加载此文件
 - `maps/competition_slam.*`：录制演示时保存的 SLAM 地图
 - `scripts/`：仿真、建图、导航、巡检与视觉节点
 - `docs/technical_solution.md`：技术方案正文，可据此制作 PDF/PPT

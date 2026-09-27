@@ -3,7 +3,7 @@ import math
 import re
 from pathlib import Path
 
-path = Path('worlds/competition_classic.world')
+path = Path('worlds/competition_classic_adjusted_20260924.world')
 updates = {
     '03': (-0.3681309223, 0.4114572704, 0.0833333358, 0.0, 0.0, 0.0, 1.0),
     '04': (0.0750442594, 1.1031066179, 0.0833333358, 0.0, 0.0, 0.7388321757, 0.6738895178),

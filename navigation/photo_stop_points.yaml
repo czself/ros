@@ -1,0 +1,24 @@
+version: 1
+frame: map
+camera_frame: camera_optical_frame
+camera_topic: /camera/image_raw
+# These are approach poses before the measured stop lines.  Keep the
+# clearance here until the camera view has been checked in Gazebo/RViz.
+points:
+  - id: NORTHBOUND_STOP_APPROACH
+    stop_line: NORTHBOUND
+    x: 1.700
+    y: -0.500
+    yaw: 1.570796
+    line_coordinate_m: -0.290
+    travel_direction: northbound
+    capture_settle_seconds: 1.0
+
+  - id: WESTBOUND_STOP_APPROACH
+    stop_line: WESTBOUND
+    x: -0.700
+    y: 0.000
+    yaw: 3.141593
+    line_coordinate_m: -0.515
+    travel_direction: westbound
+    capture_settle_seconds: 1.0

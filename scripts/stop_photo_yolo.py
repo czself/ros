@@ -24,7 +24,7 @@ from std_msgs.msg import String
 from ultralytics import YOLO
 
 MODEL = os.environ.get("YOLO_MODEL", "/root/yolo/yolov8n.pt")
-CAMERA_TOPIC = os.environ.get("CAMERA_TOPIC", "/camera_rgb/image_raw")
+CAMERA_TOPIC = os.environ.get("CAMERA_TOPIC", "/camera/image_raw")
 
 
 class Capture:
@@ -51,11 +51,12 @@ class Capture:
         return frames
 
 
-def get_yaw():
+def get_pose():
     tm = tf.TransformListener()
     tm.waitForTransform("map", "base_footprint", rospy.Time(), rospy.Duration(2))
-    _, q = tm.lookupTransform("map", "base_footprint", rospy.Time(0))
-    return math.atan2(2 * (q[3] * q[2] + q[0] * q[1]), 1 - 2 * (q[1] ** 2 + q[2] ** 2))
+    (x, y, _), q = tm.lookupTransform("map", "base_footprint", rospy.Time(0))
+    yaw = math.atan2(2 * (q[3] * q[2] + q[0] * q[1]), 1 - 2 * (q[1] ** 2 + q[2] ** 2))
+    return x, y, yaw
 
 
 def move_to(ac, x, y, yaw, timeout=90):
@@ -73,11 +74,12 @@ def move_to(ac, x, y, yaw, timeout=90):
     return done and state == 3, time.time() - t0, state
 
 
-def settled(cmd_pub):
+def settled(cmd_pub, target_yaw):
     """Small yaw correction (externally safe when nav left a modest residual
     offset <~1.0 rad), then hold still so the frame is sharp."""
     try:
-        err = get_yaw()
+        err = math.atan2(math.sin(target_yaw - get_pose()[2]),
+                         math.cos(target_yaw - get_pose()[2]))
     except Exception:
         err = 0.0
     rate = rospy.Rate(20)
@@ -89,7 +91,8 @@ def settled(cmd_pub):
         cmd_pub.publish(tw)
         rate.sleep()
         try:
-            err = get_yaw()
+            err = math.atan2(math.sin(target_yaw - get_pose()[2]),
+                             math.cos(target_yaw - get_pose()[2]))
         except Exception:
             break
     cmd_pub.publish(Twist())
@@ -102,7 +105,7 @@ def run(yolo, x, y, yaw, label, conf_thr):
     cap = Capture()
     solved, dt, state = move_to(ac, x, y, yaw)
     cmd_pub = rospy.Publisher("/my_car/cmd_vel_nav", Twist, queue_size=1)
-    settled(cmd_pub)
+    settled(cmd_pub, yaw)
     frames = cap.grab(3)
     if not frames:
         rospy.logerr("no camera frame")

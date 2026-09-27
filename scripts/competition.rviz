@@ -38,13 +38,13 @@ Visualization Manager:
     - Class: rviz/Image
       Enabled: true
       Name: Camera
-      Topic: /camera/image_raw
+      Image Topic: /camera/image_raw
       Transport Hint: raw
       Value: true
     - Class: rviz/Image
       Enabled: true
       Name: DepthImage
-      Topic: /camera/depth/image_raw
+      Image Topic: /camera/depth/image_raw
       Transport Hint: raw
       Normalize Range: true
       Min Value: 0.0

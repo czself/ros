@@ -1,7 +1,7 @@
 import re
 from pathlib import Path
 
-path = Path('worlds/competition_classic.world')
+path = Path('worlds/competition_classic_adjusted_20260924.world')
 text = path.read_text()
 text = re.sub(
     r"(<model name='person_standee_\d+'><static>1</static><pose>[^ ]+ [^ ]+) 0( 0 0 0</pose>)",

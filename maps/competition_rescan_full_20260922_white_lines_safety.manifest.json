@@ -1,0 +1,34 @@
+{
+  "kind": "navigation_safety_overlay",
+  "pure_slam": false,
+  "source_map": {
+    "yaml": "/home/sz/game/maps/competition_rescan_full_20260922_white_lines.yaml",
+    "pgm": "/home/sz/game/maps/competition_rescan_full_20260922_white_lines.pgm",
+    "yaml_sha256": "afa774367419e21177cdd78122438e95fbd7254b0b321899e822627eecbf8c23",
+    "pgm_sha256": "433132cde70f18e0bb6fab97b7f37a2e640705a86418396e3b469c9d2de3a8be"
+  },
+  "collision_world": {
+    "sdf": "/home/sz/game/worlds/competition_classic_adjusted_20260924.world",
+    "sha256": "5354d26b65d7f483f6c61d110fd6fe7ea4c30d7b7e067d1eccc6713a11d16046",
+    "padding_m": 0.02
+  },
+  "output": {
+    "yaml": "/home/sz/game/maps/competition_rescan_full_20260922_white_lines_safety.yaml",
+    "pgm": "/home/sz/game/maps/competition_rescan_full_20260922_white_lines_safety.pgm",
+    "yaml_sha256": "33842a1a2c4279aac235f314884103a49755cc253f1144fe7a6027ea838d15de",
+    "pgm_sha256": "dc04502a21dcef76440424c14c48c9c99e6196470a4d47fd7239b67a53d71587",
+    "size": [
+      224,
+      224
+    ],
+    "origin": [
+      -6.0,
+      -6.0,
+      0.0
+    ],
+    "resolution": 0.05
+  },
+  "collision_overlay_cells": 1005,
+  "source_cells_changed_to_occupied": 402,
+  "warning": "Use for navigation safety only; it is not a pure SLAM artifact."
+}

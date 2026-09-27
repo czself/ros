@@ -30,7 +30,8 @@ fi
 DISPLAY=:1 xhost +SI:localuser:root > /dev/null
 
 # 3. 拷贝世界文件
-docker cp "$(dirname "$0")/../worlds/competition_classic.world" ${CONTAINER}:/root/
+WORLD_FILE="$(dirname "$0")/../worlds/competition_classic_adjusted_20260924.world"
+docker cp "$WORLD_FILE" ${CONTAINER}:/root/competition_classic_adjusted_20260924.world
 docker cp "$(dirname "$0")/../insert/person_standees/." ${CONTAINER}:/root/person_standees
 docker cp "$(dirname "$0")/../insert/car_standees/." ${CONTAINER}:/root/car_standees
 docker cp "$(dirname "$0")/../models/traffic_light/." ${CONTAINER}:/root/traffic_light
@@ -45,6 +46,12 @@ if ! docker exec ${CONTAINER} pgrep -f roscore > /dev/null; then
     sleep 5
 fi
 
+# Gazebo's ROS plugins read use_sim_time when their node handles initialize.
+# Set it before gzserver starts so wheel odometry and sensors share /clock;
+# changing this after startup leaves encoder stamps on wall time.
+docker exec ${CONTAINER} bash -lc \
+    'source /opt/ros/noetic/setup.bash; rosparam set /use_sim_time true'
+
 # 5. 启动 Gazebo（以 ROS 服务可调用为健康标准，不只检查进程名）
 if [ "$FORCE_RESTART" = 1 ] || ! docker exec ${CONTAINER} bash -lc "source /opt/ros/noetic/setup.bash; timeout 3 rosservice call /gazebo/get_world_properties >/dev/null 2>&1"; then
     echo "启动 Gazebo ..."
@@ -55,8 +62,21 @@ if [ "$FORCE_RESTART" = 1 ] || ! docker exec ${CONTAINER} bash -lc "source /opt/
     docker exec ${CONTAINER} pkill -x gzclient 2>/dev/null || true
     docker exec ${CONTAINER} pkill -x gzserver 2>/dev/null || true
     sleep 2
+
+    # 每次真正启动/重启 Gazebo 时，从车牌库存中无重复抽取三张，
+    # 并临时覆盖容器内 Plate1/Plate2/Plate3 材质槽。
+    PLATE_ASSETS_DIR="$(mktemp -d)"
+    python3 "$(dirname "$0")/randomize_car_plates.py" \
+        "$(dirname "$0")/../insert/car_standees/plate_inventory" \
+        "$PLATE_ASSETS_DIR"
+    docker cp "$PLATE_ASSETS_DIR/materials/scripts/car_standees.material" \
+        "${CONTAINER}:/root/car_standees/materials/scripts/car_standees.material"
+    docker cp "$PLATE_ASSETS_DIR/materials/textures/." \
+        "${CONTAINER}:/root/car_standees/materials/textures/"
+    python3 -c 'import shutil, sys; shutil.rmtree(sys.argv[1])' "$PLATE_ASSETS_DIR"
+
     docker exec -d -e DISPLAY=:1 -e QT_X11_NO_MITSHM=1 ${CONTAINER} \
-        bash -c "source /opt/ros/noetic/setup.bash && rosrun gazebo_ros gazebo --verbose /root/competition_classic.world > /root/gz_out.log 2>&1"
+        bash -c "source /opt/ros/noetic/setup.bash && rosrun gazebo_ros gazebo --verbose /root/competition_classic_adjusted_20260924.world > /root/gz_out.log 2>&1"
     echo "等待 Gazebo ROS 服务 ..."
     READY_STREAK=0
     for _ in $(seq 1 45); do

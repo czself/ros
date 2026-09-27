@@ -19,7 +19,7 @@ ROS Noetic and Gazebo Classic simulation for a 4.2 m x 4.2 m smart-community rou
 
 ## Repository Map
 
-- `worlds/competition_classic.world`: current competition scene
+- `worlds/competition_classic_adjusted_20260924.world`: current competition scene
 - `navigation/`: mapping, localization, and planner launch files
 - `scripts/`: robot control, navigation, inspection, and validation nodes
 - `maps/`: generated and reference navigation maps
