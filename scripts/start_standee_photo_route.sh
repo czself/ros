@@ -57,6 +57,15 @@ if [[ "${JUDGE_DEMO:-false}" == true ]]; then
   DISPLAY=:1 gnome-terminal --window --title="智慧社区比赛识别终端" --zoom=.85 --geometry=210x25 \
     -- docker exec -it "$CONTAINER" bash -lc \
     "source /root/ros1_ws/devel/setup.bash; exec python3 -u /root/judge_monitor.py _photo_dir:='$PHOTO_DIR'"
+  JUDGE_READY=false
+  for _ in $(seq 1 40); do
+    if [[ -f "$PHOTO_HOST_DIR/judge/dashboard_state.json" ]]; then
+      PAIRS="$(python3 -c "import json; print(json.load(open('$PHOTO_HOST_DIR/judge/dashboard_state.json'))['frame_pairs'])" 2>/dev/null || true)"
+      if [[ "$PAIRS" =~ ^[1-9][0-9]*$ ]]; then JUDGE_READY=true; break; fi
+    fi
+    sleep .5
+  done
+  [[ "$JUDGE_READY" == true ]] || { echo "比赛展示终端未收到配对图文，任务未发车" >&2; exit 1; }
   "$ROOT_DIR/scripts/arrange_judge_windows.sh"
   python3 "$ROOT_DIR/scripts/capture_judge_demo.py" "$PHOTO_HOST_DIR" > "$PHOTO_HOST_DIR/judge/capture.log" 2>&1 &
 fi
