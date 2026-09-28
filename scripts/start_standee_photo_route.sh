@@ -23,7 +23,8 @@ fi
 [[ "$PADDLE_OCR" == true || "$PADDLE_OCR" == false ]] || { echo "PADDLE_OCR必须是true或false" >&2; exit 2; }
 if [[ "$PADDLE_OCR" == true ]]; then
   [[ -x "$OCR_PYTHON" ]] || { echo "缺少独立OCR环境，请先运行 scripts/setup_paddle_ocr.sh" >&2; exit 2; }
-  docker cp "$ROOT_DIR/ros_packages/tl_vision" "$CONTAINER:/root/ros1_ws/src/tl_vision"
+  docker exec "$CONTAINER" mkdir -p /root/ros1_ws/src/tl_vision
+  docker cp "$ROOT_DIR/ros_packages/tl_vision/." "$CONTAINER:/root/ros1_ws/src/tl_vision/"
   docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; cd /root/ros1_ws; catkin_make --pkg tl_vision -j2 >/root/tl_vision_build.log 2>&1'
 fi
 

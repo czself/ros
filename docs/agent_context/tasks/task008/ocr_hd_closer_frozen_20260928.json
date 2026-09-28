@@ -8,7 +8,7 @@
     "scripts/hd_plate_capture.py": "3646ff1d71064df3abab6b8d5c6094e727e9d89bc724dc6b858235c54f60dc85",
     "scripts/paddle_plate_worker.py": "37b3af5d116c24674960024d52ff6979f68335e0170f44b608f60b4bdb2a3322",
     "scripts/plate_result_bridge.py": "62856bf6dd936f883865168fe7a682e5419404a77779c8600c7954f08d227dab",
-    "scripts/start_standee_photo_route.sh": "16a48359bf0ef166db9a9b89a3f5d141b3aec16108ea2af841d9dbfa39b7ce53",
+    "scripts/start_standee_photo_route.sh": "b58ea7a47db2f15bcd403830798000b46ab872f98f25159fe3c5799b19708819",
     "scripts/start_navigation.sh": "7c9869cad0f65c34f5dc5a49b486be9dfe0fac4e7eac7709cf46208f3208e974",
     "scripts/start_sim.sh": "f50c610e84fd3a23af95ffff42ba21cc0ccb37cb1543895dbbd1db6135cb0b6d",
     "scripts/record_plate_scene_truth.py": "16bdd0f3c8880346e6a6e0f2cf135db95124682f2fd527e636c4f074a5d72510",
@@ -40,5 +40,6 @@
     "models/ocr/paddle/PP-OCRv5_mobile_rec_infer/inference.json": "24587345250c7332d0fc6f9a44e794d078cdaeb64c302fef906f325619de2569",
     "scripts/randomize_car_plates.py": "178cc26b07572c5119d25bd5d32cd6eff5c0efa2e0c54c182f367500c0943767"
   },
-  "point_8_forward_adjustment_m": 0.2
+  "point_8_forward_adjustment_m": 0.2,
+  "runtime_note": "tl_vision copied as directory contents, preventing nested source copies; no accepted runs yet"
 }
