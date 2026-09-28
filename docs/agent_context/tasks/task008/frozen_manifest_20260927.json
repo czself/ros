@@ -1,6 +1,6 @@
 {
   "kind": "task008_frozen_acceptance_build",
-  "created_utc": "2026-09-28T05:37:39Z",
+  "created_utc": "2026-09-28T05:52:56Z",
   "worktree": "/home/sz/game-navigation-photo-progress",
   "git_branch": "codex/navigation-photo-run-progress",
   "git_head": "b2dce29e6c708aed077c54242252e4766ef26fac",
@@ -46,7 +46,8 @@
     "point1_backoff_m": 0.05,
     "ordered_route_start_backtrack_tolerance_m": 0.1,
     "preline_crossing_latch_max_s": 1.2,
-    "plate_inventory_policy": "randomly select 3 unique nonempty images at world creation; frozen across all runs"
+    "plate_inventory_policy": "randomly select 3 unique nonempty images at world creation; frozen across all runs",
+    "yolo_process_hz": 5.5
   },
   "acceptance_gate": {
     "runs_required": 3,
@@ -71,7 +72,7 @@
   },
   "files": {
     "scripts/start_navigation.sh": {
-      "sha256": "2be788fa43975165f4e293a8c96bf954a83bb38419b46d396890b6562a2b29e2",
+      "sha256": "ad73d464321fe8332ffca31fddd0c450b44c644994f1b06d9d0389b0e4cf6773",
       "size_bytes": 8278
     },
     "scripts/start_standee_photo_route.sh": {

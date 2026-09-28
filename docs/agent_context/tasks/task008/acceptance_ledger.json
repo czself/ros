@@ -2,7 +2,7 @@
   "task_id": "task008",
   "target_runs": 3,
   "streak": 0,
-  "status": "yolo_active_rate_diagnostics",
+  "status": "frozen_after_yolo_headroom_tune",
   "frozen_manifest": "docs/agent_context/tasks/task008/frozen_manifest_20260927.json",
   "diagnostic_runs": [
     {
@@ -218,7 +218,7 @@
       "artifact_path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_134500"
     }
   ],
-  "frozen_manifest_sha256": "0e52499643b85471fa738b3152b4378470b964bb558ed33f3c7818bc86d3fb98",
+  "frozen_manifest_sha256": "f5ed9c6d89b1ece6dd0bc85e58ec4b4b69204a82dff869a486f87b26b9a7fa13",
   "frozen_runtime_parameters": {
     "route": "HOME, POINT_1..POINT_10, HOME",
     "strict_acceptance": true,
@@ -255,7 +255,8 @@
     "point1_backoff_m": 0.05,
     "ordered_route_start_backtrack_tolerance_m": 0.1,
     "preline_crossing_latch_max_s": 1.2,
-    "plate_inventory_policy": "randomly select 3 unique nonempty images once at world creation; do not restart during streak"
+    "plate_inventory_policy": "randomly select 3 unique nonempty images once at world creation; do not restart during streak",
+    "yolo_process_hz": 5.5
   },
   "active_world_plate_textures": [
     "学C88K55.jpg",
