@@ -12,6 +12,26 @@ import cv2
 PERSON_CLASSES = ('resident', 'stranger')
 
 
+def annotate_people(raw, people):
+    """Keep labels inside each box's width so adjacent person labels stay readable."""
+    canvas = raw.copy()
+    for person in people:
+        x1, y1, x2, y2 = map(int, person['box'])
+        color = (0,165,255) if person['class'] == 'stranger' else (255,220,0)
+        cv2.rectangle(canvas, (x1,y1), (x2,y2), color, 2)
+        lines = [person['person_id'].replace('PERSON_', '#')+' '+person['street'],
+                 person['class'], '%.3f' % person['confidence']]
+        max_width = max(cv2.getTextSize(line, cv2.FONT_HERSHEY_SIMPLEX, 1, 1)[0][0]
+                        for line in lines)
+        scale = min(.34, max(.16, (x2-x1-4)/float(max_width)))
+        top = max(0, y1-44)
+        cv2.rectangle(canvas, (x1,top), (x2,y1-2), (20,20,20), -1)
+        for index, line in enumerate(lines):
+            cv2.putText(canvas, line, (x1+2, top+12+index*13),
+                        cv2.FONT_HERSHEY_SIMPLEX, scale, color, 1, cv2.LINE_AA)
+    return canvas
+
+
 def appearance_descriptor(image, box):
     x1, y1, x2, y2 = map(int, box)
     height, width = image.shape[:2]

@@ -28,7 +28,7 @@ from navigation_goal_safety import GridFootprintChecker, DEFAULT_FOOTPRINT
 from sensor_msgs.msg import Image, CameraInfo
 from std_msgs.msg import String
 from tf.transformations import quaternion_from_euler
-from person_reporting import (PersonCounter, calibrated_intrinsics,
+from person_reporting import (PersonCounter, annotate_people, calibrated_intrinsics,
                               collect_observations, save_report)
 
 
@@ -812,14 +812,9 @@ class RouteExecutor:
         else:
             observations, errors = [], [{'waypoint': name, 'reason': 'CAMERA_TF_UNAVAILABLE'}]
         resolved = self.person_counter.add_view(name, record['source_stamp'], observations, errors)
-        canvas = raw.copy()
+        canvas = annotate_people(raw, resolved)
         for person in resolved:
             x1, y1, x2, y2 = map(int, person['box'])
-            color = (0,165,255) if person['class'] == 'stranger' else (255,220,0)
-            cv2.rectangle(canvas,(x1,y1),(x2,y2),color,2)
-            label = '%s %s %s %.2f' % (person['person_id'], person['street'],
-                                       person['class'], person['confidence'])
-            cv2.putText(canvas,label,(x1,max(18,y1-7)),cv2.FONT_HERSHEY_SIMPLEX,.40,color,1)
             if person['class'] == 'stranger':
                 crop = raw[max(0,y1):y2,max(0,x1):x2]
                 crop_path = os.path.join(directory, person['person_id'] + '_' + name + '.png')

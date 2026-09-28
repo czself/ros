@@ -5,15 +5,29 @@ import html
 import json
 from pathlib import Path
 
+import cv2
+from person_reporting import annotate_people
+
 
 def render(directory):
     report = json.loads((directory/'person_report.json').read_text())
+    for point in sorted({o['waypoint'] for p in report['people'] for o in p['observations']}):
+        files = [p for p in (directory/point).glob('*.json')
+                 if not p.name.endswith(('.detections.json', '.failure.json'))]
+        evidence = json.loads(files[0].read_text())
+        raw = cv2.imread(evidence['raw_image'])
+        people = [dict(o, person_id=p['person_id']) for p in report['people']
+                  for o in p['observations'] if o['waypoint']==point]
+        cv2.imwrite(str(directory/'persons'/('review_'+point+'.png')), annotate_people(raw, people))
     escape = html.escape
     def relative(path):
         # Runtime paths are absolute inside the container; keep page links local.
         parts = Path(path).parts
         index = parts.index(directory.name)
-        return escape('/'.join(parts[index+1:]), quote=True)
+        local = '/'.join(parts[index+1:])
+        if local.startswith('persons/POINT_'):
+            local = 'persons/review_'+Path(local).name
+        return escape(local, quote=True)
     rows = []
     for street, counts in report['street_counts'].items():
         rows.append('<tr><td>%s</td><td>%d</td><td>%d</td><td>%d</td></tr>' % (
