@@ -21,11 +21,12 @@ ENFORCE_TRAFFIC=true \
   "$ROOT_DIR/scripts/start_navigation.sh" "$MAP_FILE"
 
 docker cp "$ROOT_DIR/scripts/route_executor.py" "$CONTAINER:/root/route_executor.py"
+docker cp "$ROOT_DIR/scripts/person_reporting.py" "$CONTAINER:/root/person_reporting.py"
 docker exec "$CONTAINER" mkdir -p "$PHOTO_DIR"
 
 TOPICS=(
   /clock /tf /tf_static /odom /my_car/wheel_odom /my_car/cmd_vel_nav /my_car/cmd_vel
-  /scan /camera/depth/points /camera/depth/image_raw /camera/depth/camera_info
+  /scan /camera/depth/points /camera/depth/image_raw /camera/depth/camera_info /camera/camera_info
   /camera/image_raw /inspection/image /amcl_pose /move_base/goal /move_base/status /move_base/feedback
   /move_base/NavfnROS/plan /move_base/ForwardPathFollower/local_plan
   /move_base/ForwardPathFollower/progress /move_base/ForwardPathFollower/status
@@ -33,6 +34,7 @@ TOPICS=(
   /move_base/global_costmap/footprint /move_base/local_costmap/footprint
   /route/status /inspection/detections /inspection/traffic_light
   /route/progress
+  /inspection/person_report /inspection/person_image
   /inspection/traffic_light_confidence /inspection/yolo/metrics
   /traffic_light/state /traffic_light/time_remaining /traffic_light/gate_status
   /traffic_light/braking /gazebo/link_states
@@ -50,7 +52,15 @@ docker exec -d "$CONTAINER" bash -lc \
 
 echo "路线已开始：HOME → POINT_1…POINT_10 → HOME；strict=$STRICT_ACCEPTANCE；本次照片和运动bag: /home/sz/ros1_ws/photo_stops/standee_route_runs/$RUN_ID"
 FINAL_STATUS=""
+PEOPLE_LINES=0
 for _ in $(seq 1 900); do
+  if [[ -f "$PHOTO_HOST_DIR/people_terminal.txt" ]]; then
+    NEW_LINES="$(wc -l < "$PHOTO_HOST_DIR/people_terminal.txt")"
+    if (( NEW_LINES > PEOPLE_LINES )); then
+      sed -n "$((PEOPLE_LINES+1)),${NEW_LINES}p" "$PHOTO_HOST_DIR/people_terminal.txt"
+      PEOPLE_LINES="$NEW_LINES"
+    fi
+  fi
   if [[ -f "$PHOTO_HOST_DIR/run_summary.json" ]]; then
     SUMMARY_STATUS="$(python3 -c "import json; print(json.load(open('$PHOTO_HOST_DIR/run_summary.json')).get('route_status',''))" 2>/dev/null || true)"
     if [[ "$SUMMARY_STATUS" == COMPLETE_PARKED ]]; then
@@ -86,4 +96,21 @@ if [[ "$FINAL_STATUS" != COMPLETE_PARKED ]]; then
 fi
 
 docker exec "$CONTAINER" bash -lc "source /opt/ros/noetic/setup.bash; rosbag info '$PHOTO_DIR/motion.bag' >/dev/null"
+if [[ -f "$PHOTO_HOST_DIR/person_report.json" ]]; then
+  cat "$PHOTO_HOST_DIR/person_report.txt"
+  AUDIO_DIR="$(mktemp -d /tmp/person-report-audio.XXXXXX)"
+  AUDIO_RESULT=0
+  python3 "$ROOT_DIR/scripts/announce_people.py" \
+    --report "$PHOTO_HOST_DIR/person_report.json" \
+    --output "$AUDIO_DIR/person_report.wav" --play || AUDIO_RESULT=$?
+  if [[ -f "$AUDIO_DIR/person_report.wav" ]]; then
+    docker cp "$AUDIO_DIR/person_report.wav" "$CONTAINER:$PHOTO_DIR/person_report.wav"
+  fi
+  docker cp "$AUDIO_DIR/person_report.status.json" "$CONTAINER:$PHOTO_DIR/person_report.audio.json"
+  rm -rf "$AUDIO_DIR"
+  if (( AUDIO_RESULT != 0 )); then
+    echo "路线已完成，但人物播报失败，详情见 person_report.audio.json" >&2
+    exit 1
+  fi
+fi
 echo "路线结束：COMPLETE_PARKED；bag已关闭并通过rosbag info；照片和数据: /home/sz/ros1_ws/photo_stops/standee_route_runs/$RUN_ID"
