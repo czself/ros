@@ -23,6 +23,14 @@ def padded(text,width):
     size=sum(2 if unicodedata.east_asian_width(c) in 'WF' else 1 for c in text)
     return text+' '*max(0,width-size)
 
+def clipped(text,width):
+    result='';size=0
+    for character in text:
+        amount=2 if unicodedata.east_asian_width(character) in 'WF' else 1
+        if size+amount>width:return result+'…'
+        result+=character;size+=amount
+    return result
+
 class JudgeMonitor:
     def __init__(self):
         self.directory=Path(rospy.get_param('~photo_dir'))/'judge'
@@ -85,7 +93,8 @@ class JudgeMonitor:
                 sequence,stamp,STATES.get(record['traffic_state'],record['traffic_state']),record['traffic_confidence']))
         elif kind=='ocr':
             self.plates[record['waypoint']]=record
-            targets=[next(f for f in record['frames'] if f['source_stamp']==record['source_stamp'])]
+            selected=next(f for f in record['frames'] if f['source_stamp']==record['source_stamp'])
+            targets=[dict(selected,confidence=record['confidence'],content=record['text'],**{'class':'license_plate'})]
             rows.append('[%04d-01 OCR] 帧=%.9f 类别=车牌字符 内容=%s 置信度=%.3f 点位=%s 一致帧=%d' % (
                 sequence,stamp,record['text'] or '未识别',record['confidence'],record['waypoint'],record['matching_frames']))
         else:
@@ -129,7 +138,7 @@ class JudgeMonitor:
                 category,content=NAMES.get(t['class'],('目标',t['class']))
                 left.append('#%02d 类别=%s 内容=%s [%s] 置信度=%.3f' % (i,category,content,t['class'],t['confidence']))
             left+=['','红绿灯：'+STATES.get(rec.get('traffic_state','UNKNOWN'),'未知'),'通行门控：'+self.gate,
-                   '','最近识别顺序（完整文字逐项写入 recognition_terminal.txt）']+list(self.history)[-5:]
+                   '','最近识别顺序（完整文字逐项写入 recognition_terminal.txt）']+[clipped(x,112) for x in list(self.history)[-5:]]
             right=['OCR 车牌字符识别（当前任务真实数据）']
             for point in ['POINT_8','POINT_9','POINT_10']:
                 p=self.plates.get(point)
@@ -142,7 +151,7 @@ class JudgeMonitor:
             for street,c in streets.items():right.append('%s街区：%d人，社区%d，外来%d' % (street,c['total'],c['resident'],c['stranger']))
             right+=['外来人员：'+', '.join(p['person_id']+'('+p['street']+')' for p in self.people.values() if p['class']=='stranger'),
                     '','来源：best.pt / PP-OCRv5_mobile_rec / RGB+深度+TF']
-            lines=['智算三行队 · 智慧社区比赛演示 · 真实识别数据',
+            lines=['智算三行队 · 智慧社区比赛演示 · 真实识别数据 · '+self.directory.parent.name,
                    '任务状态：%s | 当前点位：%s | 已配对显示：%d帧' % (self.status,self.goal,self.sequence),'='*205]
             for i in range(max(len(left),len(right))):lines.append(padded(left[i] if i<len(left) else '',116)+' | '+(right[i] if i<len(right) else ''))
             sys.stdout.write('\033[2J\033[H'+'\n'.join(lines)+'\n');sys.stdout.flush()

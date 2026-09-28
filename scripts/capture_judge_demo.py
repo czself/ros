@@ -14,7 +14,7 @@ while time.monotonic()<deadline:
     if state_path.is_file():
         try:state=json.loads(state_path.read_text())
         except ValueError:time.sleep(.2);continue
-        criteria=[('01_traffic',state['goal'] in ['POINT_1','POINT_2'] and state['frame_pairs']>5),
+        criteria=[('01_traffic',state['goal'] in ['POINT_1','POINT_2'] and state['frame_pairs']>5 and state['traffic_state']!='UNKNOWN'),
                   ('02_people',state['people_counts']['stranger']>0),('03_ocr',len(state['ocr'])>0),
                   ('04_complete',state['route_status']=='COMPLETE_PARKED')]
         for name,ready in criteria:
