@@ -665,7 +665,11 @@ def main():
     person_audit = None
     if summary.get('person_reporting_enabled'):
         from audit_person_report import audit
-        person_audit = audit(args.run_dir)
+        try:
+            person_audit = audit(args.run_dir)
+        except (OSError, ValueError, KeyError) as error:
+            person_audit = {'pass': False, 'error': str(error),
+                            'reason': 'PERSON_EVIDENCE_INCOMPLETE_OR_INVALID'}
         (args.run_dir/'person_audit.json').write_text(
             json.dumps(person_audit, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     person_pass = person_audit is None or person_audit['pass']

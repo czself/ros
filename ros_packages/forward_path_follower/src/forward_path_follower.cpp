@@ -37,6 +37,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
         prediction_time_(0.75), prediction_step_(0.05),
         linear_accel_(0.75), angular_accel_(1.8), last_v_(0.0),
         last_w_(0.0), have_last_command_(false), path_alignment_active_(false),
+        final_heading_active_(false),
         goal_settle_tracking_(false), goal_settle_x_(0.0), goal_settle_y_(0.0),
         goal_settle_yaw_(0.0),
         path_progress_(0.0),
@@ -187,6 +188,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
       last_w_ = 0.0;
       have_last_command_ = false;
       path_alignment_active_ = false;
+      final_heading_active_ = false;
     }
     return true;
   }
@@ -229,9 +231,19 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
       return true;
     }
 
+    const double yaw_error = angles::shortest_angular_distance(yaw, goal_yaw);
     if (goal_distance <= target_xy_tolerance_) {
+      final_heading_active_ = true;
+    } else if (goal_distance > target_xy_tolerance_ + 0.02 ||
+               std::abs(yaw_error) <= target_yaw_tolerance_) {
+      final_heading_active_ = false;
+    }
+    // AMCL can move the map pose slightly while the car turns in place.
+    // Finish that turn before returning to path tracking; otherwise crossing
+    // the XY threshold alternates the path heading and the photo heading.
+    // Goal completion still requires the original XY and yaw tolerances.
+    if (final_heading_active_) {
       path_alignment_active_ = false;
-      const double yaw_error = angles::shortest_angular_distance(yaw, goal_yaw);
       if (std::abs(yaw_error) <= target_yaw_tolerance_) {
         smoothCommand(0.0, 0.0, command);
         const bool command_stopped = std::abs(last_v_) < 0.01 &&
@@ -770,6 +782,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
   double last_v_, last_w_;
   bool have_last_command_;
   bool path_alignment_active_;
+  bool final_heading_active_;
   bool goal_settle_tracking_;
   ros::WallTime goal_settle_started_;
   double goal_settle_x_, goal_settle_y_, goal_settle_yaw_;
