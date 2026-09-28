@@ -130,6 +130,8 @@ def main():
         folder.mkdir()
     write(output/'README.md', fill('README.md',args.team))
     write(output/'提交检查清单.md',fill('提交检查清单.md',args.team))
+    if (ROOT/'submission/OCR接入建议.md').is_file():
+        write(output/'OCR接入建议.md',fill('OCR接入建议.md',args.team))
     write(folders[names[1]]/(args.team+'-智慧社区复赛技术方案.md'), fill('技术方案草稿.md',args.team))
     write(folders[names[2]]/(args.team+'-智慧社区复赛答辩展示.md'), fill('答辩展示提纲.md',args.team))
     write(folders[names[3]]/'视频录制脚本.md',fill('视频录制脚本.md',args.team))

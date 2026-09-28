@@ -1,0 +1,30 @@
+{
+  "team": "智算三行队",
+  "output": "/home/sz/game/复赛提交材料/智算三行队",
+  "source_git_commit": "3507f0a55caf5891c7507bbade574e268375b4e2",
+  "engineering_zip": "/home/sz/game/复赛提交材料/智算三行队/01_工程代码/智算三行队-智慧社区复赛工程代码.zip",
+  "engineering_zip_bytes": 54723724,
+  "engineering_zip_sha256": "cae2c4ba057ea89c5feb2e1b2aeab6be318b1588427ddc9f502799460369ede6",
+  "engineering_zip_under_150MB": true,
+  "formal_deliverables": {
+    "engineering_zip": "prepared_for_reproduction",
+    "technical_pdf": "missing_markdown_draft_provided",
+    "presentation_pdf": "missing_outline_provided",
+    "comprehensive_mp4": "missing_reference_clip_and_script_provided"
+  },
+  "ocr_status": "paused_not_integrated",
+  "new_environment_end_to_end_reproduction": "not_run",
+  "validation": {
+    "archive_crc": "pass",
+    "file_sha256": "pass_283_files",
+    "shell_syntax": "pass",
+    "python_syntax": "pass",
+    "catkin_package_xml": "pass_4_packages",
+    "active_map_source_sha256": "pass",
+    "catkin_make": "pass_in_isolated_workspace_in_existing_noetic_container",
+    "build_log_sha256": "996ce8e7cad79e1f23af8b9a4021d60c5f496dc2ea3a378c37055d9ed21583b2",
+    "runtime_threshold_changes": "none",
+    "fresh_docker_image_build": "not_run",
+    "full_end_to_end_run_of_packaged_copy": "not_run"
+  }
+}
