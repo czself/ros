@@ -1,0 +1,39 @@
+# tl_vision 运行期依赖
+#
+# 版本策略: 一律用「下限」而非「锁定」, 因为 Noetic 固定 Python 3.8 + CUDA 10/11/12,
+# 而开发机可能是 Python 3.10+ / torch 2.x。锁死版本会在队友机器上装不上。
+#
+# 安装:  pip install -r requirements.txt
+# 注意:  torch 请先按 https://pytorch.org/get-started/locally/ 选择匹配自己 CUDA 的
+#       轮子安装, 然后再执行本文件 (否则 pip 会拉一个 CPU 版覆盖掉)。
+
+numpy>=1.17.3
+opencv-python>=4.2.0
+PyYAML>=5.3.1
+torch>=1.13.0
+torchvision>=0.14.0
+ultralytics>=8.0.0
+
+# ---------------------------------------------------------------------------
+# 【可选】车牌识别 —— 只有要跑 OCR 才需要
+#
+# 检测部分 (tl_vision_node / tl_vision_offline) 完全不依赖下面这些。
+# 没装也能正常检测, 只是不能读出车牌号。
+#
+# 关键: paddleocr 与 torch 常常装不进同一个环境 —— 两者对 numpy / opencv /
+# Python 版本的要求互相冲突 (例: paddleocr 2.7 认 py3.8+numpy1.24+opencv4.6,
+# 而 ultralytics 8.x 已在 py3.10+numpy2.2 上验证)。因此 tl_vision 把 OCR 拆成
+# 独立节点, 两个节点可以各跑各的 conda 环境, 只通过 /tl_vision/plate_crop
+# 话题通信。详见 README 「车牌 OCR」一节。
+#
+# 国内源装 paddlepaddle 会快很多:
+#   pip install -i https://paddlepaddle.org.cn/packages/stable/ paddlepaddle
+#   pip install paddleocr
+#
+# 版本: 2.x 与 3.x 都支持, 节点会运行时自动探测 API 代次, 不用改代码。
+#   实测 2.7.0 (py3.8)  CPU 约 370 ms/张
+#   实测 3.7.0 (py3.10) CPU 约 4.1 s/张 (oneDNN 已默认关闭, 见 ocr.enable_mkldnn)
+# ---------------------------------------------------------------------------
+# paddlepaddle>=2.5.0
+# paddleocr>=2.7.0
+

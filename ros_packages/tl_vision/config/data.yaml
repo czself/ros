@@ -1,0 +1,23 @@
+# ===========================================================================
+# tl_vision 训练数据配置 (Ultralytics 格式)
+#
+# 类别 id 顺序即为 msg/Detection.msg 里 class_id 的含义, 改动此顺序
+# 必须同步修改 src/tl_vision/detector.py 的 DEFAULT_CLASS_NAMES。
+# ===========================================================================
+path: D:/traffic_light_dataset   # 换成本机/本车路径
+
+train: images/train
+val: images/val
+
+names:
+  0: resident
+  1: stranger
+  2: red_on
+  3: red_off
+  4: yellow_on
+  5: yellow_off
+  6: green_on
+  7: green_off
+  8: license_plate
+
+nc: 9

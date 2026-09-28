@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""tl_vision 车牌 OCR 节点的启动脚本 (rosrun 入口)。
+
+真正的逻辑在 tl_vision.ocr_node, 这里只做一层薄壳。
+
+注意: 本脚本不设 shebang 之外的任何东西, 也**不导入 torch** —— 它必须能在
+只装了 paddleocr 的 conda 环境里跑起来, 否则拆成两个节点就白拆了。
+"""
+import sys
+
+from tl_vision.ocr_node import main
+
+if __name__ == "__main__":
+    sys.exit(main())

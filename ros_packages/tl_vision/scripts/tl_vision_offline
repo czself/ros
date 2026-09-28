@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+"""tl_vision 离线批量推理的命令行入口 (rosrun tl_vision tl_vision_offline 也能用)。"""
+import sys
+
+from tl_vision.offline import main
+
+if __name__ == "__main__":
+    sys.exit(main())

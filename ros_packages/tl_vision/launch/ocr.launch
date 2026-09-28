@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+  只起车牌 OCR 节点。适用于检测节点已经跑在别处 (或者识别很慢, 想放到另一台
+  机器上跑) 的情况。
+
+  先用 stub 引擎验证话题链路, 确认没装 paddleocr 也能跑通:
+    roslaunch tl_vision ocr.launch ocr_engine:=stub
+-->
+<launch>
+  <arg name="config" default="$(find tl_vision)/config/vision_config.yaml"/>
+
+  <!-- 输入: 检测节点发的车牌裁剪 -->
+  <arg name="plate_topic" default="/tl_vision/plate_crop"/>
+  <arg name="text_topic" default="/tl_vision/plate_text"/>
+
+  <!-- paddleocr = 真识别; stub = 空结果, 仅联调 -->
+  <arg name="ocr_engine" default="paddleocr"/>
+  <arg name="ocr_gpu" default="false"/>
+  <!-- true = 校验不通过时 text 置空。下游"非空即信任"时必须开。 -->
+  <arg name="ocr_strict" default="false"/>
+  <arg name="drop_invalid" default="false"/>
+  <arg name="min_conf" default="0.0"/>
+  <arg name="log_level" default="INFO"/>
+
+  <node pkg="tl_vision" type="tl_vision_ocr_node" name="ocr" output="screen" required="true">
+    <param name="config" value="$(arg config)"/>
+    <param name="engine" value="$(arg ocr_engine)"/>
+    <param name="gpu" value="$(arg ocr_gpu)"/>
+    <param name="strict" value="$(arg ocr_strict)"/>
+    <param name="drop_invalid" value="$(arg drop_invalid)"/>
+    <param name="min_conf" value="$(arg min_conf)"/>
+    <param name="log_level" value="$(arg log_level)"/>
+
+    <remap from="~topics/plate_sub" value="$(arg plate_topic)"/>
+    <remap from="~topics/plate_text_pub" value="$(arg text_topic)"/>
+  </node>
+</launch>

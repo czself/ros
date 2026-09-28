@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>tl_vision</name>
+  <version>1.0.0</version>
+  <description>
+    红绿灯 / 车牌 / 行人一体化视觉包 (YOLOv8 + PaddleOCR)。
+    提供 ROS1 实时检测节点、独立的车牌 OCR 节点、离线批量推理工具与训练脚本。
+  </description>
+
+  <maintainer email="tl-vision@example.com">TL-Vision Team</maintainer>
+  <license>MIT</license>
+
+  <url type="repository">https://github.com/ORG/tl_vision</url>
+  <url type="bugtracker">https://github.com/ORG/tl_vision/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <test_depend>rostest</test_depend>
+
+  <export>
+  </export>
+</package>

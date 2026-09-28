@@ -1,0 +1,38 @@
+[tool.ruff]
+# Noetic 固定 Python 3.8, 这里的 target-version 决定启用哪批规则
+target-version = "py38"
+line-length = 100
+src = ["src", "test", "scripts"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "W",    # warnings
+    "I",    # isort
+    "B",    # bugbear
+    "C4",   # comprehensions
+    "UP",   # pyupgrade
+    "RUF",  # ruff 专属
+    "TRY",  # tryceratops
+]
+ignore = [
+    # 以下是 py39+/py310+ 才安全的写法, 与本项目 py38 目标冲突:
+    "UP006",  # 非 PEP585 注解 (dict[str, X]) —— 3.8 运行期求值会炸
+    "UP007",  # 非 PEP604 注解 (X | None)
+    "UP035",  # typing.Dict 等弃用导入 —— 3.8 仍需从 typing 导入
+    "UP045",  # Optional[X] -> X | None
+    "E501",   # 行长交给 formatter
+    # 错误信息长是有意为之: 这是给队友看的命令行工具, 把"怎么修"直接写进
+    # 报错里比抛一个短消息再让人猜要有效得多
+    "TRY003",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# 离线工具用大量 logging, 顶层 print 只在体检类工具里出现
+"src/tl_vision/dataset.py" = ["T201"]
+# 测试里 import 放在函数内是刻意的 (验证延迟导入)
+"test/*" = ["PLC0415"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["tl_vision"]

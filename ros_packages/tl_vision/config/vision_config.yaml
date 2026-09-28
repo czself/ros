@@ -1,0 +1,115 @@
+# ===========================================================================
+# tl_vision ROS 节点配置
+#
+# 用法:
+#   rosrun tl_vision tl_vision_node    _config:=$(rospack find tl_vision)/config/vision_config.yaml
+#   rosrun tl_vision tl_vision_ocr_node _config:=$(rospack find tl_vision)/config/vision_config.yaml
+#   或直接用 launch 文件覆盖需要改的项
+#
+# 优先级: launch 参数 > 私有 ROS 参数 (~conf) > 本文件 > 环境变量 > 代码默认值
+#
+# 两个节点共用这一份文件, 但各只读自己那几节: 检测节点不碰 ocr:,
+# OCR 节点不碰 model:/inference:。
+# ===========================================================================
+
+vision_node:
+  ros__parameters:
+
+    # ---------------------------------------------------------------- 模型
+    model:
+      # 权重路径。留空则回退到环境变量 TL_VISION_WEIGHTS, 都没有时报错退出。
+      # 相对路径会相对于本 yaml 所在目录解析, 方便整包搬迁。
+      weights: ""
+      # "" / null = 自动 (有 CUDA 用 CUDA), 0 = 强制 GPU0, "cpu" = 强制 CPU
+      device: ""
+      imgsz: 640
+      half: false          # FP16 推理, 仅在 GPU 上有意义且需 Ampere 以上
+
+    # ------------------------------------------------------------ 推理后处理
+    inference:
+      conf_threshold: 0.5
+      iou_threshold: 0.45  # NMS IoU 阈值
+      max_detections: 100
+      # 只保留这些类别 id; 留空 [] = 全部 9 类都输出。
+      # 例: 只关心红绿灯 + 车牌 -> [2, 3, 4, 5, 6, 7, 8]
+      class_filter: []
+
+    # ---------------------------------------------------------------- 话题
+    topics:
+      image_sub: /camera/image_raw
+      detections_pub: /tl_vision/detections
+      annotated_image_pub: /tl_vision/image_annotated
+      # 结构化车牌裁剪 (tl_vision/PlateCrop), OCR 节点订阅的就是这个
+      plate_crop_pub: /tl_vision/plate_crop
+      # 裸裁剪图 (sensor_msgs/Image), 仅供 rqt_image_view 看图, 默认不发布
+      plate_crop_image_pub: /tl_vision/plate_crop_image
+
+    # ---------------------------------------------------------------- 发布
+    publishing:
+      annotated_image: true      # 是否发布画框后的图像
+      plate_crop: true           # 是否发布车牌裁剪 (OCR 节点的数据来源)
+      plate_crop_image: false     # 额外再发一份裸 Image 裁剪图
+      plate_crop_margin: 6       # 车牌裁剪时向外扩的像素
+      stamp_from_input: true     # true=用输入图像 header 的时间戳 (更准)
+
+    # ==================================================================
+    # 车牌 OCR —— 只被 tl_vision_ocr_node 读取
+    #
+    # 独立成节点的原因: 检测要 torch/ultralytics, OCR 要 paddleocr/
+    # paddlepaddle, 两套依赖的 numpy/opencv/Python 版本互相冲突, 装不进
+    # 同一个 conda 环境。拆开后两个节点可以各跑各的环境, 只通过话题通信。
+    # 因此这份配置里**不要**加任何 torch 相关项, 反之 model: 也不该出现
+    # paddle 相关项。
+    # ==================================================================
+    ocr:
+      engine: paddleocr      # paddleocr = 真识别; stub = 不装依赖也能联调全链路
+      lang: ch               # 车牌是中文, 固定 ch
+      use_gpu: false         # 车载机多半没 GPU; 有的话打开能快一个数量级
+      use_angle_cls: true    # 车牌通常正装, 但俯拍/侧拍时方向分类能救回不少
+
+      # 校验不通过时把 text 清空。下游若是"非空即信任"就必须开,
+      # 否则 'XYZ12345' 这种脏结果会被当成合法车牌用。
+      strict: false
+      # OCR 置信度低于该值的, 也标记为不合规 (文本仍然保留, 便于排查)。
+      # 0 = 不额外过滤。
+      min_conf: 0.0
+
+      # paddlepaddle 3.3.x 在 PIR 新执行器下开 oneDNN 会抛
+      # "(Unimplemented) ConvertPirAttribute2RuntimeAttribute not support",
+      # 识别直接全挂。3.x 上保持 false; 2.x 不受影响 (那个组合是好的)。
+      enable_mkldnn: false
+
+      # 只发布通过校验的结果, 不合规的只写日志。闸机放行这类场景建议打开,
+      # 免得下游误用脏数据。
+      drop_invalid: false
+
+      # OCR 远慢于相机帧率, 队列保持 1: 处理不过来时丢旧帧。
+      # 绝不能加大 —— 车牌文本几百毫秒后就过期了, 堆积只会让结果更没用。
+      queue_size: 1
+      log_every_n: 10        # 每 N 块车牌打一次累计统计; 0 或负数=关闭
+
+      topics:
+        plate_sub: /tl_vision/plate_crop
+        plate_text_pub: /tl_vision/plate_text
+        annotated_pub: /tl_vision/plate_text_image
+
+    # ---------------------------------------------------------------- 其他
+    frame_id: ""             # 输出 header.frame_id; 留空则沿用输入图像的
+    queue_size: 1            # 检测节点的图像队列深度, 1=只要最新帧 (实时场景)
+    log_every_n: 30          # 检测节点每 N 帧打一次统计日志; 0 或负数=关闭
+
+    # ---------------------------------------------------------------- 调试
+    debug:
+      # ------------------------------------------------------------------
+      # 【慎用】整图强制出框: 命中规则的图片直接返回「整张图 = 指定类别」,
+      # 完全跳过模型。用于纯色卡/整幅特写这类模型确实无从下手的素材。
+      #
+      # 这是测试桩, 不是模型输出 —— 结果绝不可信, 默认关闭。
+      # 打开后每张命中图会打一条 WARNING。
+      # ------------------------------------------------------------------
+      force_full_image_boxes: false
+      force_full_image_rules:
+        - match: "红灯亮"     # 文件名包含该子串即命中
+          class_name: "red_on"
+        - match: "红灯暗"
+          class_name: "red_off"

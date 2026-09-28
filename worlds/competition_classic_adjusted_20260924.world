@@ -678,6 +678,25 @@
             <hackBaseline>0</hackBaseline>
           </plugin>
         </sensor>
+        <!-- Co-located RGB capture for OCR. ROS subscribers activate this
+             camera only at plate stops; navigation RGB/depth stays 640x480. -->
+        <sensor name='ocr_camera' type='camera'>
+          <always_on>0</always_on>
+          <update_rate>5</update_rate>
+          <visualize>0</visualize>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image><width>1920</width><height>1440</height><format>R8G8B8</format></image>
+            <clip><near>0.05</near><far>8</far></clip>
+          </camera>
+          <plugin name='ocr_camera_plugin' filename='libgazebo_ros_camera.so'>
+            <robotNamespace>/</robotNamespace>
+            <cameraName>ocr_camera</cameraName>
+            <frameName>camera_optical_frame</frameName>
+            <imageTopicName>/ocr_camera/image_raw</imageTopicName>
+            <cameraInfoTopicName>/ocr_camera/camera_info</cameraInfoTopicName>
+          </plugin>
+        </sensor>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>

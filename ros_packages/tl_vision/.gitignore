@@ -1,0 +1,94 @@
+# ---------------------------------------------------------------------------
+# 模型权重与训练产物 —— 绝不入库
+# ---------------------------------------------------------------------------
+*.pt
+*.pth
+*.onnx
+*.engine
+*.trt
+*.zip
+weights/
+runs/
+datasets/
+data/
+
+# 图像与标注（体积大且多为团队内部数据）
+images/
+labels/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.webp
+!docs/**/*.png
+!*.md
+
+# 推理输出
+val_result/
+outputs/
+inference_out/
+e2e/
+crop_plate/
+ocr_out*.txt
+ocr_out*.json
+*.cache
+
+# ---------------------------------------------------------------------------
+# ROS / catkin 产物
+# ---------------------------------------------------------------------------
+devel/
+build/
+install/
+logs/
+.catkin_workspace
+.catkin_tools/
+
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+sdist/
+wheels/
+*.egg-info/
+*.egg
+.installed.cfg
+pip-wheel-metadata/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+ENV/
+
+# 单元测试 / 覆盖率
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ---------------------------------------------------------------------------
+# 编辑器与系统
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 本地私有配置（可能含内网地址 / 机器路径）
+config/local_*.yaml
+.env

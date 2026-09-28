@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+  tl_vision 检测 + 车牌识别
+
+  只跑检测 (不识别车牌, 不需要装 paddleocr):
+    roslaunch tl_vision vision.launch
+
+  检测 + OCR (两个节点, 可以跑在不同的 conda 环境里):
+    roslaunch tl_vision vision.launch ocr:=true
+
+  只跑 OCR (检测已在别处跑着):
+    roslaunch tl_vision ocr.launch
+
+  换权重 / 换相机 / 调阈值:
+    roslaunch tl_vision vision.launch \
+        image_topic:=/usb_cam/image_raw \
+        weights:=$HOME/tl_vision/weights/best.pt \
+        conf:=0.35
+-->
+<launch>
+  <!-- 权重路径: 不传则读 config/vision_config.yaml, 再回退环境变量 TL_VISION_WEIGHTS -->
+  <arg name="weights" default=""/>
+  <arg name="config" default="$(find tl_vision)/config/vision_config.yaml"/>
+
+  <!-- 输入图像话题, 换成 usb_cam / realsense 等实际话题 -->
+  <arg name="image_topic" default="/camera/image_raw"/>
+
+  <!-- 推理参数 -->
+  <arg name="conf" default="0.5"/>
+  <arg name="iou" default="0.45"/>
+  <arg name="device" default=""/>
+  <arg name="imgsz" default="640"/>
+
+  <!-- 输出开关 -->
+  <arg name="publish_annotated" default="true"/>
+  <arg name="publish_plates" default="true"/>
+  <arg name="log_level" default="INFO"/>
+
+  <!-- 是否顺带起 OCR 节点 (需要装 paddleocr) -->
+  <arg name="ocr" default="false"/>
+  <arg name="ocr_engine" default="paddleocr"/>
+  <arg name="ocr_gpu" default="false"/>
+  <arg name="ocr_strict" default="false"/>
+
+  <node pkg="tl_vision" type="tl_vision_node" name="vision" output="screen" required="true">
+    <param name="config" value="$(arg config)"/>
+    <param name="weights" value="$(arg weights)"/>
+    <param name="conf" value="$(arg conf)"/>
+    <param name="iou" value="$(arg iou)"/>
+    <param name="device" value="$(arg device)"/>
+    <param name="imgsz" value="$(arg imgsz)"/>
+    <param name="publish_annotated" value="$(arg publish_annotated)"/>
+    <param name="publish_plates" value="$(arg publish_plates)"/>
+    <param name="log_level" value="$(arg log_level)"/>
+
+    <remap from="~topics/image_sub" value="$(arg image_topic)"/>
+    <!-- 若下游用自己的命名空间, 改这里:
+    <remap from="~detections" value="/my_robot/vision/detections"/>
+    -->
+  </node>
+
+  <!-- OCR 节点与检测节点靠 /tl_vision/plate_crop 解耦, 两者可以跑在不同机器、
+       不同 conda 环境上。用 required=false: 没装 paddleocr 时它自己退出,
+       不该把检测节点一起带走。 -->
+  <node if="$(arg ocr)"
+        pkg="tl_vision" type="tl_vision_ocr_node" name="ocr"
+        output="screen" required="false">
+    <param name="config" value="$(arg config)"/>
+    <param name="engine" value="$(arg ocr_engine)"/>
+    <param name="gpu" value="$(arg ocr_gpu)"/>
+    <param name="strict" value="$(arg ocr_strict)"/>
+    <param name="log_level" value="$(arg log_level)"/>
+  </node>
+</launch>
