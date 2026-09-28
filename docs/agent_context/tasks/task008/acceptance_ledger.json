@@ -1,8 +1,8 @@
 {
   "task_id": "task008",
   "target_runs": 3,
-  "streak": 0,
-  "status": "frozen_after_yolo_headroom_tune",
+  "streak": 1,
+  "status": "acceptance_run_1_passed",
   "frozen_manifest": "docs/agent_context/tasks/task008/frozen_manifest_20260927.json",
   "diagnostic_runs": [
     {
@@ -216,6 +216,34 @@
       "yolo_windows_at_5hz_fraction": 0.936,
       "frozen_manifest_sha256": "0e52499643b85471fa738b3152b4378470b964bb558ed33f3c7818bc86d3fb98",
       "artifact_path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_134500"
+    },
+    {
+      "run_id": "20260928_135500",
+      "route_status": "COMPLETE_PARKED",
+      "independent_audit": "PASS",
+      "counted": true,
+      "streak_index": 1,
+      "mission_duration_s": 163.326,
+      "translation_route_speed_mps": 0.1753,
+      "active_route_speed_mps": 0.1045,
+      "ordinary_paint_contact_samples": 0,
+      "unauthorized_conditional_contacts": 0,
+      "valid_green_authorizations": 2,
+      "photo_and_depth_pass": true,
+      "home_position_error_m": 0.0085,
+      "home_yaw_error_rad": 0.0348,
+      "home_stationary_s": 2.039,
+      "yolo_active_mean_hz": 5.1259,
+      "yolo_windows_at_5hz_fraction": 1.0,
+      "yolo_p95_window_latency_ms": 200.73,
+      "yolo_max_active_age_ms": 283.0,
+      "active_world_plate_textures": [
+        "学C88K55.jpg",
+        "赣N5B5T3.jpg",
+        "冀K0BB17.jpg"
+      ],
+      "frozen_manifest_sha256": "f5ed9c6d89b1ece6dd0bc85e58ec4b4b69204a82dff869a486f87b26b9a7fa13",
+      "artifact_path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_135500"
     }
   ],
   "frozen_manifest_sha256": "f5ed9c6d89b1ece6dd0bc85e58ec4b4b69204a82dff869a486f87b26b9a7fa13",
