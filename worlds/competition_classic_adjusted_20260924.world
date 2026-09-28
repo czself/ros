@@ -673,6 +673,7 @@
             <imageTopicName>image_raw</imageTopicName>
             <depthImageTopicName>depth/image_raw</depthImageTopicName>
             <pointCloudTopicName>depth/points</pointCloudTopicName>
+            <pointCloudCutoff>0.08</pointCloudCutoff>
             <cameraInfoTopicName>camera_info</cameraInfoTopicName>
             <hackBaseline>0</hackBaseline>
           </plugin>
