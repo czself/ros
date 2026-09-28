@@ -346,5 +346,22 @@
     "学C88K55.jpg",
     "赣N5B5T3.jpg",
     "冀K0BB17.jpg"
-  ]
+  ],
+  "post_acceptance_ocr_trials": {
+    "source_zip": "/home/sz/下载/traffic_light_ros.zip",
+    "zip_contains_ocr_engine": false,
+    "zip_contains_plate_crop_topic": true,
+    "trial_tool": "scripts/plate_ocr_trials.py",
+    "engine": "Tesseract 4.1.1 with chi_sim+eng tessdata_fast models",
+    "accepted_plate_crops_tested": 9,
+    "nonempty_candidates": 9,
+    "full_plate_strings_reliable": false,
+    "traffic_or_navigation_uses_ocr": false,
+    "report": "docs/agent_context/tasks/task008/ocr_trial_20260928.md",
+    "artifact_dirs": [
+      "/home/sz/ros1_ws/photo_stops/plate_ocr_trials_20260928_135500_v2",
+      "/home/sz/ros1_ws/photo_stops/plate_ocr_trials_20260928_135919_v2",
+      "/home/sz/ros1_ws/photo_stops/plate_ocr_trials_20260928_140509_v2"
+    ]
+  }
 }
