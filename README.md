@@ -1,42 +1,36 @@
-# 智慧社区 ROS/Gazebo 复赛工程
+# 智算三行队：智慧社区 ROS/Gazebo 工程
 
-本工程用于展示 Gazebo 场景搭建、GMapping 自主建图、AMCL 定位、`move_base`
-多点导航与基于相机的红绿灯颜色识别。仿真运行在 Docker 容器 `ros1_modeling` 内。
+当前主线使用 ROS 1 Noetic / Gazebo Classic、GMapping、AMCL、Navfn、自定义 ForwardPathFollower、YOLO 九类检测和十点任务执行器。
 
-## 一次完整演示
+## 当前运行入口
 
-1. 启动场景：`./scripts/start_sim.sh`；修改 world 或模型后使用 `./scripts/start_sim.sh --restart` 强制重载。
-2. 打开 SLAM 视图：`./scripts/view_autonomous_mapping.sh`
-3. 启动真实建图：`./scripts/start_slam_mapping.sh`
-4. 用 `./scripts/teleop.sh` 低速覆盖所有可达走廊，RViz 同时录制 `/map`、`/scan` 和 TF；若使用自动路线则改用 `./scripts/start_autonomous_mapping.sh`。
-5. 保存本次建图：自动路线使用 `./scripts/save_slam_map.sh competition_slam route_complete complete_session automatic`，人工遥控使用 `./scripts/save_slam_map.sh competition_slam manual_frontier operator_requested manual_session manual_teleop`。脚本会同时生成 coverage report、轨迹/mapper/日志 hash 和消息级 TF 证据。
-6. 重启仿真后，以保存地图开始定位导航：`./scripts/start_navigation.sh /root/ros1_ws/maps/competition_navigation_safe.yaml`
-   `competition_navigation_safe` 是把当前 world 的碰撞几何叠加到测量地图上的导航安全图，
-   用于防止 SLAM 的自由单元覆盖实体墙；它不是纯 SLAM 产物。若只做 SLAM 证据验收，
-   使用 `competition_slam_verified4`，不要把两者混称。
-7. 在 RViz 点击 `2D Pose Estimate`，将定位箭头放在小车实际初始位置；随后点击 `2D Nav Goal` 验证避障。
-8. 自动多点巡检与相机检测：`./scripts/start_patrol.sh competition_navigation_safe`。巡检每次
-   都从实时全局膨胀代价地图的出生点连通安全区域随机抽取 5 个目标；如需复现一条
-   路线，可在容器内给 `patrol_controller` 传入 `_seed:=整数`。
+```bash
+./scripts/start_sim.sh
+./scripts/start_standee_photo_route.sh /root/ros1_ws/maps/current_slam_preview_white_lines.yaml
+```
 
-`maps/competition_ground_truth.yaml` 是用于调参和回归测试的真值地图，不能代替第 3 至第 5 步的 SLAM 录像或提交证据。
+原运行脚本使用开发容器 `ros1_modeling`、本机检测权重 `/home/sz/下载/best.pt` 和 `/home/sz/ros1_ws` 数据目录。场景为 `worlds/competition_classic_adjusted_20260924.world`。完整任务路线 HOME → POINT_1…POINT_10 → HOME，激光与深度避障，普通白线禁行，合法绿灯授权后通行。
 
-重新扫图并导航建议执行 `./scripts/rescan_and_navigate.sh`：它会启动全新 GMapping、生成时间戳地图名，等待你用 `./scripts/teleop.sh` 覆盖通道，保存带 manifest 的地图后自动启动导航。`start_navigation.sh` 默认拒绝旧地图；仅调试旧图时显式设置 `ALLOW_LEGACY_MAP=1`。
+建图入口为 `start_slam_mapping.sh`、`view_autonomous_mapping.sh`、`teleop.sh`、`save_slam_map.sh`；自动建图入口为 `start_autonomous_mapping.sh`。建图里程计仍有 Gazebo 位姿依赖，实车必须替换；测量地图、白线规则叠加图和真值诊断图分别保留来源。
 
-## 复赛交付清单
+## 成果状态
 
-- `worlds/competition_classic.world`：可运行的比赛场景
-- `maps/competition_slam.*`：录制演示时保存的 SLAM 地图
-- `scripts/`：仿真、建图、导航、巡检与视觉节点
-- `docs/technical_solution.md`：技术方案正文，可据此制作 PDF/PPT
-- 录制视频时应同时显示 Gazebo 与 RViz，并展示关键代码和结果话题
+旧导航冻结版本已保存连续 3/3；人物改进版目前有 1 次完整独立审计通过（20260928_person_report_2）：151.213 s、18 人（社区16、外来2）、A/B各9人、普通白线及未授权接触为0、HOME位置误差1.266 cm。不同版本次数分开记录。
 
-## 验收话题
+车牌检测和裁剪已运行。OCR 引擎按用户要求暂停；新版压缩包的 PaddleOCR 源码会归档，不能写成字符识别已完成。人物分类验证针对本场景静态展板。
 
-`/map`、`/scan`、`/my_car/odom`、`/move_base/NavfnROS/plan`、
-`/move_base/local_costmap/costmap`、`/inspection/traffic_light`、`/inspection/image`。
+## 复赛材料整理
 
-## 注意
+```bash
+python3 scripts/organize_submission.py --team 智算三行队
+```
 
-所有导航目标必须在已建图的可通行区域内。场地中存在实体墙隔开的区域；不能在单次
-GMapping 会话中通过重置或瞬移机器人去拼接地图，否则 `map -> odom` 位姿关系会失效。
+默认整理目录：`/home/sz/game/复赛提交材料/智算三行队`。内容为 ROS src 工程、正式命名 ZIP、技术方案草稿、幻灯片提纲、视频脚本/素材、运行证据和历史参考。整理只生成副本，保留原工作区。工程副本补齐检测权重并提供独立容器环境说明。
+
+- [材料整理说明](submission/README.md)
+- [当前技术方案草稿](docs/technical_solution.md)
+- [答辩提纲](submission/答辩展示提纲.md)
+- [视频录制脚本](submission/视频录制脚本.md)
+- [人物改进与证据记录](docs/agent_context/tasks/task008/person_refinement_20260928.md)
+
+正式技术方案 PDF、答辩 PDF 和完整 MP4 尚需制作；工程包小于150MB，视频小于300MB并含实操、代码讲解和全队答辩。早期 HSV/DWA 文档存入 `docs/archive/submission_20260928/`，不作为当前方案说明。
