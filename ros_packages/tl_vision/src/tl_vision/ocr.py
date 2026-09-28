@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import logging
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import List, Optional, Union
 
@@ -66,6 +66,10 @@ class PlateOcr:
         strict: bool = False,
         min_conf: float = 0.0,
         enable_mkldnn: bool = False,
+        recognition_only: bool = False,
+        model_name: Optional[str] = None,
+        model_dir: Optional[str] = None,
+        cpu_threads: int = 2,
     ) -> None:
         self.engine = engine
         self.lang = lang
@@ -74,6 +78,9 @@ class PlateOcr:
         self.strict = strict
         self.min_conf = float(min_conf)
         self.enable_mkldnn = enable_mkldnn
+        self.recognition_only = recognition_only
+        self.model_name, self.model_dir = model_name, model_dir
+        self.cpu_threads = int(cpu_threads)
         self._api_version: Optional[str] = None
         self._ocr = self._create_engine()
 
@@ -91,6 +98,13 @@ class PlateOcr:
             raise OcrError(f"未知 OCR 引擎 {self.engine!r}, 可选: paddleocr, stub")
 
         try:
+            if self.recognition_only:
+                from paddleocr import TextRecognition
+                self._api_version = 'recognition3.x'
+                return TextRecognition(
+                    model_name=self.model_name or 'PP-OCRv5_mobile_rec',
+                    model_dir=self.model_dir, device='gpu' if self.use_gpu else 'cpu',
+                    enable_mkldnn=self.enable_mkldnn, cpu_threads=self.cpu_threads)
             from paddleocr import PaddleOCR
         except ImportError as exc:
             raise OcrError(
@@ -142,6 +156,10 @@ class PlateOcr:
         raw, conf = self._run(image_bgr)
         elapsed = (time.perf_counter() - t0) * 1000.0
         plate = build_plate_text(raw, confidence=conf, strict=self.strict)
+        if plate.is_valid and plate.confidence < self.min_conf:
+            plate = replace(plate, issue='LOW_OCR_CONFIDENCE',
+                            text='' if self.strict else plate.text,
+                            display='' if self.strict else plate.display)
         LOG.debug("OCR %.1f ms -> %r", elapsed, plate.text)
         return plate
 
@@ -191,6 +209,9 @@ class PlateOcr:
         """把两代 API 的差异收敛到这里。返回 (文本, 置信度)。"""
         if isinstance(self._ocr, _StubEngine):
             return self._ocr.ocr(image_bgr)
+
+        if self.recognition_only:
+            return _parse_v3(self._ocr.predict(input=image_bgr, batch_size=1))
 
         if self._api_version == "3.x":
             # 3.x: predict() 返回 Result 对象列表, 需取 .json / dict 形式
@@ -304,6 +325,12 @@ def _harvest_v3_dict(data: dict, scores: List[float]) -> List[str]:
     for node in (data.get("res", data), data):
         if not isinstance(node, dict):
             continue
+        if 'rec_text' in node:
+            try:
+                scores.append(float(node.get('rec_score',0.0)))
+            except (ValueError,TypeError):
+                pass
+            return [str(node['rec_text'])] if node['rec_text'] else []
         rec = node.get("rec_texts")
         if rec is None:
             continue
