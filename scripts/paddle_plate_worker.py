@@ -36,9 +36,32 @@ def result_record(plate, elapsed):
             'elapsed_ms':round(elapsed*1000,3)}
 
 
-def predict(engine, image):
+def recognition_band(image):
+    height,width = image.shape[:2]
+    gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+    _,mask = cv2.threshold(gray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+    mask = cv2.morphologyEx(mask,cv2.MORPH_CLOSE,np.ones((3,3),np.uint8))
+    _,_,stats,_ = cv2.connectedComponentsWithStats(mask)
+    glyphs = [s for s in stats[1:] if s[3]>=height*.25 and
+              s[4]>=height*width*.002 and s[2]<width*.25]
+    if 5 <= len(glyphs) <= 12:
+        padding = max(2,int(round(height*.03)))
+        top = max(0,min(s[1] for s in glyphs)-padding)
+        bottom = min(height,max(s[1]+s[3] for s in glyphs)+padding)
+        if .30*height <= bottom-top <= .85*height:
+            return image[top:bottom], [0,int(top),width,int(bottom)]
+    return image,[0,0,width,height]
+
+
+def predict(engine, image, input_path=None):
     started = time.perf_counter()
-    return result_record(engine.read(image),time.perf_counter()-started)
+    band, bounds = recognition_band(image)
+    if input_path:
+        cv2.imwrite(str(input_path),band)
+    result = result_record(engine.read(band),time.perf_counter()-started)
+    result['recognition_band'] = bounds
+    result['input_shape'] = list(band.shape)
+    return result
 
 
 def process_job(engine, path, compare_low=False):
@@ -50,8 +73,11 @@ def process_job(engine, path, compare_low=False):
         image = cv2.imread(str(crop_path))
         if image is None:
             raise RuntimeError('MISSING_OCR_CROP:'+str(crop_path))
-        result = predict(engine,image)
+        input_path = crop_path.with_name(crop_path.stem+'.input.png')
+        result = predict(engine,image,input_path)
         frames.append(dict(result,crop_image=item['crop_image'],
+                           recognition_image=str(input_path),
+                           recognition_image_sha256=hashlib.sha256(input_path.read_bytes()).hexdigest(),
                            source_stamp=item['source_stamp'],box=item['box'],
                            image_sha256=hashlib.sha256(crop_path.read_bytes()).hexdigest()))
     votes = Counter(f['text'] for f in frames if f['valid'])
