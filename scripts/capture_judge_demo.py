@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 import time
+import subprocess
 from PIL import ImageGrab
 
 parser=argparse.ArgumentParser();parser.add_argument('run_dir',type=Path);args=parser.parse_args()
@@ -19,6 +20,9 @@ while time.monotonic()<deadline:
                   ('04_complete',state['route_status']=='COMPLETE_PARKED')]
         for name,ready in criteria:
             if ready and name not in saved:
-                time.sleep(.5);ImageGrab.grab(xdisplay=':1').save(screens/(name+'.png'));saved.add(name)
+                for title in ['Gazebo','RViz','智慧社区比赛识别终端','JudgeVision']:
+                    subprocess.run(['wmctrl','-a',title],env=dict(__import__('os').environ,DISPLAY=':1'),check=False)
+                time.sleep(.3);ImageGrab.grab(xdisplay=':1').save(screens/(name+'.png'));saved.add(name)
         if '04_complete' in saved:break
+        if state['route_status'].startswith('FAILED'):break
     time.sleep(.2)

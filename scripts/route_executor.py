@@ -672,7 +672,17 @@ class RouteExecutor:
         if not candidates:
             rospy.logwarn('photo waypoint %s has no matched RGB/YOLO/depth frame', name)
             return False
-        selected = max(candidates, key=lambda item: item[7])
+        # A transition frame can be sharp while one lamp is not detected.
+        # Select among frames meeting the existing photo/depth requirements
+        # before comparing sharpness; keep the best failed frame for diagnosis.
+        valid_candidates = []
+        for candidate in candidates:
+            record, annotation = self.contextual_plate_boxes(name,candidate[3],candidate[2].copy())
+            photo_valid, _ = self._validate_photo_detections(name,record,candidate[1])
+            depth_valid, _, _ = self.depth_target_metrics(name,record,candidate[4])
+            if photo_valid and depth_valid:
+                valid_candidates.append(candidate)
+        selected = max(valid_candidates or candidates, key=lambda item: item[7])
         (frame_key, raw_frame, annotated_frame, detection_record, depth_frame,
          depth_key, depth_delta, sharpness) = selected
         detection_record, annotated_frame = self.contextual_plate_boxes(

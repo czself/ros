@@ -54,7 +54,7 @@ if [[ "${JUDGE_DEMO:-false}" == true ]]; then
   docker exec "$CONTAINER" mkdir -p "$PHOTO_DIR/judge"
   docker exec "$CONTAINER" chown "$(id -u):$(id -g)" "$PHOTO_DIR/judge"
   docker cp "$ROOT_DIR/scripts/judge_monitor.py" "$CONTAINER:/root/judge_monitor.py"
-  DISPLAY=:1 gnome-terminal --window --title="智慧社区比赛识别终端" --zoom=.85 --geometry=210x25 \
+  DISPLAY=:1 gnome-terminal --window --title="智慧社区比赛识别终端" --zoom=.68 --geometry=225x26 \
     -- docker exec -it "$CONTAINER" bash -lc \
     "source /root/ros1_ws/devel/setup.bash; exec python3 -u /root/judge_monitor.py _photo_dir:='$PHOTO_DIR'"
   JUDGE_READY=false
@@ -66,6 +66,8 @@ if [[ "${JUDGE_DEMO:-false}" == true ]]; then
     sleep .5
   done
   [[ "$JUDGE_READY" == true ]] || { echo "比赛展示终端未收到配对图文，任务未发车" >&2; exit 1; }
+  docker exec -d -e DISPLAY=:1 "$CONTAINER" bash -lc \
+    'source /opt/ros/noetic/setup.bash; exec rosrun image_view image_view image:=/inspection/judge_display_image _window_name:=JudgeVision _autosize:=false __name:=judge_image_view >/root/judge_image_view.log 2>&1'
   "$ROOT_DIR/scripts/arrange_judge_windows.sh"
   python3 "$ROOT_DIR/scripts/capture_judge_demo.py" "$PHOTO_HOST_DIR" > "$PHOTO_HOST_DIR/judge/capture.log" 2>&1 &
 fi
@@ -84,6 +86,7 @@ TOPICS=(
   /inspection/plate_capture
   /inspection/plate_text /inspection/plate_image /inspection/plate_report
   /inspection/judge_yolo_image /inspection/judge_person_image /inspection/judge_ocr_image /inspection/judge_event
+  /inspection/judge_display_image
   /inspection/traffic_light_confidence /inspection/yolo/metrics
   /traffic_light/state /traffic_light/time_remaining /traffic_light/gate_status
   /traffic_light/braking /gazebo/link_states

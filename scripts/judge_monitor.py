@@ -42,6 +42,8 @@ class JudgeMonitor:
         self.images={k:OrderedDict() for k in self.records}
         self.publishers={k:rospy.Publisher('/inspection/judge_'+k+'_image',Image,queue_size=1,latch=True) for k in self.records}
         self.event_pub=rospy.Publisher('/inspection/judge_event',String,queue_size=10)
+        self.display_pub=rospy.Publisher('/inspection/judge_display_image',Image,queue_size=1,latch=True)
+        self.ocr_hold_until=0.0
         self.sequence=0;self.done=False;self.latest={};self.plates={};self.people={}
         self.status='准备中';self.goal='HOME';self.gate='等待门控信息';self.final_counts=None
         self.history=deque(maxlen=7)
@@ -112,6 +114,12 @@ class JudgeMonitor:
                         cv2.FONT_HERSHEY_SIMPLEX,.4*scale,(255,255,255),max(1,int(scale)),cv2.LINE_AA)
         output=self.bridge.cv2_to_imgmsg(annotated,'bgr8');output.header=message.header;output.header.seq=sequence
         self.publishers[kind].publish(output)
+        now=rospy.Time.now().to_sec()
+        if kind=='ocr':
+            self.ocr_hold_until=now+3.0
+            self.display_pub.publish(output)
+        elif kind=='person' or (kind=='yolo' and now>=self.ocr_hold_until):
+            self.display_pub.publish(output)
         event={'sequence':sequence,'kind':kind,'source_stamp':record['source_stamp'],'targets':targets,
                'terminal_lines':rows,'image_topic':'/inspection/judge_'+kind+'_image'}
         self.events.write(json.dumps(event,ensure_ascii=False)+'\n');self.event_pub.publish(String(data=json.dumps(event,ensure_ascii=False)))
