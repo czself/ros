@@ -1,0 +1,21 @@
+{
+  "scope": "Evaluation only; never read by OCR worker",
+  "material_sha256": "906daa6e3f7035a50b61ae7a1598cd9558548a4e62a1d55c8bdd3d38766c1a29",
+  "plates": {
+    "car_standee_plate_1": {
+      "expected": "学B5B5T3",
+      "texture": "random_plate_1.jpg",
+      "texture_sha256": "db267e0640590191680e0c1d4f3d94bde5b43444f4b4df78f0632bce9ce1cdca"
+    },
+    "car_standee_plate_2": {
+      "expected": "桂VK2T43",
+      "texture": "random_plate_2.jpg",
+      "texture_sha256": "fe56ff717d94fa5f50f6f53fe13cb17dfebabb3847453a43e4e24f7b75ee8749"
+    },
+    "car_standee_plate_3": {
+      "expected": "浙TF9E07",
+      "texture": "random_plate_3.jpg",
+      "texture_sha256": "6b3af398b58170547931c8706384d16171ce6458edff1a1d0840298f52ce3369"
+    }
+  }
+}

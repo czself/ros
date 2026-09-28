@@ -1,0 +1,690 @@
+{
+  "run_dir": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_2",
+  "route_status": "COMPLETE_PARKED",
+  "strict_acceptance": true,
+  "yolo_checkpoint_hash_pass": true,
+  "goal_pass": true,
+  "goal_pose_checks": [
+    {
+      "goal": "POINT_1",
+      "xy_error_m": 0.016536229580457508,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.03766865689495602,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_2",
+      "xy_error_m": 0.029087854800638916,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.03160625995844413,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_3",
+      "xy_error_m": 0.020573458192004814,
+      "xy_limit_m": 0.05,
+      "yaw_error_rad": 0.03260611752897491,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_4",
+      "xy_error_m": 0.022377572798070924,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.03420812632636148,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_5",
+      "xy_error_m": 0.01960416352799421,
+      "xy_limit_m": 0.025,
+      "yaw_error_rad": 0.023486415918055423,
+      "yaw_limit_rad": 0.025,
+      "pass": true
+    },
+    {
+      "goal": "POINT_6",
+      "xy_error_m": 0.025680649284409753,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.03391580882054024,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_7",
+      "xy_error_m": 0.0463393411943808,
+      "xy_limit_m": 0.05,
+      "yaw_error_rad": 0.03777407413090872,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_8",
+      "xy_error_m": 0.0157132326663928,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.02968010382068842,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_9",
+      "xy_error_m": 0.02455835155456237,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.03467624394489199,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_10",
+      "xy_error_m": 0.026608967380157927,
+      "xy_limit_m": 0.05,
+      "yaw_error_rad": 0.03255164444317038,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    }
+  ],
+  "photo_pass": true,
+  "parking_pass": true,
+  "speed_pass": true,
+  "translation_speed_threshold_mps": 0.15,
+  "maximum_mission_duration_s": 180.0,
+  "bag_safety_pass": true,
+  "person_report_pass": true,
+  "person_audit": {
+    "pass": true,
+    "checks": {
+      "reported_complete": true,
+      "truth_inventory_available": true,
+      "counts_match_truth": true,
+      "one_to_one_truth_coverage": true,
+      "all_classes_correct": true,
+      "all_positions_within_8cm": true,
+      "unique_person_ids": true,
+      "required_views_synchronized": true,
+      "foreign_crops_saved": true,
+      "terminal_report_saved": true,
+      "audio_report_hash_matches": true,
+      "audio_text_matches": true,
+      "audio_synthesized_and_played": true,
+      "audio_nonempty": true
+    },
+    "counts": {
+      "total": 18,
+      "resident": 16,
+      "stranger": 2
+    },
+    "street_counts": {
+      "A": {
+        "total": 9,
+        "resident": 8,
+        "stranger": 1
+      },
+      "B": {
+        "total": 9,
+        "resident": 8,
+        "stranger": 1
+      }
+    },
+    "truth_assignments": [
+      {
+        "person_id": "PERSON_001",
+        "truth_model": "person_standee_07",
+        "position_error_m": 0.03248465407909274,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_002",
+        "truth_model": "person_standee_06",
+        "position_error_m": 0.033593592759238455,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_003",
+        "truth_model": "person_standee_18",
+        "position_error_m": 0.035366161358469476,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_004",
+        "truth_model": "person_standee_02",
+        "position_error_m": 0.032794873338530026,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_005",
+        "truth_model": "person_standee_01",
+        "position_error_m": 0.03057297474338695,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_006",
+        "truth_model": "person_standee_05",
+        "position_error_m": 0.03360928312894591,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_007",
+        "truth_model": "person_standee_13",
+        "position_error_m": 0.02516735187431129,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_008",
+        "truth_model": "person_standee_11",
+        "position_error_m": 0.02476097538942141,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_009",
+        "truth_model": "person_standee_12",
+        "position_error_m": 0.026126044345631087,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_010",
+        "truth_model": "person_standee_08",
+        "position_error_m": 0.017082987417206544,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_011",
+        "truth_model": "person_standee_10",
+        "position_error_m": 0.01909348906476793,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_012",
+        "truth_model": "person_standee_17",
+        "position_error_m": 0.019855268827700934,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_013",
+        "truth_model": "person_standee_04",
+        "position_error_m": 0.02103400640141704,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_014",
+        "truth_model": "person_standee_03",
+        "position_error_m": 0.032557140919531866,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_015",
+        "truth_model": "person_standee_09",
+        "position_error_m": 0.03330188735376233,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_016",
+        "truth_model": "person_standee_16",
+        "position_error_m": 0.032361436756254226,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_017",
+        "truth_model": "person_standee_15",
+        "position_error_m": 0.0319514642926634,
+        "class_pass": true
+      },
+      {
+        "person_id": "PERSON_018",
+        "truth_model": "person_standee_14",
+        "position_error_m": 0.032526176225532846,
+        "class_pass": true
+      }
+    ],
+    "maximum_position_error_m": 0.035366161358469476,
+    "view_evidence": [
+      {
+        "waypoint": "POINT_2",
+        "source_pass": true,
+        "image_pass": true,
+        "synchronized_topic_pass": true
+      },
+      {
+        "waypoint": "POINT_3",
+        "source_pass": true,
+        "image_pass": true,
+        "synchronized_topic_pass": true
+      },
+      {
+        "waypoint": "POINT_4",
+        "source_pass": true,
+        "image_pass": true,
+        "synchronized_topic_pass": true
+      },
+      {
+        "waypoint": "POINT_5",
+        "source_pass": true,
+        "image_pass": true,
+        "synchronized_topic_pass": true
+      },
+      {
+        "waypoint": "POINT_6",
+        "source_pass": true,
+        "image_pass": true,
+        "synchronized_topic_pass": true
+      }
+    ],
+    "foreign_crop_evidence": [
+      {
+        "person_id": "PERSON_003",
+        "pass": true
+      },
+      {
+        "person_id": "PERSON_012",
+        "pass": true
+      }
+    ],
+    "audio_duration_s": 26.34829931972789,
+    "world_sha256": "92b2daa749a95e72ca9b45b5dfdde6d7dabcb2f2a5d3ef7785717a48781b5211",
+    "scope": "Static standees; playback exit status verifies delivery, not human audibility. Truth used only by audit."
+  },
+  "plate_ocr_pass": true,
+  "plate_audit": {
+    "pass": true,
+    "checks": {
+      "all_three_exact": true,
+      "three_distinct_scene_plates": true,
+      "all_consensus_valid": true,
+      "all_camera_evidence_valid": true,
+      "all_ros_messages_synchronized": true,
+      "terminal_saved": true
+    },
+    "plates": [
+      {
+        "waypoint": "POINT_8",
+        "text": "浙TF9E07",
+        "expected": "浙TF9E07",
+        "truth_model": "car_standee_plate_3",
+        "confidence": 0.9795867204666138,
+        "exact_match": true,
+        "valid_consensus": true,
+        "source_evidence_pass": true,
+        "job_sha_pass": true,
+        "source_stamp": {
+          "secs": 630,
+          "nsecs": 681000000,
+          "seconds": 630.681
+        },
+        "elapsed_ms": 232.382,
+        "topic_sync_pass": true
+      },
+      {
+        "waypoint": "POINT_9",
+        "text": "桂VK2T43",
+        "expected": "桂VK2T43",
+        "truth_model": "car_standee_plate_2",
+        "confidence": 0.9530623555183411,
+        "exact_match": true,
+        "valid_consensus": true,
+        "source_evidence_pass": true,
+        "job_sha_pass": true,
+        "source_stamp": {
+          "secs": 641,
+          "nsecs": 125000000,
+          "seconds": 641.125
+        },
+        "elapsed_ms": 403.471,
+        "topic_sync_pass": true
+      },
+      {
+        "waypoint": "POINT_10",
+        "text": "学B5B5T3",
+        "expected": "学B5B5T3",
+        "truth_model": "car_standee_plate_1",
+        "confidence": 0.9885123372077942,
+        "exact_match": true,
+        "valid_consensus": true,
+        "source_evidence_pass": true,
+        "job_sha_pass": true,
+        "source_stamp": {
+          "secs": 651,
+          "nsecs": 424000000,
+          "seconds": 651.424
+        },
+        "elapsed_ms": 366.1,
+        "topic_sync_pass": true
+      }
+    ],
+    "plate_exact_accuracy": 1.0,
+    "maximum_batch_elapsed_ms": 403.471,
+    "truth_scope": "Scene filenames are read only here for evaluation, never by the OCR worker."
+  },
+  "photos": {
+    "pass": true,
+    "points": [
+      {
+        "waypoint": "POINT_1",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 0,
+          "red_on": 1,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 1,
+          "green_on": 0,
+          "green_off": 1
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 178.0,
+        "latency_ms": 142.649,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_2",
+        "pass": true,
+        "detector_counts": {
+          "resident": 2,
+          "stranger": 1,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 1,
+          "yellow_on": 0,
+          "yellow_off": 1,
+          "green_on": 1,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 167.0,
+        "latency_ms": 150.191,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_3",
+        "pass": true,
+        "detector_counts": {
+          "resident": 3,
+          "stranger": 0,
+          "license_plate": 1,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 179.0,
+        "latency_ms": 140.611,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_4",
+        "pass": true,
+        "detector_counts": {
+          "resident": 3,
+          "stranger": 0,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 174.0,
+        "latency_ms": 158.36,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_5",
+        "pass": true,
+        "detector_counts": {
+          "resident": 3,
+          "stranger": 1,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 1,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 1,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 4,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 170.0,
+        "latency_ms": 137.896,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_6",
+        "pass": true,
+        "detector_counts": {
+          "resident": 5,
+          "stranger": 0,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 5,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 149.0,
+        "latency_ms": 132.902,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_7",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 0,
+          "red_on": 1,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 1,
+          "green_on": 0,
+          "green_off": 1
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 182.0,
+        "latency_ms": 148.533,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_8",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 1,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 1,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 214.0,
+        "latency_ms": 180.318,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_9",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 1,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 1,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 190.0,
+        "latency_ms": 163.872,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_10",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 1,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 1,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 315.0,
+        "latency_ms": 159.966,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      }
+    ]
+  },
+  "bag_audit": {
+    "bag_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_2/motion.bag",
+    "mission_duration_s": 148.202,
+    "sampled_pose_count": 10512,
+    "max_raw_pose_gap_s": 0.03899999999998727,
+    "max_translation_gap_m": 0.009794703829056917,
+    "max_yaw_gap_deg": 0.9998253733162155,
+    "ordinary_paint_contact_samples": 0,
+    "out_of_bounds_pose_samples": 0,
+    "first_ordinary_contact": null,
+    "conditional_marking_contact_samples": {
+      "start_line": 183,
+      "NORTHBOUND": 55,
+      "NORTHBOUND_zebra": 77,
+      "WESTBOUND": 57,
+      "WESTBOUND_zebra": 83
+    },
+    "unauthorized_conditional_contacts": [],
+    "gate_status_counts": {
+      "CLEAR": 2801,
+      "NORTHBOUND:APPROACH": 35,
+      "NORTHBOUND:WAIT_GREEN": 1,
+      "NORTHBOUND:GO_GREEN": 9,
+      "NORTHBOUND:CLEARING": 6,
+      "NORTHBOUND:CLEARED": 1,
+      "WESTBOUND:APPROACH": 36,
+      "WESTBOUND:WAIT_RED": 37,
+      "WESTBOUND:WAIT_GREEN": 8,
+      "WESTBOUND:GO_GREEN": 9,
+      "WESTBOUND:CLEARING": 6,
+      "WESTBOUND:CLEARED": 1
+    },
+    "white_line_gate_status_count": 0,
+    "green_authorization_transitions": [
+      {
+        "stamp": 537.358,
+        "gate_status": "NORTHBOUND:GO_GREEN",
+        "sim_state": "GREEN",
+        "green_remaining_s": 14.398,
+        "last_three_yolo_green_fresh_at_receive": [
+          true,
+          true,
+          true
+        ],
+        "latest_yolo_source_fresh_at_authorization": true,
+        "source_stamps_consecutive": true,
+        "pass": true
+      },
+      {
+        "stamp": 618.009,
+        "gate_status": "WESTBOUND:GO_GREEN",
+        "sim_state": "GREEN",
+        "green_remaining_s": 14.395,
+        "last_three_yolo_green_fresh_at_receive": [
+          true,
+          true,
+          true
+        ],
+        "latest_yolo_source_fresh_at_authorization": true,
+        "source_stamps_consecutive": true,
+        "pass": true
+      }
+    ],
+    "all_green_authorizations_valid": true,
+    "active_route_progress_m": 12.866600000000002,
+    "active_route_seconds_excluding_signal_waits": 125.57999999999981,
+    "active_route_speed_mps": 0.10245739767478915,
+    "yolo_live_metrics": {
+      "metric_windows": 147,
+      "active_metric_windows": 132,
+      "inactive_metric_windows_excluded": 15,
+      "mean_processed_hz": 5.068181818181818,
+      "fraction_windows_at_least_5_hz": 1.0,
+      "p95_of_window_p95_latency_ms": 208.62479999999982,
+      "max_of_window_max_frame_age_ms": 315.0,
+      "maximum_detection_source_gap_s": 0.37400000000002365,
+      "checkpoint_and_class_map_valid": true,
+      "pass": true
+    },
+    "forward_command_seconds_excluding_signal_waits": 73.36799999999994,
+    "translation_route_speed_mps": 0.17537073383491458,
+    "rotation_command_seconds_excluding_signal_waits": 46.19000000000017,
+    "maximum_forward_command_mps": 0.3499999960518141,
+    "maximum_signal_approach_command_mps": 0.12
+  },
+  "acceptance_pass": true
+}
