@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_10",
+  "text": "赣N5B5T3",
+  "valid": true,
+  "confidence": 0.9798204898834229,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "赣N·5B5T3",
+      "text": "赣N5B5T3",
+      "display": "赣N·5B5T3",
+      "confidence": 0.9798260927200317,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 68.716,
+      "recognition_band": [
+        0,
+        34,
+        417,
+        117
+      ],
+      "input_shape": [
+        83,
+        417,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_10_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_10_frame_0.crop.input.png",
+      "recognition_image_sha256": "2d2d002fed1e5b4e5728cb6321dfb6fcc8f217f98acd22805b3879d5b9bea7ef",
+      "source_stamp": {
+        "secs": 654,
+        "nsecs": 134000000,
+        "seconds": 654.134
+      },
+      "box": [
+        801,
+        711,
+        1218,
+        882
+      ],
+      "image_sha256": "a9dd9a8e8bbfb4b1fa1fefbf11f8f5109e061a93248633a7d3192e045602e23f"
+    },
+    {
+      "raw": "赣N·5B5T3",
+      "text": "赣N5B5T3",
+      "display": "赣N·5B5T3",
+      "confidence": 0.9798204898834229,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 67.536,
+      "recognition_band": [
+        0,
+        34,
+        417,
+        117
+      ],
+      "input_shape": [
+        83,
+        417,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_10_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_10_frame_1.crop.input.png",
+      "recognition_image_sha256": "6a831acabdfa0ff51d2565618cdea1a5bcdc41e54a2bd74728327b9ea91afaa7",
+      "source_stamp": {
+        "secs": 654,
+        "nsecs": 346000000,
+        "seconds": 654.346
+      },
+      "box": [
+        801,
+        711,
+        1218,
+        882
+      ],
+      "image_sha256": "708debe348b32292d653d235aed2f891a4a4eb8f4fee2b2b963db0fa9bae8ca6"
+    },
+    {
+      "raw": "赣N·5B5T3",
+      "text": "赣N5B5T3",
+      "display": "赣N·5B5T3",
+      "confidence": 0.9798204898834229,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 67.4,
+      "recognition_band": [
+        0,
+        34,
+        417,
+        117
+      ],
+      "input_shape": [
+        83,
+        417,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_10_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_10_frame_2.crop.input.png",
+      "recognition_image_sha256": "6a831acabdfa0ff51d2565618cdea1a5bcdc41e54a2bd74728327b9ea91afaa7",
+      "source_stamp": {
+        "secs": 654,
+        "nsecs": 534000000,
+        "seconds": 654.534
+      },
+      "box": [
+        801,
+        711,
+        1218,
+        882
+      ],
+      "image_sha256": "708debe348b32292d653d235aed2f891a4a4eb8f4fee2b2b963db0fa9bae8ca6"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "5f85d6b7f23362b486dc0fcddedc3973641ecd434909226992c607ff53ce69bd",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 208.228,
+  "low_resolution_comparison": {
+    "raw": "赣N·5B5T3",
+    "text": "赣N5B5T3",
+    "display": "赣N·5B5T3",
+    "confidence": 0.9914503693580627,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 63.061,
+    "recognition_band": [
+      0,
+      11,
+      139,
+      39
+    ],
+    "input_shape": [
+      28,
+      139,
+      3
+    ],
+    "box": [
+      267,
+      237,
+      406,
+      294
+    ]
+  },
+  "source_stamp": {
+    "secs": 654,
+    "nsecs": 134000000,
+    "seconds": 654.134
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_10.annotated.png",
+  "published_stamp": 655.212
+}

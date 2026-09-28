@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_9",
+  "text": "川NH0U34",
+  "valid": true,
+  "confidence": 0.9764646291732788,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "川N·H0U34",
+      "text": "川NH0U34",
+      "display": "川N·H0U34",
+      "confidence": 0.9764660596847534,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 67.422,
+      "recognition_band": [
+        0,
+        35,
+        390,
+        115
+      ],
+      "input_shape": [
+        80,
+        390,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "64138e953d3da9e941551a1f51e50824d7d982c6ab40aa506eab82dfcdd0df0d",
+      "source_stamp": {
+        "secs": 644,
+        "nsecs": 381000000,
+        "seconds": 644.381
+      },
+      "box": [
+        1053,
+        708,
+        1443,
+        870
+      ],
+      "image_sha256": "7b3026fb85669f39f646aaf86c68f2ed6d34bd9b26e34c0877425311c0e45327"
+    },
+    {
+      "raw": "川N·H0U34",
+      "text": "川NH0U34",
+      "display": "川N·H0U34",
+      "confidence": 0.9768292903900146,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 73.177,
+      "recognition_band": [
+        0,
+        35,
+        390,
+        115
+      ],
+      "input_shape": [
+        80,
+        390,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "503928ddb3a704bb93772785e095aa5e53b88c00773e6cd07c7147f2d439d314",
+      "source_stamp": {
+        "secs": 644,
+        "nsecs": 578000000,
+        "seconds": 644.578
+      },
+      "box": [
+        1053,
+        708,
+        1443,
+        870
+      ],
+      "image_sha256": "2e7ac68e5bbc4eaffde014d98ff6074624241781698a6d4b7f542620c9ac7c79"
+    },
+    {
+      "raw": "川N·H0U34",
+      "text": "川NH0U34",
+      "display": "川N·H0U34",
+      "confidence": 0.9764646291732788,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 62.608,
+      "recognition_band": [
+        0,
+        35,
+        390,
+        115
+      ],
+      "input_shape": [
+        80,
+        390,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_9_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_9_frame_2.crop.input.png",
+      "recognition_image_sha256": "f0bb4100a3c3890f80690ebaa05ee5f3ffbb4744919cf0b3132071e8faa5df3d",
+      "source_stamp": {
+        "secs": 644,
+        "nsecs": 179000000,
+        "seconds": 644.179
+      },
+      "box": [
+        1053,
+        708,
+        1443,
+        870
+      ],
+      "image_sha256": "17cf22bca9719699ad23a9760b704d1160d1c4d287b185a78acc15c9c2aff71f"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "c07d91b04c59be75bdf7b5d5496e97edcb372fdc926e3e792eefbbe0b1607a07",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 208.515,
+  "low_resolution_comparison": {
+    "raw": "川N·H0U34",
+    "text": "川NH0U34",
+    "display": "川N·H0U34",
+    "confidence": 0.9395231008529663,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 60.473,
+    "recognition_band": [
+      0,
+      11,
+      130,
+      39
+    ],
+    "input_shape": [
+      28,
+      130,
+      3
+    ],
+    "box": [
+      351,
+      236,
+      481,
+      290
+    ]
+  },
+  "source_stamp": {
+    "secs": 644,
+    "nsecs": 381000000,
+    "seconds": 644.381
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/ocr/POINT_9.annotated.png",
+  "published_stamp": 645.226
+}
