@@ -30,6 +30,7 @@ from std_msgs.msg import String
 from tf.transformations import quaternion_from_euler
 from person_reporting import (PersonCounter, annotate_people, calibrated_intrinsics,
                               collect_observations, save_report)
+from hd_plate_capture import HDPlateCapture
 
 
 CONTRACT_PATH = '/root/navigation/inner_route.yaml'
@@ -228,6 +229,8 @@ class RouteExecutor:
         self.photo_waypoints = set(filter(None, (name.strip() for name in selected.split(','))))
         self.bridge = CvBridge()
         self.tf_listener = tf.TransformListener()
+        self.hd_capture = (HDPlateCapture(self.bridge,self.tf_listener)
+                           if self.capture_photos and rospy.get_param('~capture_hd_plates',True) else None)
         self.latest_odom = None
         rospy.Subscriber('/odom', Odometry,
                          lambda message: setattr(self, 'latest_odom', message), queue_size=1)
@@ -521,6 +524,16 @@ class RouteExecutor:
         return True, 'PASS', measured
 
     def capture_photo(self, name, x, y, yaw):
+        use_hd = self.hd_capture is not None and name in ('POINT_8','POINT_9','POINT_10')
+        if use_hd:
+            self.hd_capture.start()
+        try:
+            return self._capture_photo(name,x,y,yaw)
+        finally:
+            if use_hd:
+                self.hd_capture.stop()
+
+    def _capture_photo(self, name, x, y, yaw):
         if name.startswith('_TRANSITION_'):
             return True
         if not self.capture_photos or (self.photo_waypoints and name not in self.photo_waypoints):
@@ -786,6 +799,8 @@ class RouteExecutor:
         except (tf.Exception, tf.LookupException, tf.ConnectivityException) as error:
             rospy.logwarn('camera pose unavailable at %s: %s', name, error)
         np.save(stem + '.depth.npy', depth_frame)
+        if self.hd_capture is not None and name in ('POINT_8','POINT_9','POINT_10'):
+            evidence['hd_plate'] = self.hd_capture.save(name,detection_record,self.photo_dir,capture_start)
         if self.person_counter is not None:
             camera_calibration = (dict(K=list(self.depth_info.K)) if self.depth_info is not None
                                   else self.person_config['camera'])
@@ -1371,6 +1386,7 @@ class RouteExecutor:
                       'person_boxes_by_view': getattr(self, 'person_boxes_by_view', None),
                       'outsider_boxes_by_view': getattr(self, 'outsider_boxes_by_view', None),
                       'person_reporting_enabled': self.person_counter is not None,
+                      'hd_plate_capture_enabled': self.hd_capture is not None,
                       'person_report': person_report,
                       'photo_points': [name for name, *_ in self.route],
                       'completed_photos': sorted(os.listdir(self.photo_dir))}

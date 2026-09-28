@@ -22,6 +22,7 @@ ENFORCE_TRAFFIC=true \
 
 docker cp "$ROOT_DIR/scripts/route_executor.py" "$CONTAINER:/root/route_executor.py"
 docker cp "$ROOT_DIR/scripts/person_reporting.py" "$CONTAINER:/root/person_reporting.py"
+docker cp "$ROOT_DIR/scripts/hd_plate_capture.py" "$CONTAINER:/root/hd_plate_capture.py"
 docker exec "$CONTAINER" mkdir -p "$PHOTO_DIR"
 
 TOPICS=(
@@ -35,6 +36,7 @@ TOPICS=(
   /route/status /inspection/detections /inspection/traffic_light
   /route/progress
   /inspection/person_report /inspection/person_image
+  /inspection/plate_capture
   /inspection/traffic_light_confidence /inspection/yolo/metrics
   /traffic_light/state /traffic_light/time_remaining /traffic_light/gate_status
   /traffic_light/braking /gazebo/link_states
