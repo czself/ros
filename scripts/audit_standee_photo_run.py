@@ -662,6 +662,13 @@ def main():
                   bag_metrics['mission_duration_s'] <= args.max_mission_duration and
                   bag_metrics['maximum_forward_command_mps'] <= 0.35+1e-6 and
                   bag_metrics['maximum_signal_approach_command_mps'] <= 0.12+1e-6)
+    person_audit = None
+    if summary.get('person_reporting_enabled'):
+        from audit_person_report import audit
+        person_audit = audit(args.run_dir)
+        (args.run_dir/'person_audit.json').write_text(
+            json.dumps(person_audit, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    person_pass = person_audit is None or person_audit['pass']
     report = {
         'run_dir': str(args.run_dir),
         'route_status': summary.get('route_status'),
@@ -675,10 +682,12 @@ def main():
         'translation_speed_threshold_mps': args.min_translation_speed,
         'maximum_mission_duration_s': args.max_mission_duration,
         'bag_safety_pass': bag_pass,
+        'person_report_pass': person_pass,
+        'person_audit': person_audit,
         'photos': photos,
         'bag_audit': bag_metrics,
         'acceptance_pass': bool(summary.get('strict_acceptance') and yolo_hash_pass and goal_pass and
-                                photos['pass'] and parking_pass and speed_pass and bag_pass),
+                                photos['pass'] and parking_pass and speed_pass and bag_pass and person_pass),
     }
     data = json.dumps(report, ensure_ascii=False, indent=2)
     if args.output:
