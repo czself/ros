@@ -114,7 +114,7 @@ def main():
                     continue
                 process_job(engine,path,args.compare_low)
                 seen.add(path.name)
-        if not args.watch:
+        if not args.watch or len(seen) >= 3:
             break
         time.sleep(.05)
     return 0
