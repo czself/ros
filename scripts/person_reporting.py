@@ -6,9 +6,25 @@ import math
 from pathlib import Path
 
 import numpy as np
+import cv2
 
 
 PERSON_CLASSES = ('resident', 'stranger')
+
+
+def appearance_descriptor(image, box):
+    x1, y1, x2, y2 = map(int, box)
+    height, width = image.shape[:2]
+    crop = image[max(0,y1):min(height,y2), max(0,x1):min(width,x2)]
+    if crop.size == 0:
+        raise ValueError('EMPTY_PERSON_APPEARANCE')
+    pixels = cv2.resize(crop, (16,32), interpolation=cv2.INTER_AREA).astype(float)
+    pixels -= pixels.mean(axis=(0,1), keepdims=True)
+    feature = pixels.ravel()
+    length = float(np.linalg.norm(feature))
+    if length < 1e-6:
+        raise ValueError('UNINFORMATIVE_PERSON_APPEARANCE')
+    return (feature/length).tolist()
 
 
 def rotation_matrix(quaternion):
@@ -94,6 +110,7 @@ def collect_observations(record, raw_image, depth, camera_pose, intrinsics,
                 'box': list(item['box']), 'world_xy': position, 'street': streets[0],
                 'measurement': measurement, 'waypoint': waypoint,
                 'source_stamp': record['source_stamp'], 'image_path': image_path,
+                'appearance': appearance_descriptor(raw_image, item['box']),
             })
         except (ValueError, KeyError) as error:
             errors.append({'waypoint': waypoint, 'box': item.get('box'),
@@ -129,8 +146,16 @@ class PersonCounter:
             for ti, track in enumerate(self.tracks):
                 distance = float(np.linalg.norm(np.array(observation['world_xy'])-
                                                 np.array(track['world_xy'])))
-                if (observation['street'] == track['street'] and
-                        distance <= self.config['association_radius_m']):
+                similarity = None
+                if observation.get('appearance') is not None and track.get('appearance') is not None:
+                    similarity = float(np.dot(observation['appearance'], track['appearance']))
+                spatial_match = (distance <= self.config['association_radius_m'] and
+                    (similarity is None or similarity >=
+                     self.config.get('spatial_match_min_appearance_cosine',.90)))
+                appearance_match = (similarity is not None and
+                    distance <= self.config.get('appearance_radius_m',.12) and
+                    similarity >= self.config.get('minimum_appearance_cosine',.94))
+                if observation['street'] == track['street'] and (spatial_match or appearance_match):
                     candidates.append((distance, oi, ti))
         matches, used_tracks = {}, set()
         for _, oi, ti in sorted(candidates):
@@ -144,6 +169,7 @@ class PersonCounter:
             else:
                 track = {'person_id': 'PERSON_%03d' % (len(self.tracks)+1),
                          'world_xy': list(observation['world_xy']),
+                         'appearance': observation.get('appearance'),
                          'street': observation['street'], 'observations': []}
                 self.tracks.append(track)
             track['observations'].append(observation)
@@ -165,7 +191,12 @@ class PersonCounter:
             counts[category] += 1
             streets[track['street']]['total'] += 1
             streets[track['street']][category] += 1
-            people.append({**track, 'class': category,
+            public_track = {key: value for key,value in track.items()
+                            if key not in ('appearance','observations')}
+            public_track['observations'] = [
+                {key: value for key,value in o.items() if key != 'appearance'}
+                for o in track['observations']]
+            people.append({**public_track, 'class': category,
                            'confidence': max(o['confidence'] for o in track['observations']),
                            'class_votes': votes})
         expected = self.config['expected_inventory']

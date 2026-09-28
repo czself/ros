@@ -51,6 +51,17 @@ class PersonReportingTest(unittest.TestCase):
         self.assertFalse(counter.report()['complete'])
         self.assertIn('CLASS_CONFLICT',counter.report()['issues'][0]['reason'])
 
+    def test_appearance_handles_localization_drift_without_merging_neighbors(self):
+        counter=PersonCounter(self.config)
+        a={**self.observation(.9,.8),'appearance':[1.,0.]}
+        b={**self.observation(.96,.8),'appearance':[0.,1.]}
+        counter.add_view('POINT_2',{'secs':1,'nsecs':0},[a,b])
+        drifted=[{**a,'world_xy':[.96,.8]}, {**b,'world_xy':[1.02,.8]}]
+        counter.add_view('POINT_3',{'secs':2,'nsecs':0},drifted)
+        self.assertEqual(counter.report()['counts']['total'],2)
+        self.assertEqual([len(t['observations']) for t in counter.tracks],[2,2])
+        self.assertNotIn('appearance',counter.report()['people'][0])
+
     def test_inventory_is_validation_not_a_source_of_counts(self):
         counter=PersonCounter(self.config)
         report=counter.report()

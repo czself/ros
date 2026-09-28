@@ -7,6 +7,9 @@
   "camera": {"width": 640, "height": 480, "horizontal_fov_rad": 1.047},
   "minimum_detection_confidence": 0.25,
   "association_radius_m": 0.035,
+  "appearance_radius_m": 0.12,
+  "minimum_appearance_cosine": 0.94,
+  "spatial_match_min_appearance_cosine": 0.90,
   "required_views": ["POINT_2", "POINT_3", "POINT_4", "POINT_5", "POINT_6"],
   "expected_inventory": {
     "total": 18,
