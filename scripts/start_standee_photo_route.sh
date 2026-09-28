@@ -46,6 +46,8 @@ fi
 docker cp "$CONTAINER:/root/car_standees/materials/scripts/car_standees.material" /tmp/ocr_scene_materials_"$RUN_ID".txt
 docker cp /tmp/ocr_scene_materials_"$RUN_ID".txt "$CONTAINER:$PHOTO_DIR/ocr_scene_materials.txt"
 rm -f /tmp/ocr_scene_materials_"$RUN_ID".txt
+docker cp "$ROOT_DIR/scripts/record_plate_scene_truth.py" "$CONTAINER:/root/record_plate_scene_truth.py"
+docker exec "$CONTAINER" python3 /root/record_plate_scene_truth.py --output "$PHOTO_DIR/audit_inputs/plate_scene_truth.json"
 
 TOPICS=(
   /clock /tf /tf_static /odom /my_car/wheel_odom /my_car/cmd_vel_nav /my_car/cmd_vel

@@ -13,10 +13,12 @@ import rosbag
 
 def audit(run_dir):
     materials = (run_dir/'ocr_scene_materials.txt').read_text()
-    truth = {}
+    recorded_truth = json.loads((run_dir/'audit_inputs/plate_scene_truth.json').read_text())
+    truth = {name:value['expected'] for name,value in recorded_truth['plates'].items()}
     for name,block in re.findall(r'material\s+CarStandee/Plate(\d+)(.*?)(?=\nmaterial|\Z)',materials,re.S):
         texture = re.search(r'\btexture\s+(\S+)',block)
-        truth['car_standee_plate_'+name] = Path(texture.group(1)).stem
+        if recorded_truth['plates']['car_standee_plate_'+name]['texture'] != texture.group(1):
+            raise ValueError('Scene material snapshot mismatch')
     world = ET.parse('/root/competition_classic_adjusted_20260924.world')
     positions = {m.get('name'):[float(v) for v in m.findtext('pose').split()[:2]]
                  for m in world.getroot().findall('./world/model') if m.get('name') in truth}
