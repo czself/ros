@@ -2,7 +2,7 @@
   "task_id": "task008",
   "target_runs": 3,
   "streak": 1,
-  "status": "acceptance_run_1_passed",
+  "status": "acceptance_run_in_progress",
   "frozen_manifest": "docs/agent_context/tasks/task008/frozen_manifest_20260927.json",
   "diagnostic_runs": [
     {
@@ -290,5 +290,6 @@
     "学C88K55.jpg",
     "赣N5B5T3.jpg",
     "冀K0BB17.jpg"
-  ]
+  ],
+  "current_run_id": "20260928_135919"
 }
