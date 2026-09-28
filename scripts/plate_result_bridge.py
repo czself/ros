@@ -17,6 +17,7 @@ def main():
     rospy.init_node('plate_result_bridge')
     directory = Path(rospy.get_param('~photo_dir'))/'ocr'
     font = ImageFont.truetype(rospy.get_param('~font','/root/ocr_font.ttf'),36)
+    latin_font = ImageFont.truetype(rospy.get_param('~latin_font','/root/ocr_latin_font.ttf'),36)
     bridge = CvBridge()
     text_pub = rospy.Publisher('/inspection/plate_text',PlateText,queue_size=3,latch=True)
     report_pub = rospy.Publisher('/inspection/plate_report',String,queue_size=3,latch=True)
@@ -53,7 +54,13 @@ def main():
             canvas = PILImage.fromarray(cv2.cvtColor(image,cv2.COLOR_BGR2RGB))
             label = '车牌：%s  %.3f' % (message.display or '未识别',message.confidence)
             draw = ImageDraw.Draw(canvas)
-            draw.text((x1,max(0,y1-52)),label,font=font,fill=(0,255,0) if message.valid else (255,165,0))
+            cursor = x1
+            baseline = max(0,y1-52)+max(font.getmetrics()[0],latin_font.getmetrics()[0])
+            for character in label:
+                face = latin_font if ord(character)<0x2000 else font
+                draw.text((cursor,baseline-face.getmetrics()[0]),character,font=face,
+                          fill=(0,255,0) if message.valid else (255,165,0))
+                cursor += draw.textsize(character,font=face)[0]
             annotated = cv2.cvtColor(np.asarray(canvas),cv2.COLOR_RGB2BGR)
             target = directory/(result['waypoint']+'.annotated.png')
             cv2.imwrite(str(target),annotated)
