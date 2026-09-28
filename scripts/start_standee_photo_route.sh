@@ -42,6 +42,7 @@ if [[ "$PADDLE_OCR" == true ]]; then
   docker exec "$CONTAINER" chown "$(id -u):$(id -g)" "$PHOTO_DIR/ocr"
   docker cp "$ROOT_DIR/scripts/plate_result_bridge.py" "$CONTAINER:/root/plate_result_bridge.py"
   docker cp "$ROOT_DIR/assets/ocr_font.ttf" "$CONTAINER:/root/ocr_font.ttf"
+  docker cp "$ROOT_DIR/assets/ocr_latin_font.ttf" "$CONTAINER:/root/ocr_latin_font.ttf"
 fi
 docker cp "$CONTAINER:/root/car_standees/materials/scripts/car_standees.material" /tmp/ocr_scene_materials_"$RUN_ID".txt
 docker cp /tmp/ocr_scene_materials_"$RUN_ID".txt "$CONTAINER:$PHOTO_DIR/ocr_scene_materials.txt"
