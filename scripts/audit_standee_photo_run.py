@@ -673,6 +673,16 @@ def main():
         (args.run_dir/'person_audit.json').write_text(
             json.dumps(person_audit, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     person_pass = person_audit is None or person_audit['pass']
+    plate_audit = None
+    if summary.get('ocr_enabled'):
+        from audit_plate_ocr import audit as audit_plates
+        try:
+            plate_audit = audit_plates(args.run_dir)
+        except (OSError,ValueError,KeyError) as error:
+            plate_audit = {'pass':False,'error':str(error)}
+        (args.run_dir/'plate_audit.json').write_text(
+            json.dumps(plate_audit,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    plate_pass = plate_audit is None or plate_audit['pass']
     report = {
         'run_dir': str(args.run_dir),
         'route_status': summary.get('route_status'),
@@ -688,10 +698,12 @@ def main():
         'bag_safety_pass': bag_pass,
         'person_report_pass': person_pass,
         'person_audit': person_audit,
+        'plate_ocr_pass': plate_pass,
+        'plate_audit': plate_audit,
         'photos': photos,
         'bag_audit': bag_metrics,
         'acceptance_pass': bool(summary.get('strict_acceptance') and yolo_hash_pass and goal_pass and
-                                photos['pass'] and parking_pass and speed_pass and bag_pass and person_pass),
+                                photos['pass'] and parking_pass and speed_pass and bag_pass and person_pass and plate_pass),
     }
     data = json.dumps(report, ensure_ascii=False, indent=2)
     if args.output:

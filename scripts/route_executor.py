@@ -231,6 +231,8 @@ class RouteExecutor:
         self.tf_listener = tf.TransformListener()
         self.hd_capture = (HDPlateCapture(self.bridge,self.tf_listener)
                            if self.capture_photos and rospy.get_param('~capture_hd_plates',True) else None)
+        self.ocr_enabled = bool(rospy.get_param('~ocr_enabled',False))
+        self.ocr_results = []
         self.latest_odom = None
         rospy.Subscriber('/odom', Odometry,
                          lambda message: setattr(self, 'latest_odom', message), queue_size=1)
@@ -1259,6 +1261,25 @@ class RouteExecutor:
             rospy.logerr('person report failed: %s',self.person_counter.report()['checks'])
             self.status_pub.publish('FAILED:PERSON_REPORT')
             return False
+        if parked and self.ocr_enabled:
+            deadline = time.monotonic()+5.0
+            while time.monotonic()<deadline:
+                results = []
+                for name in ('POINT_8','POINT_9','POINT_10'):
+                    path = os.path.join(self.photo_dir,'ocr',name+'.published.json')
+                    if os.path.isfile(path):
+                        with open(path,encoding='utf-8') as stream:
+                            results.append(json.load(stream))
+                self.ocr_results = results
+                if len(results)==3:
+                    break
+                self.cmd_pub.publish(Twist())
+                time.sleep(.05)
+            if (len(self.ocr_results)!=3 or not all(
+                    r['valid'] and r['matching_frames']>=2 and r['confidence']>=.85
+                    for r in self.ocr_results)):
+                self.status_pub.publish('FAILED:OCR_INCOMPLETE_OR_UNCONFIRMED')
+                return False
         return parked
 
     def return_home(self, last_photo_position=None):
@@ -1387,6 +1408,8 @@ class RouteExecutor:
                       'outsider_boxes_by_view': getattr(self, 'outsider_boxes_by_view', None),
                       'person_reporting_enabled': self.person_counter is not None,
                       'hd_plate_capture_enabled': self.hd_capture is not None,
+                      'ocr_enabled': self.ocr_enabled,
+                      'ocr_results': self.ocr_results,
                       'person_report': person_report,
                       'photo_points': [name for name, *_ in self.route],
                       'completed_photos': sorted(os.listdir(self.photo_dir))}
