@@ -9,6 +9,8 @@
     <remap from="cmd_vel" to="/my_car/cmd_vel_nav" />
     <remap from="move_base_simple/goal" to="/sanitized_goal" />
     <rosparam file="/root/navigation/move_base.yaml" command="load" />
+    <rosparam file="/root/navigation/inner_route.yaml" command="load"
+              ns="forward_path_follower/route_contract" />
     <rosparam file="/root/navigation/common_costmap.yaml" command="load" ns="global_costmap" />
     <rosparam file="/root/navigation/global_costmap.yaml" command="load" />
     <rosparam file="/root/navigation/common_costmap.yaml" command="load" ns="local_costmap" />

@@ -1,0 +1,7 @@
+<library path="lib/libforward_path_follower">
+  <class name="forward_path_follower/ForwardPathFollower"
+         type="forward_path_follower::ForwardPathFollower"
+         base_class_type="nav_core::BaseLocalPlanner">
+    <description>Tracks Navfn plans forward and rejects swept footprints that hit costmap obstacles.</description>
+  </class>
+</library>

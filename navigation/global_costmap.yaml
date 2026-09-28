@@ -13,6 +13,7 @@ global_costmap:
   rolling_window: false
   track_unknown_space: true
   static_layer:
+    map_topic: /map
     subscribe_to_updates: true
   inflation_layer:
     # Path layer: small enough that the ~0.55-0.7 m gates stay on the Navfn

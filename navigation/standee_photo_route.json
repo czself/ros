@@ -4,6 +4,39 @@
   "source_manifest": "/home/sz/ros1_ws/photo_stops/standee_capture_20260924/points.json",
   "route_adjustments": [
     {
+      "point": "POINT_5",
+      "reason": "The 2026-09-27 capture at y=0.6276 still clipped the rightmost person and showed only three of four. Move 10 cm toward increasing world y to shift the group left in the camera frame; preserve the saved heading and remain on the same lane corridor.",
+      "delta_m": {
+        "x": 0,
+        "y": 0.05
+      },
+      "source_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260927_162200/POINT_5/POINT_5_20260927_080656.png"
+    },
+    {
+      "point": "POINT_5",
+      "reason": "The 2026-09-27 frame at y=0.7276 still clipped the fourth person at the right edge. Turn 0.20 rad toward that person without moving the chassis from the safe lane position.",
+      "delta_yaw_rad": -0.2,
+      "source_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260927_181200/POINT_5/POINT_5_20260927_101932.png"
+    },
+    {
+      "point": "POINT_7",
+      "reason": "Round 19 clipped the top of the signal. Move 12 cm backward along the camera viewing axis and 2 cm toward the ordered route corridor, preserving the saved heading.",
+      "delta_m": {
+        "x": 0.12,
+        "y": -0.02
+      },
+      "source_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260926_round19_alpha02_p5_position_first_01/POINT_7/POINT_7_20260926_131955.png"
+    },
+    {
+      "point": "POINT_3",
+      "reason": "The 2026-09-27 capture placed all three person boxes against the lower frame edge. Move 9 cm backward along the camera view axis to include their feet; keep the saved heading and stay near the ordered-route centerline.",
+      "delta_m": {
+        "x": -0.0073,
+        "y": 0.0897
+      },
+      "source_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260927_152600/POINT_3/POINT_3_20260927_073406.png"
+    },
+    {
       "point": "POINT_10",
       "reason": "Southward 4 cm adjustment gives the full vehicle footprint an additional 4 cm clearance from the occupied white-line cells; camera heading unchanged.",
       "delta_m": {
@@ -20,14 +53,40 @@
       }
     },
     {
+      "point": "POINT_8",
+      "reason": "The 2026-09-27 test of a +0.10 rad yaw change moved the left plate farther out of frame. Keep the base on the route centerline and set a net -0.10 rad yaw correction from the recorded pose to bring it inward.",
+      "delta_yaw_rad": -0.1,
+      "source_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260927_169000/POINT_8/POINT_8_20260927_090258.png"
+    },
+    {
       "point": "POINT_6",
-      "reason": "Use the manually recorded, centered person-group pose.",
-      "source_image": "/root/ros1_ws/photo_stops/standee_capture_20260924/POINT_6_20260925_134318.png"
+      "reason": "The 2026-09-27 capture put the fifth person's shoes against the lower frame edge. Move 6 cm backward along the camera view axis to add foot margin and align the pose with the same lane centerline; preserve the saved heading.",
+      "delta_m": {
+        "x": -0.0042,
+        "y": -0.0599
+      },
+      "source_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260927_163800/POINT_6/POINT_6_20260927_081436.png",
+      "source_reference": "/home/sz/ros1_ws/photo_stops/standee_capture_20260924/POINT_6_20260925_134318.png"
     },
     {
       "point": "POINT_10",
       "reason": "Use the manually recorded, directly-facing car pose.",
       "source_image": "/root/ros1_ws/photo_stops/standee_capture_20260924/POINT_10_20260925_134431.png"
+    },
+    {
+      "point": "POINT_10",
+      "reason": "The 2026-09-27 frame placed the plate near the right side and the checkpoint did not label it as a plate. Rotate 0.1483 rad toward the measured plate center without changing the base position or lane clearance.",
+      "delta_yaw_rad": -0.1483,
+      "source_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260927_167200/POINT_10/POINT_10_20260927_085109.raw.png"
+    },
+    {
+      "point": "POINT_1",
+      "reason": "The 2026-09-27 raw acceptance capture touched the top image edge: green_off box [421,0,524,103]. Move 5 cm backward along the saved camera view axis to add top-frame clearance; preserve heading and the same ordered corridor.",
+      "delta_m": {
+        "x": 0.0023,
+        "y": -0.0499
+      },
+      "source_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260927_221400/POINT_1/POINT_1_20260927_141445.raw.png"
     }
   ],
   "points": [
@@ -36,15 +95,15 @@
       "sequence": 1,
       "target_hint": "traffic_light_standee",
       "base_pose": {
-        "x": 1.7062,
-        "y": -0.5707,
+        "x": 1.7085,
+        "y": -0.6206,
         "yaw": 1.6168,
         "frame": "base_footprint"
       },
       "camera_pose": {
         "frame": "camera_optical_frame",
-        "x": 1.7052,
-        "y": -0.5497,
+        "x": 1.7075,
+        "y": -0.5996,
         "z": 0.1645,
         "yaw": 0.046,
         "quaternion": [
@@ -94,15 +153,15 @@
       "sequence": 3,
       "target_hint": "person_standees",
       "base_pose": {
-        "x": 1.1002,
-        "y": 1.6213,
+        "x": 1.0929,
+        "y": 1.711,
         "yaw": -1.4895,
         "frame": "base_footprint"
       },
       "camera_pose": {
         "frame": "camera_optical_frame",
-        "x": 1.1019,
-        "y": 1.6003,
+        "x": 1.0946,
+        "y": 1.69,
         "z": 0.1645,
         "yaw": -3.0603,
         "quaternion": [
@@ -153,25 +212,25 @@
       "target_hint": "person_standees",
       "base_pose": {
         "x": 0.4804,
-        "y": 0.6776,
-        "yaw": -3.1381,
+        "y": 0.7276,
+        "yaw": -3.3381,
         "frame": "base_footprint"
       },
       "camera_pose": {
         "frame": "camera_optical_frame",
-        "x": 0.4594,
-        "y": 0.6775,
+        "x": 0.4598,
+        "y": 0.7317,
         "z": 0.1645,
-        "yaw": 1.5743,
+        "yaw": 1.3743,
         "quaternion": [
-          -0.499114,
-          -0.500885,
-          0.500885,
-          0.499114
+          -0.546626,
+          -0.448554,
+          0.448554,
+          0.546626
         ],
         "view_direction_world": [
-          -0.999994,
-          -0.003542,
+          -0.980765,
+          0.195197,
           0.0
         ]
       }
@@ -181,15 +240,15 @@
       "sequence": 6,
       "target_hint": "person_standees",
       "base_pose": {
-        "x": -0.1657,
-        "y": 0.1601,
+        "x": -0.1699,
+        "y": 0.1002,
         "yaw": 1.5003,
         "frame": "base_footprint"
       },
       "camera_pose": {
         "frame": "camera_optical_frame",
-        "x": -0.1642,
-        "y": 0.1811,
+        "x": -0.1684,
+        "y": 0.1212,
         "z": 0.1645,
         "yaw": -0.0705,
         "quaternion": [
@@ -214,15 +273,15 @@
       "sequence": 7,
       "target_hint": "traffic_light_standee",
       "base_pose": {
-        "x": -0.3148,
-        "y": 0.065,
+        "x": -0.1948,
+        "y": 0.045,
         "yaw": -3.1177,
         "frame": "base_footprint"
       },
       "camera_pose": {
         "frame": "camera_optical_frame",
-        "x": -0.3358,
-        "y": 0.0645,
+        "x": -0.2158,
+        "y": 0.0445,
         "z": 0.1645,
         "yaw": 1.5947,
         "quaternion": [
@@ -245,25 +304,25 @@
       "base_pose": {
         "x": -1.713,
         "y": -0.8,
-        "yaw": -1.4114,
+        "yaw": -1.5114,
         "frame": "base_footprint"
       },
       "camera_pose": {
         "frame": "camera_optical_frame",
-        "x": -1.7097,
-        "y": -0.8207,
+        "x": -1.7117,
+        "y": -0.821,
         "z": 0.1645,
-        "yaw": -2.9822,
+        "yaw": -3.0822,
         "quaternion": [
-          0.056307,
-          -0.704861,
-          0.704861,
-          -0.056307
+          0.021008,
+          -0.706794,
+          0.706794,
+          -0.021008
         ],
         "view_direction_world": [
-          0.158755,
-          -0.987318,
-          -0.0
+          0.059394,
+          -0.998234,
+          0.0
         ]
       }
     },
@@ -303,24 +362,24 @@
       "base_pose": {
         "x": -0.5347,
         "y": -1.0731,
-        "yaw": -1.4087,
+        "yaw": -1.557,
         "frame": "base_footprint"
       },
       "camera_pose": {
         "frame": "camera_optical_frame",
-        "x": -0.5313,
-        "y": -1.0938,
+        "x": -0.5344,
+        "y": -1.0941,
         "z": 0.1645,
-        "yaw": -2.9795,
+        "yaw": -3.1278,
         "quaternion": [
-          0.057245,
-          -0.704786,
-          0.704786,
-          -0.057245
+          0.004876,
+          -0.70709,
+          0.70709,
+          -0.004876
         ],
         "view_direction_world": [
-          0.161382,
-          -0.986892,
+          0.01379,
+          -0.999906,
           0.0
         ]
       },

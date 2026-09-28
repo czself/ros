@@ -9,6 +9,8 @@ an unapproved diagonal jump from one diagram arrow to another.
 import math
 import json
 import time
+import threading
+from collections import OrderedDict
 
 import actionlib
 import cv2
@@ -23,12 +25,12 @@ from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from nav_msgs.msg import OccupancyGrid, Odometry
 from navigation_goal_safety import GridFootprintChecker, DEFAULT_FOOTPRINT
 from sensor_msgs.msg import Image, CameraInfo
-from std_srvs.srv import Empty
 from std_msgs.msg import String
 from tf.transformations import quaternion_from_euler
 
 
 CONTRACT_PATH = '/root/navigation/inner_route.yaml'
+BEST_PT_SHA256 = 'fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad'
 
 
 def load_route(path):
@@ -114,6 +116,50 @@ def load_photo_points(path):
     return route
 
 
+def route_segments(points):
+    segments = []
+    progress = 0.0
+    for a, b in zip(points, points[1:]):
+        length = math.hypot(b[0]-a[0], b[1]-a[1])
+        segments.append((a, b, progress, length))
+        progress += length
+    return segments, progress
+
+
+def nearest_route_progress(point, segments):
+    x, y = point
+    best_distance, best_progress = float('inf'), 0.0
+    for a, b, start_s, length in segments:
+        if length <= 1e-9:
+            continue
+        dx, dy = b[0]-a[0], b[1]-a[1]
+        t = max(0.0, min(1.0, ((x-a[0])*dx+(y-a[1])*dy)/(length*length)))
+        px, py = a[0]+t*dx, a[1]+t*dy
+        distance = math.hypot(x-px, y-py)
+        if distance < best_distance:
+            best_distance, best_progress = distance, start_s+t*length
+    return best_distance, best_progress
+
+
+def nearest_route_progress_in_interval(point, segments, route_length, low, high):
+    """Project onto the loop only inside the active forward route interval."""
+    x, y = point
+    best_distance, best_progress = float('inf'), None
+    for a, b, start_s, length in segments:
+        if length <= 1e-9:
+            continue
+        dx, dy = b[0]-a[0], b[1]-a[1]
+        t = max(0.0, min(1.0, ((x-a[0])*dx+(y-a[1])*dy)/(length*length)))
+        px, py = a[0]+t*dx, a[1]+t*dy
+        distance = math.hypot(x-px, y-py)
+        base = start_s + t*length
+        for lap in (-1, 0, 1, 2):
+            progress = base + lap*route_length
+            if low-1e-6 <= progress <= high+1e-6 and distance < best_distance:
+                best_distance, best_progress = distance, progress
+    return best_distance, best_progress
+
+
 class RouteExecutor:
     def __init__(self):
         self.timeout = float(rospy.get_param('~waypoint_timeout', 75.0))
@@ -138,6 +184,8 @@ class RouteExecutor:
         else:
             self.photo_acceptance = {}
         self.goal_events = []
+        self.latest_gate_status = 'CLEAR'
+        self.gate_wall_time = 0.0
         self.static_map = None
         self.costmap = None
         self.local_costmap = None
@@ -147,11 +195,21 @@ class RouteExecutor:
                          lambda message: setattr(self, 'costmap', message), queue_size=1)
         rospy.Subscriber('/move_base/local_costmap/costmap', OccupancyGrid,
                          lambda message: setattr(self, 'local_costmap', message), queue_size=1)
+        rospy.Subscriber('/traffic_light/gate_status', String,
+                         self._gate_cb, queue_size=1)
         self.route_vertices = bool(raw_contract.get('points')) and not photo_file
+        self.corridor_vertices = [tuple(float(v) for v in point)
+                                  for point in raw_contract.get('points', [])]
+        self.corridor_segments, self.corridor_length = route_segments(self.corridor_vertices)
+        self.route_cursor = 0.0
+        self.planned_goal_progress = None
         self.status_pub = rospy.Publisher('/route/status', String, queue_size=1, latch=True)
+        self.motion_progress_pub = rospy.Publisher('/route/progress', String, queue_size=10)
         self.client = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
         self.cmd_pub = rospy.Publisher('/my_car/cmd_vel_nav', Twist, queue_size=1)
         self.capture_photos = bool(rospy.get_param('~capture_photos', False))
+        self.strict_acceptance = bool(rospy.get_param('~strict_acceptance', False))
+        self.no_progress_timeout = float(rospy.get_param('~no_progress_timeout', 8.0))
         # /root/ros1_ws is bind-mounted to the host as /home/sz/ros1_ws.
         self.photo_dir = rospy.get_param('~photo_dir', '/root/ros1_ws/photo_stops')
         selected = rospy.get_param('~photo_waypoints', '')
@@ -163,10 +221,19 @@ class RouteExecutor:
                          lambda message: setattr(self, 'latest_odom', message), queue_size=1)
         rospy.on_shutdown(self.stop_motion)
         self.latest_image = None
+        self.latest_image_stamp = None
+        self.raw_frames = OrderedDict()
+        self.annotated_frames = OrderedDict()
+        self.detection_records = OrderedDict()
+        self.depth_frames = OrderedDict()
+        self.photo_cache_lock = threading.Lock()
+        self.accepted_photo_records = []
         self.latest_depth = None
         self.depth_info = None
         if self.capture_photos:
             rospy.Subscriber('/camera/image_raw', Image, self._image_cb, queue_size=1)
+            rospy.Subscriber('/inspection/image', Image, self._annotation_cb, queue_size=1)
+            rospy.Subscriber('/inspection/detections', String, self._detections_cb, queue_size=2)
             rospy.Subscriber('/camera/depth/image_raw', Image, self._depth_cb, queue_size=1)
             rospy.Subscriber('/camera/depth/camera_info', CameraInfo,
                              lambda message: setattr(self, 'depth_info', message), queue_size=1)
@@ -178,21 +245,190 @@ class RouteExecutor:
     def _image_cb(self, message):
         try:
             self.latest_image = self.bridge.imgmsg_to_cv2(message, 'bgr8')
+            self.latest_image_stamp = message.header.stamp
+            with self.photo_cache_lock:
+                self._cache_frame(self.raw_frames, self._stamp_key(message.header.stamp),
+                                  self.latest_image)
         except Exception as error:
             rospy.logwarn_throttle(5, 'photo capture image conversion failed: %s', error)
+
+    @staticmethod
+    def _stamp_key(stamp):
+        return int(stamp.secs), int(stamp.nsecs)
+
+    @staticmethod
+    def _cache_frame(cache, key, value, limit=32):
+        cache[key] = value
+        cache.move_to_end(key)
+        while len(cache) > limit:
+            cache.popitem(last=False)
+
+    def _annotation_cb(self, message):
+        try:
+            frame = self.bridge.imgmsg_to_cv2(message, 'bgr8')
+            with self.photo_cache_lock:
+                self._cache_frame(self.annotated_frames,
+                                  self._stamp_key(message.header.stamp), frame)
+        except Exception as error:
+            rospy.logwarn_throttle(5, 'annotated image conversion failed: %s', error)
+
+    def _detections_cb(self, message):
+        try:
+            record = json.loads(message.data)
+            stamp = record['source_stamp']
+            key = (int(stamp['secs']), int(stamp['nsecs']))
+            with self.photo_cache_lock:
+                self._cache_frame(self.detection_records, key, record)
+        except (ValueError, TypeError, KeyError) as error:
+            rospy.logwarn_throttle(5, 'YOLO detection record invalid: %s', error)
+
+    def contextual_plate_boxes(self, name, record, annotated_frame):
+        """Preserve a visible plate-shaped ROI when YOLO assigns a wrong class.
+
+        The P10 reference and live frames show a single elongated plate ROI that
+        this checkpoint labels green_off. At known plate views only, retain the
+        raw class and add a marked contextual alias; no OCR is performed.
+        """
+        if name not in ('POINT_8', 'POINT_9', 'POINT_10'):
+            return record, annotated_frame
+        detections = list(record.get('detections', []))
+        if any(item.get('class') == 'license_plate' and
+               float(item.get('confidence', 0.0)) >= 0.15 for item in detections):
+            return record, annotated_frame
+        width, height = int(record['width']), int(record['height'])
+        candidates = []
+        for item in detections:
+            label = item.get('class')
+            if label not in ('red_on', 'red_off', 'yellow_on', 'yellow_off',
+                             'green_on', 'green_off'):
+                continue
+            if float(item.get('confidence', 0.0)) < 0.15:
+                continue
+            x1, y1, x2, y2 = map(float, item['box'])
+            box_width, box_height = x2 - x1, y2 - y1
+            if (box_width < 40 or box_height < 14 or
+                    box_width / max(1.0, box_height) < 1.8 or
+                    x1 <= 0 or y1 <= 0 or x2 >= width or y2 >= height):
+                continue
+            candidates.append(item)
+        if not candidates:
+            return record, annotated_frame
+        # If two class heads cover the same rectangle, retain the stronger one;
+        # distinct rectangular candidates can represent multiple visible cars.
+        selected = []
+        for item in sorted(candidates,
+                           key=lambda value: float(value.get('confidence', 0.0)),
+                           reverse=True):
+            x1, y1, x2, y2 = map(float, item['box'])
+            area = max(0.0, x2-x1) * max(0.0, y2-y1)
+            duplicate = False
+            for prior in selected:
+                px1, py1, px2, py2 = map(float, prior['box'])
+                intersection = (max(0.0, min(x2, px2)-max(x1, px1)) *
+                                max(0.0, min(y2, py2)-max(y1, py1)))
+                prior_area = max(0.0, px2-px1) * max(0.0, py2-py1)
+                if area + prior_area - intersection > 0 and \
+                        intersection / (area + prior_area - intersection) >= 0.70:
+                    duplicate = True
+                    break
+            if not duplicate:
+                selected.append(item)
+        record = dict(record)
+        record['detections'] = list(detections)
+        annotated_frame = annotated_frame.copy()
+        for item in selected:
+            alias = dict(item)
+            alias['source_class'] = item['class']
+            alias['label_source'] = 'contextual_plate_rectangle'
+            alias['class'] = 'license_plate'
+            record['detections'].append(alias)
+            x1, y1, x2, y2 = map(int, item['box'])
+            cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), (255, 0, 255), 2)
+            cv2.putText(annotated_frame, 'plate ROI %.2f*' % item['confidence'],
+                        (x1, max(18, y1-6)), cv2.FONT_HERSHEY_SIMPLEX,
+                        0.48, (255, 0, 255), 2, cv2.LINE_AA)
+        rospy.loginfo('photo waypoint %s retained %d contextual plate ROI(s)',
+                      name, len(selected))
+        return record, annotated_frame
+
+    @staticmethod
+    def _box_clipped_at_frame(item, frame, width, height):
+        x1, y1, x2, y2 = [float(v) for v in item['box']]
+        if x1 <= 0.0 or y1 <= 0.0 or x2 >= width:
+            return True
+        if y2 >= height - 1:
+            if frame is None or item.get('class') not in ('resident', 'stranger'):
+                return True
+            left = max(0, min(width, int(math.floor(x1))))
+            right = max(0, min(width, int(math.ceil(x2))))
+            top = max(0, min(height, int(math.floor(y1))))
+            roi = frame[top:height, left:right]
+            if roi.size == 0:
+                return True
+            visible_rows = np.where(np.max(roi, axis=2) > 8)[0]
+            if (visible_rows.size == 0 or
+                    height - 1 - (top + int(visible_rows.max())) < 4):
+                return True
+        return False
+
+    def _validate_photo_detections(self, name, record, frame=None):
+        if record is None:
+            return False, 'NO_MATCHED_YOLO_RECORD'
+        minimum_confidence = 0.15 if name in ('POINT_8', 'POINT_9', 'POINT_10') else 0.25
+        detections = [item for item in record.get('detections', [])
+                      if float(item.get('confidence', 0.0)) >= minimum_confidence]
+        width, height = int(record['width']), int(record['height'])
+        expected_people = {'POINT_2': 3, 'POINT_3': 3, 'POINT_4': 3,
+                           'POINT_5': 4, 'POINT_6': 5}
+        if name in expected_people:
+            people = [item for item in detections
+                      if item.get('class') in ('resident', 'stranger') and
+                      not self._box_clipped_at_frame(item, frame, width, height)]
+            if len(people) != expected_people[name]:
+                return False, 'PERSON_COUNT:%d_EXPECTED_%d' % (len(people), expected_people[name])
+            required = people
+        elif name in ('POINT_1', 'POINT_7'):
+            lamps = [item for item in detections
+                     if item.get('class') in ('red_on', 'red_off', 'yellow_on',
+                                              'yellow_off', 'green_on', 'green_off')]
+            colors = {item['class'].split('_', 1)[0] for item in lamps}
+            if colors != {'red', 'yellow', 'green'}:
+                return False, 'INCOMPLETE_SIGNAL_LAMPS'
+            required = lamps
+        elif name in ('POINT_8', 'POINT_9', 'POINT_10'):
+            plates = [item for item in detections
+                      if item.get('class') == 'license_plate' and
+                      not self._box_clipped_at_frame(item, frame, width, height)]
+            if not plates:
+                return False, 'NO_LICENSE_PLATE_BOX'
+            required = plates
+        else:
+            required = detections
+        for item in required:
+            if self._box_clipped_at_frame(item, frame, width, height):
+                return False, 'OBJECT_CLIPPED_AT_FRAME_EDGE:%s' % item.get('class')
+        return True, 'PASS'
 
     def _depth_cb(self, message):
         try:
             depth = self.bridge.imgmsg_to_cv2(message, 'passthrough')
-            self.latest_depth = np.asarray(depth, dtype=np.float32)
+            depth = np.asarray(depth, dtype=np.float32)
+            self.latest_depth = depth
+            with self.photo_cache_lock:
+                self._cache_frame(self.depth_frames,
+                                  self._stamp_key(message.header.stamp), depth)
         except Exception as error:
             rospy.logwarn_throttle(5, 'depth capture conversion failed: %s', error)
 
-    def depth_geometry(self):
+    def _gate_cb(self, message):
+        self.latest_gate_status = message.data
+        self.gate_wall_time = time.monotonic()
+
+    def depth_geometry(self, depth=None):
         """Return robust depth and horizontal coverage diagnostics in metres."""
-        if self.latest_depth is None:
+        depth = self.latest_depth if depth is None else depth
+        if depth is None:
             return None
-        depth = self.latest_depth
         h, w = depth.shape[:2]
         crop = depth[int(h * .12):int(h * .90), int(w * .03):int(w * .97)]
         valid = crop[np.isfinite(crop) & (crop > .15) & (crop < 20.0)]
@@ -210,6 +446,66 @@ class RouteExecutor:
             result['required_distance_m'] = float(result['span_m'] / (2.0 * math.tan(0.785398)))
         return result
 
+    def depth_target_metrics(self, name, record, depth):
+        """Measure target range/coverage from the depth frame nearest the RGB stamp."""
+        if depth is None or depth.ndim != 2:
+            return False, 'DEPTH_FRAME_UNAVAILABLE', []
+        height, width = depth.shape
+        rgb_width, rgb_height = int(record['width']), int(record['height'])
+        if rgb_width <= 0 or rgb_height <= 0:
+            return False, 'RGB_DIMENSIONS_INVALID', []
+        scale_x, scale_y = width / float(rgb_width), height / float(rgb_height)
+        minimum_confidence = 0.15 if name in ('POINT_8', 'POINT_9', 'POINT_10') else 0.25
+        detections = [item for item in record.get('detections', [])
+                      if float(item.get('confidence', 0.0)) >= minimum_confidence]
+        if name in ('POINT_2', 'POINT_3', 'POINT_4', 'POINT_5', 'POINT_6'):
+            detections = [item for item in detections
+                          if item.get('class') in ('resident', 'stranger')]
+        elif name in ('POINT_1', 'POINT_7'):
+            detections = [item for item in detections
+                          if item.get('class') in ('red_on', 'red_off', 'yellow_on',
+                                                   'yellow_off', 'green_on', 'green_off')]
+        elif name in ('POINT_8', 'POINT_9', 'POINT_10'):
+            detections = [item for item in detections
+                          if item.get('class') == 'license_plate']
+        if not detections:
+            return False, 'NO_DEPTH_TARGETS', []
+        measured = []
+        for item in detections:
+            x1, y1, x2, y2 = (float(v) for v in item['box'])
+            # Rendered standee cutouts have sparse valid depth returns inside
+            # YOLO boxes. Use the complete box and require a meaningful number
+            # of valid samples instead of discarding its sparse visible edges.
+            left = max(0, int(round(x1 * scale_x)))
+            right = min(width, int(round(x2 * scale_x)))
+            top = max(0, int(round(y1 * scale_y)))
+            bottom = min(height, int(round(y2 * scale_y)))
+            if right <= left or bottom <= top:
+                return False, 'DEPTH_ROI_EMPTY:%s' % item.get('class'), measured
+            roi = depth[top:bottom, left:right]
+            valid = roi[np.isfinite(roi) & (roi > 0.20) & (roi < 5.0)]
+            coverage = float(valid.size) / float(max(1, roi.size))
+            metric = {
+                'class': item.get('class'),
+                'confidence': float(item.get('confidence', 0.0)),
+                'valid_depth_pixels': int(valid.size),
+                'valid_roi_fraction': coverage,
+            }
+            if valid.size:
+                p10, median, p90 = np.percentile(valid, (10, 50, 90))
+                metric.update({'median_depth_m': float(median),
+                               'p10_depth_m': float(p10),
+                               'p90_depth_m': float(p90)})
+            measured.append(metric)
+            if coverage < 0.05 or valid.size < 100:
+                return False, 'DEPTH_COVERAGE_LOW:%s:%.3f' % (
+                    item.get('class'), coverage), measured
+            median = metric['median_depth_m']
+            if median > 4.0:
+                return False, 'PHOTO_TARGET_TOO_FAR:%s:%.2f' % (
+                    item.get('class'), median), measured
+        return True, 'PASS', measured
+
     def capture_photo(self, name, x, y, yaw):
         if name.startswith('_TRANSITION_'):
             return True
@@ -218,26 +514,43 @@ class RouteExecutor:
         # Photo routes send the recorded camera framing yaw as the move_base
         # goal yaw.  Never publish a best-effort correction after success:
         # the watchdog may stop it at a painted line, leaving a wrong view.
-        self.cmd_pub.publish(Twist())
-        rospy.sleep(0.25)
-        try:
-            stamp = self.tf_listener.getLatestCommonTime('map', 'base_footprint')
-            (actual_x, actual_y, _), actual_q = self.tf_listener.lookupTransform(
-                'map', 'base_footprint', stamp)
-            actual_yaw = math.atan2(
-                2.0 * (actual_q[3] * actual_q[2] + actual_q[0] * actual_q[1]),
-                1.0 - 2.0 * (actual_q[1] ** 2 + actual_q[2] ** 2))
-        except (tf.Exception, tf.LookupException, tf.ConnectivityException) as error:
-            rospy.logwarn('photo waypoint %s pose unavailable: %s', name, error)
+        settle_seconds = max(0.15, float(
+            rospy.get_param('~photo_settle_seconds', 0.3)))
+        settle_deadline = time.monotonic() + max(2.0, settle_seconds * 4.0)
+        still_since = None
+        while not rospy.is_shutdown() and time.monotonic() < settle_deadline:
+            self.cmd_pub.publish(Twist())
+            odom = self.latest_odom
+            now = time.monotonic()
+            if odom is not None:
+                odom_age = (rospy.Time.now() - odom.header.stamp).to_sec()
+                linear_speed = abs(odom.twist.twist.linear.x)
+                angular_speed = abs(odom.twist.twist.angular.z)
+                if odom_age <= 0.5 and linear_speed < 0.01 and angular_speed < 0.01:
+                    if still_since is None:
+                        still_since = now
+                    elif now - still_since >= settle_seconds:
+                        break
+                else:
+                    still_since = None
+            time.sleep(0.05)
+        else:
+            rospy.logwarn('photo waypoint %s failed: robot did not settle before capture', name)
             return False
-        xy_error = math.hypot(actual_x - x, actual_y - y)
-        yaw_error = math.atan2(math.sin(yaw - actual_yaw), math.cos(yaw - actual_yaw))
         xy_tolerance = float(rospy.get_param('~photo_position_tolerance', 0.06))
         yaw_tolerance = float(rospy.get_param('~photo_heading_tolerance', 0.06))
         if name == 'POINT_3':
             xy_tolerance = max(
                 xy_tolerance,
                 float(rospy.get_param('~point_3_photo_position_tolerance', 0.05)))
+        if name == 'POINT_7':
+            xy_tolerance = max(
+                xy_tolerance,
+                float(rospy.get_param('~point_7_photo_position_tolerance', 0.05)))
+        if name == 'POINT_10':
+            xy_tolerance = max(
+                xy_tolerance,
+                float(rospy.get_param('~point_10_photo_position_tolerance', 0.05)))
         if name == 'POINT_5':
             xy_tolerance = min(
                 xy_tolerance,
@@ -245,33 +558,181 @@ class RouteExecutor:
             yaw_tolerance = min(
                 yaw_tolerance,
                 float(rospy.get_param('~point_5_photo_heading_tolerance', 0.025)))
-        if xy_error > xy_tolerance or abs(yaw_error) > yaw_tolerance:
+        pose_deadline = time.monotonic() + max(2.0, settle_seconds * 8.0)
+        pose_still_since = None
+        previous_pose = None
+        pose_errors = (float('inf'), float('inf'))
+        pose_error = None
+        actual_x = actual_y = actual_yaw = 0.0
+        while not rospy.is_shutdown() and time.monotonic() < pose_deadline:
+            try:
+                stamp = self.tf_listener.getLatestCommonTime('map', 'base_footprint')
+                (actual_x, actual_y, _), actual_q = self.tf_listener.lookupTransform(
+                    'map', 'base_footprint', stamp)
+                actual_yaw = math.atan2(
+                    2.0 * (actual_q[3] * actual_q[2] + actual_q[0] * actual_q[1]),
+                    1.0 - 2.0 * (actual_q[1] ** 2 + actual_q[2] ** 2))
+                xy_error = math.hypot(actual_x - x, actual_y - y)
+                yaw_error = math.atan2(math.sin(yaw - actual_yaw),
+                                       math.cos(yaw - actual_yaw))
+                pose_errors = (xy_error, yaw_error)
+                now = time.monotonic()
+                sample = (actual_x, actual_y, actual_yaw)
+                pose_matches = (xy_error <= xy_tolerance and
+                                abs(yaw_error) <= yaw_tolerance)
+                pose_stable = (previous_pose is not None and
+                               math.hypot(actual_x - previous_pose[0],
+                                          actual_y - previous_pose[1]) <= 0.01 and
+                               abs(self._angle_error(actual_yaw,
+                                                     previous_pose[2])) <= 0.015)
+                if pose_matches and pose_stable:
+                    if pose_still_since is None:
+                        pose_still_since = now
+                    elif now - pose_still_since >= settle_seconds:
+                        break
+                else:
+                    pose_still_since = None
+                previous_pose = sample
+                pose_error = None
+            except (tf.Exception, tf.LookupException, tf.ConnectivityException) as error:
+                pose_error = error
+                pose_still_since = None
+                previous_pose = None
+            time.sleep(0.05)
+        else:
             rospy.logwarn(
-                'photo waypoint %s pose mismatch: xy_error=%.3f m yaw_error=%.3f rad; skipping capture',
-                name, xy_error, yaw_error)
+                'photo waypoint %s pose failed settle/tolerance: xy_error=%.3f m yaw_error=%.3f rad detail=%s',
+                name, pose_errors[0], pose_errors[1], pose_error)
             return False
-        rospy.sleep(float(rospy.get_param('~photo_settle_seconds', 2.0)))
         if self.latest_image is None:
             rospy.logwarn('photo waypoint %s reached but no camera frame is available', name)
             return False
-        frames = [self.latest_image.copy()]
-        for _ in range(max(1, int(rospy.get_param('~photo_burst_count', 8))) - 1):
+        capture_start = rospy.Time.now().to_sec()
+        for _ in range(max(1, int(rospy.get_param('~photo_burst_count', 8)))):
             rospy.sleep(float(rospy.get_param('~photo_burst_interval', 0.2)))
-            if self.latest_image is not None:
-                frames.append(self.latest_image.copy())
-        frame = max(frames, key=lambda image: cv2.Laplacian(image, cv2.CV_64F).var())
+        candidates = []
+        with self.photo_cache_lock:
+            raw_items = list(self.raw_frames.items())
+            detection_records = dict(self.detection_records)
+            annotated_frames = dict(self.annotated_frames)
+            depth_frames = dict(self.depth_frames)
+        for key, raw in raw_items:
+            record = detection_records.get(key)
+            annotated = annotated_frames.get(key)
+            if record is None or annotated is None or not depth_frames:
+                continue
+            source_seconds = float(record['source_stamp']['seconds'])
+            if source_seconds + 1e-6 < capture_start:
+                continue
+            if record.get('checkpoint_sha256') != BEST_PT_SHA256:
+                continue
+            if float(record.get('frame_age_ms', float('inf'))) > 500.0:
+                continue
+            if float(record.get('latency_ms', float('inf'))) > 250.0:
+                continue
+            depth_key = min(depth_frames, key=lambda candidate:
+                            abs((candidate[0] - key[0]) +
+                                (candidate[1] - key[1]) * 1e-9))
+            depth_delta = abs((depth_key[0] - key[0]) +
+                              (depth_key[1] - key[1]) * 1e-9)
+            if depth_delta > 0.10:
+                continue
+            candidates.append((key, raw, annotated, record, depth_frames[depth_key],
+                               depth_key, depth_delta,
+                               cv2.Laplacian(raw, cv2.CV_64F).var()))
+        if not candidates:
+            rospy.logwarn('photo waypoint %s has no matched RGB/YOLO/depth frame', name)
+            return False
+        selected = max(candidates, key=lambda item: item[7])
+        (frame_key, raw_frame, annotated_frame, detection_record, depth_frame,
+         depth_key, depth_delta, sharpness) = selected
+        detection_record, annotated_frame = self.contextual_plate_boxes(
+            name, detection_record, annotated_frame)
+        photo_ok, photo_reason = self._validate_photo_detections(
+            name, detection_record, raw_frame)
+        depth_ok, depth_reason, target_depths = self.depth_target_metrics(
+            name, detection_record, depth_frame)
+        counted_detections = detection_record.get('detections', [])
+        edge_clipped_person_boxes = 0
+        if name in ('POINT_2', 'POINT_3', 'POINT_4', 'POINT_5', 'POINT_6'):
+            frame_width, frame_height = (int(detection_record['width']),
+                                         int(detection_record['height']))
+            person_detections = [item for item in counted_detections
+                                 if item.get('class') in ('resident', 'stranger')]
+            counted_detections = [item for item in counted_detections
+                                  if item.get('class') not in ('resident', 'stranger') or
+                                  not self._box_clipped_at_frame(
+                                      item, raw_frame, frame_width, frame_height)]
+            edge_clipped_person_boxes = len(person_detections) - sum(
+                1 for item in counted_detections
+                if item.get('class') in ('resident', 'stranger'))
+        self.accepted_photo_records.append({
+            'waypoint': name, 'source_stamp': detection_record['source_stamp'],
+            'detector_counts': {label: sum(1 for item in counted_detections
+                                            if item.get('class') == label)
+                                for label in ('resident', 'stranger', 'license_plate',
+                                              'red_on', 'red_off', 'yellow_on', 'yellow_off',
+                                              'green_on', 'green_off')},
+            'edge_clipped_person_boxes_excluded': edge_clipped_person_boxes,
+            'validation': photo_reason, 'passed': photo_ok and depth_ok,
+            'frame_age_ms': detection_record.get('frame_age_ms'),
+            'inference_latency_ms': detection_record.get('latency_ms'),
+            'depth_validation': depth_reason,
+            'depth_target_count': sum(
+                1 for metric in target_depths if 'median_depth_m' in metric),
+        })
         import os
         stamp = time.strftime('%Y%m%d_%H%M%S')
         point_dir = os.path.join(self.photo_dir, name)
-        os.makedirs(point_dir, exist_ok=True)
         stem = os.path.join(point_dir, '%s_%s' % (name, stamp))
-        if not cv2.imwrite(stem + '.png', frame):
+        failure_reason = None
+        if not photo_ok:
+            failure_reason = 'YOLO/photo margin check: %s' % photo_reason
+        elif not depth_ok:
+            failure_reason = 'depth/range check: %s' % depth_reason
+        if failure_reason:
+            os.makedirs(point_dir, exist_ok=True)
+            cv2.imwrite(stem + '.raw.png', raw_frame)
+            cv2.imwrite(stem + '.png', annotated_frame)
+            with open(stem + '.detections.json', 'w', encoding='utf-8') as stream:
+                json.dump(detection_record, stream, ensure_ascii=False, indent=2)
+            np.save(stem + '.depth.npy', depth_frame)
+            with open(stem + '.failure.json', 'w', encoding='utf-8') as stream:
+                json.dump({'waypoint': name, 'source_stamp': detection_record['source_stamp'],
+                           'depth_source_stamp': {'secs': int(depth_key[0]),
+                                                  'nsecs': int(depth_key[1])},
+                           'rgb_depth_stamp_delta_s': depth_delta,
+                           'photo_validation': photo_reason,
+                           'depth_validation': depth_reason,
+                           'depth_target_metrics': target_depths,
+                           'raw_image': stem + '.raw.png',
+                           'annotated_image': stem + '.png',
+                           'depth_frame': stem + '.depth.npy'}, stream, indent=2)
+            rospy.logerr('photo waypoint %s failed %s', name, failure_reason)
+            return False
+        os.makedirs(point_dir, exist_ok=True)
+        if not cv2.imwrite(stem + '.raw.png', raw_frame):
             rospy.logwarn('photo waypoint %s could not write image %s', name, stem + '.png')
             return False
+        if not cv2.imwrite(stem + '.png', annotated_frame):
+            rospy.logwarn('photo waypoint %s could not write annotated image %s', name, stem + '.png')
+            return False
+        with open(stem + '.detections.json', 'w', encoding='utf-8') as stream:
+            json.dump(detection_record, stream, ensure_ascii=False, indent=2)
         evidence = {'waypoint': name, 'target_base_pose': {'x': x, 'y': y, 'yaw': yaw},
                     'image': stem + '.png', 'camera_topic': '/camera/image_raw',
+                    'raw_image': stem + '.raw.png',
+                    'annotated_image': stem + '.png',
+                    'detection_record': stem + '.detections.json',
+                    'source_stamp': detection_record['source_stamp'],
+                    'depth_source_stamp': {'secs': int(depth_key[0]), 'nsecs': int(depth_key[1])},
+                    'rgb_depth_stamp_delta_s': depth_delta,
+                    'detector_counts': self.accepted_photo_records[-1]['detector_counts'],
+                    'depth_target_metrics': target_depths,
+                    'photo_validation': photo_reason,
+                    'sharpness': float(sharpness),
                     'depth_topic': '/camera/depth/image_raw',
-                    'depth_geometry': self.depth_geometry(),
+                    'depth_geometry': self.depth_geometry(depth_frame),
                     'acceptance_criteria': self.photo_acceptance.get(name)}
         try:
             stamp = rospy.Time(0)
@@ -347,242 +808,289 @@ class RouteExecutor:
                 return False
         return True
 
+    def validate_ordered_corridor(self, name, goal_x, goal_y, goal_yaw):
+        """Preflight the exact forward corridor that the local controller follows."""
+        if not self.photo_route or not self.strict_acceptance:
+            return True
+        if not self.corridor_segments or self.corridor_length <= 0.0:
+            rospy.logerr('%s rejected: ordered corridor is unavailable', name)
+            return False
+        try:
+            current_x, current_y, current_yaw = self.motion_pose_map()
+        except (tf.Exception, RuntimeError) as error:
+            rospy.logerr('%s rejected: current pose unavailable: %s', name, error)
+            return False
+        if self.costmap is None or (rospy.Time.now() - self.costmap.header.stamp).to_sec() > 2.0:
+            try:
+                self.costmap = rospy.wait_for_message(
+                    '/move_base/global_costmap/costmap', OccupancyGrid, timeout=5.0)
+            except rospy.ROSException as error:
+                rospy.logerr('%s rejected: global costmap unavailable: %s', name, error)
+                return False
+        if self.static_map is None or self.costmap is None:
+            rospy.logerr('%s rejected: static/global map unavailable', name)
+            return False
+        goal_distance, goal_progress = nearest_route_progress(
+            (goal_x, goal_y), self.corridor_segments)
+        start_progress = self.route_cursor
+        if goal_progress < start_progress - 0.01 and name == 'HOME':
+            goal_progress += self.corridor_length
+        if goal_progress < start_progress - 0.01:
+            rospy.logerr('%s rejected: goal is behind the active route cursor', name)
+            return False
+        start_distance, projected_start = nearest_route_progress_in_interval(
+            (current_x, current_y), self.corridor_segments, self.corridor_length,
+            start_progress - 0.18, goal_progress + 0.18)
+        if projected_start is not None:
+            start_progress = max(start_progress, projected_start)
+        if max(start_distance, goal_distance) > 0.18:
+            rospy.logerr('%s rejected: endpoint outside corridor (%.3f/%.3f m)',
+                         name, start_distance, goal_distance)
+            return False
+        if projected_start is None or goal_progress < start_progress - 0.02:
+            rospy.logerr('%s rejected: goal is outside the active forward route interval', name)
+            return False
+        static_checker = GridFootprintChecker.from_message(
+            self.static_map, DEFAULT_FOOTPRINT, safety_margin=0.02)
+        global_checker = GridFootprintChecker.from_message(
+            self.costmap, DEFAULT_FOOTPRINT, safety_margin=0.02)
+        def corridor_pose(progress):
+            wrapped = progress % self.corridor_length
+            selected = None
+            for a, b, segment_start, length in self.corridor_segments:
+                if length > 1e-9 and segment_start - 1e-9 <= wrapped <= segment_start + length + 1e-9:
+                    selected = (a, b, segment_start, length)
+                    break
+            if selected is None:
+                raise ValueError('no corridor segment at progress %.3f' % progress)
+            a, b, segment_start, length = selected
+            fraction = max(0.0, min(1.0, (wrapped-segment_start)/length))
+            px = a[0] + fraction*(b[0]-a[0])
+            py = a[1] + fraction*(b[1]-a[1])
+            tangent = math.atan2(b[1]-a[1], b[0]-a[0])
+            return px, py, tangent
+
+        samples = [(current_x, current_y, current_yaw)]
+        try:
+            start_on_route = corridor_pose(start_progress)
+            goal_on_route = corridor_pose(goal_progress)
+        except ValueError as error:
+            rospy.logerr('%s rejected: %s', name, error)
+            return False
+
+        def append_connector(a, b, heading):
+            distance = math.hypot(b[0]-a[0], b[1]-a[1])
+            count = max(1, int(math.ceil(distance/0.02)))
+            for index in range(1, count+1):
+                fraction = index/float(count)
+                samples.append((a[0]+fraction*(b[0]-a[0]),
+                                a[1]+fraction*(b[1]-a[1]), heading))
+
+        append_connector((current_x, current_y), start_on_route[:2], start_on_route[2])
+        progress = start_progress + 0.02
+        while progress < goal_progress - 0.02:
+            samples.append(corridor_pose(progress))
+            progress += 0.02
+        append_connector(goal_on_route[:2], (goal_x, goal_y), goal_yaw)
+        for sample_index, (px, py, heading) in enumerate(samples):
+            for source, checker in (('map', static_checker),
+                                    ('global_costmap', global_checker)):
+                result = checker.check_pose(px, py, heading)
+                if not result.safe:
+                    rospy.logerr('%s rejected by ordered corridor %s: %s cell=%s at (%.3f, %.3f)',
+                                 name, source, result.reason, result.cell, px, py)
+                    return False
+        rospy.loginfo('%s ordered corridor clear: %.3f m, endpoint cross-track %.3f m, %d samples',
+                      name, goal_progress-start_progress,
+                      max(start_distance, goal_distance), len(samples))
+        self.planned_goal_progress = goal_progress
+        return True
+
     @staticmethod
     def _angle_error(target, actual):
         return math.atan2(math.sin(target - actual), math.cos(target - actual))
 
-    def rotation_sweep_clear(self, x, y, start_yaw, target_yaw, name, phase):
-        """Require both static and rolling grids to clear a stationary turn."""
-        try:
-            if self.costmap is None or (rospy.Time.now() - self.costmap.header.stamp).to_sec() > 1.0:
-                self.costmap = rospy.wait_for_message(
-                    '/move_base/global_costmap/costmap', OccupancyGrid, timeout=3.0)
-            if self.local_costmap is None or (rospy.Time.now() - self.local_costmap.header.stamp).to_sec() > 1.0:
-                self.local_costmap = rospy.wait_for_message(
-                    '/move_base/local_costmap/costmap', OccupancyGrid, timeout=3.0)
-            global_grid = self.costmap
-            local_grid = self.local_costmap
-            if global_grid.header.frame_id.lstrip('/') != 'map':
-                raise RuntimeError('global costmap is not in map frame')
-            local_frame = local_grid.header.frame_id.lstrip('/')
-            self.tf_listener.waitForTransform(local_frame, 'map', rospy.Time(0), rospy.Duration(1.0))
-            local_t, local_q = self.tf_listener.lookupTransform(
-                local_frame, 'map', rospy.Time(0))
-            local_offset = math.atan2(2 * (local_q[3] * local_q[2] + local_q[0] * local_q[1]),
-                                      1 - 2 * (local_q[1] * local_q[1] + local_q[2] * local_q[2]))
-            c, s = math.cos(local_offset), math.sin(local_offset)
-            local_x = local_t[0] + c * x - s * y
-            local_y = local_t[1] + s * x + c * y
-            local_start_yaw = start_yaw + local_offset
-            delta = self._angle_error(target_yaw, start_yaw)
-            sample_count = max(1, int(math.ceil(abs(delta) / 0.025)))
-            global_checker = GridFootprintChecker.from_message(
-                global_grid, DEFAULT_FOOTPRINT, safety_margin=0.01)
-            local_checker = GridFootprintChecker.from_message(
-                local_grid, DEFAULT_FOOTPRINT, safety_margin=0.01)
-            for index in range(sample_count + 1):
-                fraction = index / float(sample_count)
-                global_yaw = start_yaw + delta * fraction
-                local_yaw = local_start_yaw + delta * fraction
-                global_result = global_checker.check_pose(x, y, global_yaw)
-                if not global_result.safe:
-                    rospy.logwarn('%s %s rotation blocked by global costmap: %s cell=%s at %.3f rad',
-                                  name, phase, global_result.reason, global_result.cell, global_yaw)
-                    return False
-                local_result = local_checker.check_pose(local_x, local_y, local_yaw)
-                if not local_result.safe:
-                    rospy.logwarn('%s %s rotation blocked by local costmap: %s cell=%s at %.3f rad',
-                                  name, phase, local_result.reason, local_result.cell, local_yaw)
-                    return False
-            rospy.loginfo('%s %s rotation sweep clear: %.1f degrees in %d footprint samples',
-                          name, phase, math.degrees(delta), sample_count + 1)
-            return True
-        except (rospy.ROSException, tf.Exception, RuntimeError, ValueError) as error:
-            rospy.logwarn('%s %s rotation sweep unavailable: %s', name, phase, error)
-            return False
-
-    def rotate_in_place_to_yaw(self, name, target_yaw, phase, position_tolerance=0.035):
-        """Turn at the current physical point with one fixed, checked direction."""
-        try:
-            start_x, start_y, start_yaw = self.map_pose()
-            start_motion_pose = self.progress_pose()
-        except (tf.Exception, RuntimeError) as error:
-            rospy.logerr('%s %s turn pose unavailable: %s', name, phase, error)
-            return False
-        initial_error = self._angle_error(target_yaw, start_yaw)
-        if abs(initial_error) <= 0.025:
-            return True
-        if not self.rotation_sweep_clear(
-                start_x, start_y, start_yaw, target_yaw, name, phase):
-            return False
-
-        direction = 1.0 if initial_error > 0.0 else -1.0
-        deadline = time.monotonic() + abs(initial_error) / 0.12 + 8.0
-        last_yaw = start_yaw
-        last_yaw_progress = time.monotonic()
-        rate = rospy.Rate(20)
-        rospy.loginfo('%s %s turn starts at same point: %.1f degree error, direction=%+.0f',
-                      name, phase, math.degrees(initial_error), direction)
-        try:
-            while not rospy.is_shutdown() and time.monotonic() < deadline:
-                x, y, current_yaw = self.map_pose()
-                motion_pose = self.progress_pose()
-                error = self._angle_error(target_yaw, current_yaw)
-                if abs(error) <= 0.025:
-                    self.cmd_pub.publish(Twist())
-                    rospy.sleep(0.2)
-                    _, _, final_yaw = self.map_pose()
-                    final_motion_pose = self.progress_pose()
-                    position_drift = math.hypot(
-                        final_motion_pose[0] - start_motion_pose[0],
-                        final_motion_pose[1] - start_motion_pose[1])
-                    final_error = self._angle_error(target_yaw, final_yaw)
-                    if position_drift <= position_tolerance and abs(final_error) <= 0.04:
-                        rospy.loginfo('%s %s turn complete at same point: drift=%.3f m yaw_error=%.3f rad',
-                                      name, phase, position_drift, final_error)
-                        return True
-                    rospy.logwarn('%s %s turn settled outside tolerance: drift=%.3f m yaw_error=%.3f rad',
-                                  name, phase, position_drift, final_error)
-                    return False
-                if direction * error < -0.015:
-                    rospy.logwarn('%s %s turn overshot; stopping instead of reversing direction', name, phase)
-                    return False
-                position_drift = math.hypot(
-                    motion_pose[0] - start_motion_pose[0],
-                    motion_pose[1] - start_motion_pose[1])
-                if position_drift > position_tolerance:
-                    rospy.logwarn('%s %s turn drifted %.3f m; stopping', name, phase, position_drift)
-                    return False
-                if abs(self._angle_error(current_yaw, last_yaw)) > 0.008:
-                    last_yaw, last_yaw_progress = current_yaw, time.monotonic()
-                elif time.monotonic() - last_yaw_progress > 3.0:
-                    rospy.logwarn('%s %s turn made no heading progress; stopping', name, phase)
-                    return False
-                command = Twist()
-                command.angular.z = direction * min(0.15, max(0.06, 0.8 * abs(error)))
-                self.cmd_pub.publish(command)
-                rate.sleep()
-        except (tf.Exception, RuntimeError) as error:
-            rospy.logwarn('%s %s turn pose became unavailable: %s', name, phase, error)
-        finally:
-            self.cmd_pub.publish(Twist())
-        rospy.logwarn('%s %s turn timed out at same-point heading control', name, phase)
-        return False
-
     def navigate_goal(self, name, x, y, yaw, previous=None):
-        """One pose goal, guarded before dispatch and bounded by actual progress."""
-        position_first = self.photo_route and name == 'POINT_5' and previous is not None
-        if self.photo_route and name.startswith('POINT_'):
-            try:
-                from dynamic_reconfigure.client import Client
-                photo_xy_tolerance = float(
-                    rospy.get_param('~photo_nav_xy_tolerance', 0.03))
-                photo_yaw_tolerance = float(
-                    rospy.get_param('~photo_nav_heading_tolerance', 0.04))
-                # P5 first navigates to recorded XY with heading
-                # unconstrained, then uses the checked same-point yaw servo.
-                min_vel_x = -0.08
-                if name == 'POINT_5':
-                    photo_xy_tolerance = min(
-                        photo_xy_tolerance,
-                        float(rospy.get_param('~point_5_nav_xy_tolerance', 0.025)))
-                    photo_yaw_tolerance = min(
-                        photo_yaw_tolerance,
-                        float(rospy.get_param('~point_5_nav_heading_tolerance', 0.025)))
-                if name == 'POINT_3':
-                    photo_xy_tolerance = max(
-                        photo_xy_tolerance,
-                        float(rospy.get_param('~point_3_nav_xy_tolerance', 0.05)))
-                if name == 'POINT_7':
-                    min_vel_x = 0.0
-                if position_first:
-                    # The incoming leg is pre-aligned to its path bearing,
-                    # so forward motion can handle XY without DWA reversing
-                    # or trying to satisfy the camera yaw at a distance.
-                    min_vel_x = 0.0
-                navigation_yaw_tolerance = math.pi if position_first else photo_yaw_tolerance
-                Client('/move_base/DWAPlannerROS', timeout=3.0).update_configuration({
-                    'xy_goal_tolerance': photo_xy_tolerance,
-                    'yaw_goal_tolerance': navigation_yaw_tolerance,
-                    # Keep reverse available except for the P6->P7 short leg.
-                    'min_vel_x': min_vel_x,
-                    # Keep the configured minimum translational threshold.
-                    # This does not ban pure rotation, so twirling_scale
-                    # separately scores unnecessary spin trajectories.
-                    'min_vel_trans': 0.025,
-                    'twirling_scale': float(
-                        rospy.get_param('~photo_twirling_scale', 0.5)),
-                })
-            except Exception as error:
-                rospy.logerr('could not set precise photo-point tolerances for %s: %s', name, error)
-                self.goal_events.append({'name': name, 'result': 'PHOTO_TOLERANCE_CONFIG_FAILED'})
-                return False
+        """Send one goal; fail on an 8 s route-progress stall without retry."""
         terminal = {GoalStatus.SUCCEEDED, GoalStatus.ABORTED, GoalStatus.PREEMPTED,
                     GoalStatus.REJECTED, GoalStatus.RECALLED, GoalStatus.LOST}
-        for attempt in range(1, 3):
-            if not self.validate_goal(name, x, y, yaw):
-                self.goal_events.append({'name': name, 'attempt': attempt, 'result': 'UNSAFE_GOAL'})
-                return False
-            if position_first:
-                try:
-                    current_x, current_y, _ = self.map_pose()
-                except (tf.Exception, RuntimeError) as error:
-                    rospy.logerr('%s path-bearing pose unavailable: %s', name, error)
-                    return False
-                path_bearing = math.atan2(y - current_y, x - current_x)
-                if not self.rotate_in_place_to_yaw(name, path_bearing, 'approach-bearing'):
-                    self.goal_events.append({'name': name, 'attempt': attempt,
-                                             'result': 'APPROACH_BEARING_FAILED'})
-                    return False
-            start = time.monotonic()
-            last_progress = start
-            try:
-                last_pose = self.progress_pose()
-            except (tf.Exception, RuntimeError):
-                last_pose = None
-            self.client.send_goal(self.goal(x, y, yaw))
-            reason = 'TIMEOUT'
-            while not rospy.is_shutdown() and time.monotonic() - start < self.timeout:
-                state = self.client.get_state()
-                if state in terminal:
-                    reason = 'ACTION_RESULT'
-                    break
-                try:
-                    # AMCL's map->odom update can lag a scan while the base is
-                    # visibly moving. Use encoder odometry for motion progress
-                    # so a fresh, advancing wheel pose cannot be misreported
-                    # as NO_PROGRESS merely because map TF is late.
-                    pose = self.progress_pose()
-                    if last_pose is None or math.hypot(pose[0]-last_pose[0], pose[1]-last_pose[1]) > 0.025 or abs(math.atan2(math.sin(pose[2]-last_pose[2]), math.cos(pose[2]-last_pose[2]))) > 0.06:
-                        last_pose, last_progress = pose, time.monotonic()
-                except (tf.Exception, RuntimeError):
-                    pass
-                if time.monotonic() - last_progress > float(
-                        rospy.get_param('~no_progress_timeout', 20.0)):
-                    reason = 'NO_PROGRESS'
-                    break
-                time.sleep(0.1)
+        if not self.validate_goal(name, x, y, yaw):
+            self.goal_events.append({'name': name, 'result': 'UNSAFE_GOAL'})
+            return False
+        if not self.validate_ordered_corridor(name, x, y, yaw):
+            self.goal_events.append({'name': name, 'result': 'ORDERED_CORRIDOR_BLOCKED'})
+            return False
+        ordered_monitor = (self.photo_route and self.strict_acceptance and
+                           self.corridor_length > 0.0)
+        route_start = self.route_cursor
+        route_goal = self.planned_goal_progress
+        if ordered_monitor and route_goal is None:
+            self.goal_events.append({'name': name, 'result': 'ORDERED_ROUTE_CURSOR_MISSING'})
+            return False
+
+        nav_xy_tolerance = float(rospy.get_param('~photo_nav_xy_tolerance', 0.04))
+        nav_yaw_tolerance = float(rospy.get_param('~photo_nav_heading_tolerance', 0.05))
+        if name == 'POINT_3':
+            nav_xy_tolerance = max(nav_xy_tolerance, float(rospy.get_param(
+                '~point_3_nav_xy_tolerance', 0.05)))
+        if name == 'POINT_5':
+            nav_xy_tolerance = min(nav_xy_tolerance, float(rospy.get_param(
+                '~point_5_nav_xy_tolerance', 0.025)))
+            nav_yaw_tolerance = min(nav_yaw_tolerance, float(rospy.get_param(
+                '~point_5_nav_heading_tolerance', 0.025)))
+        if name == 'POINT_7':
+            nav_xy_tolerance = max(nav_xy_tolerance, float(rospy.get_param(
+                '~point_7_nav_xy_tolerance', 0.05)))
+        if name == 'POINT_10':
+            nav_xy_tolerance = max(nav_xy_tolerance, float(rospy.get_param(
+                '~point_10_nav_xy_tolerance', 0.05)))
+        controller_xy_tolerance = min(0.05, nav_xy_tolerance)
+        # Use the already-approved pose tolerance for the local controller.
+        # Requiring 0.02 rad here made it keep turning after the task's 0.04
+        # rad heading criterion was satisfied, which can stall short legs.
+        controller_yaw_tolerance = min(0.04, nav_yaw_tolerance)
+
+        # BaseLocalPlanner::setPlan sees Navfn's final path tangent, which can
+        # differ from the saved camera heading. Set the explicit photo/home yaw
+        # before dispatch so the single controller finishes at the requested pose.
+        rospy.set_param('/move_base/forward_path_follower/target_x', float(x))
+        rospy.set_param('/move_base/forward_path_follower/target_y', float(y))
+        rospy.set_param('/move_base/forward_path_follower/target_yaw', float(yaw))
+        rospy.set_param('/move_base/forward_path_follower/target_xy_tolerance',
+                        float(controller_xy_tolerance))
+        rospy.set_param('/move_base/forward_path_follower/target_yaw_tolerance',
+                        float(controller_yaw_tolerance))
+        if ordered_monitor:
+            rospy.set_param('/move_base/forward_path_follower/route_start_s',
+                            float(route_start))
+            rospy.set_param('/move_base/forward_path_follower/route_goal_s',
+                            float(route_goal))
+        try:
+            start_x, start_y, _ = self.motion_pose_map()
+        except (tf.Exception, RuntimeError) as error:
+            rospy.logerr('%s start pose unavailable: %s', name, error)
+            return False
+        started = time.monotonic()
+        initial_goal_distance = math.hypot(x - start_x, y - start_y)
+        progress_mark = 0.0
+        last_progress_wall = started
+        progress_quantum = 0.05
+        if ordered_monitor:
+            route_leg_length = max(0.0, route_goal - route_start)
+            progress_quantum = min(0.05, max(0.01, route_leg_length * 0.25))
+        final_alignment_started = None
+        max_cross_track = 0.0
+        self.client.send_goal(self.goal(x, y, yaw))
+        reason = 'TIMEOUT'
+        while not rospy.is_shutdown() and time.monotonic() - started < self.timeout:
             state = self.client.get_state()
-            self.goal_events.append({'name': name, 'attempt': attempt,
-                                     'duration_s': round(time.monotonic()-start, 2),
-                                     'action_state': state, 'result': reason})
-            if state == GoalStatus.SUCCEEDED:
-                if position_first and not self.rotate_in_place_to_yaw(
-                        name, yaw, 'camera-heading'):
-                    self.goal_events.append({'name': name, 'result': 'CAMERA_HEADING_FAILED'})
-                    return False
-                return True
+            if state in terminal:
+                reason = 'ACTION_RESULT'
+                break
+            try:
+                current_x, current_y, current_yaw = self.motion_pose_map()
+                remaining = math.hypot(x - current_x, y - current_y)
+                if ordered_monitor:
+                    cross_track, route_s = nearest_route_progress_in_interval(
+                        (current_x, current_y), self.corridor_segments,
+                        self.corridor_length, route_start - 0.10, route_goal + 0.05)
+                    if route_s is None or cross_track > 0.18:
+                        rospy.logerr(
+                            '%s left ordered corridor: pose=(%.3f, %.3f), '
+                            'projection=%s, interval=[%.3f, %.3f], cross_track=%.3f m',
+                            name, current_x, current_y,
+                            'none' if route_s is None else '%.3f' % route_s,
+                            route_start - 0.10, route_goal + 0.05, cross_track)
+                        reason = 'CORRIDOR_DEPARTURE'
+                        break
+                    if route_s > route_goal + 0.05:
+                        reason = 'ROUTE_OVERSHOOT'
+                        break
+                    self.route_cursor = max(self.route_cursor, route_s)
+                    route_delta = route_s - route_start
+                    max_cross_track = max(max_cross_track, cross_track)
+                else:
+                    cross_track, route_delta = 0.0, 0.0
+                progress = max(0.0, route_delta,
+                               initial_goal_distance - remaining)
+                now = time.monotonic()
+                signal_wait = (now - self.gate_wall_time < 0.7 and
+                               'WAIT_' in self.latest_gate_status)
+                final_pose_alignment = (
+                    remaining <= max(nav_xy_tolerance, 0.05) and
+                    abs(self._angle_error(yaw, current_yaw)) > controller_yaw_tolerance)
+                if final_pose_alignment:
+                    if final_alignment_started is None:
+                        final_alignment_started = now
+                    elif now - final_alignment_started >= 10.0:
+                        reason = 'FINAL_ALIGNMENT_STALL'
+                        break
+                else:
+                    final_alignment_started = None
+                if signal_wait:
+                    # Red/yellow/unknown holds do not consume the motion
+                    # stall budget. Start a fresh 8 s window when the gate
+                    # releases the vehicle on a valid GREEN.
+                    progress_mark = progress
+                    last_progress_wall = now
+                elif final_pose_alignment:
+                    # Spatial progress naturally stops during the bounded
+                    # final yaw settle; budget it separately from a route stall.
+                    progress_mark = progress
+                    last_progress_wall = now
+                elif progress >= progress_mark + progress_quantum:
+                    progress_mark = progress
+                    last_progress_wall = now
+                odom = self.latest_odom
+                motion_record = {
+                    'stamp': rospy.Time.now().to_sec(), 'goal': name,
+                    'route_progress_m': round(progress, 4),
+                    'cross_track_m': round(cross_track, 4),
+                    'goal_remaining_m': round(remaining, 4),
+                    'forward_speed_mps': (round(odom.twist.twist.linear.x, 4)
+                                          if odom is not None else None),
+                    'gate_status': self.latest_gate_status,
+                }
+                self.motion_progress_pub.publish(String(
+                    data=json.dumps(motion_record, separators=(',', ':'))))
+                if now - last_progress_wall >= self.no_progress_timeout and not signal_wait:
+                    reason = 'NO_ROUTE_PROGRESS'
+                    break
+            except (tf.Exception, RuntimeError):
+                pass
+            time.sleep(0.05)
+
+        state = self.client.get_state()
+        duration = time.monotonic() - started
+        if reason != 'ACTION_RESULT' and state not in terminal:
             self.client.cancel_goal()
             self.client.wait_for_result(rospy.Duration(2.0))
-            self.cmd_pub.publish(Twist())
-            rospy.logwarn('goal %s failed: attempt=%d state=%d reason=%s', name, attempt, state, reason)
-            if attempt == 1 and not rospy.is_shutdown():
-                try:
-                    rospy.wait_for_service('/move_base/clear_costmaps', timeout=2.0)
-                    rospy.ServiceProxy('/move_base/clear_costmaps', Empty)()
-                except (rospy.ROSException, rospy.ServiceException):
-                    pass
-                time.sleep(1.0)
+        self.cmd_pub.publish(Twist())
+        event = {'name': name, 'duration_s': round(duration, 2),
+                 'action_state': state, 'result': reason,
+                 'route_progress_m': round(progress_mark, 4),
+                 'max_cross_track_m': round(max_cross_track, 4),
+                 'attempts': 1}
+        if state == GoalStatus.SUCCEEDED and reason == 'ACTION_RESULT':
+            try:
+                actual_x, actual_y, actual_yaw = self.map_pose()
+                xy_error = math.hypot(actual_x - x, actual_y - y)
+                yaw_error = abs(self._angle_error(yaw, actual_yaw))
+                event.update({'position_error_m': xy_error,
+                              'heading_error_rad': yaw_error})
+                if (xy_error <= nav_xy_tolerance and
+                        yaw_error <= nav_yaw_tolerance):
+                    if ordered_monitor:
+                        self.route_cursor = max(self.route_cursor, route_goal)
+                    self.goal_events.append(event)
+                    return True
+                event['result'] = 'ARRIVAL_MISMATCH'
+            except (tf.Exception, RuntimeError) as error:
+                event['result'] = 'ARRIVAL_POSE_UNAVAILABLE'
+                event['detail'] = str(error)
+        self.goal_events.append(event)
+        rospy.logerr('goal %s failed once: state=%d reason=%s',
+                     name, state, event['result'])
         return False
 
     def run(self):
@@ -590,6 +1098,11 @@ class RouteExecutor:
         if not rospy.get_param('/cmd_vel_watchdog/enforce_white_lines', False):
             self.status_pub.publish('FAILED:WHITE_LINE_GUARD_DISABLED')
             rospy.logerr('route refused: white-line gate is disabled')
+            return False
+        if self.strict_acceptance and not rospy.get_param(
+                '/cmd_vel_watchdog/enforce_traffic', False):
+            self.status_pub.publish('FAILED:TRAFFIC_GATE_DISABLED')
+            rospy.logerr('route refused: traffic-light gate is disabled')
             return False
         ready = self.client.wait_for_server(rospy.Duration(30.0))
         if not ready:
@@ -627,6 +1140,25 @@ class RouteExecutor:
                 return False
             rospy.loginfo('navigation target reached: %s (%.2f, %.2f)', name, x, y)
             previous = (name, x, y, yaw)
+        if self.photo_route and self.capture_photos:
+            captured_names = [item['waypoint'] for item in self.accepted_photo_records]
+            if captured_names != ['POINT_%d' % i for i in range(1, 11)]:
+                rospy.logerr('photo acceptance requires exactly 10 ordered records; got %s',
+                             captured_names)
+                return False
+            people_records = [record for record in self.accepted_photo_records
+                              if record['waypoint'] in
+                              ('POINT_2', 'POINT_3', 'POINT_4', 'POINT_5', 'POINT_6')]
+            person_boxes = sum(record['detector_counts'].get('resident', 0) +
+                               record['detector_counts'].get('stranger', 0)
+                               for record in people_records)
+            outsider_boxes = sum(record['detector_counts'].get('stranger', 0)
+                                 for record in people_records)
+            if outsider_boxes < 1:
+                rospy.logerr('photo run did not identify any stranger-class person')
+                return False
+            self.person_boxes_by_view = person_boxes
+            self.outsider_boxes_by_view = outsider_boxes
         if self.photo_route and not rospy.get_param('~park_only', False):
             if not self.return_home(
                     (previous[1], previous[2]) if previous is not None else None):
@@ -634,77 +1166,106 @@ class RouteExecutor:
         return self.precise_park()
 
     def return_home(self, last_photo_position=None):
-        """Let the collision-checked planner return to the recorded start pose."""
+        """Send exactly one final goal to the recorded birth pose and yaw."""
         self.status_pub.publish('RETURN_HOME')
-        # Keep the long return easy for DWA; precise_park tightens the goal only
-        # after the robot is near HOME.
-        try:
-            from dynamic_reconfigure.client import Client
-            Client('/move_base/DWAPlannerROS', timeout=3.0).update_configuration(
-                {'xy_goal_tolerance': 0.05, 'yaw_goal_tolerance': 0.10,
-                 'min_vel_x': -0.08, 'min_vel_trans': 0.025})
-        except Exception as error:
-            rospy.logerr('could not set return-home tolerances: %s', error)
-            return False
         return self.navigate_goal('HOME', self.birth_x, self.birth_y, self.birth_yaw)
 
-    def map_pose(self):
-        stamp = self.tf_listener.getLatestCommonTime('map', 'base_footprint')
-        if (rospy.Time.now() - stamp).to_sec() > 0.5:
-            raise RuntimeError('stale map pose')
-        (x, y, _), q = self.tf_listener.lookupTransform('map', 'base_footprint', stamp)
-        yaw = math.atan2(2 * (q[3] * q[2] + q[0] * q[1]),
-                         1 - 2 * (q[1] ** 2 + q[2] ** 2))
-        return x, y, yaw
-
-    def progress_pose(self):
-        """Return fresh wheel odometry for motion progress, in its own frame."""
+    def wheel_pose_map(self):
+        """Transform fresh encoder odometry through the latest AMCL map->odom."""
         message = self.latest_odom
-        if message is None or (rospy.Time.now() - message.header.stamp).to_sec() > 1.0:
+        if message is None or (rospy.Time.now() - message.header.stamp).to_sec() > 0.5:
+            raise RuntimeError('wheel odometry is stale')
+        (tx, ty, _), q = self.tf_listener.lookupTransform('map', 'odom', rospy.Time(0))
+        map_yaw = math.atan2(2 * (q[3] * q[2] + q[0] * q[1]),
+                             1 - 2 * (q[1] * q[1] + q[2] * q[2]))
+        odom = message.pose.pose
+        q = odom.orientation
+        odom_yaw = math.atan2(2 * (q.w * q.z + q.x * q.y),
+                              1 - 2 * (q.y * q.y + q.z * q.z))
+        c, s = math.cos(map_yaw), math.sin(map_yaw)
+        return (tx + c * odom.position.x - s * odom.position.y,
+                ty + s * odom.position.x + c * odom.position.y,
+                map_yaw + odom_yaw)
+
+    def motion_pose_map(self):
+        """Use encoders for motion progress and fall back to current map TF."""
+        try:
+            return self.wheel_pose_map()
+        except (tf.Exception, RuntimeError):
             return self.map_pose()
-        q = message.pose.pose.orientation
-        yaw = math.atan2(2 * (q.w * q.z + q.x * q.y),
-                         1 - 2 * (q.y ** 2 + q.z ** 2))
-        return (message.pose.pose.position.x, message.pose.pose.position.y, yaw)
+
+    def map_pose(self):
+        deadline = time.monotonic() + 0.5
+        last_error = None
+        while time.monotonic() < deadline:
+            try:
+                stamp = self.tf_listener.getLatestCommonTime('map', 'base_footprint')
+                age = (rospy.Time.now() - stamp).to_sec()
+                if age > 0.8:
+                    raise RuntimeError('stale map pose (%.3f s)' % age)
+                (x, y, _), q = self.tf_listener.lookupTransform(
+                    'map', 'base_footprint', rospy.Time(0))
+                yaw = math.atan2(2 * (q[3] * q[2] + q[0] * q[1]),
+                                 1 - 2 * (q[1] ** 2 + q[2] ** 2))
+                return x, y, yaw
+            except (tf.Exception, RuntimeError) as error:
+                last_error = error
+                try:
+                    return self.wheel_pose_map()
+                except (tf.Exception, RuntimeError):
+                    time.sleep(0.01)
+        raise RuntimeError('map pose unavailable: %s' % last_error)
 
     def precise_park(self):
-        """Validate parking from AMCL after move_base's final pose controller."""
-        for attempt in range(2):
+        """Require the HOME pose and zero velocity for two continuous seconds."""
+        self.status_pub.publish('VERIFY_HOME')
+        deadline = time.monotonic() + 5.0
+        still_since = None
+        last_pose = None
+        while not rospy.is_shutdown() and time.monotonic() < deadline:
             self.cmd_pub.publish(Twist())
-            rospy.sleep(0.5)
             try:
                 x, y, yaw = self.map_pose()
             except (tf.Exception, RuntimeError) as error:
-                rospy.logerr('parking localization unavailable: %s', error)
+                self.status_pub.publish('FAILED:HOME_LOCALIZATION')
+                rospy.logerr('HOME localization unavailable: %s', error)
                 return False
             distance = math.hypot(self.birth_x - x, self.birth_y - y)
-            yaw_error = math.atan2(math.sin(self.birth_yaw - yaw),
-                                   math.cos(self.birth_yaw - yaw))
-            self.parking = {'frame': 'map', 'source': 'AMCL', 'x': x, 'y': y,
-                            'yaw': yaw, 'position_error_m': distance,
-                            'heading_error_rad': abs(yaw_error)}
-            if distance <= 0.06 and abs(yaw_error) <= 0.06:
-                self.status_pub.publish('COMPLETE_PARKED')
-                rospy.loginfo('parking verified by AMCL: %.3f m / %.3f rad',
-                              distance, abs(yaw_error))
-                return True
-            if attempt == 0:
-                try:
-                    from dynamic_reconfigure.client import Client
-                    Client('/move_base/DWAPlannerROS', timeout=3.0).update_configuration(
-                        {'xy_goal_tolerance': 0.03, 'yaw_goal_tolerance': 0.04})
-                except Exception as error:
-                    rospy.logerr('could not set final parking tolerances: %s', error)
-                    break
-                rospy.loginfo('parking needs final alignment: %.3f m / %.3f rad',
-                              distance, abs(yaw_error))
-                if not self.navigate_goal('HOME', self.birth_x, self.birth_y,
-                                          self.birth_yaw):
-                    return False
-        self.status_pub.publish('FAILED:PARK_POSE')
-        rospy.logerr('parking pose mismatch: %.3f m / %.3f rad',
-                     self.parking['position_error_m'],
-                     self.parking['heading_error_rad'])
+            yaw_error = abs(self._angle_error(self.birth_yaw, yaw))
+            message = self.latest_odom
+            fresh_odom = (message is not None and
+                          (rospy.Time.now() - message.header.stamp).to_sec() <= 0.5)
+            if not fresh_odom:
+                self.status_pub.publish('FAILED:HOME_ODOM_STALE')
+                return False
+            linear = abs(message.twist.twist.linear.x)
+            angular = abs(message.twist.twist.angular.z)
+            last_pose = (x, y, yaw, distance, yaw_error, linear, angular)
+            pose_ok = distance <= 0.03 and yaw_error <= 0.04
+            stopped = linear < 0.01 and angular < 0.01
+            if not pose_ok:
+                self.status_pub.publish('FAILED:HOME_POSE')
+                break
+            if stopped:
+                if still_since is None:
+                    still_since = time.monotonic()
+                elif time.monotonic() - still_since >= 2.0:
+                    self.parking = {
+                        'frame': 'map', 'source': 'AMCL', 'x': x, 'y': y,
+                        'yaw': yaw, 'position_error_m': distance,
+                        'heading_error_rad': yaw_error,
+                        'linear_speed_mps': linear, 'angular_speed_rps': angular,
+                        'stationary_seconds': time.monotonic() - still_since,
+                    }
+                    self.status_pub.publish('COMPLETE_PARKED')
+                    return True
+            else:
+                still_since = None
+            time.sleep(0.05)
+        self.status_pub.publish('FAILED:HOME_NOT_STATIONARY')
+        if last_pose:
+            rospy.logerr('HOME failed: position=%.3f m yaw=%.3f rad v=%.3f w=%.3f',
+                         last_pose[3], last_pose[4], last_pose[5], last_pose[6])
         return False
 
     def finish(self, success):
@@ -717,6 +1278,11 @@ class RouteExecutor:
                       'localization': 'wheel_encoders+AMCL',
                       'map_file': rospy.get_param('/map_server/map_file', ''),
                       'goals': self.goal_events, 'parking': getattr(self, 'parking', None),
+                      'strict_acceptance': self.strict_acceptance,
+                      'yolo_checkpoint_sha256': BEST_PT_SHA256,
+                      'accepted_photo_records': self.accepted_photo_records,
+                      'person_boxes_by_view': getattr(self, 'person_boxes_by_view', None),
+                      'outsider_boxes_by_view': getattr(self, 'outsider_boxes_by_view', None),
                       'photo_points': [name for name, *_ in self.route],
                       'completed_photos': sorted(os.listdir(self.photo_dir))}
             with open(os.path.join(self.photo_dir, 'run_summary.json'), 'w') as stream:

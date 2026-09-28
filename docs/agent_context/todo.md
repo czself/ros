@@ -1,6 +1,25 @@
-# Active Tasks
+---
+type: todo
+status: active
+updated_by: orchestrator
+---
 
-- [x] `task001`: finish and verify traffic-light visuals, timing, detection gate, and stop-line compliance for the 4.2 m scene.
-- [ ] `task002`: define and freeze the full fixed route, birth pose, and 4.2 m navigation assets.
-- [ ] `task003`: implement and validate the deterministic autonomous route executor.
-- [ ] `task004`: create the one-command route demonstration and compliance evidence.
+# Active Work
+
+## task006 — White-line-safe navigation
+
+- [ ] Architecture review for matching global/local white-line costmaps and fail-closed watchdog.
+- [ ] Implement/review config and launcher checks; preserve current no-goal/stopped state.
+- [ ] Recheck Navfn plans and full-footprint swept paths for all ordered route legs.
+- [ ] Capture one autonomous run with white-line enforcement enabled and verify no paint contact/crossing.
+
+## task007 — Detector and OCR
+
+- [ ] Load best.pt only after confirming its class map and safe inference path.
+- [ ] Validate detector on representative traffic-light, person, and plate frames.
+- [ ] Add terminal/image output correlation and expose plate crops for user-managed OCR; do not implement OCR.
+
+## task008 — Full acceptance run
+
+- [ ] Re-run the fixed 10-point photo sequence and HOME after task006/007 reviews.
+- [ ] Resolve P5/P7 framing by evidence while preserving the authorized point order.

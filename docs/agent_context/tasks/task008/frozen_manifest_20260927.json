@@ -1,0 +1,682 @@
+{
+  "kind": "task008_frozen_acceptance_build",
+  "created_utc": "2026-09-28T05:37:39Z",
+  "worktree": "/home/sz/game-navigation-photo-progress",
+  "git_branch": "codex/navigation-photo-run-progress",
+  "git_head": "b2dce29e6c708aed077c54242252e4766ef26fac",
+  "container_image_id": "sha256:7dbfb9576d8e6d226c31e06129a82aaab8702695f38eca2116918cb9b9308797",
+  "compiled_forward_path_follower_sha256": "e1c84c6224f67cdae69280b37804c199f58306697fe9d161e77124c37d118f72",
+  "yolo_checkpoint": {
+    "path": "/home/sz/下载/best.pt",
+    "sha256": "fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad"
+  },
+  "runtime_profile": {
+    "route": "HOME, POINT_1..POINT_10, HOME",
+    "strict_acceptance": true,
+    "enforce_white_lines": true,
+    "enforce_traffic": true,
+    "observation_sources": [
+      "laser",
+      "depth"
+    ],
+    "local_planner": "forward_path_follower/ForwardPathFollower",
+    "max_forward_speed_mps": 0.35,
+    "max_yaw_rate_rps": 0.9,
+    "linear_accel_mps2": 0.75,
+    "angular_accel_rps2": 1.8,
+    "no_progress_timeout_s": 8.0,
+    "default_photo_position_tolerance_m": 0.03,
+    "default_photo_heading_tolerance_rad": 0.04,
+    "point3_position_tolerance_m": 0.05,
+    "point5_position_heading_tolerance": 0.025,
+    "point7_photo_nav_position_tolerance_m": 0.05,
+    "point10_photo_nav_position_tolerance_m": 0.05,
+    "photo_settle_s": 0.3,
+    "photo_burst_count": 4,
+    "photo_burst_interval_s": 0.15,
+    "traffic_yolo_confidence": 0.5,
+    "traffic_green_frames": 3,
+    "traffic_source_age_max_s": 0.5,
+    "traffic_min_green_remaining_s": 2.0,
+    "plate_roi_min_source_confidence": 0.15,
+    "ocr": false,
+    "controller_goal_stability_window_s": 0.35,
+    "controller_goal_stability_translation_delta_m_max": 0.003,
+    "controller_goal_stability_yaw_delta_rad_max": 0.01,
+    "point1_backoff_m": 0.05,
+    "ordered_route_start_backtrack_tolerance_m": 0.1,
+    "preline_crossing_latch_max_s": 1.2,
+    "plate_inventory_policy": "randomly select 3 unique nonempty images at world creation; frozen across all runs"
+  },
+  "acceptance_gate": {
+    "runs_required": 3,
+    "mission_duration_max_s": 180.0,
+    "translation_route_speed_min_mps": 0.15,
+    "translation_speed_window": "positive forwarded chassis command; gate waits excluded",
+    "active_yolo_windows": "only while chassis moves or traffic gate is active",
+    "active_yolo_mean_hz_min": 4.95,
+    "active_yolo_windows_at_5hz_min_fraction": 0.95,
+    "active_yolo_window_p95_latency_ms_max": 250.0,
+    "active_yolo_window_max_frame_age_ms_max": 500.0,
+    "source_stamp_gap_s_max": 0.5,
+    "stop_line_approach_max_mps": 0.12,
+    "home_position_error_max_m": 0.03,
+    "home_yaw_error_max_rad": 0.04,
+    "home_stationary_min_s": 2.0,
+    "ordinary_paint_contacts_max": 0,
+    "unauthorized_conditional_contacts_max": 0,
+    "pose_interpolation_translation_max_m": 0.01,
+    "pose_interpolation_yaw_max_deg": 1.0,
+    "strict_route_retries": 0
+  },
+  "files": {
+    "scripts/start_navigation.sh": {
+      "sha256": "2be788fa43975165f4e293a8c96bf954a83bb38419b46d396890b6562a2b29e2",
+      "size_bytes": 8278
+    },
+    "scripts/start_standee_photo_route.sh": {
+      "sha256": "1313f2f67483ad051c67357a1e16d5a8da5af4f0d725546538295b18e9cd5ee8",
+      "size_bytes": 5194
+    },
+    "scripts/start_sim.sh": {
+      "sha256": "9022acbe287efbb712ea362f68a2f30839a009c4cb9f23dcb911ec37045f3a11",
+      "size_bytes": 5303
+    },
+    "scripts/route_executor.py": {
+      "sha256": "c6699c3ba3d5c9501dcf6c69a890fe0e6ac806d387ff7a36275ff66dda3fe955",
+      "size_bytes": 67843
+    },
+    "scripts/cmd_vel_watchdog.py": {
+      "sha256": "73263d4511191d53e39807d441fc0996995b9a1990e91e49a65eabbb4a3857fc",
+      "size_bytes": 24310
+    },
+    "scripts/yolo_inspector.py": {
+      "sha256": "78bc8a5202ae56b55b9ec1d21913c9caabbbe6d97fa04730c4d052a1ed7f4324",
+      "size_bytes": 11527
+    },
+    "scripts/check_navigation_readiness.py": {
+      "sha256": "6f1eedd297859027ff178374141dff9fe7953212aaace20e347d1db746bf560a",
+      "size_bytes": 6591
+    },
+    "scripts/runtime_control.py": {
+      "sha256": "23c7f020549f8b92935df1ddb7c840081cdd2633c9653762549ae8be17035ca9",
+      "size_bytes": 4884
+    },
+    "scripts/wheel_encoder_odom.py": {
+      "sha256": "c8a287f4c12cda5090a9cdb67f68fd37d30a60a4d40b1ca4ff5dab774f7b5a6a",
+      "size_bytes": 4969
+    },
+    "scripts/goal_sanitizer.py": {
+      "sha256": "a6510163b6f592ffeed4dc9b43bbd8ec1f8de291adaf36986d0f198dc95200a6",
+      "size_bytes": 4415
+    },
+    "scripts/navigation_goal_safety.py": {
+      "sha256": "4d3050226e3929bac8acd31c55cdc9df5a38d36fb7a9ca52a792bb1fc5374c5a",
+      "size_bytes": 7150
+    },
+    "scripts/traffic_light_controller.py": {
+      "sha256": "348fdbf8d14b3321f0809a30b83c6cf3a803ce97d3b71e9d1b58744242b173e6",
+      "size_bytes": 10319
+    },
+    "scripts/audit_white_line_constraints.py": {
+      "sha256": "36b9df6f23f2d46ec2131fa0b9bef21ba4dd8a491e20e598be0972483027efa7",
+      "size_bytes": 29297
+    },
+    "scripts/audit_standee_photo_run.py": {
+      "sha256": "6e48f9f218df39368c9d20e7ca939bf5fa3e03aa88b5e4009eca76e4e9d785f3",
+      "size_bytes": 32445
+    },
+    "tests/test_traffic_light_gate.py": {
+      "sha256": "1725d5baf214d96049d0e13deb453fb80411da376e3472d4e66798dea1b17afd",
+      "size_bytes": 10782
+    },
+    "current_slam_preview_local.yaml": {
+      "sha256": "96bac55f9a67a717a95b02d7c2e5f62d689bcce0610c30b5851b9bf47278c015",
+      "size_bytes": 145
+    },
+    "current_slam_preview.pgm": {
+      "sha256": "bdcd8feb0e64905ccbcd157ea0392570244801e5e698852b0ea462a7293a77cf",
+      "size_bytes": 50228
+    },
+    "maps/current_slam_preview_white_lines.yaml": {
+      "sha256": "b0bd334e5341f0f8d428d8e6f00f0d0ea62e91d4f47096fd2a76c8f45580e67f",
+      "size_bytes": 157
+    },
+    "maps/current_slam_preview_white_lines.pgm": {
+      "sha256": "faba14e96d29eaabeddbde5e7f3454c00af4e1cd5415c26de722c6fc83493f17",
+      "size_bytes": 50191
+    },
+    "maps/current_slam_preview_white_lines.manifest.json": {
+      "sha256": "f9ad99cd43b55a94d903b4c6b1f26240374d8b44ec73d49d2e86fde5cc26b48f",
+      "size_bytes": 1070
+    },
+    "navigation/calibrated.rviz": {
+      "sha256": "0199f53ac24975d9797f2276480cfef9e6f519cd5b56681e2aaa19cd7cf68ac6",
+      "size_bytes": 1151
+    },
+    "navigation/common_costmap.yaml": {
+      "sha256": "5287a967e1d21eb56caf6ea39155ba17bc6d5b3ce267d91be7fa0bc5982b3bb6",
+      "size_bytes": 1678
+    },
+    "navigation/global_costmap.yaml": {
+      "sha256": "e5432dae6a4e98ecd02bb2a9127d60467b5a24f5b7e0400e670348488acf89ac",
+      "size_bytes": 1144
+    },
+    "navigation/inner_route.yaml": {
+      "sha256": "c42f76b9238451bca70b09f82b7483f3a4133dabcee66a415b6a6a682533ef86",
+      "size_bytes": 841
+    },
+    "navigation/local_costmap.yaml": {
+      "sha256": "a3a0af72f1dc25198951f31b9a6cb0aa869083ede2df918678ab2134c7abb77a",
+      "size_bytes": 1355
+    },
+    "navigation/mapping_exploration.launch": {
+      "sha256": "e4a1814ea743cfb4e1ef4e220b4dd4fc9ac33723d8fc42f502ec5a9587ea7d6c",
+      "size_bytes": 1120
+    },
+    "navigation/move_base.yaml": {
+      "sha256": "1f2cf1b5b646a6f780781917fb0fc317f74d5c4ea1438f700dd2276814466be4",
+      "size_bytes": 654
+    },
+    "navigation/navigation.launch": {
+      "sha256": "bc998f6c7b070162a971a848f49f9ad4bf61b50789b7a1c605b2fb4937a2bb97",
+      "size_bytes": 1913
+    },
+    "navigation/planner.launch": {
+      "sha256": "0ceead48c45798a84bb41024fecb1bec58361536cdc70029e0efbd5701d79bbc",
+      "size_bytes": 1607
+    },
+    "navigation/robot.launch": {
+      "sha256": "3618a7df3c82bf569f313e1f3cb37aa8c4d8b52a55cda889ddbfbb5cb6835a2a",
+      "size_bytes": 468
+    },
+    "navigation/route_contract.yaml": {
+      "sha256": "edb49ac51ec589bb891753563c9fff254dabc4ad9e6de22e44c3dc5137ea4612",
+      "size_bytes": 1404
+    },
+    "navigation/standee_photo_route.json": {
+      "sha256": "31db3a0e7a1d9f4a3342dc1ee550d91e0b841af5e4cb8e880c643bcf4449b19c",
+      "size_bytes": 11705
+    },
+    "ros_packages/forward_path_follower/CMakeLists.txt": {
+      "sha256": "7086c90fe5d689f44393dd33884a192f818fe5d7411f3100ad9106989d503f73",
+      "size_bytes": 835
+    },
+    "ros_packages/forward_path_follower/package.xml": {
+      "sha256": "3a14ce8bbecd51ec93c286c64e86f3934b1aa63ed4a130d20898c39d810b6e68",
+      "size_bytes": 732
+    },
+    "ros_packages/forward_path_follower/plugin.xml": {
+      "sha256": "32274949d5c67e4e357820d67379c9e045dfad5311a624de6d262539971d1eff",
+      "size_bytes": 355
+    },
+    "ros_packages/forward_path_follower/src/forward_path_follower.cpp": {
+      "sha256": "c065f20f8c8d1aae9adb5c976a20b934e6e38cd261fa68e4512913f502cf7744",
+      "size_bytes": 33345
+    },
+    "ros_packages/safe_escape_recovery/CMakeLists.txt": {
+      "sha256": "05b9442f13b0e6666109fe718265b9c1db39e44444bee154a413c9c7a900b5dd",
+      "size_bytes": 690
+    },
+    "ros_packages/safe_escape_recovery/package.xml": {
+      "sha256": "6c4efead1919f242d996bfb0f39e410b858dece6d733558f35015d2e09c8fbd6",
+      "size_bytes": 632
+    },
+    "ros_packages/safe_escape_recovery/plugin.xml": {
+      "sha256": "0a65e7fe842ee8b44c123a46496c6b3e4c197f6f1c72dd42ff5e5e9e9535d0d1",
+      "size_bytes": 332
+    },
+    "ros_packages/safe_escape_recovery/src/safe_escape_recovery.cpp": {
+      "sha256": "bcc0be0a3eede34ec8435d600f9bf06cab55c7f9aab15aa7c9c365334e904022",
+      "size_bytes": 15829
+    },
+    "models/competition_ground/materials/scripts/competition_ground.material": {
+      "sha256": "bc7b622d5d76930c562e568eec1cf37316e1829fa583f52589dd48a74833f414",
+      "size_bytes": 224
+    },
+    "models/competition_ground/materials/textures/map.png": {
+      "sha256": "afe618e46ea3205e3ab83a292a624de70eacc1672373c2331d8c1dc504e004ba",
+      "size_bytes": 167692
+    },
+    "models/competition_ground/model.config": {
+      "sha256": "c4221b8814af89855dc2bfab98674add4c44653cafd5db17676c48cd0c49c7a3",
+      "size_bytes": 336
+    },
+    "models/competition_ground/model.sdf": {
+      "sha256": "53117ab7c902343651ba595d88ccef4ed864afe3870ac4ae9790c271d89c2686",
+      "size_bytes": 2936
+    },
+    "models/traffic_light/materials/scripts/traffic_light.material": {
+      "sha256": "f83ab8271834b881f6fa1773293f06b4776f7f09410a61035bc91f6d6adf2752",
+      "size_bytes": 980
+    },
+    "models/traffic_light/materials/textures/green_off.png": {
+      "sha256": "46a30fc9dd2e56958de86526bd596e129a87f8e6aca9045d2c3af88a6caacb7a",
+      "size_bytes": 2030607
+    },
+    "models/traffic_light/materials/textures/green_on.png": {
+      "sha256": "b44a69b7e96cf909d20c97803af736d1090bb6ecd3c8b0894d8a075d9e9f02cb",
+      "size_bytes": 2078760
+    },
+    "models/traffic_light/materials/textures/red_off.png": {
+      "sha256": "b5b63a004143586dfa2387deddeebd9558ebc3bc8a43e39009747ba2c0ffdbd5",
+      "size_bytes": 1841379
+    },
+    "models/traffic_light/materials/textures/red_on.png": {
+      "sha256": "ff8923876a6b945e13f828ddd0ade9cd472aa1c12e74316578d83a18c0ee4815",
+      "size_bytes": 2060054
+    },
+    "models/traffic_light/materials/textures/yellow_off.png": {
+      "sha256": "011080177f1704b0bc4aba2bf12fc49e07aca72b650e9d31194683825e24865c",
+      "size_bytes": 2166092
+    },
+    "models/traffic_light/materials/textures/yellow_on.png": {
+      "sha256": "b4465644cad9559f351b6fbae75eca294ef353df8899c55456e6af035cc93602",
+      "size_bytes": 1915090
+    },
+    "models/traffic_light/model.config": {
+      "sha256": "29e90d7afc40cc3d5663a886e17b4c5eddf800e1c484a9bb423fc207fef95e04",
+      "size_bytes": 130
+    },
+    "models/traffic_light/model.sdf": {
+      "sha256": "00592b9e85c4b00211dd834040dd4ad35a44d9074356dd2a7921458b89989e28",
+      "size_bytes": 5182
+    },
+    "insert/person_standees/README.md": {
+      "sha256": "781a10fcb5c7d29465f462ab25adbf7d363486040e04bc1bbae6a366336aa748",
+      "size_bytes": 803
+    },
+    "insert/person_standees/images/person_01.png": {
+      "sha256": "3afdecda86664dbed90bd1e25f843967ed693dbfce6c80795d4e8772ccde8e82",
+      "size_bytes": 70888
+    },
+    "insert/person_standees/images/person_02.png": {
+      "sha256": "f6661dc6507ad1fd3be4c105d0d1518d37255c1e7979376b555860feab8cba77",
+      "size_bytes": 61871
+    },
+    "insert/person_standees/images/person_03.png": {
+      "sha256": "1b21c0bec7fd5b03e191160b548f3d9f5a43b5325b50b9fbc0f87b455442276b",
+      "size_bytes": 63686
+    },
+    "insert/person_standees/images/person_04.png": {
+      "sha256": "ebbb01bfcf41a915ed731081a86600c96c044988079908b940aba421ec9cfdf6",
+      "size_bytes": 70786
+    },
+    "insert/person_standees/images/person_05.png": {
+      "sha256": "84e613f0e865f6bcd0c9cd0d8a81e8349c7d69720bdd04cba8f96466bd42cc92",
+      "size_bytes": 59149
+    },
+    "insert/person_standees/images/person_06.png": {
+      "sha256": "afff22efe970849e11ba3b41a9086a88a00dd9a6be7951e779af5841938c88c0",
+      "size_bytes": 55977
+    },
+    "insert/person_standees/images/person_07.png": {
+      "sha256": "b6b1b745215009aeb5186e7362f0d33e8810f6e315805fb630430e2fc24b884e",
+      "size_bytes": 60615
+    },
+    "insert/person_standees/images/person_08.png": {
+      "sha256": "1f72b111743db5d1251557254cb90a3953a6347249482b528cbc3b5bbc7bc33a",
+      "size_bytes": 57082
+    },
+    "insert/person_standees/images/person_09.png": {
+      "sha256": "6238ac20a1ab3fa437c613708f5417388fba7bdbd18aa3db81fce8c2c0449e63",
+      "size_bytes": 52059
+    },
+    "insert/person_standees/images/person_10.png": {
+      "sha256": "0bb34d312acbdceb095711ce0371386a75b1017c123fcade617b267e66ac3caf",
+      "size_bytes": 70553
+    },
+    "insert/person_standees/images/person_11.png": {
+      "sha256": "d84c0264c813d393ff724396b0f2a4a715cf3f1a7ff7dacb36b1f91d3ea40532",
+      "size_bytes": 58967
+    },
+    "insert/person_standees/images/person_12.png": {
+      "sha256": "c07ca4f14da60875a39194359a4fa21f95947236ac6e2ce4799418aa8b9d4de0",
+      "size_bytes": 58893
+    },
+    "insert/person_standees/images/person_13.png": {
+      "sha256": "29a644a75b8b598ecb135835ba257ea2fab3d7642797497516c5aec566402066",
+      "size_bytes": 55089
+    },
+    "insert/person_standees/images/person_14.png": {
+      "sha256": "c481bfe1f5cc357c079a9690a1175ff3f84c531c35375fcfd90369108d429db1",
+      "size_bytes": 61243
+    },
+    "insert/person_standees/images/person_15.png": {
+      "sha256": "c35273842b51f3397af0139754648d43a8fe5ac4dcb386761138cbe615b17f0a",
+      "size_bytes": 52550
+    },
+    "insert/person_standees/images/person_16.png": {
+      "sha256": "a5c15c87b2c3753e73fbda1f57f1e18ccc2b82c506afa5320fb617cbb1f16949",
+      "size_bytes": 40814
+    },
+    "insert/person_standees/images/person_F1.png": {
+      "sha256": "9028438959546fe7330ef4e8aff41b68cb1cfd7ab38bd05acd3e80aff9226483",
+      "size_bytes": 60315
+    },
+    "insert/person_standees/images/person_F2.png": {
+      "sha256": "bdc6cc46cb52d8ac0979cf0b18f399965c62d833a1853958ed1f125f5d4e26a8",
+      "size_bytes": 59930
+    },
+    "insert/person_standees/materials/scripts/person_standee.material": {
+      "sha256": "3a4ebba83379557d5ec0e17054c11344caa3569c41493a62afbe434bba3157f6",
+      "size_bytes": 265
+    },
+    "insert/person_standees/materials/scripts/person_standees.material": {
+      "sha256": "a9998227f0931fe1e36e1c1dfb841f615e6cd351c9cd6d2135a9d23ae40f5bae",
+      "size_bytes": 3348
+    },
+    "insert/person_standees/materials/textures/person_01.png": {
+      "sha256": "431970b0c805253285e88b8b272a1a662742322d89e970d90d1143f7145f8eda",
+      "size_bytes": 266865
+    },
+    "insert/person_standees/materials/textures/person_02.png": {
+      "sha256": "4b294ceab2b8bb4ec9119723adcc64b433d1062ea9a5122446c343a0ad1005e9",
+      "size_bytes": 260637
+    },
+    "insert/person_standees/materials/textures/person_03.png": {
+      "sha256": "84e2d794b6ea47525949b4fbfc2ffd8c30637baf5d9733b4dfa70c186225237b",
+      "size_bytes": 225484
+    },
+    "insert/person_standees/materials/textures/person_04.png": {
+      "sha256": "54c585e6702242ca1dbcdf5215d2e20143e1deb09bef9ce7da9593a9e9368aa8",
+      "size_bytes": 250535
+    },
+    "insert/person_standees/materials/textures/person_05.png": {
+      "sha256": "04b1b9645f7c1d97cd9774cbfa45962869bfaf2a0b9e76dfbf57c70a9c417ba6",
+      "size_bytes": 290194
+    },
+    "insert/person_standees/materials/textures/person_06.png": {
+      "sha256": "28cdca9db85a8cd89f05227a0f6fae218afdf108754a1392927500fb001fc53b",
+      "size_bytes": 286179
+    },
+    "insert/person_standees/materials/textures/person_07.png": {
+      "sha256": "22254a12f6ec4b0d142841a18d37491f423eb69a8f8a50927a007595c34cff0e",
+      "size_bytes": 287012
+    },
+    "insert/person_standees/materials/textures/person_08.png": {
+      "sha256": "a1cbc3b180a53c433a2798694dd6f17b13450cbf7711b11f10590b4c926266b7",
+      "size_bytes": 251793
+    },
+    "insert/person_standees/materials/textures/person_09.png": {
+      "sha256": "8dfec544571eb128fb00d11da2d712db71b6161df12202858bec99b927904962",
+      "size_bytes": 236098
+    },
+    "insert/person_standees/materials/textures/person_10.png": {
+      "sha256": "25542833826231d34b0555a24dc698f9b297258886d7ddda19584b9bb7772495",
+      "size_bytes": 266766
+    },
+    "insert/person_standees/materials/textures/person_11.png": {
+      "sha256": "e6db607ebd7bfb7fb6b3d668aaf265bd6fbae03d17fe2f907231b0c0d4d03141",
+      "size_bytes": 274153
+    },
+    "insert/person_standees/materials/textures/person_12.png": {
+      "sha256": "17fb36040abae01748a5a2cd6d13e8c5e5e18a4082d8ba7af5b846fe9eeb1f99",
+      "size_bytes": 268075
+    },
+    "insert/person_standees/materials/textures/person_13.png": {
+      "sha256": "972766f21a26c12fc1e163fe33f6265c6dd6810b8b2f01f4095686063a62a627",
+      "size_bytes": 240190
+    },
+    "insert/person_standees/materials/textures/person_14.png": {
+      "sha256": "40709ca221df7a6c0c71f4c8105cebc7f99827c7846994020183b682408d9e9b",
+      "size_bytes": 277558
+    },
+    "insert/person_standees/materials/textures/person_15.png": {
+      "sha256": "b1dd0af2174fe00be2bd57614368011222a884f759b497f7f6735857700d0d36",
+      "size_bytes": 245506
+    },
+    "insert/person_standees/materials/textures/person_16.png": {
+      "sha256": "7efeb82c1bd84f84d56f49699fa70a506ced08a82cd21e8e648085efd8ac1bbb",
+      "size_bytes": 268368
+    },
+    "insert/person_standees/materials/textures/person_F1.png": {
+      "sha256": "5537431e483b8c1df5e54d9aa91b2ec48ad01cc7b2a86d68aeeb480fc139f6ca",
+      "size_bytes": 257942
+    },
+    "insert/person_standees/materials/textures/person_F2.png": {
+      "sha256": "c2aa403b2cb3e17cf060dd24fc434a42c6704ecc5f2106a59210178f2dd252e7",
+      "size_bytes": 219540
+    },
+    "insert/person_standees/model_person_standee_01/model.config": {
+      "sha256": "706a48fa121c60b82a08be2bf5a3168d6ea812569e46d97e72fdda420c6efe5c",
+      "size_bytes": 182
+    },
+    "insert/person_standees/model_person_standee_01/model.sdf": {
+      "sha256": "2e3184de1e110bd52db86a5b5b8f4a860cc103ff9423a2d44bb8263ecb45201e",
+      "size_bytes": 1016
+    },
+    "insert/person_standees/model_person_standee_02/model.config": {
+      "sha256": "d1dac8bd9558a2a9b959b4e261bbe76b3af4d92f3c4a28d13747d0209a368a10",
+      "size_bytes": 182
+    },
+    "insert/person_standees/model_person_standee_02/model.sdf": {
+      "sha256": "b3b809ce229eb1275e8a7035f9539306214f5edefbf84466504dd7d2ca9f456b",
+      "size_bytes": 1016
+    },
+    "insert/person_standees/model_person_standee_07/model.config": {
+      "sha256": "206cd70847fb8148454de1c3d194ee0a0169c51078cb1aaba9d7b641e86059a1",
+      "size_bytes": 182
+    },
+    "insert/person_standees/model_person_standee_07/model.sdf": {
+      "sha256": "274b3088d4257b8e1f58fdc28f32e133b5fa8cd72de63d7eb89dbc8e035d4550",
+      "size_bytes": 1016
+    },
+    "insert/person_standees/model_person_standee_08/model.config": {
+      "sha256": "34b60f4f3da16370a3633b969d9d2c08115ea9de04785624b5f36e448ddf35cc",
+      "size_bytes": 182
+    },
+    "insert/person_standees/model_person_standee_08/model.sdf": {
+      "sha256": "e8af5965828c84ad3059154aeb7c41984f28315b261c147bd093b9c4650441be",
+      "size_bytes": 1016
+    },
+    "insert/person_standees/model_person_standee_13/model.config": {
+      "sha256": "944d42bed7494b94cb274ef7315b5a38c9582bc40402ee8cfb11e926b662608d",
+      "size_bytes": 182
+    },
+    "insert/person_standees/model_person_standee_13/model.sdf": {
+      "sha256": "aa5f786afc7f40af9fed7357a8379370ec613294b3c39830960220bd6a67af7b",
+      "size_bytes": 1016
+    },
+    "insert/person_standees/model_person_standee_14/model.config": {
+      "sha256": "ac371973c5ef23f3c6ce2c130c5c60b6689c38bf15be29a0530d67bd290b58fb",
+      "size_bytes": 182
+    },
+    "insert/person_standees/model_person_standee_14/model.sdf": {
+      "sha256": "a91ea85b898dedc41537bbb7b0e01548698408a641b963c18c023644807a917e",
+      "size_bytes": 1016
+    },
+    "insert/person_standees/model_person_standee_15/model.config": {
+      "sha256": "fbda9e70fa5efd16608120440d8d785cc43ca1fba966f6efcdb739bbe18238e1",
+      "size_bytes": 182
+    },
+    "insert/person_standees/model_person_standee_15/model.sdf": {
+      "sha256": "8afa173ecf610ea30a437c6ab424359b62eb49ac99a6ba64616a936ec860ba6a",
+      "size_bytes": 1016
+    },
+    "insert/person_standees/model_person_standee_16/model.config": {
+      "sha256": "2cefa92d86725d228a091322d5519764deeb1965a261377baea7e07ebe6897c1",
+      "size_bytes": 182
+    },
+    "insert/person_standees/model_person_standee_16/model.sdf": {
+      "sha256": "d739ec973d06e00caf7b4ef4eb7953c901404a36cdd3988f2fe4def1de43eb93",
+      "size_bytes": 1016
+    },
+    "insert/person_standees/person_standee_template.sdf": {
+      "sha256": "188640145c9effea8082ffb9e9ca3ab16a94eb17bbca69fa31c72510110207d2",
+      "size_bytes": 1062
+    },
+    "insert/person_standees/reserved_standees.sdf": {
+      "sha256": "6d3e175426021dc710b50dcb498b382bf364d98a7bf361947bfc854e9a6342b5",
+      "size_bytes": 6561
+    },
+    "insert/car_standees/README.md": {
+      "sha256": "d16d6dc27b4039ea2f3553f5ae963d25c3f3be5df1bea8cb4c2def2ab59dfbf2",
+      "size_bytes": 501
+    },
+    "insert/car_standees/car_standee_plate_1.sdf": {
+      "sha256": "109e0a174f589bf7a2e11edd276c064f25b898b0b5e4950479720fe217c18491",
+      "size_bytes": 1083
+    },
+    "insert/car_standees/car_standee_plate_2.sdf": {
+      "sha256": "f85ed611a7a39bda9160d5895a95240375b0f49306b0f553dbe5b9ab01e54c72",
+      "size_bytes": 1083
+    },
+    "insert/car_standees/car_standee_plate_3.sdf": {
+      "sha256": "b6f201b57509f5e27c3c006c9c0a4e8bcecc71d035c8099a7244866fa60a5043",
+      "size_bytes": 1083
+    },
+    "insert/car_standees/materials/scripts/car_standees.material": {
+      "sha256": "808205347d711264a978104eeeb7a0efc05bb81aa9245de2d7063d516b2b7bfa",
+      "size_bytes": 674
+    },
+    "insert/car_standees/materials/textures/car_background.png": {
+      "sha256": "867a0ea11f5df5eb87937c49164cd7ef75e0cafbfc527368900be8d8d6c43e38",
+      "size_bytes": 2899086
+    },
+    "insert/car_standees/materials/textures/license_plate_1.png": {
+      "sha256": "dc18502836447317ca7f6566d6dce008867b88a3b39393d896776cfdec4122de",
+      "size_bytes": 26595
+    },
+    "insert/car_standees/materials/textures/license_plate_2.png": {
+      "sha256": "29cf0ff4716ce62f57a8a279e015118d31769d3c77834bb65869172857ca3081",
+      "size_bytes": 26084
+    },
+    "insert/car_standees/materials/textures/license_plate_3.png": {
+      "sha256": "18824951d39b0e23a36a180a6b7ce8a64e578d3e4aa52d43ef30cfe046f68645",
+      "size_bytes": 24029
+    },
+    "worlds/competition_classic_adjusted_20260924.world": {
+      "sha256": "167a5d423e3fba1d343f1c7bba75389fe2877a07137e912d848e67a9c7da453d",
+      "size_bytes": 74426
+    },
+    "worlds/model_positions.txt": {
+      "sha256": "402e7f9ee72b68b652683efac10f20567bb1084b015c9d05218aa250eeea7e89",
+      "size_bytes": 1399
+    },
+    "docs/agent_context/tasks/task008/plan.md": {
+      "sha256": "cfe766b7e51a474f0dabeef404cfdd1d25bc0d24b7f1173aa63bbafb7e0b0c09",
+      "size_bytes": 7202
+    },
+    "docs/agent_context/tasks/task008/static_preflight_20260927_p1_reframe.json": {
+      "sha256": "d647c837d29fdee9e78dc4a45a9f88320e34fa2469fef94b3c7baa4fd7638bde",
+      "size_bytes": 3380
+    },
+    "scripts/randomize_car_plates.py": {
+      "sha256": "967dd8cdd974271081dee329e99a9960fe4aa05fcfc8d348c6d5be1c519cb575",
+      "size_bytes": 2932
+    },
+    "insert/car_standees/plate_inventory/冀K0BB17.jpg": {
+      "sha256": "1572a852046fcfd85b1ccaef348c43b57df79465f09e4c3cfa362e8a78a830b7",
+      "size_bytes": 22510
+    },
+    "insert/car_standees/plate_inventory/学A99999.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/学ABCD11.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/学ABCDEF.jpg": {
+      "sha256": "7512a1a219d6d3ce10fb75e8c0551537f62121a078e36c1001e4a6b54dd7673b",
+      "size_bytes": 21749
+    },
+    "insert/car_standees/plate_inventory/学ABCDEG.jpg": {
+      "sha256": "01a726ea2a845e602a73a82ebaa8499e6276d84d40f96de1da01abb32a9feebd",
+      "size_bytes": 23716
+    },
+    "insert/car_standees/plate_inventory/学ABCDEK.jpg": {
+      "sha256": "5e0cca022a1efd360b1b4239e512a742a4db12a8bf81ddb7e12aad8a56414fd2",
+      "size_bytes": 23719
+    },
+    "insert/car_standees/plate_inventory/学B5B5T3.jpg": {
+      "sha256": "db267e0640590191680e0c1d4f3d94bde5b43444f4b4df78f0632bce9ce1cdca",
+      "size_bytes": 23119
+    },
+    "insert/car_standees/plate_inventory/学C88K55.jpg": {
+      "sha256": "ae14163493a4450efb81d78e2f57c3f214b63cb5da3e205b015b01a5f7ab0453",
+      "size_bytes": 24973
+    },
+    "insert/car_standees/plate_inventory/学PYPVGM.jpg": {
+      "sha256": "bed60c14a5bb1dd55cb73e482b580f1519d700c3a9009db8df81f30e89ae523b",
+      "size_bytes": 21825
+    },
+    "insert/car_standees/plate_inventory/学R00136.jpg": {
+      "sha256": "da40f524ff7036f65c9a77d77ed0792fd7584d1b4b0ddd86251754436e42d82b",
+      "size_bytes": 22224
+    },
+    "insert/car_standees/plate_inventory/川NH0U34.jpg": {
+      "sha256": "39987a8541e4411604c7f36802865edf09dd9f81118339f64ec549b404d51125",
+      "size_bytes": 21693
+    },
+    "insert/car_standees/plate_inventory/晋QQ11T7.jpg": {
+      "sha256": "1b776ff83579663450b57835058f2bec4abfaf21e54dba81e5458be31ecede32",
+      "size_bytes": 18956
+    },
+    "insert/car_standees/plate_inventory/桂VK2T43.jpg": {
+      "sha256": "fe56ff717d94fa5f50f6f53fe13cb17dfebabb3847453a43e4e24f7b75ee8749",
+      "size_bytes": 22509
+    },
+    "insert/car_standees/plate_inventory/浙TF9E07.jpg": {
+      "sha256": "6b3af398b58170547931c8706384d16171ce6458edff1a1d0840298f52ce3369",
+      "size_bytes": 20546
+    },
+    "insert/car_standees/plate_inventory/湘999999.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/湘R7R3K1.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/皖U337ZF.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/苏ABCD11.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/苏Q107V9.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/苏QM2255.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/苏R67958.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/苏RMV255.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/苏VG99Q4.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/蒙NZA772.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    "insert/car_standees/plate_inventory/豫W5U8Y1.jpg": {
+      "sha256": "47d763bb0dca6ded548e8215254e54c73df125d7a514d6f30e09a41bfad5b375",
+      "size_bytes": 22430
+    },
+    "insert/car_standees/plate_inventory/赣N5B5T3.jpg": {
+      "sha256": "361548afded153ea668e7053405f9bdc59e1f8e2ad8e2755fe13f9a3ce3e3fe5",
+      "size_bytes": 23873
+    },
+    "insert/car_standees/plate_inventory/辽ZR6314.jpg": {
+      "sha256": "2f13ca970f0531c36997863200bd14c45f98e0245b7f6c7c5cc033e5569df428",
+      "size_bytes": 21546
+    },
+    "insert/car_standees/plate_inventory/闽M24C8L.jpg": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    }
+  }
+}

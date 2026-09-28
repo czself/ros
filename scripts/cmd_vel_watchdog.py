@@ -8,6 +8,7 @@ time all stop the complete vehicle before its front edge reaches a line.
 """
 
 import copy
+import json
 import math
 import threading
 import time
@@ -34,7 +35,13 @@ BRAKE_MARGIN = 0.100
 SLOW_APPROACH_DISTANCE = 0.35
 LINE_CLEARANCE = 0.04
 MIN_GREEN_REMAINING = 2.0
-SIGNAL_STALE_SECONDS = 0.75
+# Once a valid GREEN command starts from the stop-line approach, give the
+# chassis time to reach the line even if the light changes phase meanwhile.
+# A stalled command is revoked before it can carry an old authorization into
+# another signal cycle.
+PRELINE_CROSSING_TIMEOUT = 1.2
+SIGNAL_STALE_SECONDS = 0.50
+EXPECTED_BEST_PT_SHA256 = 'fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad'
 POSE_STALE_SECONDS = 0.5
 DRIVE_AXLE_OFFSET = 0.0525
 
@@ -83,12 +90,19 @@ class CmdVelWatchdog:
         self.tf_listener = tf.TransformListener()
         self.detected = 'NO_TRAFFIC_LIGHT'
         self.detected_count = 0
+        self.detected_confidence = 0.0
+        self.detected_source_stamp = 0.0
         self.detected_wall = 0.0
+        self.traffic_min_confidence = float(rospy.get_param('~traffic_min_confidence', 0.50))
+        self.expected_yolo_sha256 = str(rospy.get_param(
+            '~expected_yolo_sha256', EXPECTED_BEST_PT_SHA256))
         self.sim_state = 'UNKNOWN'
         self.green_remaining = 0.0
         self.committed = {name: False for name, *_ in STOP_LINES}
+        self.commit_started_wall = {name: 0.0 for name, *_ in STOP_LINES}
         self.passed = {name: False for name, *_ in STOP_LINES}
         self.last_gate_status = None
+        self.last_white_line_hit = None
         self.white_map = self.load_white_map(
             rospy.get_param('~ground_texture', GROUND_TEXTURE_PATH)
         )
@@ -162,29 +176,31 @@ class CmdVelWatchdog:
         return row, col
 
     def permitted_stop_line_pixel(self, x, y):
-        """A stop-line pixel is legal only after this gate admitted GREEN."""
+        """Keep a green-admitted vehicle moving until its rear has cleared."""
         for name, axis, _direction, line, lateral_center, lateral_half in STOP_LINES:
             coordinate = x if axis == 'x' else y
             lateral = y if axis == 'x' else x
-            if ((not self.enforce_traffic or self.committed[name])
+            if ((not self.enforce_traffic or self.committed[name] or self.passed[name])
                     and abs(coordinate - line) <= STOP_LINE_HALF_THICKNESS
                     and abs(lateral - lateral_center) <= lateral_half):
                 return True
         return False
 
     @staticmethod
-    def zebra_pixel(row, col):
-        return any(
-            row_min <= row <= row_max and col_min <= col <= col_max
-            for row_min, row_max, col_min, col_max in ZEBRA_PIXEL_BOXES
-        )
+    def zebra_gate_name(row, col):
+        # Each zebra stripe is paired with one measured signal stop line.
+        for box, name in zip(ZEBRA_PIXEL_BOXES, ('NORTHBOUND', 'WESTBOUND')):
+            row_min, row_max, col_min, col_max = box
+            if row_min <= row <= row_max and col_min <= col <= col_max:
+                return name
+        return None
 
     def permitted_white_pixel(self, x, y, row, col, now):
-        # The traffic-light controller synchronizes both signals.  During its
-        # stable GREEN phase a full vehicle may traverse either painted zebra
-        # crossing.  At RED/YELLOW/stale detection, zebra paint remains a hard
-        # boundary just like every other white marking.
-        if self.zebra_pixel(row, col) and (not self.enforce_traffic or self.stable_green(now)):
+        # GREEN admits entry onto a zebra. Once the front enters, preserve the
+        # crossing latch through RED/YELLOW/stale frames until the rear clears.
+        zebra_gate = self.zebra_gate_name(row, col)
+        if zebra_gate and (not self.enforce_traffic or self.stable_green(now) or
+                           self.committed[zebra_gate] or self.passed[zebra_gate]):
             return True
         axis, line, lateral_center, lateral_half, half_thickness = START_LINE
         coordinate = x if axis == 'x' else y
@@ -197,6 +213,7 @@ class CmdVelWatchdog:
     def footprint_white_status(self, x, y, yaw, now):
         """Return a violation for one complete chassis footprint pose."""
         assert self.white_map is not None
+        self.last_white_line_hit = None
         cos_yaw, sin_yaw = math.cos(yaw), math.sin(yaw)
         height, width = self.white_map.shape
         vertices = []
@@ -206,6 +223,10 @@ class CmdVelWatchdog:
             row = (0.5 - world_x / GROUND_SIZE_METERS) * height
             col = (0.5 - world_y / GROUND_SIZE_METERS) * width
             if row < 0 or row >= height or col < 0 or col >= width:
+                self.last_white_line_hit = {
+                    'kind': 'OUT_OF_BOUNDS', 'pose': (x, y, yaw),
+                    'pixel': (int(row), int(col)),
+                }
                 return 'WHITE_LINE:OUT_OF_BOUNDS'
             vertices.append((col, row))
         # Fill every covered texture pixel, including all four exact edges.
@@ -221,31 +242,63 @@ class CmdVelWatchdog:
         cv2.fillPoly(mask, [polygon], 1)
         mask = cv2.dilate(mask, np.ones((3, 3), dtype=np.uint8))
         rows, cols = np.nonzero(paint & (mask != 0))
-        if not self.enforce_traffic:
-            # Crossing footprints can cover hundreds of thousands of white
-            # pixels. Evaluate the same bounded exceptions in vector form.
-            rows, cols = rows + r0, cols + c0
-            xs = (0.5 - (rows + 0.5) / height) * GROUND_SIZE_METERS
-            ys = (0.5 - (cols + 0.5) / width) * GROUND_SIZE_METERS
-            permitted = np.zeros(rows.shape, dtype=bool)
-            for z_r0, z_r1, z_c0, z_c1 in ZEBRA_PIXEL_BOXES:
+        if rows.size == 0:
+            return None
+
+        # Do the traffic-aware pass in arrays too.  Iterating every painted
+        # pixel in Python made a footprint over a zebra take long enough to
+        # starve this 20 Hz safety loop, leaving the drive plugin's last
+        # nonzero command active.  Keep the same per-gate permissions while
+        # evaluating the complete rasterized footprint with NumPy.
+        rows = rows + r0
+        cols = cols + c0
+        world_x = (0.5 - (rows + 0.5) / height) * GROUND_SIZE_METERS
+        world_y = (0.5 - (cols + 0.5) / width) * GROUND_SIZE_METERS
+        permitted = np.zeros(rows.shape, dtype=bool)
+
+        for (z_r0, z_r1, z_c0, z_c1), gate_name in zip(
+                ZEBRA_PIXEL_BOXES, ('NORTHBOUND', 'WESTBOUND')):
+            zebra_authorized = (
+                not self.enforce_traffic or self.stable_green(now) or
+                self.committed[gate_name] or self.passed[gate_name]
+            )
+            if zebra_authorized:
                 permitted |= ((rows >= z_r0) & (rows <= z_r1) &
                               (cols >= z_c0) & (cols <= z_c1))
-            lines = [START_LINE] + [
-                (axis, line, center, half, STOP_LINE_HALF_THICKNESS)
-                for _name, axis, _direction, line, center, half in STOP_LINES]
-            for axis, line, center, half, thickness in lines:
-                coordinates, lateral = (xs, ys) if axis == 'x' else (ys, xs)
-                permitted |= ((np.abs(coordinates - line) <= thickness) &
-                              (np.abs(lateral - center) <= half))
-            return 'WHITE_LINE:BLOCKED' if np.any(~permitted) else None
-        for local_row, local_col in zip(rows, cols):
-            row, col = int(local_row + r0), int(local_col + c0)
-            world_x = (0.5 - (row + 0.5) / height) * GROUND_SIZE_METERS
-            world_y = (0.5 - (col + 0.5) / width) * GROUND_SIZE_METERS
-            if not self.permitted_white_pixel(world_x, world_y, row, col, now):
-                return 'WHITE_LINE:BLOCKED'
-        return None
+
+        # The start line is always permitted inside its measured span.
+        axis, line, center, half_width, thickness = START_LINE
+        coordinates, lateral = (world_x, world_y) if axis == 'x' else (world_y, world_x)
+        permitted |= ((np.abs(coordinates - line) <= thickness) &
+                       (np.abs(lateral - center) <= half_width))
+
+        for gate_name, axis, _direction, line, center, half_width in STOP_LINES:
+            stop_authorized = (
+                not self.enforce_traffic or self.committed[gate_name] or
+                self.passed[gate_name]
+            )
+            if stop_authorized:
+                coordinates, lateral = (world_x, world_y) if axis == 'x' else (world_y, world_x)
+                permitted |= (
+                    (np.abs(coordinates - line) <= STOP_LINE_HALF_THICKNESS) &
+                    (np.abs(lateral - center) <= half_width)
+                )
+
+        blocked = np.flatnonzero(~permitted)
+        if blocked.size == 0:
+            return None
+        index = int(blocked[0])
+        row, col = int(rows[index]), int(cols[index])
+        hit_x, hit_y = float(world_x[index]), float(world_y[index])
+        zebra_gate = self.zebra_gate_name(row, col)
+        self.last_white_line_hit = {
+            'kind': 'UNPERMITTED_PAINT', 'pose': (x, y, yaw),
+            'pixel': (row, col), 'world': (hit_x, hit_y),
+            'zebra_gate': zebra_gate,
+            'zebra_committed': self.committed.get(zebra_gate, False),
+            'stop_line_permitted': self.permitted_stop_line_pixel(hit_x, hit_y),
+        }
+        return 'WHITE_LINE:BLOCKED'
 
     @staticmethod
     def predicted_pose(x, y, yaw, linear, angular, duration):
@@ -272,6 +325,9 @@ class CmdVelWatchdog:
         x, y, yaw = self.pose
         current = self.footprint_white_status(x, y, yaw, now)
         if current:
+            rospy.logwarn_throttle(
+                1.0, 'white-line interlock: current footprint blocked: %s',
+                self.last_white_line_hit)
             return current
 
         # Test the swept footprint over a braking horizon before forwarding a
@@ -284,6 +340,9 @@ class CmdVelWatchdog:
             future_x, future_y, future_yaw = self.predicted_pose(
                 x, y, yaw, command.linear.x, command.angular.z, t)
             if self.footprint_white_status(future_x, future_y, future_yaw, now):
+                rospy.logwarn_throttle(
+                    1.0, 'white-line interlock: predicted footprint blocked at %.3f s: %s',
+                    t, self.last_white_line_hit)
                 return 'WHITE_LINE:APPROACH'
             t += WHITE_LINE_PREDICTION_STEP
         return None
@@ -308,13 +367,39 @@ class CmdVelWatchdog:
             self.pose_wall = time.monotonic()
 
     def detection_cb(self, message):
-        state = message.data.upper()
-        with self.lock:
-            if state == self.detected:
-                self.detected_count += 1
+        state, confidence, source_stamp = 'UNKNOWN', 0.0, 0.0
+        try:
+            record = json.loads(message.data)
+            state = str(record['state']).upper()
+            confidence = float(record['confidence'])
+            checkpoint_hash = str(record['checkpoint_sha256'])
+            stamp = record['source_stamp']
+            if 'seconds' in stamp:
+                source_stamp = float(stamp['seconds'])
             else:
+                source_stamp = float(stamp['secs']) + float(stamp['nsecs']) * 1e-9
+            age = (rospy.Time.now().to_sec() - source_stamp)
+            valid = (state in ('RED', 'YELLOW', 'GREEN') and
+                     math.isfinite(confidence) and
+                     confidence >= self.traffic_min_confidence and
+                     checkpoint_hash == self.expected_yolo_sha256 and
+                     -0.05 <= age <= SIGNAL_STALE_SECONDS)
+        except (ValueError, TypeError, KeyError, AttributeError, OverflowError):
+            valid = False
+        if not valid:
+            state, confidence = 'UNKNOWN', 0.0
+        with self.lock:
+            if (valid and state == self.detected and
+                    0.0 < source_stamp-self.detected_source_stamp <= SIGNAL_STALE_SECONDS):
+                self.detected_count += 1
+            elif valid:
                 self.detected = state
                 self.detected_count = 1
+            else:
+                self.detected = 'UNKNOWN'
+                self.detected_count = 0
+            self.detected_confidence = confidence
+            self.detected_source_stamp = source_stamp
             self.detected_wall = time.monotonic()
 
     def sim_state_cb(self, message):
@@ -327,9 +412,12 @@ class CmdVelWatchdog:
 
     def stable_green(self, now):
         perception_fresh = now - self.detected_wall <= SIGNAL_STALE_SECONDS
+        stamp_age = rospy.Time.now().to_sec() - self.detected_source_stamp
         return (
             perception_fresh
             and self.detected == 'GREEN'
+            and self.detected_confidence >= self.traffic_min_confidence
+            and -0.05 <= stamp_age <= SIGNAL_STALE_SECONDS
             and self.detected_count >= 3
             and self.sim_state == 'GREEN'
             and self.green_remaining >= MIN_GREEN_REMAINING
@@ -365,24 +453,33 @@ class CmdVelWatchdog:
             # Returning to the approach side begins a new encounter.
             if front_progress < -SLOW_APPROACH_DISTANCE:
                 self.committed[name] = False
+                self.commit_started_wall[name] = 0.0
                 self.passed[name] = False
                 continue
             if self.passed[name]:
                 continue
 
-            # A vehicle admitted on a safe GREEN must clear the line rather
-            # than stop with its body covering it when YELLOW begins.
+            # A vehicle admitted on a safe GREEN must enter and clear the
+            # crossing rather than lose authorization when the remaining
+            # time dips below the admission threshold. Keep the pre-line
+            # latch only long enough for a moving chassis to reach the line.
             if self.committed[name]:
-                # Authorization is revocable until the front edge actually
-                # crosses.  This prevents an idle vehicle from carrying a
-                # stale GREEN authorization into the next RED phase.
-                if front_progress < 0.0 and not green:
-                    self.committed[name] = False
-                elif front_progress < 0.0:
+                if front_progress < 0.0:
+                    commit_age = now - self.commit_started_wall[name]
+                    if not green and commit_age > PRELINE_CROSSING_TIMEOUT:
+                        self.committed[name] = False
+                        self.commit_started_wall[name] = 0.0
+                    else:
+                        # This GO_GREEN began only on a fresh, three-frame
+                        # authorization with >=2 s remaining. Preserve that
+                        # single entry until the front reaches the line.
+                        return command, f'{name}:GO_GREEN'
+                if self.committed[name] and front_progress < 0.0:
                     return command, f'{name}:GO_GREEN'
-                else:
+                if self.committed[name]:
                     if rear_progress > LINE_CLEARANCE:
                         self.committed[name] = False
+                        self.commit_started_wall[name] = 0.0
                         self.passed[name] = True
                         return command, f'{name}:CLEARED'
                     return command, f'{name}:CLEARING'
@@ -390,6 +487,7 @@ class CmdVelWatchdog:
             if green and front_progress >= -BRAKE_MARGIN:
                 if command.linear.x > 0.01:
                     self.committed[name] = True
+                    self.commit_started_wall[name] = now
                     return command, f'{name}:GO_GREEN'
                 return command, f'{name}:READY_GREEN'
 

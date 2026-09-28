@@ -8,8 +8,13 @@ if [[ -z "$MAP_FILE" ]]; then
   exit 2
 fi
 OBSERVATION_SOURCES="${OBSERVATION_SOURCES:-laser depth}"
-ENFORCE_TRAFFIC="${ENFORCE_TRAFFIC:-false}"
+GLOBAL_OBSERVATION_SOURCES="${GLOBAL_OBSERVATION_SOURCES:-}"
+ENFORCE_TRAFFIC="${ENFORCE_TRAFFIC:-true}"
 [[ "$ENFORCE_TRAFFIC" == true || "$ENFORCE_TRAFFIC" == false ]] || { echo "ENFORCE_TRAFFIC 必须是 true 或 false" >&2; exit 2; }
+YOLO_CHECKPOINT="${YOLO_CHECKPOINT:-/home/sz/下载/best.pt}"
+BEST_PT_SHA256="fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad"
+[[ -f "$YOLO_CHECKPOINT" ]] || { echo "best.pt 不存在: $YOLO_CHECKPOINT" >&2; exit 1; }
+[[ "$(sha256sum "$YOLO_CHECKPOINT" | awk '{print $1}')" == "$BEST_PT_SHA256" ]] || { echo "best.pt SHA-256 与已审计权重不一致" >&2; exit 1; }
 ENFORCE_WHITE_LINES="${ENFORCE_WHITE_LINES:-true}"
 [[ "$ENFORCE_WHITE_LINES" == true || "$ENFORCE_WHITE_LINES" == false ]] || { echo "ENFORCE_WHITE_LINES 必须是 true 或 false" >&2; exit 2; }
 [[ "$ENFORCE_WHITE_LINES" == true ]] || { echo "白线为禁行区域，导航不能关闭白线门禁。" >&2; exit 2; }
@@ -53,6 +58,9 @@ docker cp "$ROOT_DIR/navigation/." "$CONTAINER:/root/navigation"
 docker cp "$ROOT_DIR/navigation/route_contract.yaml" "$CONTAINER:/root/navigation/route_contract.yaml"
 docker cp "$ROOT_DIR/scripts/wheel_encoder_odom.py" "$CONTAINER:/root/wheel_encoder_odom.py"
 docker cp "$ROOT_DIR/scripts/cmd_vel_watchdog.py" "$CONTAINER:/root/cmd_vel_watchdog.py"
+docker cp "$ROOT_DIR/scripts/yolo_inspector.py" "$CONTAINER:/root/yolo_inspector.py"
+docker exec "$CONTAINER" mkdir -p /root/yolo
+docker cp "$YOLO_CHECKPOINT" "$CONTAINER:/root/yolo/best.pt"
 docker cp "$ROOT_DIR/models/competition_ground/materials/textures/map.png" "$CONTAINER:/root/competition_ground_map.png"
 docker cp "$ROOT_DIR/scripts/check_foundation.py" "$CONTAINER:/root/check_foundation.py"
 docker cp "$ROOT_DIR/scripts/runtime_control.py" "$CONTAINER:/root/runtime_control.py"
@@ -61,7 +69,10 @@ docker cp "$ROOT_DIR/scripts/navigation_goal_safety.py" "$CONTAINER:/root/naviga
 docker cp "$ROOT_DIR/scripts/check_navigation_readiness.py" "$CONTAINER:/root/check_navigation_readiness.py"
 docker exec "$CONTAINER" mkdir -p /root/ros1_ws/src/safe_escape_recovery
 docker cp "$ROOT_DIR/ros_packages/safe_escape_recovery/." "$CONTAINER:/root/ros1_ws/src/safe_escape_recovery/"
+docker exec "$CONTAINER" mkdir -p /root/ros1_ws/src/forward_path_follower
+docker cp "$ROOT_DIR/ros_packages/forward_path_follower/." "$CONTAINER:/root/ros1_ws/src/forward_path_follower/"
 docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; cd /root/ros1_ws; catkin_make --pkg safe_escape_recovery -j2 >/root/safe_escape_build.log 2>&1'
+docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; cd /root/ros1_ws; catkin_make --pkg forward_path_follower -j2 >/root/forward_path_follower_build.log 2>&1'
 docker exec "$CONTAINER" mkdir -p /root/ros1_ws/maps
 docker cp "$ROOT_DIR/maps/$MAP_BASENAME.yaml" "$CONTAINER:/root/ros1_ws/maps/$MAP_BASENAME.yaml"
 docker cp "$ROOT_DIR/maps/$MAP_BASENAME.pgm" "$CONTAINER:/root/ros1_ws/maps/$MAP_BASENAME.pgm"
@@ -71,17 +82,14 @@ fi
 docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; python3 /root/runtime_control.py reset'
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/wheel_encoder_odom.py >/root/wheel_encoder_odom.log 2>&1'
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/goal_sanitizer.py >/root/goal_sanitizer.log 2>&1'
-# rosparam survives node restarts. While collecting data before the YOLO
-# traffic-light gate is ready, signal-controlled stop lines and zebra crossings
-# remain traversable by default. The white-line gate remains enabled for every
-# navigation route.
-docker exec "$CONTAINER" bash -lc "source /opt/ros/noetic/setup.bash; rosparam set /cmd_vel_watchdog/enforce_traffic $ENFORCE_TRAFFIC; rosparam set /cmd_vel_watchdog/enforce_white_lines $ENFORCE_WHITE_LINES"
+docker exec "$CONTAINER" bash -lc "source /opt/ros/noetic/setup.bash; rosparam set /cmd_vel_watchdog/enforce_traffic $ENFORCE_TRAFFIC; rosparam set /cmd_vel_watchdog/enforce_white_lines $ENFORCE_WHITE_LINES; rosparam set /cmd_vel_watchdog/traffic_min_confidence 0.50; rosparam set /cmd_vel_watchdog/expected_yolo_sha256 $BEST_PT_SHA256"
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/cmd_vel_watchdog.py >/root/cmd_vel_watchdog.log 2>&1'
-docker exec -d "$CONTAINER" bash -lc "source /root/ros1_ws/devel/setup.bash; exec roslaunch /root/navigation/navigation.launch map_file:=/root/ros1_ws/maps/$MAP_BASENAME.yaml observation_sources:='$OBSERVATION_SOURCES' initial_x:=1.714860 initial_y:=-1.599947 initial_yaw:=1.606236 >/root/navigation.log 2>&1"
+docker exec -d "$CONTAINER" bash -lc "source /root/ros1_ws/devel/setup.bash; exec roslaunch /root/navigation/navigation.launch map_file:=/root/ros1_ws/maps/$MAP_BASENAME.yaml observation_sources:='$OBSERVATION_SOURCES' global_observation_sources:='$GLOBAL_OBSERVATION_SOURCES' initial_x:=1.714860 initial_y:=-1.599947 initial_yaw:=1.606236 >/root/navigation.log 2>&1"
+docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; export MPLBACKEND=Agg; exec python3 /root/yolo_inspector.py _model:=/root/yolo/best.pt _conf_threshold:=0.15 _traffic_min_confidence:=0.50 _process_hz:=5.0 >/root/yolo_inspector.log 2>&1'
 sleep 6
-docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; rosnode ping -c 1 /map_server >/dev/null && rosnode ping -c 1 /amcl >/dev/null && rosnode ping -c 1 /move_base >/dev/null && rosnode ping -c 1 /cmd_vel_watchdog >/dev/null'
+docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; rosnode ping -c 1 /map_server >/dev/null && rosnode ping -c 1 /amcl >/dev/null && rosnode ping -c 1 /move_base >/dev/null && rosnode ping -c 1 /cmd_vel_watchdog >/dev/null && rosnode ping -c 1 /yolo_inspector >/dev/null'
 docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; /usr/bin/python3 /root/check_navigation_readiness.py'
 docker cp "$ROOT_DIR/scripts/competition.rviz" "$CONTAINER:/root/competition.rviz"
 docker exec "$CONTAINER" bash -lc 'pkill -x rviz 2>/dev/null || true'
 docker exec -d -e DISPLAY=:1 -e QT_X11_NO_MITSHM=1 "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec rviz -geometry 1250x850+30+30 -d /root/competition.rviz >/root/navigation_rviz.log 2>&1'
-echo "导航已启动，RViz 已打开。地图: $MAP_BASENAME；轮编码器里程计 + AMCL；交通灯门控: $ENFORCE_TRAFFIC；白线门控: $ENFORCE_WHITE_LINES。"
+echo "导航已启动，RViz 已打开。地图: $MAP_BASENAME；轮编码器里程计 + AMCL；YOLO SHA-256: $BEST_PT_SHA256；交通灯门控: $ENFORCE_TRAFFIC；白线门控: $ENFORCE_WHITE_LINES。"

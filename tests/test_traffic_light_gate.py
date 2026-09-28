@@ -7,10 +7,12 @@ import sys
 import time
 import unittest
 import numpy as np
+from unittest.mock import patch
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / 'scripts'))
 
 from geometry_msgs.msg import Twist
+import rospy
 
 from cmd_vel_watchdog import (CmdVelWatchdog, START_LINE, STOP_LINES,
                               ZEBRA_PIXEL_BOXES, DRIVE_AXLE_OFFSET)
@@ -18,6 +20,10 @@ from cmd_vel_watchdog import (CmdVelWatchdog, START_LINE, STOP_LINES,
 
 class TrafficGateTest(unittest.TestCase):
     def setUp(self):
+        self.ros_time_patcher = patch(
+            'rospy.Time.now', return_value=rospy.Time.from_sec(100.0))
+        self.ros_time_patcher.start()
+        self.addCleanup(self.ros_time_patcher.stop)
         self.gate = CmdVelWatchdog.__new__(CmdVelWatchdog)
         self.gate.pose = None
         self.gate.pose_wall = time.monotonic()
@@ -25,10 +31,14 @@ class TrafficGateTest(unittest.TestCase):
         self.gate.white_map = np.zeros((4200, 4200), dtype=bool)
         self.gate.detected = 'RED'
         self.gate.detected_count = 3
+        self.gate.detected_confidence = 0.9
         self.gate.detected_wall = time.monotonic()
+        self.gate.detected_source_stamp = 100.0
+        self.gate.traffic_min_confidence = 0.5
         self.gate.sim_state = 'RED'
         self.gate.green_remaining = 10.0
         self.gate.committed = {name: False for name, *_ in STOP_LINES}
+        self.gate.commit_started_wall = {name: 0.0 for name, *_ in STOP_LINES}
         self.gate.passed = {name: False for name, *_ in STOP_LINES}
         self.command = Twist()
         self.command.linear.x = 0.25
@@ -40,7 +50,9 @@ class TrafficGateTest(unittest.TestCase):
     def set_green(self, remaining=10.0):
         self.gate.detected = 'GREEN'
         self.gate.detected_count = 3
+        self.gate.detected_confidence = 0.9
         self.gate.detected_wall = time.monotonic()
+        self.gate.detected_source_stamp = 100.0
         self.gate.sim_state = 'GREEN'
         self.gate.green_remaining = remaining
 
@@ -114,12 +126,31 @@ class TrafficGateTest(unittest.TestCase):
         self.assertEqual(command.linear.x, 0.0)
         self.assertEqual(status, 'WESTBOUND:WAIT_RED')
 
-    def test_authorization_revoked_if_light_changes_before_line(self):
+    def test_authorized_entry_survives_green_end_until_front_crosses(self):
         self.set_green()
-        self.decision((-0.375, 0.00, math.pi))
+        command, status = self.decision((-0.375, 0.00, math.pi))
         self.assertTrue(self.gate.committed['WESTBOUND'])
+        self.assertEqual(status, 'WESTBOUND:GO_GREEN')
         self.gate.detected = self.gate.sim_state = 'RED'
         command, status = self.decision((-0.375, 0.00, math.pi))
+        self.assertEqual(command.linear.x, 0.25)
+        self.assertEqual(status, 'WESTBOUND:GO_GREEN')
+        self.assertTrue(self.gate.committed['WESTBOUND'])
+
+        # The front has entered. It must clear through the current yellow/red.
+        command, status = self.decision((-0.45, 0.00, math.pi))
+        self.assertEqual(command.linear.x, 0.25)
+        self.assertEqual(status, 'WESTBOUND:CLEARING')
+        self.assertTrue(self.gate.committed['WESTBOUND'])
+
+    def test_unstarted_green_authorization_expires_if_vehicle_stalls(self):
+        self.set_green()
+        self.decision((-0.375, 0.00, math.pi))
+        self.gate.detected = self.gate.sim_state = 'RED'
+        started = self.gate.commit_started_wall['WESTBOUND']
+        self.gate.pose_wall = started + 1.3
+        command, status = self.gate.gate_command(
+            self.command, started + 1.3)
         self.assertEqual(command.linear.x, 0.0)
         self.assertFalse(self.gate.committed['WESTBOUND'])
         self.assertEqual(status, 'WESTBOUND:WAIT_RED')
@@ -153,6 +184,28 @@ class TrafficGateTest(unittest.TestCase):
         self.gate.white_map[row, col] = True
         self.assertEqual(self.gate.footprint_white_status(0.5, 0.5, 0, time.monotonic()),
                          'WHITE_LINE:BLOCKED')
+
+    def test_vectorized_footprint_gate_allows_only_committed_zebra_paint(self):
+        row = col = 2100
+        self.gate.white_map[row, col] = True
+        with patch('cmd_vel_watchdog.ZEBRA_PIXEL_BOXES',
+                   ((row - 10, row + 10, col - 10, col + 10),
+                    (3000, 3010, 3000, 3010))):
+            # A green-looking zebra pixel still blocks while the gate is red.
+            self.assertEqual(
+                self.gate.footprint_white_status(0.0, 0.0, 0.0, time.monotonic()),
+                'WHITE_LINE:BLOCKED')
+
+            # Once authorized, the measured zebra cell is passable.
+            self.gate.committed['NORTHBOUND'] = True
+            self.assertIsNone(
+                self.gate.footprint_white_status(0.0, 0.0, 0.0, time.monotonic()))
+
+            # Authorization never clears adjacent ordinary white paint.
+            self.gate.white_map[row + 30, col + 30] = True
+            self.assertEqual(
+                self.gate.footprint_white_status(0.0, 0.0, 0.0, time.monotonic()),
+                'WHITE_LINE:BLOCKED')
 
     def test_missing_and_stale_pose_stop_even_when_signals_ignored(self):
         self.gate.enforce_traffic = False

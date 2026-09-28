@@ -1,0 +1,146 @@
+{
+  "static_map": {
+    "texture_path": "models/competition_ground/materials/textures/map.png",
+    "texture_sha256": "afe618e46ea3205e3ab83a292a624de70eacc1672373c2331d8c1dc504e004ba",
+    "source_map_path": "current_slam_preview.pgm",
+    "source_sha256": "bdcd8feb0e64905ccbcd157ea0392570244801e5e698852b0ea462a7293a77cf",
+    "overlay_map_path": "maps/current_slam_preview_white_lines.pgm",
+    "overlay_sha256": "faba14e96d29eaabeddbde5e7f3454c00af4e1cd5415c26de722c6fc83493f17",
+    "texture_size": [
+      11942,
+      11942
+    ],
+    "map_size": [
+      224,
+      224
+    ],
+    "resolution_m": 0.05,
+    "origin": [
+      -6.0,
+      -6.0,
+      0.0
+    ],
+    "exception_policy": {
+      "start_line": [
+        "y",
+        -1.4,
+        1.7,
+        0.32,
+        0.055
+      ],
+      "stop_lines": [
+        [
+          "x",
+          -0.515,
+          0.0,
+          0.38,
+          0.055
+        ],
+        [
+          "y",
+          -0.29,
+          1.7,
+          0.32,
+          0.055
+        ]
+      ],
+      "zebra_boxes": [
+        [
+          388,
+          1934,
+          6138,
+          6706
+        ],
+        [
+          7543,
+          8111,
+          4898,
+          6444
+        ]
+      ]
+    },
+    "expected_ordinary_paint_cells": 1711,
+    "manifest_permanent_paint_cells": 1711,
+    "newly_added_overlay_cells": 1310,
+    "paint_cells_already_occupied_in_source": 401,
+    "missing_expected_paint_cells": 0,
+    "extra_added_cells_not_from_texture": 0,
+    "cleared_source_occupied_cells": 0,
+    "all_expected_paint_cells_decode_lethal": true,
+    "pass": true
+  },
+  "route_geometry": {
+    "corridor_path": "navigation/inner_route.yaml",
+    "photo_path": "navigation/standee_photo_route.json",
+    "corridor_length_m": 12.8855,
+    "points": [
+      {
+        "name": "HOME",
+        "cross_track_m": 0.0,
+        "route_progress_m": 0.0
+      },
+      {
+        "name": "POINT_1",
+        "cross_track_m": 0.0087,
+        "route_progress_m": 0.8292
+      },
+      {
+        "name": "POINT_2",
+        "cross_track_m": 0.0647,
+        "route_progress_m": 2.6789
+      },
+      {
+        "name": "POINT_3",
+        "cross_track_m": 0.0787,
+        "route_progress_m": 3.8326
+      },
+      {
+        "name": "POINT_4",
+        "cross_track_m": 0.0463,
+        "route_progress_m": 5.2245
+      },
+      {
+        "name": "POINT_5",
+        "cross_track_m": 0.0196,
+        "route_progress_m": 5.4232
+      },
+      {
+        "name": "POINT_6",
+        "cross_track_m": 0.0689,
+        "route_progress_m": 6.529
+      },
+      {
+        "name": "POINT_7",
+        "cross_track_m": 0.0433,
+        "route_progress_m": 6.5678
+      },
+      {
+        "name": "POINT_8",
+        "cross_track_m": 0.013,
+        "route_progress_m": 8.8347
+      },
+      {
+        "name": "POINT_9",
+        "cross_track_m": 0.037,
+        "route_progress_m": 9.6681
+      },
+      {
+        "name": "POINT_10",
+        "cross_track_m": 0.0269,
+        "route_progress_m": 10.218
+      },
+      {
+        "name": "HOME",
+        "cross_track_m": 0.0,
+        "route_progress_m": 12.8855
+      }
+    ],
+    "ordered_projection": true,
+    "max_point_cross_track_m": 0.0787,
+    "point_corridor_tolerance_m": 0.18,
+    "points_within_corridor": true
+  },
+  "overall_static_pass": true,
+  "audit_scope": "static_only",
+  "overall_pass": false
+}

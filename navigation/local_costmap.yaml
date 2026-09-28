@@ -1,6 +1,7 @@
 local_costmap:
   global_frame: odom
   robot_base_frame: base_footprint
+  track_unknown_space: true
   # Match the measured polygon loaded from common_costmap.yaml.  The default
   # 0.46 m circular radius closes this narrow 4.2 m arena to DWA.
   robot_radius: 0.0

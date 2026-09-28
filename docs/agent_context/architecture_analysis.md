@@ -1,56 +1,55 @@
 ---
 type: architecture_analysis
 status: reviewed
-updated_by: planner
-review_required: true
+updated_by: architecture_reviewer
+review_required: false
 ---
 
 # Architecture Analysis
 
+The architecture in this document was approved for task006 planning on 2026-09-27. Implementation and runtime acceptance remain pending; the review does not authorize a route run.
+
 ## Current Shape
 
-Gazebo hosts the 4.2 m scene, `my_car`, and exactly two traffic-light models. `traffic_light_controller.py` switches both signals by moving their internal ON/OFF photo panels between the route-facing surface and the opaque housing, and publishes state, remaining time, and readiness. `visual_inspector.py` publishes camera detections. `move_base` publishes `/my_car/cmd_vel_nav`, while `cmd_vel_watchdog.py` is the only navigation-mode publisher to Gazebo.
+Gazebo hosts the 4.2 m scene, my_car, two synchronized traffic-light models, person standees, and vehicle-plate standees. The 10-point route executor reads fixed poses from navigation/standee_photo_route.json and returns to HOME. AMCL provides map localization. move_base uses Navfn globally and DWA locally. cmd_vel_watchdog is the only navigation-mode publisher to the Gazebo drive topic.
+
+The global costmap uses /map, which contains the permanent white-line overlay. The live local costmap parameter still subscribes to /map_local_navigation, but /local_map_server was switched via /change_map to publish the identical overlay; a direct check found all 50,176 cells equal to /map. On a fresh launch, the checked-in local_costmap.yaml subscribes directly to /map. The watchdog is now enabled. Before the correction, the local map was raw SLAM and the watchdog was disabled, which allowed a local trajectory to cut through a narrow painted-line gap.
+
+The current visual_inspector uses color thresholds. The custom checkpoint /home/sz/下载/best.pt has seven classes covering residents/strangers, signal-lamp ON/OFF states, and license plates. It has not yet been integrated. No plate OCR stage currently converts a detected plate crop to characters.
 
 ## Target Shape
 
-2026-09-22 reviewed task005 supersedes the route implementation below for the
-requested ignored-signal demonstration: calibrated texture geometry defines
-the screenshot's inner corridors. `calibrated_navigation` tracks ordered
-segments using simulated chassis localization and live laser/depth obstacle
-vetoes; `cmd_vel_watchdog` exclusively owns raw Gazebo velocity and checks
-filled footprint/swept paint. World/map identity is explicit in this simulation
-mode, not an unproven AMCL transform. Planned and actual paths are published
-in odom/world. Independent recorded-trajectory audit determines acceptance.
-See tasks/task005/architecture_review.md. This does not claim depth-only
-junction recognition, AMCL navigation completion, or red-light compliance.
+Use one identical white-line occupancy source for global and local costmaps. Keep the full measured footprint and swept-pose guard enabled for every autonomous goal. Keep traffic stop-line permission behind fresh detector output, stable GREEN, signal simulation veto, and sufficient clearance time.
 
-A deterministic route executor will follow the supplied arrows. The final velocity safety boundary will combine chassis pose, traffic-light camera detection, signal-state veto, and two measured stop-line gates. It will stop the full body before RED/YELLOW, admit entry only on a stable GREEN with clearance time, and allow an admitted vehicle to clear the line. Person and plate recognition are explicitly out of scope.
+Run a single ordered mission: prescribed diagram route and the ten fixed inspection captures, then HOME. Each capture is reviewed against the saved point criteria. Keep the P5 fixed-direction same-point heading controller but improve route transitions to avoid unnecessary stop-and-turn behavior without adding navigation points.
+
+Use the user-supplied detector checkpoint to publish traffic states, people classes, plate boxes, confidence, and annotated frames. Expose plate boxes/crops for the user's OCR stage; OCR implementation is explicitly out of scope. Console output and annotated images must correspond to the same timestamped detections. The route summary records per-point detections and total person counts.
+
+Maintain two evidence paths: a bag-based geometry/costmap audit for motion legality, and image-based review for recognition/content. Gazebo ground truth is used for evaluation, not as a replacement localization input.
 
 ## Key Decisions
 
-- Use explicit route waypoints rather than random costmap sampling.
-  Rationale: the task specifies a route and must be reproducible.
-- Keep switching, perception, and motion gating as separate ROS contracts.
-  Rationale: each can be tested independently, while the watchdog remains a non-bypassable final safety boundary.
-- Keep exactly two complete signal models at runtime instead of burying inactive full-model variants.
-  Rationale: hidden duplicates remained visible below the floor in the Gazebo editor and made the authored scene misleading.
-- Require camera GREEN to authorize motion; use simulation state only as a veto and timing guard.
-  Rationale: this demonstrates recognition while preventing a false-positive from violating the red-light rule.
-- Measure line crossings against chassis edges rather than the model origin.
-  Rationale: the requirement applies to the complete vehicle body.
-- Keep one node responsible for task orchestration, while vision nodes only publish detections.
-  Rationale: this makes detection evidence and driving decisions testable independently.
+- Global and local costmaps use the same verified white-line overlay; the local rolling costmap still includes live laser/depth obstacles.
+- The full chassis footprint, not a point robot, is checked against static occupancy and swept commands.
+- The watchdog remains the sole command publisher and fails closed if pose, scan, or the line map is unavailable.
+- Traffic movement is authorized by perception and timing state, not by simulation light state alone.
+- The 10 photo poses remain fixed unless measured visual evidence and a reviewed task explicitly approve a pose adjustment.
+- Detections publish observations; the watchdog and route executor consume them through documented ROS topics.
+- Preserve the exact launch/stop commands and route evidence per workflow task; never count a MoveBase action success as route or photo acceptance.
 
 ## Risks And Tradeoffs
 
-- A hard stop can interfere with local-planner progress timers.
-  Mitigation: keep the navigation goal active while the final command gate emits zero, then resume on GREEN.
-- Stopping after GREEN expires could strand the body on the line.
-  Mitigation: require at least two seconds remaining before admission and latch a committed crossing until the rear edge clears.
-- Existing navigation configuration targets the legacy map.
-  Mitigation: regenerate map, initial pose, costmap bounds, and footprint parameters for the final 4.2 m scene.
+- The current local map overlay may close a narrow passage. Before a full run, validate all eleven route legs and full-footprint sweeps against the same map.
+- The 5 cm grid resolution can miss narrow painted gaps; compare map planning with the texture-based watchdog.
+- The custom model may detect each inactive lamp as well as the active lamp; signal classification must reject ambiguous frames.
+- A license-plate detector does not recognize characters by itself; user handles OCR. Our acceptance covers plate localization, confidence, and annotated crop output only.
+- Person counts across multiple viewpoints require deduplication or the task's per-point count standard, without inflating the street-wide total.
+- P5/P7 images currently fail their acceptance criteria despite successful pose control.
 
 ## Review Questions
 
-- Does camera segmentation reliably reject dark inactive lamp photographs?
-- Can each crossing clear within the two-second admission reserve?
+- Does the local rolling costmap now load the same white-line overlay as the global map at runtime?
+- Are all route segments feasible without any ordinary white-line contact?
+- Do stop-line and zebra exceptions remain safe under the supplied task rules?
+- Does the custom detector distinguish active lamps, inactive lamps, residents, strangers, and license plates reliably?
+- What OCR stage produces readable plate strings with matching annotated output?
