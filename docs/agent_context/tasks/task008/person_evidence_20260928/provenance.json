@@ -1,0 +1,13 @@
+{
+  "run_id": "20260928_person_report_2",
+  "audited_runtime_manifest": "person_manifest_final_20260928.json",
+  "review_page": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_person_report_2/person_report.html",
+  "evidence_sha256": {
+    "independent_audit.json": "dd5e1575f4ec4967e2bdeb53d3af2b2a52482648c33910ed0a22c8e9b03362f5",
+    "person_audit.json": "9a9d41275614f8e3c89a8c64798838d7b8d25b5f0eb536d2068038cab1a13587",
+    "person_report.json": "31bd4ebba91e6a5213082807549a88b170ad584c65914cafb1955856ee14fbf3",
+    "person_report.audio.json": "19b7e1ba7d9969fca537e52740afb367f4bbb2d0aa16d58b11b5caf20877b79b",
+    "person_report.wav": "7e8a30c0faae27c927f5cc2b08672bed4851a2b9fa30b7a5643a1f6ab7d59da8"
+  },
+  "note": "Motion bag, raw camera/depth, images and audio remain local. GitHub stores audit JSON and source. Review labels were regenerated separately; original evidence and bag preserved."
+}
