@@ -50,6 +50,16 @@ docker cp /tmp/ocr_scene_materials_"$RUN_ID".txt "$CONTAINER:$PHOTO_DIR/ocr_scen
 rm -f /tmp/ocr_scene_materials_"$RUN_ID".txt
 docker cp "$ROOT_DIR/scripts/record_plate_scene_truth.py" "$CONTAINER:/root/record_plate_scene_truth.py"
 docker exec "$CONTAINER" python3 /root/record_plate_scene_truth.py --output "$PHOTO_DIR/audit_inputs/plate_scene_truth.json"
+if [[ "${JUDGE_DEMO:-false}" == true ]]; then
+  docker exec "$CONTAINER" mkdir -p "$PHOTO_DIR/judge"
+  docker exec "$CONTAINER" chown "$(id -u):$(id -g)" "$PHOTO_DIR/judge"
+  docker cp "$ROOT_DIR/scripts/judge_monitor.py" "$CONTAINER:/root/judge_monitor.py"
+  DISPLAY=:1 gnome-terminal --window --title="智慧社区比赛识别终端" --zoom=.85 --geometry=210x25 \
+    -- docker exec -it "$CONTAINER" bash -lc \
+    "source /root/ros1_ws/devel/setup.bash; exec python3 -u /root/judge_monitor.py _photo_dir:='$PHOTO_DIR'"
+  "$ROOT_DIR/scripts/arrange_judge_windows.sh"
+  python3 "$ROOT_DIR/scripts/capture_judge_demo.py" "$PHOTO_HOST_DIR" > "$PHOTO_HOST_DIR/judge/capture.log" 2>&1 &
+fi
 
 TOPICS=(
   /clock /tf /tf_static /odom /my_car/wheel_odom /my_car/cmd_vel_nav /my_car/cmd_vel
@@ -64,6 +74,7 @@ TOPICS=(
   /inspection/person_report /inspection/person_image
   /inspection/plate_capture
   /inspection/plate_text /inspection/plate_image /inspection/plate_report
+  /inspection/judge_yolo_image /inspection/judge_person_image /inspection/judge_ocr_image /inspection/judge_event
   /inspection/traffic_light_confidence /inspection/yolo/metrics
   /traffic_light/state /traffic_light/time_remaining /traffic_light/gate_status
   /traffic_light/braking /gazebo/link_states

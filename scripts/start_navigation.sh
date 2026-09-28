@@ -91,7 +91,9 @@ docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; export 
 sleep 6
 docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; rosnode ping -c 1 /map_server >/dev/null && rosnode ping -c 1 /amcl >/dev/null && rosnode ping -c 1 /move_base >/dev/null && rosnode ping -c 1 /cmd_vel_watchdog >/dev/null && rosnode ping -c 1 /yolo_inspector >/dev/null'
 docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; /usr/bin/python3 /root/check_navigation_readiness.py'
-docker cp "$ROOT_DIR/scripts/competition.rviz" "$CONTAINER:/root/competition.rviz"
+RVIZ_CONFIG="$ROOT_DIR/scripts/competition.rviz"
+if [[ "${JUDGE_DEMO:-false}" == true ]]; then RVIZ_CONFIG="$ROOT_DIR/scripts/competition_judge.rviz"; fi
+docker cp "$RVIZ_CONFIG" "$CONTAINER:/root/competition.rviz"
 docker exec "$CONTAINER" bash -lc 'pkill -x rviz 2>/dev/null || true'
 docker exec -d -e DISPLAY=:1 -e QT_X11_NO_MITSHM=1 "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec rviz -geometry 1250x850+30+30 -d /root/competition.rviz >/root/navigation_rviz.log 2>&1'
 echo "导航已启动，RViz 已打开。地图: $MAP_BASENAME；轮编码器里程计 + AMCL；YOLO SHA-256: $BEST_PT_SHA256；交通灯门控: $ENFORCE_TRAFFIC；白线门控: $ENFORCE_WHITE_LINES。"
