@@ -1,0 +1,18 @@
+{
+  "kind": "person_refinement_runtime_manifest",
+  "historical_navigation_streak": "3/3 on frozen_manifest_20260927.json; not reassigned to this build",
+  "runtime_git_commit": "891db93610b48914eecd863341ab0b2a147cd36f",
+  "run_id": "20260928_person_report_1",
+  "files": {
+    "scripts/route_executor.py": "e369712d904165f53e349e6d96076dac3e1f2df5129382246d6a5f787b9f4b9a",
+    "scripts/person_reporting.py": "ce22720a222208eb9afe70dccc70e2691a50513b0aef520328165a8367be8704",
+    "scripts/announce_people.py": "b3239691154d8daf4a3e198b19235ec6b57b606d7adf5a807d43ff1bebbe29c0",
+    "scripts/start_standee_photo_route.sh": "f685d21be0aafdaad57aa7033b2affaba85b0365d67f8eff127cfb09ea8509f5",
+    "navigation/person_reporting.json": "b40b79243ecb056362512fd199fc1f8370b07ce4048009efea13df17d86e843e",
+    "worlds/competition_classic_adjusted_20260924.world": "427ceb91c526192d266d373cb1c32a0c5943e56657f284a057a7c9b17b6ef54f",
+    "scripts/audit_person_report.py": "6b301b6a547824fad732ce0e095a955dd3438a546fba221ddf5c482b8042134a",
+    "scripts/audit_standee_photo_run.py": "25ca2277b447796eb1d9a99d0c1432b619bf53187e8c11d96a52b8d284c37aeb",
+    "scripts/start_navigation.sh": "ad73d464321fe8332ffca31fddd0c450b44c644994f1b06d9d0389b0e4cf6773",
+    "navigation/standee_photo_route.json": "31db3a0e7a1d9f4a3342dc1ee550d91e0b841af5e4cb8e880c643bcf4449b19c"
+  }
+}
