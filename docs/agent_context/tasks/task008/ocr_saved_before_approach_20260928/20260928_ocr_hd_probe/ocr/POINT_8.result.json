@@ -1,0 +1,111 @@
+{
+  "waypoint": "POINT_8",
+  "text": "冀K0BB17",
+  "valid": true,
+  "confidence": 0.9550089836120605,
+  "matching_frames": 2,
+  "frames": [
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9553142786026001,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 122.175,
+      "recognition_band": [
+        0,
+        24,
+        234,
+        73
+      ],
+      "input_shape": [
+        49,
+        234,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_hd_probe/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_hd_probe/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "ae178f401ffe5f9b15f70566598cd996a3ed2e2f04078d537ff468f906857595",
+      "source_stamp": {
+        "secs": 881,
+        "nsecs": 194000000,
+        "seconds": 881.194
+      },
+      "box": [
+        753,
+        711,
+        987,
+        813
+      ],
+      "image_sha256": "cfdf430cee7f7b537065f23e70ddf873acb400f46b1b23bc293116653cfe3040"
+    },
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9550089836120605,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 91.398,
+      "recognition_band": [
+        0,
+        24,
+        234,
+        73
+      ],
+      "input_shape": [
+        49,
+        234,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_hd_probe/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_hd_probe/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "c740b910dd67d93cf4736f5f3933640e94a88f904cf9e38749bc6800727a2b6e",
+      "source_stamp": {
+        "secs": 881,
+        "nsecs": 5000000,
+        "seconds": 881.005
+      },
+      "box": [
+        753,
+        711,
+        987,
+        813
+      ],
+      "image_sha256": "923bd4da5b2833c4d5d0ff58b03ec8634db59a1d1749bf1d6f53f111507ea723"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "9dd7a2c99b98440d159dd92fb87134e8c3189eab5c4a799be55031711751174d",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 215.607,
+  "low_resolution_comparison": {
+    "raw": "K-0BB17",
+    "text": "",
+    "display": "",
+    "confidence": 0.9213371872901917,
+    "valid": false,
+    "issue": "长度 6, 期望 7 (普通) 或 8 (新能源)",
+    "elapsed_ms": 92.493,
+    "recognition_band": [
+      0,
+      0,
+      78,
+      34
+    ],
+    "input_shape": [
+      34,
+      78,
+      3
+    ],
+    "box": [
+      251,
+      237,
+      329,
+      271
+    ]
+  }
+}

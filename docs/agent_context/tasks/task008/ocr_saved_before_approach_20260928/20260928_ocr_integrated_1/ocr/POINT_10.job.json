@@ -1,0 +1,94 @@
+{
+  "waypoint": "POINT_10",
+  "version": 1,
+  "frames": [
+    {
+      "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_10_frame_0.raw.png",
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_10_frame_0.crop.png",
+      "source_stamp": {
+        "secs": 1780,
+        "nsecs": 575000000,
+        "seconds": 1780.575
+      },
+      "box": [
+        1029,
+        711,
+        1458,
+        882
+      ],
+      "local_sharpness": 104.16915405602617,
+      "actual_base_pose": {
+        "position": [
+          -0.5617683325926812,
+          -1.066410829844339,
+          0.0
+        ],
+        "quaternion": [
+          0.0,
+          0.0,
+          0.6904695028369908,
+          -0.7233615041264212
+        ]
+      },
+      "rgb_detector_delta_s": 0.30100000000015825
+    },
+    {
+      "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_10_frame_1.raw.png",
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_10_frame_1.crop.png",
+      "source_stamp": {
+        "secs": 1780,
+        "nsecs": 324000000,
+        "seconds": 1780.324
+      },
+      "box": [
+        1029,
+        711,
+        1458,
+        882
+      ],
+      "local_sharpness": 103.59583662899368,
+      "actual_base_pose": {
+        "position": [
+          -0.5617683843656756,
+          -1.0664097177909362,
+          0.0
+        ],
+        "quaternion": [
+          0.0,
+          0.0,
+          0.6904679696601146,
+          -0.7233629675850426
+        ]
+      },
+      "rgb_detector_delta_s": 0.0500000000001819
+    }
+  ],
+  "detector_source_stamp": {
+    "secs": 1780,
+    "nsecs": 274000000,
+    "seconds": 1780.274
+  },
+  "detector_box": [
+    343,
+    237,
+    486,
+    294
+  ],
+  "detector_confidence": 0.89764,
+  "roi_source": "640x480 detector box scaled onto co-located same-FOV 1920x1440 camera",
+  "camera_topic": "/ocr_camera/image_raw",
+  "width": 1920,
+  "height": 1440,
+  "camera_intrinsics": [
+    1663.1481384679323,
+    0.0,
+    960.5,
+    0.0,
+    1663.1481384679323,
+    720.5,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "frame": "camera_optical_frame"
+}

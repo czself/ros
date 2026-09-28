@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_8",
+  "text": "冀K0BB17",
+  "valid": true,
+  "confidence": 0.9534952640533447,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9534952640533447,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 130.842,
+      "recognition_band": [
+        0,
+        23,
+        231,
+        72
+      ],
+      "input_shape": [
+        49,
+        231,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "f04fb718310b0bdeddcc5c924354220a97d14e1438b4d9ee7aee053d88eb4b93",
+      "source_stamp": {
+        "secs": 1755,
+        "nsecs": 135000000,
+        "seconds": 1755.135
+      },
+      "box": [
+        846,
+        711,
+        1077,
+        813
+      ],
+      "image_sha256": "9ef0d22bb6f08e33776276525a1e97b66aa9f1325a7ff7ab3f2969c58d466677"
+    },
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9553877115249634,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 109.405,
+      "recognition_band": [
+        0,
+        23,
+        231,
+        72
+      ],
+      "input_shape": [
+        49,
+        231,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "48b2c58764a91378b91c27f83474be5f7bf815aa3b8c9e8551e65ad73298e45d",
+      "source_stamp": {
+        "secs": 1755,
+        "nsecs": 366000000,
+        "seconds": 1755.366
+      },
+      "box": [
+        846,
+        711,
+        1077,
+        813
+      ],
+      "image_sha256": "9b5c32353b0ff3d364d596ac8bd443fce6910885d6d7790e298d54746c6e4725"
+    },
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9553824067115784,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 124.363,
+      "recognition_band": [
+        0,
+        23,
+        231,
+        72
+      ],
+      "input_shape": [
+        49,
+        231,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_8_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_8_frame_2.crop.input.png",
+      "recognition_image_sha256": "c4842b66af0873ccc3c5dc7460e4ef431c35c81b4436f205b57fafb3eddbd467",
+      "source_stamp": {
+        "secs": 1755,
+        "nsecs": 543000000,
+        "seconds": 1755.543
+      },
+      "box": [
+        846,
+        711,
+        1077,
+        813
+      ],
+      "image_sha256": "e300accf3c326555f8c601e9ab9059ffae562edf8256190136d3636833e77f88"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "0b40bf145352b213f82c476fec089d53ab5550c76a98313ed6299ab727da3cdc",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 367.766,
+  "low_resolution_comparison": {
+    "raw": "K-0BB17",
+    "text": "",
+    "display": "",
+    "confidence": 0.8888819813728333,
+    "valid": false,
+    "issue": "长度 6, 期望 7 (普通) 或 8 (新能源)",
+    "elapsed_ms": 105.37,
+    "recognition_band": [
+      0,
+      0,
+      77,
+      34
+    ],
+    "input_shape": [
+      34,
+      77,
+      3
+    ],
+    "box": [
+      282,
+      237,
+      359,
+      271
+    ]
+  },
+  "source_stamp": {
+    "secs": 1755,
+    "nsecs": 135000000,
+    "seconds": 1755.135
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/ocr/POINT_8.annotated.png",
+  "published_stamp": 1756.511
+}
