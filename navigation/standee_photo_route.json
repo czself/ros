@@ -302,15 +302,15 @@
       "sequence": 8,
       "target_hint": "car_standee",
       "base_pose": {
-        "x": -1.713,
-        "y": -0.8,
+        "x": -1.701128,
+        "y": -0.999647,
         "yaw": -1.5114,
         "frame": "base_footprint"
       },
       "camera_pose": {
         "frame": "camera_optical_frame",
-        "x": -1.7117,
-        "y": -0.821,
+        "x": -1.699828,
+        "y": -1.020647,
         "z": 0.1645,
         "yaw": -3.0822,
         "quaternion": [
@@ -324,6 +324,17 @@
           -0.998234,
           0.0
         ]
+      },
+      "adjustment_20260928": {
+        "reason": "User requested closer plate capture",
+        "forward_distance_m": 0.2,
+        "previous_base_pose": {
+          "x": -1.713,
+          "y": -0.8,
+          "yaw": -1.5114,
+          "frame": "base_footprint"
+        },
+        "existing_source_capture_is_previous_reference": true
       }
     },
     {

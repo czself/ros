@@ -3,6 +3,7 @@
 
 import argparse
 import hashlib
+import json
 import random
 import shutil
 from pathlib import Path
@@ -29,6 +30,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("inventory", type=Path, help="Directory containing plate image files")
     parser.add_argument("output", type=Path, help="Temporary output directory for Gazebo assets")
+    parser.add_argument("--previous", type=Path, help="Previous selection metadata; choose different images")
     args = parser.parse_args()
 
     inventory = args.inventory.expanduser().resolve()
@@ -59,16 +61,27 @@ def main() -> None:
     if len(stock) < 3:
         parser.error(f"need at least 3 plate images in {inventory}; found {len(stock)}")
 
-    selected = random.SystemRandom().sample(stock, 3)
+    previous_hashes = set()
+    if args.previous and args.previous.is_file():
+        previous = json.loads(args.previous.read_text(encoding='utf-8'))
+        previous_hashes = {p['source_sha256'] for p in previous.get('selected',[])}
+        previous_hashes.update(p['texture_sha256'] for p in previous.get('plates',{}).values())
+    eligible = [p for p in stock if hashlib.sha256(p.read_bytes()).hexdigest() not in previous_hashes]
+    if len(eligible)<3:
+        parser.error('need three images different from the previous run; add more inventory images')
+    selected = random.SystemRandom().sample(eligible, 3)
     scripts_dir = args.output / "materials" / "scripts"
     textures_dir = args.output / "materials" / "textures"
     scripts_dir.mkdir(parents=True, exist_ok=True)
     textures_dir.mkdir(parents=True, exist_ok=True)
 
     material_blocks = []
+    selection = []
     for slot, source in enumerate(selected, start=1):
         texture_name = f"random_plate_{slot}{source.suffix.lower()}"
         shutil.copy2(source, textures_dir / texture_name)
+        selection.append({'slot':slot,'source_file':source.name,'texture':texture_name,
+                          'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest()})
         material_blocks.append(
             f"material CarStandee/Plate{slot}\n"
             "{\n"
@@ -88,6 +101,9 @@ def main() -> None:
         MATERIAL_TEMPLATE.format(plate_materials="\n\n".join(material_blocks)),
         encoding="utf-8",
     )
+    (args.output/'plate_selection.json').write_text(
+        json.dumps({'selected':selection,'previous_hashes_excluded':sorted(previous_hashes)},
+                   ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print("本次抽取车牌：" + "、".join(path.name for path in selected))
 
 

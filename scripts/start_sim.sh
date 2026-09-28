@@ -55,6 +55,10 @@ docker exec ${CONTAINER} bash -lc \
 # 5. 启动 Gazebo（以 ROS 服务可调用为健康标准，不只检查进程名）
 if [ "$FORCE_RESTART" = 1 ] || ! docker exec ${CONTAINER} bash -lc "source /opt/ros/noetic/setup.bash; timeout 3 rosservice call /gazebo/get_world_properties >/dev/null 2>&1"; then
     echo "启动 Gazebo ..."
+    if docker exec ${CONTAINER} test -f /root/runtime_control.py; then
+        docker exec ${CONTAINER} bash -lc \
+            'source /opt/ros/noetic/setup.bash; python3 /root/runtime_control.py stop'
+    fi
     # 先让 ROS master 注销旧节点，避免误把上一代 Gazebo 的幽灵服务
     # 当成新实例已经就绪。
     docker exec ${CONTAINER} bash -lc \
@@ -66,13 +70,17 @@ if [ "$FORCE_RESTART" = 1 ] || ! docker exec ${CONTAINER} bash -lc "source /opt/
     # 每次真正启动/重启 Gazebo 时，从车牌库存中无重复抽取三张，
     # 并临时覆盖容器内 Plate1/Plate2/Plate3 材质槽。
     PLATE_ASSETS_DIR="$(mktemp -d)"
+    docker cp "${CONTAINER}:/root/car_standees/plate_selection.json" \
+        "$PLATE_ASSETS_DIR/previous_selection.json" 2>/dev/null || true
     python3 "$(dirname "$0")/randomize_car_plates.py" \
         "$(dirname "$0")/../insert/car_standees/plate_inventory" \
-        "$PLATE_ASSETS_DIR"
+        "$PLATE_ASSETS_DIR" --previous "$PLATE_ASSETS_DIR/previous_selection.json"
     docker cp "$PLATE_ASSETS_DIR/materials/scripts/car_standees.material" \
         "${CONTAINER}:/root/car_standees/materials/scripts/car_standees.material"
     docker cp "$PLATE_ASSETS_DIR/materials/textures/." \
         "${CONTAINER}:/root/car_standees/materials/textures/"
+    docker cp "$PLATE_ASSETS_DIR/plate_selection.json" \
+        "${CONTAINER}:/root/car_standees/plate_selection.json"
     python3 -c 'import shutil, sys; shutil.rmtree(sys.argv[1])' "$PLATE_ASSETS_DIR"
 
     docker exec -d -e DISPLAY=:1 -e QT_X11_NO_MITSHM=1 ${CONTAINER} \

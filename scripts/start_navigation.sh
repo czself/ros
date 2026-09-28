@@ -54,6 +54,8 @@ elif data.get("publisher") != "/slam_gmapping" or not data.get("session_id"):
     raise SystemExit("地图不是本次真实 GMapping 会话产物")
 PY2
 fi
+# Each new navigation session loads a fresh triplet of plate textures.
+"$ROOT_DIR/scripts/start_sim.sh" --restart
 docker cp "$ROOT_DIR/navigation/." "$CONTAINER:/root/navigation"
 docker cp "$ROOT_DIR/navigation/route_contract.yaml" "$CONTAINER:/root/navigation/route_contract.yaml"
 docker cp "$ROOT_DIR/scripts/wheel_encoder_odom.py" "$CONTAINER:/root/wheel_encoder_odom.py"
