@@ -10,6 +10,7 @@ import math
 import json
 import time
 import threading
+import os
 from collections import OrderedDict
 
 import actionlib
@@ -27,6 +28,8 @@ from navigation_goal_safety import GridFootprintChecker, DEFAULT_FOOTPRINT
 from sensor_msgs.msg import Image, CameraInfo
 from std_msgs.msg import String
 from tf.transformations import quaternion_from_euler
+from person_reporting import (PersonCounter, calibrated_intrinsics,
+                              collect_observations, save_report)
 
 
 CONTRACT_PATH = '/root/navigation/inner_route.yaml'
@@ -212,6 +215,15 @@ class RouteExecutor:
         self.no_progress_timeout = float(rospy.get_param('~no_progress_timeout', 8.0))
         # /root/ros1_ws is bind-mounted to the host as /home/sz/ros1_ws.
         self.photo_dir = rospy.get_param('~photo_dir', '/root/ros1_ws/photo_stops')
+        self.person_counter = None
+        if self.photo_route and self.capture_photos:
+            with open(rospy.get_param('~person_config', '/root/navigation/person_reporting.json')) as stream:
+                self.person_config = json.load(stream)
+            self.person_counter = PersonCounter(self.person_config)
+            self.person_report_pub = rospy.Publisher('/inspection/person_report', String,
+                                                      queue_size=1, latch=True)
+            self.person_image_pub = rospy.Publisher('/inspection/person_image', Image,
+                                                    queue_size=1, latch=True)
         selected = rospy.get_param('~photo_waypoints', '')
         self.photo_waypoints = set(filter(None, (name.strip() for name in selected.split(','))))
         self.bridge = CvBridge()
@@ -236,6 +248,8 @@ class RouteExecutor:
             rospy.Subscriber('/inspection/detections', String, self._detections_cb, queue_size=2)
             rospy.Subscriber('/camera/depth/image_raw', Image, self._depth_cb, queue_size=1)
             rospy.Subscriber('/camera/depth/camera_info', CameraInfo,
+                             lambda message: setattr(self, 'depth_info', message), queue_size=1)
+            rospy.Subscriber('/camera/camera_info', CameraInfo,
                              lambda message: setattr(self, 'depth_info', message), queue_size=1)
 
     def stop_motion(self):
@@ -661,8 +675,9 @@ class RouteExecutor:
                                  if item.get('class') in ('resident', 'stranger')]
             counted_detections = [item for item in counted_detections
                                   if item.get('class') not in ('resident', 'stranger') or
-                                  not self._box_clipped_at_frame(
-                                      item, raw_frame, frame_width, frame_height)]
+                                  (float(item.get('confidence', 0.0)) >= 0.25 and
+                                   not self._box_clipped_at_frame(
+                                       item, raw_frame, frame_width, frame_height))]
             edge_clipped_person_boxes = len(person_detections) - sum(
                 1 for item in counted_detections
                 if item.get('class') in ('resident', 'stranger'))
@@ -729,13 +744,15 @@ class RouteExecutor:
                     'rgb_depth_stamp_delta_s': depth_delta,
                     'detector_counts': self.accepted_photo_records[-1]['detector_counts'],
                     'depth_target_metrics': target_depths,
+                    'depth_frame': stem + '.depth.npy',
                     'photo_validation': photo_reason,
                     'sharpness': float(sharpness),
                     'depth_topic': '/camera/depth/image_raw',
                     'depth_geometry': self.depth_geometry(depth_frame),
                     'acceptance_criteria': self.photo_acceptance.get(name)}
         try:
-            stamp = rospy.Time(0)
+            stamp = rospy.Time(int(frame_key[0]), int(frame_key[1]))
+            self.tf_listener.waitForTransform('map', 'base_footprint', stamp, rospy.Duration(2))
             base_position, base_q = self.tf_listener.lookupTransform(
                 'map', 'base_footprint', stamp)
             base_yaw = math.atan2(
@@ -768,10 +785,77 @@ class RouteExecutor:
             }
         except (tf.Exception, tf.LookupException, tf.ConnectivityException) as error:
             rospy.logwarn('camera pose unavailable at %s: %s', name, error)
+        np.save(stem + '.depth.npy', depth_frame)
+        if self.person_counter is not None:
+            camera_calibration = (dict(K=list(self.depth_info.K)) if self.depth_info is not None
+                                  else self.person_config['camera'])
+            evidence['camera_intrinsics'] = calibrated_intrinsics(camera_calibration).ravel().tolist()
+            evidence['intrinsics_source'] = ('CameraInfo' if self.depth_info is not None
+                                            else 'configured depth sensor FOV and dimensions')
+            if name in self.person_config['required_views']:
+                evidence['people'] = self.record_person_view(
+                    name, dict(detection_record, detections=counted_detections),
+                    raw_frame, depth_frame, evidence)
         with open(stem + '.json', 'w', encoding='utf-8') as stream:
             json.dump(evidence, stream, indent=2)
         rospy.loginfo('photo saved at %s', stem + '.png')
         return True
+
+    def record_person_view(self, name, record, raw, depth, evidence):
+        directory = os.path.join(self.photo_dir, 'persons')
+        os.makedirs(directory, exist_ok=True)
+        annotated_path = os.path.join(directory, name + '.png')
+        if 'camera_pose' in evidence:
+            observations, errors = collect_observations(
+                record, raw, depth, evidence['camera_pose'], evidence['camera_intrinsics'],
+                self.person_config, name, annotated_path)
+        else:
+            observations, errors = [], [{'waypoint': name, 'reason': 'CAMERA_TF_UNAVAILABLE'}]
+        resolved = self.person_counter.add_view(name, record['source_stamp'], observations, errors)
+        canvas = raw.copy()
+        for person in resolved:
+            x1, y1, x2, y2 = map(int, person['box'])
+            color = (0,165,255) if person['class'] == 'stranger' else (255,220,0)
+            cv2.rectangle(canvas,(x1,y1),(x2,y2),color,2)
+            label = '%s %s %s %.2f' % (person['person_id'], person['street'],
+                                       person['class'], person['confidence'])
+            cv2.putText(canvas,label,(x1,max(18,y1-7)),cv2.FONT_HERSHEY_SIMPLEX,.40,color,1)
+            if person['class'] == 'stranger':
+                crop = raw[max(0,y1):y2,max(0,x1):x2]
+                crop_path = os.path.join(directory, person['person_id'] + '_' + name + '.png')
+                cv2.imwrite(crop_path, crop)
+                track = next(t for t in self.person_counter.tracks
+                             if t['person_id'] == person['person_id'])
+                track['observations'][-1]['foreign_crop_path'] = crop_path
+        cv2.imwrite(annotated_path, canvas)
+        report = self.person_counter.report()
+        public_people = [{key: value for key,value in person.items() if key != 'appearance'}
+                         for person in resolved]
+        payload = {'waypoint': name, 'source_stamp': record['source_stamp'],
+                   'people': public_people, 'cumulative_counts': report['counts'],
+                   'annotated_image': annotated_path, 'issues': errors}
+        self.person_report_pub.publish(String(data=json.dumps(payload,ensure_ascii=False)))
+        image_msg = self.bridge.cv2_to_imgmsg(canvas,'bgr8')
+        image_msg.header.stamp = rospy.Time(record['source_stamp']['secs'],
+                                            record['source_stamp']['nsecs'])
+        image_msg.header.frame_id = 'camera_optical_frame'
+        self.person_image_pub.publish(image_msg)
+        residents = sum(p['class']=='resident' for p in resolved)
+        strangers = sum(p['class']=='stranger' for p in resolved)
+        lines = ['[人物识别] %s 帧%.9f：本图%d人，社区%d人、外来%d人；累计去重%d人。图片：%s' % (
+            name,record['source_stamp']['seconds'],len(resolved),residents,strangers,
+            report['counts']['total'],annotated_path)]
+        for person in resolved:
+            lines.append('[人物识别] %s %s街区 %s 置信度%.3f，位置(%.3f, %.3f)' % (
+                person['person_id'],person['street'],
+                '外来人员' if person['class']=='stranger' else '社区人员',person['confidence'],
+                person['world_xy'][0],person['world_xy'][1]))
+        if errors:
+            lines.append('[人物识别] 待复核：'+json.dumps(errors,ensure_ascii=False))
+        with open(os.path.join(self.photo_dir,'people_terminal.txt'),'a',encoding='utf-8') as stream:
+            stream.write('\n'.join(lines)+'\n')
+        rospy.loginfo('%s',lines[0])
+        return public_people
 
     @staticmethod
     def goal(x, y, yaw):
@@ -1154,16 +1238,18 @@ class RouteExecutor:
                                for record in people_records)
             outsider_boxes = sum(record['detector_counts'].get('stranger', 0)
                                  for record in people_records)
-            if outsider_boxes < 1:
-                rospy.logerr('photo run did not identify any stranger-class person')
-                return False
             self.person_boxes_by_view = person_boxes
             self.outsider_boxes_by_view = outsider_boxes
         if self.photo_route and not rospy.get_param('~park_only', False):
             if not self.return_home(
                     (previous[1], previous[2]) if previous is not None else None):
                 return False
-        return self.precise_park()
+        parked = self.precise_park()
+        if parked and self.person_counter is not None and not self.person_counter.report()['complete']:
+            rospy.logerr('person report failed: %s',self.person_counter.report()['checks'])
+            self.status_pub.publish('FAILED:PERSON_REPORT')
+            return False
+        return parked
 
     def return_home(self, last_photo_position=None):
         """Send exactly one final goal to the recorded birth pose and yaw."""
@@ -1257,7 +1343,7 @@ class RouteExecutor:
                         'linear_speed_mps': linear, 'angular_speed_rps': angular,
                         'stationary_seconds': time.monotonic() - still_since,
                     }
-                    self.status_pub.publish('COMPLETE_PARKED')
+                    self.status_pub.publish('HOME_PARKED')
                     return True
             else:
                 still_since = None
@@ -1274,6 +1360,12 @@ class RouteExecutor:
         self.cmd_pub.publish(Twist())
         if self.capture_photos:
             os.makedirs(self.photo_dir, exist_ok=True)
+            person_report = None
+            if self.person_counter is not None:
+                person_report = save_report(self.person_counter, self.photo_dir)
+                with open(os.path.join(self.photo_dir,'person_reporting_config.json'),'w',encoding='utf-8') as stream:
+                    json.dump(self.person_config,stream,ensure_ascii=False,indent=2)
+                self.person_report_pub.publish(String(data=json.dumps(person_report,ensure_ascii=False)))
             report = {'route_status': 'COMPLETE_PARKED' if success else 'FAILED',
                       'localization': 'wheel_encoders+AMCL',
                       'map_file': rospy.get_param('/map_server/map_file', ''),
@@ -1283,10 +1375,13 @@ class RouteExecutor:
                       'accepted_photo_records': self.accepted_photo_records,
                       'person_boxes_by_view': getattr(self, 'person_boxes_by_view', None),
                       'outsider_boxes_by_view': getattr(self, 'outsider_boxes_by_view', None),
+                      'person_reporting_enabled': self.person_counter is not None,
+                      'person_report': person_report,
                       'photo_points': [name for name, *_ in self.route],
                       'completed_photos': sorted(os.listdir(self.photo_dir))}
             with open(os.path.join(self.photo_dir, 'run_summary.json'), 'w') as stream:
                 json.dump(report, stream, indent=2)
+        self.status_pub.publish('COMPLETE_PARKED' if success else 'FAILED:MISSION')
 
 
 if __name__ == '__main__':
