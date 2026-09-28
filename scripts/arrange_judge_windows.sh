@@ -7,7 +7,7 @@ for _ in $(seq 1 20); do
   RVIZ_ID="$(printf '%s\n' "$WINDOWS" | awk '/RViz$/{print $1;exit}')"
   VISION_ID="$(printf '%s\n' "$WINDOWS" | awk '/JudgeVision$/{print $1;exit}')"
   TERMINAL_ID="$(printf '%s\n' "$WINDOWS" | awk '/比赛识别终端/{print $1;exit}')"
-  if [[ -n "$GAZEBO_ID" && -n "$RVIZ_ID" && -n "$TERMINAL_ID" ]]; then break; fi
+  if [[ -n "$GAZEBO_ID" && -n "$RVIZ_ID" && -n "$TERMINAL_ID" && -n "$VISION_ID" ]]; then break; fi
   sleep .5
 done
 for id in "$GAZEBO_ID" "$RVIZ_ID" "$TERMINAL_ID" "$VISION_ID"; do
