@@ -51,27 +51,27 @@ def _run_tesseract(image_path, tessdata_dir, languages, psm):
         '-l', languages, '--oem', '1', '--psm', str(psm),
         '-c', 'user_defined_dpi=300',
     ]
-    text_run = subprocess.run(common, capture_output=True, text=True,
-                              timeout=30, check=False)
-    if text_run.returncode != 0:
-        detail = text_run.stderr.strip() or 'Tesseract returned %d' % text_run.returncode
-        raise RuntimeError(detail)
-
-    tsv_run = subprocess.run(common + ['tsv'], capture_output=True, text=True,
+    # Ask Tesseract to emit TSV through its config variable. The `tsv` config
+    # file is not shipped in our isolated tessdata directory, so passing the
+    # config filename would silently lose the word-confidence rows.
+    tsv_run = subprocess.run(common + ['-c', 'tessedit_create_tsv=1'],
+                             capture_output=True, text=True,
                              timeout=30, check=False)
     if tsv_run.returncode != 0:
         detail = tsv_run.stderr.strip() or 'Tesseract TSV returned %d' % tsv_run.returncode
         raise RuntimeError(detail)
     confidences = []
+    words = []
     for row in csv.DictReader(StringIO(tsv_run.stdout), delimiter='\t'):
         try:
             if row.get('level') == '5' and row.get('text', '').strip():
+                words.append(row['text'].strip())
                 confidence = float(row.get('conf', '-1'))
                 if confidence >= 0.0:
                     confidences.append(confidence)
         except (TypeError, ValueError):
             continue
-    raw = ' '.join(text_run.stdout.split())
+    raw = ' '.join(words)
     compact = ''.join(char for char in raw if char.isalnum())
     return {
         'text_raw': raw,
@@ -79,7 +79,7 @@ def _run_tesseract(image_path, tessdata_dir, languages, psm):
         'mean_word_confidence': (sum(confidences) / len(confidences)
                                  if confidences else None),
         'psm': int(psm),
-        'stderr': text_run.stderr.strip(),
+        'stderr': tsv_run.stderr.strip(),
     }
 
 
