@@ -1,0 +1,23 @@
+{
+  "frozen_manifest_sha256": "ce18ec119f9ad15d38749547d8e03c3ec8fb73a0cb6949891029fd476b0d8a01",
+  "streak": 1,
+  "required_streak": 3,
+  "runs": [
+    {
+      "run_id": "20260928_ocr_closer_1",
+      "pass": true,
+      "mission_duration_s": 146.85899999999992,
+      "translation_speed_mps": 0.17489009568140687,
+      "plate_exact_accuracy": 1.0,
+      "plates": [
+        "学ABCDEK",
+        "学C88K55",
+        "豫W5U8Y1"
+      ],
+      "home_position_error_m": 0.006000685992038939,
+      "home_heading_error_rad": 0.03278981880637022,
+      "ordinary_paint_contacts": 0,
+      "yolo_active_mean_hz": 5.121212121212121
+    }
+  ]
+}

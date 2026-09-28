@@ -1,0 +1,192 @@
+{
+  "pass": true,
+  "checks": {
+    "reported_complete": true,
+    "truth_inventory_available": true,
+    "counts_match_truth": true,
+    "one_to_one_truth_coverage": true,
+    "all_classes_correct": true,
+    "all_positions_within_8cm": true,
+    "unique_person_ids": true,
+    "required_views_synchronized": true,
+    "foreign_crops_saved": true,
+    "terminal_report_saved": true,
+    "audio_report_hash_matches": true,
+    "audio_text_matches": true,
+    "audio_synthesized_and_played": true,
+    "audio_nonempty": true
+  },
+  "counts": {
+    "total": 18,
+    "resident": 16,
+    "stranger": 2
+  },
+  "street_counts": {
+    "A": {
+      "total": 9,
+      "resident": 8,
+      "stranger": 1
+    },
+    "B": {
+      "total": 9,
+      "resident": 8,
+      "stranger": 1
+    }
+  },
+  "truth_assignments": [
+    {
+      "person_id": "PERSON_001",
+      "truth_model": "person_standee_07",
+      "position_error_m": 0.02787906148153721,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_002",
+      "truth_model": "person_standee_06",
+      "position_error_m": 0.02845117589350752,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_003",
+      "truth_model": "person_standee_18",
+      "position_error_m": 0.029657186078012925,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_004",
+      "truth_model": "person_standee_02",
+      "position_error_m": 0.05437823491429581,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_005",
+      "truth_model": "person_standee_01",
+      "position_error_m": 0.053764841759894426,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_006",
+      "truth_model": "person_standee_05",
+      "position_error_m": 0.055144912909102055,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_007",
+      "truth_model": "person_standee_13",
+      "position_error_m": 0.03231220858324658,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_008",
+      "truth_model": "person_standee_11",
+      "position_error_m": 0.03137654255782444,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_009",
+      "truth_model": "person_standee_12",
+      "position_error_m": 0.031998642242255945,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_010",
+      "truth_model": "person_standee_08",
+      "position_error_m": 0.02852247349226605,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_011",
+      "truth_model": "person_standee_10",
+      "position_error_m": 0.031071492611177108,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_012",
+      "truth_model": "person_standee_17",
+      "position_error_m": 0.034219458922872106,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_013",
+      "truth_model": "person_standee_04",
+      "position_error_m": 0.03681428042474066,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_014",
+      "truth_model": "person_standee_03",
+      "position_error_m": 0.03614111356934033,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_015",
+      "truth_model": "person_standee_09",
+      "position_error_m": 0.039161572499465294,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_016",
+      "truth_model": "person_standee_16",
+      "position_error_m": 0.041529097401752736,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_017",
+      "truth_model": "person_standee_15",
+      "position_error_m": 0.043950641604094697,
+      "class_pass": true
+    },
+    {
+      "person_id": "PERSON_018",
+      "truth_model": "person_standee_14",
+      "position_error_m": 0.04660021120592914,
+      "class_pass": true
+    }
+  ],
+  "maximum_position_error_m": 0.055144912909102055,
+  "view_evidence": [
+    {
+      "waypoint": "POINT_2",
+      "source_pass": true,
+      "image_pass": true,
+      "synchronized_topic_pass": true
+    },
+    {
+      "waypoint": "POINT_3",
+      "source_pass": true,
+      "image_pass": true,
+      "synchronized_topic_pass": true
+    },
+    {
+      "waypoint": "POINT_4",
+      "source_pass": true,
+      "image_pass": true,
+      "synchronized_topic_pass": true
+    },
+    {
+      "waypoint": "POINT_5",
+      "source_pass": true,
+      "image_pass": true,
+      "synchronized_topic_pass": true
+    },
+    {
+      "waypoint": "POINT_6",
+      "source_pass": true,
+      "image_pass": true,
+      "synchronized_topic_pass": true
+    }
+  ],
+  "foreign_crop_evidence": [
+    {
+      "person_id": "PERSON_003",
+      "pass": true
+    },
+    {
+      "person_id": "PERSON_012",
+      "pass": true
+    }
+  ],
+  "audio_duration_s": 26.34829931972789,
+  "world_sha256": "92b2daa749a95e72ca9b45b5dfdde6d7dabcb2f2a5d3ef7785717a48781b5211",
+  "scope": "Static standees; playback exit status verifies delivery, not human audibility. Truth used only by audit."
+}
