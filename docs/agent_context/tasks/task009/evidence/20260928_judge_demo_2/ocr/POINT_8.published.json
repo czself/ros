@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_8",
+  "text": "冀K0BB17",
+  "valid": true,
+  "confidence": 0.9484769105911255,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9493381977081299,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 105.826,
+      "recognition_band": [
+        0,
+        28,
+        327,
+        95
+      ],
+      "input_shape": [
+        67,
+        327,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "edd181982b789ac04e17497b61d1d1d41164a99a2e7e2a2cbceb3e72ed3f9e40",
+      "source_stamp": {
+        "secs": 632,
+        "nsecs": 520000000,
+        "seconds": 632.52
+      },
+      "box": [
+        786,
+        711,
+        1113,
+        846
+      ],
+      "image_sha256": "e881778c94fa64d482fb2bd63d3692ef4bba04d3d893f523b05d59d3981ce6ff"
+    },
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.949559211730957,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 98.009,
+      "recognition_band": [
+        0,
+        28,
+        327,
+        95
+      ],
+      "input_shape": [
+        67,
+        327,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "ffd697e00d7d166675b77462d1e8606ef0f430512ad75827014003d206053058",
+      "source_stamp": {
+        "secs": 632,
+        "nsecs": 739000000,
+        "seconds": 632.739
+      },
+      "box": [
+        786,
+        711,
+        1113,
+        846
+      ],
+      "image_sha256": "ece884c71eb2b27da21d3a70a4a3a821dd9f526b1625a2f75941782800a57420"
+    },
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9484769105911255,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 114.235,
+      "recognition_band": [
+        0,
+        28,
+        327,
+        95
+      ],
+      "input_shape": [
+        67,
+        327,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_2.crop.input.png",
+      "recognition_image_sha256": "ba149f01042457474123fd3f8b254da106bd7a7af53c5dffad003c569dfc5512",
+      "source_stamp": {
+        "secs": 632,
+        "nsecs": 306000000,
+        "seconds": 632.306
+      },
+      "box": [
+        786,
+        711,
+        1113,
+        846
+      ],
+      "image_sha256": "5a3d7828d2d2a436a268a5eca914eaa8e25c1d2508899e403c56d11e1d8d7003"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "58a57039f8278b46a821c72fe300e10dcab8e0487727836661f6f45856d6b331",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 322.986,
+  "low_resolution_comparison": {
+    "raw": "黄K·0BB17",
+    "text": "",
+    "display": "",
+    "confidence": 0.877541720867157,
+    "valid": false,
+    "issue": "首字 '黄' 不是有效的省份简称",
+    "elapsed_ms": 123.685,
+    "recognition_band": [
+      0,
+      0,
+      109,
+      45
+    ],
+    "input_shape": [
+      45,
+      109,
+      3
+    ],
+    "box": [
+      262,
+      237,
+      371,
+      282
+    ]
+  },
+  "source_stamp": {
+    "secs": 632,
+    "nsecs": 520000000,
+    "seconds": 632.52
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8.annotated.png",
+  "published_stamp": 633.691
+}

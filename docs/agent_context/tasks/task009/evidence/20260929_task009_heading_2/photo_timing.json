@@ -1,0 +1,66 @@
+{
+  "run": "20260929_task009_heading_2",
+  "photo_processing_seconds": 11.02599999999984,
+  "points": [
+    {
+      "point": "POINT_1",
+      "result_s": 534.303,
+      "photo_saved_s": 535.353,
+      "elapsed_s": 1.0499999999999545
+    },
+    {
+      "point": "POINT_2",
+      "result_s": 547.244,
+      "photo_saved_s": 548.319,
+      "elapsed_s": 1.0749999999999318
+    },
+    {
+      "point": "POINT_3",
+      "result_s": 560.545,
+      "photo_saved_s": 561.583,
+      "elapsed_s": 1.038000000000011
+    },
+    {
+      "point": "POINT_4",
+      "result_s": 574.407,
+      "photo_saved_s": 575.466,
+      "elapsed_s": 1.058999999999969
+    },
+    {
+      "point": "POINT_5",
+      "result_s": 587.375,
+      "photo_saved_s": 588.41,
+      "elapsed_s": 1.0349999999999682
+    },
+    {
+      "point": "POINT_6",
+      "result_s": 601.226,
+      "photo_saved_s": 602.284,
+      "elapsed_s": 1.0579999999999927
+    },
+    {
+      "point": "POINT_7",
+      "result_s": 608.237,
+      "photo_saved_s": 609.271,
+      "elapsed_s": 1.0339999999999918
+    },
+    {
+      "point": "POINT_8",
+      "result_s": 631.621,
+      "photo_saved_s": 632.855,
+      "elapsed_s": 1.2340000000000373
+    },
+    {
+      "point": "POINT_9",
+      "result_s": 641.94,
+      "photo_saved_s": 643.144,
+      "elapsed_s": 1.2039999999999509
+    },
+    {
+      "point": "POINT_10",
+      "result_s": 651.161,
+      "photo_saved_s": 652.4,
+      "elapsed_s": 1.2390000000000327
+    }
+  ]
+}

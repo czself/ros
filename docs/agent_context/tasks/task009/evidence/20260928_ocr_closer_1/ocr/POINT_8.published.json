@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_8",
+  "text": "学ABCDEK",
+  "valid": true,
+  "confidence": 0.9712496995925903,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "学A·BCDEK",
+      "text": "学ABCDEK",
+      "display": "学A·BCDEK",
+      "confidence": 0.9712496995925903,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 153.982,
+      "recognition_band": [
+        0,
+        29,
+        342,
+        98
+      ],
+      "input_shape": [
+        69,
+        342,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "edf62eb10a4809c90a3a6e2818bb8b364ae406fb09959a73098f740d55c55b4d",
+      "source_stamp": {
+        "secs": 629,
+        "nsecs": 91000000,
+        "seconds": 629.091
+      },
+      "box": [
+        801,
+        711,
+        1143,
+        849
+      ],
+      "image_sha256": "657b8ce00a85b11efbf698adfe4ef51db8ed89f9ebc5a851bb8e5c4a66e66be8"
+    },
+    {
+      "raw": "学A·BCDEK",
+      "text": "学ABCDEK",
+      "display": "学A·BCDEK",
+      "confidence": 0.9712496995925903,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 135.499,
+      "recognition_band": [
+        0,
+        29,
+        342,
+        98
+      ],
+      "input_shape": [
+        69,
+        342,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "edf62eb10a4809c90a3a6e2818bb8b364ae406fb09959a73098f740d55c55b4d",
+      "source_stamp": {
+        "secs": 629,
+        "nsecs": 272000000,
+        "seconds": 629.272
+      },
+      "box": [
+        801,
+        711,
+        1143,
+        849
+      ],
+      "image_sha256": "657b8ce00a85b11efbf698adfe4ef51db8ed89f9ebc5a851bb8e5c4a66e66be8"
+    },
+    {
+      "raw": "学A·BCDEK",
+      "text": "学ABCDEK",
+      "display": "学A·BCDEK",
+      "confidence": 0.971714973449707,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 134.027,
+      "recognition_band": [
+        0,
+        29,
+        342,
+        98
+      ],
+      "input_shape": [
+        69,
+        342,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_2.crop.input.png",
+      "recognition_image_sha256": "b4f5f7af36c79d8ee5a277c1aa98d3ac7065912f9431d06ee4f046221b3d5081",
+      "source_stamp": {
+        "secs": 629,
+        "nsecs": 463000000,
+        "seconds": 629.463
+      },
+      "box": [
+        801,
+        711,
+        1143,
+        849
+      ],
+      "image_sha256": "efff363029d917768a67761a87083208e75d9b2313ee063e3be1a5b532e806ac"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "0c4cca0093df3cacbeeaa5cf0d63a03674a754732e4b14405d0cb7906c0cd0e2",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 428.972,
+  "low_resolution_comparison": {
+    "raw": "学A·BCDEK",
+    "text": "学ABCDEK",
+    "display": "学A·BCDEK",
+    "confidence": 0.9082722663879395,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 135.296,
+    "recognition_band": [
+      0,
+      0,
+      114,
+      46
+    ],
+    "input_shape": [
+      46,
+      114,
+      3
+    ],
+    "box": [
+      267,
+      237,
+      381,
+      283
+    ]
+  },
+  "source_stamp": {
+    "secs": 629,
+    "nsecs": 91000000,
+    "seconds": 629.091
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8.annotated.png",
+  "published_stamp": 630.501
+}

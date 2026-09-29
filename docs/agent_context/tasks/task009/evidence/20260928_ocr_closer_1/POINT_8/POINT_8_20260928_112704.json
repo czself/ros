@@ -1,0 +1,125 @@
+{
+  "waypoint": "POINT_8",
+  "target_base_pose": {
+    "x": -1.701128,
+    "y": -0.999647,
+    "yaw": -1.5114
+  },
+  "image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.png",
+  "camera_topic": "/camera/image_raw",
+  "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.raw.png",
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.png",
+  "detection_record": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.detections.json",
+  "source_stamp": {
+    "secs": 629,
+    "nsecs": 45000000,
+    "seconds": 629.045
+  },
+  "depth_source_stamp": {
+    "secs": 629,
+    "nsecs": 45000000
+  },
+  "rgb_depth_stamp_delta_s": 0.0,
+  "detector_counts": {
+    "resident": 0,
+    "stranger": 0,
+    "license_plate": 1,
+    "red_on": 0,
+    "red_off": 0,
+    "yellow_on": 0,
+    "yellow_off": 0,
+    "green_on": 0,
+    "green_off": 0
+  },
+  "depth_target_metrics": [
+    {
+      "class": "license_plate",
+      "confidence": 0.84199,
+      "valid_depth_pixels": 5244,
+      "valid_roi_fraction": 1.0,
+      "median_depth_m": 0.5330048203468323,
+      "p10_depth_m": 0.5290268242359162,
+      "p90_depth_m": 0.5369806110858917
+    }
+  ],
+  "depth_frame": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.depth.npy",
+  "photo_validation": "PASS",
+  "sharpness": 435.3723708758777,
+  "depth_topic": "/camera/depth/image_raw",
+  "depth_geometry": {
+    "min_m": 0.41382142901420593,
+    "median_m": 0.5431761145591736,
+    "max_m": 1.013062870502472
+  },
+  "acceptance_criteria": "\u8f66\u724c\u5b8c\u6574\u3001\u6e05\u6670\u5165\u955c",
+  "actual_base_pose": {
+    "frame": "base_footprint",
+    "x": -1.6931,
+    "y": -0.9883,
+    "yaw": -1.5472
+  },
+  "camera_pose": {
+    "frame": "camera_optical_frame",
+    "x": -1.6926,
+    "y": -1.0093,
+    "z": 0.1645,
+    "yaw": -3.118,
+    "quaternion": [
+      0.008348,
+      -0.707058,
+      0.707058,
+      -0.008348
+    ],
+    "view_direction_world": [
+      0.023609,
+      -0.999721,
+      0.0
+    ]
+  },
+  "hd_plate": {
+    "job": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8.job.json",
+    "selected": {
+      "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_0.raw.png",
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_0.crop.png",
+      "source_stamp": {
+        "secs": 629,
+        "nsecs": 91000000,
+        "seconds": 629.091
+      },
+      "box": [
+        801,
+        711,
+        1143,
+        849
+      ],
+      "local_sharpness": 137.49993643125066,
+      "actual_base_pose": {
+        "position": [
+          -1.6930765714063127,
+          -0.988317031695864,
+          0.0
+        ],
+        "quaternion": [
+          0.0,
+          0.0,
+          0.6987095747537493,
+          -0.7154054306108077
+        ]
+      },
+      "rgb_detector_delta_s": 0.04600000000004911
+    },
+    "frame_count": 3
+  },
+  "camera_intrinsics": [
+    554.3827128226441,
+    0.0,
+    319.5,
+    0.0,
+    554.3827128226441,
+    239.5,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "intrinsics_source": "configured depth sensor FOV and dimensions"
+}

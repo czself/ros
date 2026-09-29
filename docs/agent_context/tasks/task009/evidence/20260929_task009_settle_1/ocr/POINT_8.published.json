@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_8",
+  "text": "桂VK2T43",
+  "valid": true,
+  "confidence": 0.9669381380081177,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "桂V·K2T43",
+      "text": "桂VK2T43",
+      "display": "桂V·K2T43",
+      "confidence": 0.9669873714447021,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 141.623,
+      "recognition_band": [
+        0,
+        29,
+        333,
+        96
+      ],
+      "input_shape": [
+        67,
+        333,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "7143ee2d9184bde4c8a8e617e40824d20ff6dc3b262cc3f94ad87478639cec68",
+      "source_stamp": {
+        "secs": 631,
+        "nsecs": 513000000,
+        "seconds": 631.513
+      },
+      "box": [
+        819,
+        711,
+        1152,
+        849
+      ],
+      "image_sha256": "b637552f668738e5ab2c87eed0964345f49083783f566c98fe8d3f77eb351aae"
+    },
+    {
+      "raw": "桂V·K2T43",
+      "text": "桂VK2T43",
+      "display": "桂V·K2T43",
+      "confidence": 0.9670254588127136,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 80.835,
+      "recognition_band": [
+        0,
+        29,
+        333,
+        96
+      ],
+      "input_shape": [
+        67,
+        333,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "0ee1a2e83d5dc7fe1cca6027977e33d7a72651a5dfb825c631c232d99db8e85e",
+      "source_stamp": {
+        "secs": 631,
+        "nsecs": 317000000,
+        "seconds": 631.317
+      },
+      "box": [
+        819,
+        711,
+        1152,
+        849
+      ],
+      "image_sha256": "0da94fe5a180c1ffac80ea847e4e35f57d7d42dd1dc1dd353be32c3151611269"
+    },
+    {
+      "raw": "桂V·K2T43",
+      "text": "桂VK2T43",
+      "display": "桂V·K2T43",
+      "confidence": 0.9669381380081177,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 102.202,
+      "recognition_band": [
+        0,
+        29,
+        333,
+        96
+      ],
+      "input_shape": [
+        67,
+        333,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_2.crop.input.png",
+      "recognition_image_sha256": "cbd71ce4cd5eedbb0d4e523390e7de1ebf39ae82fc483b474a857fab877bdfe3",
+      "source_stamp": {
+        "secs": 631,
+        "nsecs": 115000000,
+        "seconds": 631.115
+      },
+      "box": [
+        819,
+        711,
+        1152,
+        849
+      ],
+      "image_sha256": "9c848306ef8c83eecbd8ba7ca2370ff0f8a60f5d2304fbeed64c6630d4afd462"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "ba27a065172d4b9eef482f6d8f3b3b87d1b39664bfcbe91bc3066df2480b2649",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 333.504,
+  "low_resolution_comparison": {
+    "raw": "桂V-K2T43",
+    "text": "桂VK2T43",
+    "display": "桂V·K2T43",
+    "confidence": 0.9756545424461365,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 142.331,
+    "recognition_band": [
+      0,
+      9,
+      111,
+      33
+    ],
+    "input_shape": [
+      24,
+      111,
+      3
+    ],
+    "box": [
+      273,
+      237,
+      384,
+      283
+    ]
+  },
+  "source_stamp": {
+    "secs": 631,
+    "nsecs": 513000000,
+    "seconds": 631.513
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8.annotated.png",
+  "published_stamp": 632.444
+}

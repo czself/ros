@@ -1,0 +1,110 @@
+{
+  "waypoint": "POINT_7",
+  "target_base_pose": {
+    "x": -0.1948,
+    "y": 0.045,
+    "yaw": -3.1177
+  },
+  "settle_wait_s": 0.3584,
+  "image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.png",
+  "camera_topic": "/camera/image_raw",
+  "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.raw.png",
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.png",
+  "detection_record": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.detections.json",
+  "source_stamp": {
+    "secs": 608,
+    "nsecs": 815000000,
+    "seconds": 608.815
+  },
+  "depth_source_stamp": {
+    "secs": 608,
+    "nsecs": 815000000
+  },
+  "rgb_depth_stamp_delta_s": 0.0,
+  "detector_counts": {
+    "resident": 0,
+    "stranger": 0,
+    "license_plate": 0,
+    "red_on": 1,
+    "red_off": 0,
+    "yellow_on": 0,
+    "yellow_off": 1,
+    "green_on": 0,
+    "green_off": 1
+  },
+  "depth_target_metrics": [
+    {
+      "class": "red_on",
+      "confidence": 0.91562,
+      "valid_depth_pixels": 7671,
+      "valid_roi_fraction": 0.9794433094994893,
+      "median_depth_m": 0.9114612340927124,
+      "p10_depth_m": 0.9039784669876099,
+      "p90_depth_m": 0.9186357259750366
+    },
+    {
+      "class": "yellow_off",
+      "confidence": 0.91024,
+      "valid_depth_pixels": 8523,
+      "valid_roi_fraction": 0.9751716247139588,
+      "median_depth_m": 0.8850136995315552,
+      "p10_depth_m": 0.877417802810669,
+      "p90_depth_m": 0.8924574732780457
+    },
+    {
+      "class": "green_off",
+      "confidence": 0.83106,
+      "valid_depth_pixels": 9833,
+      "valid_roi_fraction": 0.9639251053818253,
+      "median_depth_m": 0.858260989189148,
+      "p10_depth_m": 0.850681734085083,
+      "p90_depth_m": 0.8675140738487244
+    }
+  ],
+  "depth_frame": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.depth.npy",
+  "photo_validation": "PASS",
+  "sharpness": 962.9864681005589,
+  "depth_topic": "/camera/depth/image_raw",
+  "depth_geometry": {
+    "min_m": 0.41382551193237305,
+    "median_m": 1.3424433469772339,
+    "max_m": 1.9093513488769531
+  },
+  "acceptance_criteria": "\u7ea2\u7eff\u706f\u706f\u4f53\u5b8c\u6574\u5165\u955c",
+  "actual_base_pose": {
+    "frame": "base_footprint",
+    "x": -0.1811,
+    "y": 0.0851,
+    "yaw": -3.0864
+  },
+  "camera_pose": {
+    "frame": "camera_optical_frame",
+    "x": -0.2021,
+    "y": 0.084,
+    "z": 0.1645,
+    "yaw": 1.626,
+    "quaternion": [
+      -0.486012,
+      -0.513607,
+      0.513607,
+      0.486012
+    ],
+    "view_direction_world": [
+      -0.998477,
+      -0.055168,
+      0.0
+    ]
+  },
+  "camera_intrinsics": [
+    554.3827128226441,
+    0.0,
+    319.5,
+    0.0,
+    554.3827128226441,
+    239.5,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "intrinsics_source": "configured depth sensor FOV and dimensions"
+}

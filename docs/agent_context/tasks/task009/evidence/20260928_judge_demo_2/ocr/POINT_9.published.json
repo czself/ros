@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_9",
+  "text": "豫W5U8Y1",
+  "valid": true,
+  "confidence": 0.9419026970863342,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "豫W·5U8YI",
+      "text": "豫W5U8Y1",
+      "display": "豫W·5U8Y1",
+      "confidence": 0.9419026970863342,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 88.335,
+      "recognition_band": [
+        0,
+        36,
+        399,
+        118
+      ],
+      "input_shape": [
+        82,
+        399,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "dc0485c452bc79572abbf1cacea29fbdf4e131df09875327dacdcfd48e487c62",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 498000000,
+        "seconds": 643.498
+      },
+      "box": [
+        1104,
+        708,
+        1503,
+        876
+      ],
+      "image_sha256": "f6efb4307ca1368fab579c0b32fddd700ea8501c2be4da29ac2f18d4828b9465"
+    },
+    {
+      "raw": "豫W·5U8YI",
+      "text": "豫W5U8Y1",
+      "display": "豫W·5U8Y1",
+      "confidence": 0.943682849407196,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 103.869,
+      "recognition_band": [
+        0,
+        36,
+        399,
+        118
+      ],
+      "input_shape": [
+        82,
+        399,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "a1fe4ccc222b8a8656459464964938a72755595613afc60d8c05ab3343bc72b8",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 900000000,
+        "seconds": 643.9
+      },
+      "box": [
+        1104,
+        708,
+        1503,
+        876
+      ],
+      "image_sha256": "2a7e90f01b87d6acb24b7162082eaa8632cd0fde5f04201acce879d3b1651c2f"
+    },
+    {
+      "raw": "豫W·5U8YI",
+      "text": "豫W5U8Y1",
+      "display": "豫W·5U8Y1",
+      "confidence": 0.9440836906433105,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 112.389,
+      "recognition_band": [
+        0,
+        36,
+        399,
+        118
+      ],
+      "input_shape": [
+        82,
+        399,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_2.crop.input.png",
+      "recognition_image_sha256": "6763f764b339c0c0b4a8db909431b216ce8d72db1a89c222a3a1521f45aabc0b",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 699000000,
+        "seconds": 643.699
+      },
+      "box": [
+        1104,
+        708,
+        1503,
+        876
+      ],
+      "image_sha256": "e4330cbb773584d94683149d5471c28006a804f4b9ec7abd107d32826c41076c"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "ce5cf9f1842b0ff40407354ec8dc3d0b400fc2bcc7f28eeb09b30fa3643b0299",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 310.796,
+  "low_resolution_comparison": {
+    "raw": "豫W·5U8YI",
+    "text": "豫W5U8Y1",
+    "display": "豫W·5U8Y1",
+    "confidence": 0.9522868394851685,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 131.395,
+    "recognition_band": [
+      0,
+      11,
+      133,
+      40
+    ],
+    "input_shape": [
+      29,
+      133,
+      3
+    ],
+    "box": [
+      368,
+      236,
+      501,
+      292
+    ]
+  },
+  "source_stamp": {
+    "secs": 643,
+    "nsecs": 498000000,
+    "seconds": 643.498
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9.annotated.png",
+  "published_stamp": 644.723
+}

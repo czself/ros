@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_10",
+  "text": "浙TF9E07",
+  "valid": true,
+  "confidence": 0.9798133373260498,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9835515022277832,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 122.615,
+      "recognition_band": [
+        0,
+        33,
+        399,
+        115
+      ],
+      "input_shape": [
+        82,
+        399,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_0.crop.input.png",
+      "recognition_image_sha256": "6bcf6d3b80f1dae3d88b899cac805d34233eb65a9743c018f920a5901410dd41",
+      "source_stamp": {
+        "secs": 653,
+        "nsecs": 721000000,
+        "seconds": 653.721
+      },
+      "box": [
+        822,
+        711,
+        1221,
+        876
+      ],
+      "image_sha256": "2a7f95219aa2d8406c6432fbf172845fc2e3bb745c332318e2c4ecad300cf0eb"
+    },
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9798133373260498,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 119.599,
+      "recognition_band": [
+        0,
+        33,
+        399,
+        115
+      ],
+      "input_shape": [
+        82,
+        399,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_1.crop.input.png",
+      "recognition_image_sha256": "87cc9796c769e9be1a7ceb96b91dbb1f54eb488f4f5dccfc97ad1f3c7e84ee6b",
+      "source_stamp": {
+        "secs": 653,
+        "nsecs": 370000000,
+        "seconds": 653.37
+      },
+      "box": [
+        822,
+        711,
+        1221,
+        876
+      ],
+      "image_sha256": "b2c8cbe046f3a79b43bfda480f8010415b5b51c101dd3d09fa23c832c87eb611"
+    },
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9824655652046204,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 94.378,
+      "recognition_band": [
+        0,
+        33,
+        399,
+        115
+      ],
+      "input_shape": [
+        82,
+        399,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_2.crop.input.png",
+      "recognition_image_sha256": "bd4f097cd1714838be27ceb06ab7862e18139f72c3bd68d7d730d50b45d63831",
+      "source_stamp": {
+        "secs": 653,
+        "nsecs": 559000000,
+        "seconds": 653.559
+      },
+      "box": [
+        822,
+        711,
+        1221,
+        876
+      ],
+      "image_sha256": "e9df3eb0a02e73ca629074d0d2b3f0f3c5af89961c2e2b4d9530caccbd1a477a"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "7e4508b836455cac758397a7407f4d327638ea535177eaabf93ab76be01814c2",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 342.537,
+  "low_resolution_comparison": {
+    "raw": "浙T·F9E07",
+    "text": "浙TF9E07",
+    "display": "浙T·F9E07",
+    "confidence": 0.9823390245437622,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 95.949,
+    "recognition_band": [
+      0,
+      10,
+      133,
+      39
+    ],
+    "input_shape": [
+      29,
+      133,
+      3
+    ],
+    "box": [
+      274,
+      237,
+      407,
+      292
+    ]
+  },
+  "source_stamp": {
+    "secs": 653,
+    "nsecs": 721000000,
+    "seconds": 653.721
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10.annotated.png",
+  "published_stamp": 654.757
+}

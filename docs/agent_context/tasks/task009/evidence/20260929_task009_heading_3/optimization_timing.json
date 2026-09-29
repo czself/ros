@@ -1,0 +1,15 @@
+{
+  "run": "20260929_task009_heading_3",
+  "state_seconds": {
+    "UNKNOWN": 2.283999999999992,
+    "TRACKING": 71.99699999999973,
+    "FINAL_HEADING": 26.237999999999943,
+    "GOAL_SETTLE": 4.268999999999778,
+    "GOAL_REACHED": 14.711000000000126,
+    "ALIGNING_TO_PATH": 18.32600000000025,
+    "ALIGNMENT_BRAKING": 0.9170000000001437,
+    "SIGNAL_WAIT": 9.913000000000011
+  },
+  "signal_wait_s": 9.913000000000011,
+  "definition": "time until next controller/gate event, capped at 0.1 s; signal WAIT takes priority"
+}

@@ -1,0 +1,75 @@
+{
+  "description": "A/B person zones measured in map frame from the competition diagram; expected inventory is a validation target, never a reported count.",
+  "streets": {
+    "A": [
+      [
+        0.45,
+        0.45
+      ],
+      [
+        1.55,
+        0.45
+      ],
+      [
+        1.55,
+        1.55
+      ],
+      [
+        0.45,
+        1.55
+      ]
+    ],
+    "B": [
+      [
+        -0.4,
+        0.35
+      ],
+      [
+        0.3,
+        0.35
+      ],
+      [
+        0.3,
+        1.05
+      ],
+      [
+        -0.4,
+        1.05
+      ]
+    ]
+  },
+  "camera": {
+    "width": 640,
+    "height": 480,
+    "horizontal_fov_rad": 1.047
+  },
+  "minimum_detection_confidence": 0.25,
+  "association_radius_m": 0.035,
+  "appearance_radius_m": 0.12,
+  "minimum_appearance_cosine": 0.94,
+  "spatial_match_min_appearance_cosine": 0.9,
+  "required_views": [
+    "POINT_2",
+    "POINT_3",
+    "POINT_4",
+    "POINT_5",
+    "POINT_6"
+  ],
+  "expected_inventory": {
+    "total": 18,
+    "resident": 16,
+    "stranger": 2,
+    "streets": {
+      "A": {
+        "total": 9,
+        "resident": 8,
+        "stranger": 1
+      },
+      "B": {
+        "total": 9,
+        "resident": 8,
+        "stranger": 1
+      }
+    }
+  }
+}

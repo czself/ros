@@ -1,0 +1,29 @@
+{
+  "route_status": "COMPLETE_PARKED",
+  "goal": "HOME",
+  "frame_pairs": 759,
+  "people_counts": {
+    "total": 18,
+    "resident": 16,
+    "stranger": 2
+  },
+  "street_counts": {
+    "A": {
+      "total": 9,
+      "resident": 8,
+      "stranger": 1
+    },
+    "B": {
+      "total": 9,
+      "resident": 8,
+      "stranger": 1
+    }
+  },
+  "ocr": {
+    "POINT_8": "辽ZR6314",
+    "POINT_9": "学ABCDEF",
+    "POINT_10": "学C88K55"
+  },
+  "gate_status": "CLEAR",
+  "traffic_state": "RED"
+}

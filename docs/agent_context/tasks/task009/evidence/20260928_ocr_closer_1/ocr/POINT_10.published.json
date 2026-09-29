@@ -1,0 +1,118 @@
+{
+  "waypoint": "POINT_10",
+  "text": "豫W5U8Y1",
+  "valid": true,
+  "confidence": 0.9489090442657471,
+  "matching_frames": 2,
+  "frames": [
+    {
+      "raw": "豫W·5U8YI",
+      "text": "豫W5U8Y1",
+      "display": "豫W·5U8Y1",
+      "confidence": 0.9489090442657471,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 108.208,
+      "recognition_band": [
+        0,
+        35,
+        432,
+        122
+      ],
+      "input_shape": [
+        87,
+        432,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_0.crop.input.png",
+      "recognition_image_sha256": "f2b7d10e9465769bdca72d7ac2600d381e8d3c91aecb4113b1b3c819cbeda13c",
+      "source_stamp": {
+        "secs": 649,
+        "nsecs": 933000000,
+        "seconds": 649.933
+      },
+      "box": [
+        798,
+        711,
+        1230,
+        888
+      ],
+      "image_sha256": "061adb03f32d8952a0cc1861af3985f580d00babd4b4341652af8b9f1471671b"
+    },
+    {
+      "raw": "豫W·5U8YI",
+      "text": "豫W5U8Y1",
+      "display": "豫W·5U8Y1",
+      "confidence": 0.9497347474098206,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 118.449,
+      "recognition_band": [
+        0,
+        35,
+        432,
+        122
+      ],
+      "input_shape": [
+        87,
+        432,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_1.crop.input.png",
+      "recognition_image_sha256": "3a148187ec55d7d71454917c14a345fc0b176f3ace4d1a618b6927cb8ce4e18f",
+      "source_stamp": {
+        "secs": 649,
+        "nsecs": 746000000,
+        "seconds": 649.746
+      },
+      "box": [
+        798,
+        711,
+        1230,
+        888
+      ],
+      "image_sha256": "246df3e8cc41c13325f736ae82b698d0ab854a9b2f1fa14d630fae5c5bf19505"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "4c27fa4be480588af53207145dfb4b73294979f6bde537466080eea66de26ad9",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 230.866,
+  "low_resolution_comparison": {
+    "raw": "豫W·5U8YI",
+    "text": "豫W5U8Y1",
+    "display": "豫W·5U8Y1",
+    "confidence": 0.8912990093231201,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 106.646,
+    "recognition_band": [
+      0,
+      11,
+      144,
+      41
+    ],
+    "input_shape": [
+      30,
+      144,
+      3
+    ],
+    "box": [
+      266,
+      237,
+      410,
+      296
+    ]
+  },
+  "source_stamp": {
+    "secs": 649,
+    "nsecs": 933000000,
+    "seconds": 649.933
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10.annotated.png",
+  "published_stamp": 650.764
+}

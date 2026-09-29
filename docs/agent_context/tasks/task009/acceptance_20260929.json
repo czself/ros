@@ -1,0 +1,14 @@
+{
+  "runtime_commit": "1ef2fcf",
+  "runtime_freeze": "runtime_freeze_20260929.json",
+  "consecutive_accepted_runs": [
+    "20260929_task009_heading_1",
+    "20260929_task009_heading_2",
+    "20260929_task009_heading_3"
+  ],
+  "consecutive_successes": 3,
+  "required_successes": 3,
+  "navigation_safety_and_recognition_acceptance_pass": true,
+  "person_confidence_optimization_complete": false,
+  "remaining_navigation_variability": "Longer final/alignment corrections still occurred at POINT_5 in run 2 and POINT_7/POINT_9 in run 3; not all unnecessary actions are resolved."
+}

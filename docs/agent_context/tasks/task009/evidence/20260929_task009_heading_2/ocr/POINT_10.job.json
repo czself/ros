@@ -1,0 +1,124 @@
+{
+  "waypoint": "POINT_10",
+  "version": 1,
+  "frames": [
+    {
+      "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_0.raw.png",
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_0.crop.png",
+      "source_stamp": {
+        "secs": 652,
+        "nsecs": 23000000,
+        "seconds": 652.023
+      },
+      "box": [
+        915,
+        711,
+        1335,
+        882
+      ],
+      "local_sharpness": 112.0310078646212,
+      "actual_base_pose": {
+        "position": [
+          -0.5722052780228424,
+          -1.0799837657127807,
+          0.0
+        ],
+        "quaternion": [
+          0.0,
+          0.0,
+          0.6891774409525497,
+          -0.7245926130468724
+        ]
+      },
+      "rgb_detector_delta_s": 0.13600000000008095
+    },
+    {
+      "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_1.raw.png",
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_1.crop.png",
+      "source_stamp": {
+        "secs": 651,
+        "nsecs": 818000000,
+        "seconds": 651.818
+      },
+      "box": [
+        915,
+        711,
+        1335,
+        882
+      ],
+      "local_sharpness": 111.2990389994216,
+      "actual_base_pose": {
+        "position": [
+          -0.5722053076405946,
+          -1.0799831749624518,
+          0.0
+        ],
+        "quaternion": [
+          0.0,
+          0.0,
+          0.6891745737886712,
+          -0.7245953400645103
+        ]
+      },
+      "rgb_detector_delta_s": 0.06899999999995998
+    },
+    {
+      "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_2.raw.png",
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_2.crop.png",
+      "source_stamp": {
+        "secs": 651,
+        "nsecs": 609000000,
+        "seconds": 651.609
+      },
+      "box": [
+        915,
+        711,
+        1335,
+        882
+      ],
+      "local_sharpness": 110.70238062648653,
+      "actual_base_pose": {
+        "position": [
+          -0.5722053368557058,
+          -1.0799825923344877,
+          0.0
+        ],
+        "quaternion": [
+          0.0,
+          0.0,
+          0.6891717388847307,
+          -0.7245980363778225
+        ]
+      },
+      "rgb_detector_delta_s": 0.2779999999999063
+    }
+  ],
+  "detector_source_stamp": {
+    "secs": 651,
+    "nsecs": 887000000,
+    "seconds": 651.887
+  },
+  "detector_box": [
+    305,
+    237,
+    445,
+    294
+  ],
+  "detector_confidence": 0.90469,
+  "roi_source": "640x480 detector box scaled onto co-located same-FOV 1920x1440 camera",
+  "camera_topic": "/ocr_camera/image_raw",
+  "width": 1920,
+  "height": 1440,
+  "camera_intrinsics": [
+    1663.1481384679323,
+    0.0,
+    960.5,
+    0.0,
+    1663.1481384679323,
+    720.5,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "frame": "camera_optical_frame"
+}

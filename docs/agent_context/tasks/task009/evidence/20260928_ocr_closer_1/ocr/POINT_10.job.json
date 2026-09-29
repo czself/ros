@@ -1,0 +1,94 @@
+{
+  "waypoint": "POINT_10",
+  "version": 1,
+  "frames": [
+    {
+      "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_0.raw.png",
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_0.crop.png",
+      "source_stamp": {
+        "secs": 649,
+        "nsecs": 933000000,
+        "seconds": 649.933
+      },
+      "box": [
+        798,
+        711,
+        1230,
+        888
+      ],
+      "local_sharpness": 98.96076581707342,
+      "actual_base_pose": {
+        "position": [
+          -0.5700493705182106,
+          -1.09381557668009,
+          0.0
+        ],
+        "quaternion": [
+          0.0,
+          0.0,
+          0.6907720887644319,
+          -0.7230725560993334
+        ]
+      },
+      "rgb_detector_delta_s": 0.04899999999997817
+    },
+    {
+      "raw_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_1.raw.png",
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_1.crop.png",
+      "source_stamp": {
+        "secs": 649,
+        "nsecs": 746000000,
+        "seconds": 649.746
+      },
+      "box": [
+        798,
+        711,
+        1230,
+        888
+      ],
+      "local_sharpness": 98.40802206736733,
+      "actual_base_pose": {
+        "position": [
+          -0.5700493717177559,
+          -1.0938155504403344,
+          0.0
+        ],
+        "quaternion": [
+          0.0,
+          0.0,
+          0.6907725468274415,
+          -0.7230721184982382
+        ]
+      },
+      "rgb_detector_delta_s": 0.13800000000003365
+    }
+  ],
+  "detector_source_stamp": {
+    "secs": 649,
+    "nsecs": 884000000,
+    "seconds": 649.884
+  },
+  "detector_box": [
+    266,
+    237,
+    410,
+    296
+  ],
+  "detector_confidence": 0.90276,
+  "roi_source": "640x480 detector box scaled onto co-located same-FOV 1920x1440 camera",
+  "camera_topic": "/ocr_camera/image_raw",
+  "width": 1920,
+  "height": 1440,
+  "camera_intrinsics": [
+    1663.1481384679323,
+    0.0,
+    960.5,
+    0.0,
+    1663.1481384679323,
+    720.5,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "frame": "camera_optical_frame"
+}

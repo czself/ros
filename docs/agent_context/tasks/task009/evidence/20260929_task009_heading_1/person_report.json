@@ -1,0 +1,998 @@
+{
+  "counts": {
+    "total": 18,
+    "resident": 16,
+    "stranger": 2
+  },
+  "street_counts": {
+    "A": {
+      "total": 9,
+      "resident": 8,
+      "stranger": 1
+    },
+    "B": {
+      "total": 9,
+      "resident": 8,
+      "stranger": 1
+    }
+  },
+  "people": [
+    {
+      "person_id": "PERSON_001",
+      "world_xy": [
+        1.313039363294733,
+        0.966837396090044
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.85014,
+          "box": [
+            179,
+            199,
+            258,
+            453
+          ],
+          "world_xy": [
+            1.313039363294733,
+            0.966837396090044
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.35667213797569275,
+            "foreground_pixels": 6272,
+            "torso_valid_pixels": 6272,
+            "depth_band_m": [
+              0.3553,
+              0.3581
+            ]
+          },
+          "waypoint": "POINT_2",
+          "source_stamp": {
+            "secs": 552,
+            "nsecs": 537000000,
+            "seconds": 552.537
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_2.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.85014,
+      "class_votes": {
+        "resident": 0.85014,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_002",
+      "world_xy": [
+        1.3177829404013113,
+        1.0330732869001287
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.89829,
+          "box": [
+            277,
+            195,
+            362,
+            461
+          ],
+          "world_xy": [
+            1.3177829404013113,
+            1.0330732869001287
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.34298741817474365,
+            "foreground_pixels": 6834,
+            "torso_valid_pixels": 6834,
+            "depth_band_m": [
+              0.3407,
+              0.3454
+            ]
+          },
+          "waypoint": "POINT_2",
+          "source_stamp": {
+            "secs": 552,
+            "nsecs": 537000000,
+            "seconds": 552.537
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_2.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.89829,
+      "class_votes": {
+        "resident": 0.89829,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_003",
+      "world_xy": [
+        1.315085301530368,
+        1.0983172061146098
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "stranger",
+          "confidence": 0.75273,
+          "box": [
+            380,
+            188,
+            473,
+            466
+          ],
+          "world_xy": [
+            1.315085301530368,
+            1.0983172061146098
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.3368096947669983,
+            "foreground_pixels": 7980,
+            "torso_valid_pixels": 7980,
+            "depth_band_m": [
+              0.335,
+              0.3387
+            ]
+          },
+          "waypoint": "POINT_2",
+          "source_stamp": {
+            "secs": 552,
+            "nsecs": 537000000,
+            "seconds": 552.537
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_2.png",
+          "foreign_crop_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/PERSON_003_POINT_2.png"
+        }
+      ],
+      "class": "stranger",
+      "confidence": 0.75273,
+      "class_votes": {
+        "resident": 0,
+        "stranger": 0.75273
+      }
+    },
+    {
+      "person_id": "PERSON_004",
+      "world_xy": [
+        1.2139886166078362,
+        1.2928052821555194
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.82539,
+          "box": [
+            178,
+            202,
+            255,
+            440
+          ],
+          "world_xy": [
+            1.2139886166078362,
+            1.2928052821555194
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.3850151598453522,
+            "foreground_pixels": 5640,
+            "torso_valid_pixels": 5640,
+            "depth_band_m": [
+              0.3831,
+              0.387
+            ]
+          },
+          "waypoint": "POINT_3",
+          "source_stamp": {
+            "secs": 566,
+            "nsecs": 204000000,
+            "seconds": 566.204
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_3.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.82539,
+      "class_votes": {
+        "resident": 0.82539,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_005",
+      "world_xy": [
+        1.1516073181779798,
+        1.2844221948595824
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.83784,
+          "box": [
+            270,
+            201,
+            344,
+            435
+          ],
+          "world_xy": [
+            1.1516073181779798,
+            1.2844221948595824
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.39008840918540955,
+            "foreground_pixels": 5428,
+            "torso_valid_pixels": 5428,
+            "depth_band_m": [
+              0.3883,
+              0.3919
+            ]
+          },
+          "waypoint": "POINT_3",
+          "source_stamp": {
+            "secs": 566,
+            "nsecs": 204000000,
+            "seconds": 566.204
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_3.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.83784,
+      "class_votes": {
+        "resident": 0.83784,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_006",
+      "world_xy": [
+        1.0783457039987314,
+        1.2851013762133714
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.84978,
+          "box": [
+            374,
+            199,
+            450,
+            439
+          ],
+          "world_xy": [
+            1.0783457039987314,
+            1.2851013762133714
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.3855368196964264,
+            "foreground_pixels": 5520,
+            "torso_valid_pixels": 5520,
+            "depth_band_m": [
+              0.3844,
+              0.3867
+            ]
+          },
+          "waypoint": "POINT_3",
+          "source_stamp": {
+            "secs": 566,
+            "nsecs": 204000000,
+            "seconds": 566.204
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_3.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.84978,
+      "class_votes": {
+        "resident": 0.84978,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_007",
+      "world_xy": [
+        0.89877391609682,
+        0.8617223689010093
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.92198,
+          "box": [
+            243,
+            193,
+            330,
+            469
+          ],
+          "world_xy": [
+            0.89877391609682,
+            0.8617223689010093
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.3284144103527069,
+            "foreground_pixels": 7367,
+            "torso_valid_pixels": 7367,
+            "depth_band_m": [
+              0.3264,
+              0.3304
+            ]
+          },
+          "waypoint": "POINT_4",
+          "source_stamp": {
+            "secs": 579,
+            "nsecs": 739000000,
+            "seconds": 579.739
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_4.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.92198,
+      "class_votes": {
+        "resident": 0.92198,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_008",
+      "world_xy": [
+        0.9004153180683083,
+        0.7843758089069675
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.91827,
+          "box": [
+            372,
+            195,
+            461,
+            468
+          ],
+          "world_xy": [
+            0.9004153180683083,
+            0.7843758089069675
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.330297589302063,
+            "foreground_pixels": 7590,
+            "torso_valid_pixels": 7590,
+            "depth_band_m": [
+              0.3296,
+              0.331
+            ]
+          },
+          "waypoint": "POINT_4",
+          "source_stamp": {
+            "secs": 579,
+            "nsecs": 739000000,
+            "seconds": 579.739
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_4.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.91827,
+      "class_votes": {
+        "resident": 0.91827,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_009",
+      "world_xy": [
+        0.9150318147378926,
+        0.720107639825917
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.90161,
+          "box": [
+            472,
+            194,
+            559,
+            459
+          ],
+          "world_xy": [
+            0.9150318147378926,
+            0.720107639825917
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.34511491656303406,
+            "foreground_pixels": 7049,
+            "torso_valid_pixels": 7049,
+            "depth_band_m": [
+              0.3445,
+              0.3457
+            ]
+          },
+          "waypoint": "POINT_4",
+          "source_stamp": {
+            "secs": 579,
+            "nsecs": 739000000,
+            "seconds": 579.739
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_4.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.90161,
+      "class_votes": {
+        "resident": 0.90161,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_010",
+      "world_xy": [
+        0.12279903194307268,
+        0.6697811355483241
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.87952,
+          "box": [
+            72,
+            196,
+            161,
+            461
+          ],
+          "world_xy": [
+            0.12279903194307268,
+            0.6697811355483241
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.3427007794380188,
+            "foreground_pixels": 7315,
+            "torso_valid_pixels": 7315,
+            "depth_band_m": [
+              0.339,
+              0.3465
+            ]
+          },
+          "waypoint": "POINT_5",
+          "source_stamp": {
+            "secs": 588,
+            "nsecs": 204000000,
+            "seconds": 588.204
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_5.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.87952,
+      "class_votes": {
+        "resident": 0.87952,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_011",
+      "world_xy": [
+        0.13610261622559966,
+        0.7315627634451378
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.87575,
+          "box": [
+            175,
+            195,
+            261,
+            461
+          ],
+          "world_xy": [
+            0.13610261622559966,
+            0.7315627634451378
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.34044235944747925,
+            "foreground_pixels": 6968,
+            "torso_valid_pixels": 6968,
+            "depth_band_m": [
+              0.3397,
+              0.3412
+            ]
+          },
+          "waypoint": "POINT_5",
+          "source_stamp": {
+            "secs": 588,
+            "nsecs": 204000000,
+            "seconds": 588.204
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_5.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.87575,
+      "class_votes": {
+        "resident": 0.87575,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_012",
+      "world_xy": [
+        0.15027734091088912,
+        0.800102025392746
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "stranger",
+          "confidence": 0.85318,
+          "box": [
+            281,
+            189,
+            383,
+            466
+          ],
+          "world_xy": [
+            0.15027734091088912,
+            0.800102025392746
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.3385118544101715,
+            "foreground_pixels": 8479,
+            "torso_valid_pixels": 8618,
+            "depth_band_m": [
+              0.3346,
+              0.3425
+            ]
+          },
+          "waypoint": "POINT_5",
+          "source_stamp": {
+            "secs": 588,
+            "nsecs": 204000000,
+            "seconds": 588.204
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_5.png",
+          "foreign_crop_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/PERSON_012_POINT_5.png"
+        }
+      ],
+      "class": "stranger",
+      "confidence": 0.85318,
+      "class_votes": {
+        "resident": 0,
+        "stranger": 0.85318
+      }
+    },
+    {
+      "person_id": "PERSON_013",
+      "world_xy": [
+        0.15772339835221816,
+        0.8582628465130373
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.86487,
+          "box": [
+            387,
+            195,
+            467,
+            461
+          ],
+          "world_xy": [
+            0.15772339835221816,
+            0.8582628465130373
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.3413848876953125,
+            "foreground_pixels": 6432,
+            "torso_valid_pixels": 6432,
+            "depth_band_m": [
+              0.3382,
+              0.3446
+            ]
+          },
+          "waypoint": "POINT_5",
+          "source_stamp": {
+            "secs": 588,
+            "nsecs": 204000000,
+            "seconds": 588.204
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_5.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.86487,
+      "class_votes": {
+        "resident": 0.86487,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_014",
+      "world_xy": [
+        -0.2177506130937541,
+        0.47430963501333806
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.90011,
+          "box": [
+            148,
+            194,
+            237,
+            457
+          ],
+          "world_xy": [
+            -0.2177506130937541,
+            0.47430963501333806
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.3544583022594452,
+            "foreground_pixels": 7315,
+            "torso_valid_pixels": 7315,
+            "depth_band_m": [
+              0.3535,
+              0.3554
+            ]
+          },
+          "waypoint": "POINT_6",
+          "source_stamp": {
+            "secs": 602,
+            "nsecs": 137000000,
+            "seconds": 602.137
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_6.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.90011,
+      "class_votes": {
+        "resident": 0.90011,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_015",
+      "world_xy": [
+        -0.15855401104438258,
+        0.4698036405745797
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.84959,
+          "box": [
+            245,
+            195,
+            325,
+            454
+          ],
+          "world_xy": [
+            -0.15855401104438258,
+            0.4698036405745797
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.3517933487892151,
+            "foreground_pixels": 6288,
+            "torso_valid_pixels": 6288,
+            "depth_band_m": [
+              0.351,
+              0.3526
+            ]
+          },
+          "waypoint": "POINT_6",
+          "source_stamp": {
+            "secs": 602,
+            "nsecs": 137000000,
+            "seconds": 602.137
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_6.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.84959,
+      "class_votes": {
+        "resident": 0.84959,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_016",
+      "world_xy": [
+        -0.1049903833299554,
+        0.46787924835503175
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.89516,
+          "box": [
+            327,
+            194,
+            412,
+            458
+          ],
+          "world_xy": [
+            -0.1049903833299554,
+            0.46787924835503175
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.35153377056121826,
+            "foreground_pixels": 6783,
+            "torso_valid_pixels": 6783,
+            "depth_band_m": [
+              0.3507,
+              0.3524
+            ]
+          },
+          "waypoint": "POINT_6",
+          "source_stamp": {
+            "secs": 602,
+            "nsecs": 137000000,
+            "seconds": 602.137
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_6.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.89516,
+      "class_votes": {
+        "resident": 0.89516,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_017",
+      "world_xy": [
+        -0.04513444588840326,
+        0.4637297054901309
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.92451,
+          "box": [
+            421,
+            192,
+            509,
+            460
+          ],
+          "world_xy": [
+            -0.04513444588840326,
+            0.4637297054901309
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.3492455780506134,
+            "foreground_pixels": 7290,
+            "torso_valid_pixels": 7290,
+            "depth_band_m": [
+              0.3483,
+              0.3501
+            ]
+          },
+          "waypoint": "POINT_6",
+          "source_stamp": {
+            "secs": 602,
+            "nsecs": 137000000,
+            "seconds": 602.137
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_6.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.92451,
+      "class_votes": {
+        "resident": 0.92451,
+        "stranger": 0
+      }
+    },
+    {
+      "person_id": "PERSON_018",
+      "world_xy": [
+        0.018241577806207887,
+        0.44370607103860066
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "resident",
+          "confidence": 0.71416,
+          "box": [
+            529,
+            194,
+            631,
+            470
+          ],
+          "world_xy": [
+            0.018241577806207887,
+            0.44370607103860066
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.3312003016471863,
+            "foreground_pixels": 8618,
+            "torso_valid_pixels": 8618,
+            "depth_band_m": [
+              0.3302,
+              0.3322
+            ]
+          },
+          "waypoint": "POINT_6",
+          "source_stamp": {
+            "secs": 602,
+            "nsecs": 137000000,
+            "seconds": 602.137
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_6.png"
+        }
+      ],
+      "class": "resident",
+      "confidence": 0.71416,
+      "class_votes": {
+        "resident": 0.71416,
+        "stranger": 0
+      }
+    }
+  ],
+  "foreign_people": [
+    {
+      "person_id": "PERSON_003",
+      "world_xy": [
+        1.315085301530368,
+        1.0983172061146098
+      ],
+      "street": "A",
+      "observations": [
+        {
+          "class": "stranger",
+          "confidence": 0.75273,
+          "box": [
+            380,
+            188,
+            473,
+            466
+          ],
+          "world_xy": [
+            1.315085301530368,
+            1.0983172061146098
+          ],
+          "street": "A",
+          "measurement": {
+            "foreground_depth_m": 0.3368096947669983,
+            "foreground_pixels": 7980,
+            "torso_valid_pixels": 7980,
+            "depth_band_m": [
+              0.335,
+              0.3387
+            ]
+          },
+          "waypoint": "POINT_2",
+          "source_stamp": {
+            "secs": 552,
+            "nsecs": 537000000,
+            "seconds": 552.537
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_2.png",
+          "foreign_crop_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/PERSON_003_POINT_2.png"
+        }
+      ],
+      "class": "stranger",
+      "confidence": 0.75273,
+      "class_votes": {
+        "resident": 0,
+        "stranger": 0.75273
+      }
+    },
+    {
+      "person_id": "PERSON_012",
+      "world_xy": [
+        0.15027734091088912,
+        0.800102025392746
+      ],
+      "street": "B",
+      "observations": [
+        {
+          "class": "stranger",
+          "confidence": 0.85318,
+          "box": [
+            281,
+            189,
+            383,
+            466
+          ],
+          "world_xy": [
+            0.15027734091088912,
+            0.800102025392746
+          ],
+          "street": "B",
+          "measurement": {
+            "foreground_depth_m": 0.3385118544101715,
+            "foreground_pixels": 8479,
+            "torso_valid_pixels": 8618,
+            "depth_band_m": [
+              0.3346,
+              0.3425
+            ]
+          },
+          "waypoint": "POINT_5",
+          "source_stamp": {
+            "secs": 588,
+            "nsecs": 204000000,
+            "seconds": 588.204
+          },
+          "image_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_5.png",
+          "foreign_crop_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/PERSON_012_POINT_5.png"
+        }
+      ],
+      "class": "stranger",
+      "confidence": 0.85318,
+      "class_votes": {
+        "resident": 0,
+        "stranger": 0.85318
+      }
+    }
+  ],
+  "observations_total": 18,
+  "duplicate_observations": 0,
+  "expected_inventory": {
+    "total": 18,
+    "resident": 16,
+    "stranger": 2,
+    "streets": {
+      "A": {
+        "total": 9,
+        "resident": 8,
+        "stranger": 1
+      },
+      "B": {
+        "total": 9,
+        "resident": 8,
+        "stranger": 1
+      }
+    }
+  },
+  "checks": {
+    "total": true,
+    "resident": true,
+    "stranger": true,
+    "streets": true,
+    "required_views": true,
+    "resolved_observations": true
+  },
+  "issues": [],
+  "complete": true,
+  "speech_text": "街区内共有18人，其中社区人员16人，外来人员2人。A街区9人，社区人员8人，外来人员1人。B街区9人，社区人员8人，外来人员1人。外来人员图片已保存。",
+  "source": "YOLO + foreground depth + map camera TF; no simulator truth"
+}

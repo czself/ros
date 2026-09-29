@@ -1,0 +1,66 @@
+{
+  "run": "20260928_judge_demo_2",
+  "photo_processing_seconds": 13.86700000000019,
+  "points": [
+    {
+      "point": "POINT_1",
+      "result_s": 535.865,
+      "photo_saved_s": 537.178,
+      "elapsed_s": 1.3129999999999882
+    },
+    {
+      "point": "POINT_2",
+      "result_s": 552.473,
+      "photo_saved_s": 553.836,
+      "elapsed_s": 1.3630000000000564
+    },
+    {
+      "point": "POINT_3",
+      "result_s": 566.59,
+      "photo_saved_s": 567.921,
+      "elapsed_s": 1.3310000000000173
+    },
+    {
+      "point": "POINT_4",
+      "result_s": 581.006,
+      "photo_saved_s": 582.354,
+      "elapsed_s": 1.34800000000007
+    },
+    {
+      "point": "POINT_5",
+      "result_s": 590.307,
+      "photo_saved_s": 591.653,
+      "elapsed_s": 1.3460000000000036
+    },
+    {
+      "point": "POINT_6",
+      "result_s": 604.609,
+      "photo_saved_s": 605.986,
+      "elapsed_s": 1.3769999999999527
+    },
+    {
+      "point": "POINT_7",
+      "result_s": 611.603,
+      "photo_saved_s": 612.945,
+      "elapsed_s": 1.3420000000000982
+    },
+    {
+      "point": "POINT_8",
+      "result_s": 631.634,
+      "photo_saved_s": 633.101,
+      "elapsed_s": 1.4669999999999845
+    },
+    {
+      "point": "POINT_9",
+      "result_s": 642.667,
+      "photo_saved_s": 644.149,
+      "elapsed_s": 1.481999999999971
+    },
+    {
+      "point": "POINT_10",
+      "result_s": 652.713,
+      "photo_saved_s": 654.211,
+      "elapsed_s": 1.4980000000000473
+    }
+  ]
+}

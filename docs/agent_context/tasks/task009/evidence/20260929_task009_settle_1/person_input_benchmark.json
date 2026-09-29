@@ -1,0 +1,3368 @@
+{
+  "checkpoint_sha256": "fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad",
+  "rows": [
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_2",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 548,
+        "nsecs": 153000000,
+        "seconds": 548.153
+      },
+      "raw_sha256": "421a0e2f02944a2abb0baffa7fd243277d48ffdd34b7f0f5d956c5c0daeecff7",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.66236,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.88494,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89232,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_2",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 548,
+        "nsecs": 153000000,
+        "seconds": 548.153
+      },
+      "raw_sha256": "421a0e2f02944a2abb0baffa7fd243277d48ffdd34b7f0f5d956c5c0daeecff7",
+      "prediction_s": 0.18252419800046482,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6758127808570862,
+          "iou": 0.9598830349356179
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6579850316047668,
+          "iou": 0.9123878423450933
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.48561766743659973,
+          "iou": 0.8793287566742944
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_2",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 548,
+        "nsecs": 153000000,
+        "seconds": 548.153
+      },
+      "raw_sha256": "421a0e2f02944a2abb0baffa7fd243277d48ffdd34b7f0f5d956c5c0daeecff7",
+      "prediction_s": 0.281897074999506,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7778993844985962,
+          "iou": 0.9132627831075066
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.5880948305130005,
+          "iou": 0.8459639410488516
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7723601460456848,
+          "iou": 0.8322607091617135
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_2",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 548,
+        "nsecs": 153000000,
+        "seconds": 548.153
+      },
+      "raw_sha256": "421a0e2f02944a2abb0baffa7fd243277d48ffdd34b7f0f5d956c5c0daeecff7",
+      "prediction_s": 0.12286867100010568,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8995362520217896,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8899208903312683,
+          "iou": 0.9672727272727273
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.5634262561798096,
+          "iou": 0.9578947368421052
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_2",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 548,
+        "nsecs": 153000000,
+        "seconds": 548.153
+      },
+      "raw_sha256": "421a0e2f02944a2abb0baffa7fd243277d48ffdd34b7f0f5d956c5c0daeecff7",
+      "prediction_s": 0.16676188900055422,
+      "expected": 3,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7084508538246155,
+          "iou": 0.8532467532467533
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7239275574684143,
+          "iou": 0.8447196195677763
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "resident",
+          "confidence": 0.5888785719871521,
+          "iou": 0.5805491990846682
+        }
+      ],
+      "missing": 0,
+      "extra": 1,
+      "wrong_class": 1
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_3",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 561,
+        "nsecs": 739000000,
+        "seconds": 561.739
+      },
+      "raw_sha256": "9515d7bf104047ed79b90f05cc66e66efe141d1f8b21a67263bb7501e2538b99",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.88662,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.84738,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.85061,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_3",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 561,
+        "nsecs": 739000000,
+        "seconds": 561.739
+      },
+      "raw_sha256": "9515d7bf104047ed79b90f05cc66e66efe141d1f8b21a67263bb7501e2538b99",
+      "prediction_s": 0.17447400799937895,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7439540028572083,
+          "iou": 0.9364298366463295
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7704606056213379,
+          "iou": 0.9353072676673206
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.811244547367096,
+          "iou": 0.9002592912705272
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_3",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 561,
+        "nsecs": 739000000,
+        "seconds": 561.739
+      },
+      "raw_sha256": "9515d7bf104047ed79b90f05cc66e66efe141d1f8b21a67263bb7501e2538b99",
+      "prediction_s": 0.28340934100015147,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7765065431594849,
+          "iou": 0.9714169048591261
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8000879287719727,
+          "iou": 0.9341085271317829
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7990412712097168,
+          "iou": 0.8781628050030756
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_3",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 561,
+        "nsecs": 739000000,
+        "seconds": 561.739
+      },
+      "raw_sha256": "9515d7bf104047ed79b90f05cc66e66efe141d1f8b21a67263bb7501e2538b99",
+      "prediction_s": 0.12574952699833375,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8485482335090637,
+          "iou": 0.9923076923076923
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8811942338943481,
+          "iou": 0.9467154769168192
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8871956467628479,
+          "iou": 0.941522618609783
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_3",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 561,
+        "nsecs": 739000000,
+        "seconds": 561.739
+      },
+      "raw_sha256": "9515d7bf104047ed79b90f05cc66e66efe141d1f8b21a67263bb7501e2538b99",
+      "prediction_s": 0.15314142200077185,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7395663261413574,
+          "iou": 0.8702130905762091
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7050950527191162,
+          "iou": 0.8637873754152824
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6860253214836121,
+          "iou": 0.8432055749128919
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_4",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 576,
+        "nsecs": 138000000,
+        "seconds": 576.138
+      },
+      "raw_sha256": "80dfb168e77c712d2ae6bb66135573caad9d970181402457369aa88b1dd1aa55",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.9188,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89007,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.9216,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_4",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 576,
+        "nsecs": 138000000,
+        "seconds": 576.138
+      },
+      "raw_sha256": "80dfb168e77c712d2ae6bb66135573caad9d970181402457369aa88b1dd1aa55",
+      "prediction_s": 0.20381746999919415,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8053414225578308,
+          "iou": 0.9532013685239492
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7483667135238647,
+          "iou": 0.9346280991735537
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7934355735778809,
+          "iou": 0.9238389347878398
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_4",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 576,
+        "nsecs": 138000000,
+        "seconds": 576.138
+      },
+      "raw_sha256": "80dfb168e77c712d2ae6bb66135573caad9d970181402457369aa88b1dd1aa55",
+      "prediction_s": 0.2757227990005049,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8289761543273926,
+          "iou": 0.9371039959449184
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8611663579940796,
+          "iou": 0.8760710553814002
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8695401549339294,
+          "iou": 0.868813668083741
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_4",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 576,
+        "nsecs": 138000000,
+        "seconds": 576.138
+      },
+      "raw_sha256": "80dfb168e77c712d2ae6bb66135573caad9d970181402457369aa88b1dd1aa55",
+      "prediction_s": 0.1202899059990159,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.9305895566940308,
+          "iou": 0.9850468868801217
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8980900049209595,
+          "iou": 0.9708831314670731
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.9243767261505127,
+          "iou": 0.9322466039707419
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_4",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 576,
+        "nsecs": 138000000,
+        "seconds": 576.138
+      },
+      "raw_sha256": "80dfb168e77c712d2ae6bb66135573caad9d970181402457369aa88b1dd1aa55",
+      "prediction_s": 0.13804562199948123,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7383103370666504,
+          "iou": 0.8882457518501674
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7167775630950928,
+          "iou": 0.865633184083805
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7384868860244751,
+          "iou": 0.8621560920830994
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_5",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 338000000,
+        "seconds": 585.338
+      },
+      "raw_sha256": "b46b5f5f6792017112a97503d63210d43a6ae250cb9bb4b2349fb1ef01844d8f",
+      "prediction_s": null,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89683,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.78465,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89408,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89881,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_5",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 338000000,
+        "seconds": 585.338
+      },
+      "raw_sha256": "b46b5f5f6792017112a97503d63210d43a6ae250cb9bb4b2349fb1ef01844d8f",
+      "prediction_s": 0.1775043090001418,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7195755839347839,
+          "iou": 0.958405388186038
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7432883381843567,
+          "iou": 0.9251172569949863
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8082213997840881,
+          "iou": 0.9044016506189821
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.8564283847808838,
+          "iou": 0.881138926046245
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_5",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 338000000,
+        "seconds": 585.338
+      },
+      "raw_sha256": "b46b5f5f6792017112a97503d63210d43a6ae250cb9bb4b2349fb1ef01844d8f",
+      "prediction_s": 0.3004820469996048,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8085916042327881,
+          "iou": 0.974200164068909
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.868660032749176,
+          "iou": 0.9174074672700824
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.821247935295105,
+          "iou": 0.9079177883177371
+        },
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7752619385719299,
+          "iou": 0.8836878782321658
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_5",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 338000000,
+        "seconds": 585.338
+      },
+      "raw_sha256": "b46b5f5f6792017112a97503d63210d43a6ae250cb9bb4b2349fb1ef01844d8f",
+      "prediction_s": 0.12779082600172842,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.7815498113632202,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.896379292011261,
+          "iou": 0.9853978671041838
+        },
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8946268558502197,
+          "iou": 0.9841501849906362
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8971878886222839,
+          "iou": 0.9733794812630859
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_5",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 338000000,
+        "seconds": 585.338
+      },
+      "raw_sha256": "b46b5f5f6792017112a97503d63210d43a6ae250cb9bb4b2349fb1ef01844d8f",
+      "prediction_s": 0.11907638699995005,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8516817688941956,
+          "iou": 0.9065627563576703
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8034363985061646,
+          "iou": 0.8682647523821733
+        },
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.779692530632019,
+          "iou": 0.859762185712989
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.8741708397865295,
+          "iou": 0.813156618716664
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_6",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 471000000,
+        "seconds": 599.471
+      },
+      "raw_sha256": "aa6b2ede858959dcd06bfb6932d5b153d0f59932f2a2ba3a8ea7b17d47f853af",
+      "prediction_s": null,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.69786,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.87483,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8548,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7498,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.87851,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_6",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 471000000,
+        "seconds": 599.471
+      },
+      "raw_sha256": "aa6b2ede858959dcd06bfb6932d5b153d0f59932f2a2ba3a8ea7b17d47f853af",
+      "prediction_s": 0.19946626999990258,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7455009818077087,
+          "iou": 0.9712230215827338
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8146108984947205,
+          "iou": 0.9640877319836105
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7406479716300964,
+          "iou": 0.953901117897891
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8320615887641907,
+          "iou": 0.9358671559899713
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8234561681747437,
+          "iou": 0.9279993624736024
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_6",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 471000000,
+        "seconds": 599.471
+      },
+      "raw_sha256": "aa6b2ede858959dcd06bfb6932d5b153d0f59932f2a2ba3a8ea7b17d47f853af",
+      "prediction_s": 0.28830716199991,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7936267256736755,
+          "iou": 0.9515570934256056
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7893477082252502,
+          "iou": 0.8940619942736213
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.790866494178772,
+          "iou": 0.8937465412285556
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8247216939926147,
+          "iou": 0.8883487940630798
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7675917744636536,
+          "iou": 0.856363494661367
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_6",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 471000000,
+        "seconds": 599.471
+      },
+      "raw_sha256": "aa6b2ede858959dcd06bfb6932d5b153d0f59932f2a2ba3a8ea7b17d47f853af",
+      "prediction_s": 0.11874418000115838,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8755865097045898,
+          "iou": 0.9861545332737829
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8415017127990723,
+          "iou": 0.985453395525338
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8536916375160217,
+          "iou": 0.9849371343209262
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7051835656166077,
+          "iou": 0.9829537366548042
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8837268948554993,
+          "iou": 0.9745538149793469
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "point": "POINT_6",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 471000000,
+        "seconds": 599.471
+      },
+      "raw_sha256": "aa6b2ede858959dcd06bfb6932d5b153d0f59932f2a2ba3a8ea7b17d47f853af",
+      "prediction_s": 0.12264792900168686,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8260008692741394,
+          "iou": 0.9272816808929744
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.739528238773346,
+          "iou": 0.922453433091731
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7287191152572632,
+          "iou": 0.9178591192979683
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7977009415626526,
+          "iou": 0.8843763946582444
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8007254004478455,
+          "iou": 0.8775123645164685
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_2",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 553,
+        "nsecs": 184000000,
+        "seconds": 553.184
+      },
+      "raw_sha256": "cac82de9260681c7090b341a41d9eac0af5507485cd01150b20c504eec320897",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.58539,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.88011,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.80187,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_2",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 553,
+        "nsecs": 184000000,
+        "seconds": 553.184
+      },
+      "raw_sha256": "cac82de9260681c7090b341a41d9eac0af5507485cd01150b20c504eec320897",
+      "prediction_s": 0.17968613200173422,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "resident",
+          "confidence": 0.3695831596851349,
+          "iou": 0.9218954248366014
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7660749554634094,
+          "iou": 0.8772073921971253
+        },
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7276690006256104,
+          "iou": 0.8687262357414449
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 1
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_2",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 553,
+        "nsecs": 184000000,
+        "seconds": 553.184
+      },
+      "raw_sha256": "cac82de9260681c7090b341a41d9eac0af5507485cd01150b20c504eec320897",
+      "prediction_s": 0.29034831100034353,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7900499105453491,
+          "iou": 0.9188523147333216
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.44028183817863464,
+          "iou": 0.8964919878735383
+        },
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7608723640441895,
+          "iou": 0.8775778850372971
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_2",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 553,
+        "nsecs": 184000000,
+        "seconds": 553.184
+      },
+      "raw_sha256": "cac82de9260681c7090b341a41d9eac0af5507485cd01150b20c504eec320897",
+      "prediction_s": 0.11570147500060557,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7885280251502991,
+          "iou": 0.9799904942965779
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.9209343791007996,
+          "iou": 0.9679198455740418
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.6679980158805847,
+          "iou": 0.9653268551236749
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_2",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 553,
+        "nsecs": 184000000,
+        "seconds": 553.184
+      },
+      "raw_sha256": "cac82de9260681c7090b341a41d9eac0af5507485cd01150b20c504eec320897",
+      "prediction_s": 0.1587843500001327,
+      "expected": 3,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6804423928260803,
+          "iou": 0.8751254218735748
+        },
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7091590166091919,
+          "iou": 0.8692279104338939
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "resident",
+          "confidence": 0.4129013419151306,
+          "iou": 0.5631625441696113
+        }
+      ],
+      "missing": 0,
+      "extra": 1,
+      "wrong_class": 1
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_3",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 567,
+        "nsecs": 650000000,
+        "seconds": 567.65
+      },
+      "raw_sha256": "50fe92a947af9c3366e03d0ef2a1a6eb3b702b523c1e1a6b77a81b2acc4f3bf3",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8544,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.83378,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.83458,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_3",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 567,
+        "nsecs": 650000000,
+        "seconds": 567.65
+      },
+      "raw_sha256": "50fe92a947af9c3366e03d0ef2a1a6eb3b702b523c1e1a6b77a81b2acc4f3bf3",
+      "prediction_s": 0.18129733800014947,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7025757431983948,
+          "iou": 0.9549267885988224
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.782839834690094,
+          "iou": 0.933313559740966
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7574349045753479,
+          "iou": 0.9289161913119789
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_3",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 567,
+        "nsecs": 650000000,
+        "seconds": 567.65
+      },
+      "raw_sha256": "50fe92a947af9c3366e03d0ef2a1a6eb3b702b523c1e1a6b77a81b2acc4f3bf3",
+      "prediction_s": 0.2915160000011383,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8497629165649414,
+          "iou": 0.9416304400918283
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8003544807434082,
+          "iou": 0.9190555555555555
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8583164215087891,
+          "iou": 0.9187645990137555
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_3",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 567,
+        "nsecs": 650000000,
+        "seconds": 567.65
+      },
+      "raw_sha256": "50fe92a947af9c3366e03d0ef2a1a6eb3b702b523c1e1a6b77a81b2acc4f3bf3",
+      "prediction_s": 0.11695701700045902,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8308826684951782,
+          "iou": 0.995850622406639
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8260840177536011,
+          "iou": 0.9916666666666667
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8552348613739014,
+          "iou": 0.9829871732946922
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_3",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 567,
+        "nsecs": 650000000,
+        "seconds": 567.65
+      },
+      "raw_sha256": "50fe92a947af9c3366e03d0ef2a1a6eb3b702b523c1e1a6b77a81b2acc4f3bf3",
+      "prediction_s": 0.13334174900046492,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7111120223999023,
+          "iou": 0.9111725833717534
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7163628339767456,
+          "iou": 0.90084604192488
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7158671021461487,
+          "iou": 0.874
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_4",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 582,
+        "nsecs": 50000000,
+        "seconds": 582.05
+      },
+      "raw_sha256": "f57b815e3cc98de6a1559316d6181200f5a8d0d7b4e1be6872b1f9b3f4549d44",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89358,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.86034,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.69489,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_4",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 582,
+        "nsecs": 50000000,
+        "seconds": 582.05
+      },
+      "raw_sha256": "f57b815e3cc98de6a1559316d6181200f5a8d0d7b4e1be6872b1f9b3f4549d44",
+      "prediction_s": 0.17109150800024508,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8101933002471924,
+          "iou": 0.9357809089104981
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8073000311851501,
+          "iou": 0.9224292507990957
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.745650589466095,
+          "iou": 0.9219615185436003
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_4",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 582,
+        "nsecs": 50000000,
+        "seconds": 582.05
+      },
+      "raw_sha256": "f57b815e3cc98de6a1559316d6181200f5a8d0d7b4e1be6872b1f9b3f4549d44",
+      "prediction_s": 0.28425299799891945,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8276292681694031,
+          "iou": 0.9066940385621705
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8716232776641846,
+          "iou": 0.9001207729468599
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8278902769088745,
+          "iou": 0.8885644768856448
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_4",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 582,
+        "nsecs": 50000000,
+        "seconds": 582.05
+      },
+      "raw_sha256": "f57b815e3cc98de6a1559316d6181200f5a8d0d7b4e1be6872b1f9b3f4549d44",
+      "prediction_s": 0.11535635799918964,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8473600149154663,
+          "iou": 0.9854409818313079
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7562894225120544,
+          "iou": 0.9817366358236697
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8981888890266418,
+          "iou": 0.913647342995169
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_4",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 582,
+        "nsecs": 50000000,
+        "seconds": 582.05
+      },
+      "raw_sha256": "f57b815e3cc98de6a1559316d6181200f5a8d0d7b4e1be6872b1f9b3f4549d44",
+      "prediction_s": 0.13082944399866392,
+      "expected": 3,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7467221617698669,
+          "iou": 0.9020275750202758
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7335288524627686,
+          "iou": 0.885883347421809
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7200776934623718,
+          "iou": 0.8691626409017713
+        }
+      ],
+      "missing": 0,
+      "extra": 1,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_5",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 591,
+        "nsecs": 184000000,
+        "seconds": 591.184
+      },
+      "raw_sha256": "415f13abe25e97e4e3ec4cf9ba8fe8d175afb7d0819c23b84476063680b9f7fe",
+      "prediction_s": null,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8858,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.85367,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.86492,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.91546,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_5",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 591,
+        "nsecs": 184000000,
+        "seconds": 591.184
+      },
+      "raw_sha256": "415f13abe25e97e4e3ec4cf9ba8fe8d175afb7d0819c23b84476063680b9f7fe",
+      "prediction_s": 0.17866909199983638,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6413262486457825,
+          "iou": 0.9573503138027395
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7930341362953186,
+          "iou": 0.9454545454545454
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.8582516312599182,
+          "iou": 0.9347195555373994
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7454320788383484,
+          "iou": 0.8954844622177789
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_5",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 591,
+        "nsecs": 184000000,
+        "seconds": 591.184
+      },
+      "raw_sha256": "415f13abe25e97e4e3ec4cf9ba8fe8d175afb7d0819c23b84476063680b9f7fe",
+      "prediction_s": 0.2695412609991763,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8350452184677124,
+          "iou": 0.9440785225364846
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.9053326845169067,
+          "iou": 0.90984108827975
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8661229610443115,
+          "iou": 0.9022227772227772
+        },
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7343572378158569,
+          "iou": 0.8704017591277659
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_5",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 591,
+        "nsecs": 184000000,
+        "seconds": 591.184
+      },
+      "raw_sha256": "415f13abe25e97e4e3ec4cf9ba8fe8d175afb7d0819c23b84476063680b9f7fe",
+      "prediction_s": 0.11893582999982755,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.9155994653701782,
+          "iou": 0.989010989010989
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.8143854737281799,
+          "iou": 0.981657747457004
+        },
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8847578763961792,
+          "iou": 0.9759036144578314
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.853185772895813,
+          "iou": 0.9425287356321839
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_5",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 591,
+        "nsecs": 184000000,
+        "seconds": 591.184
+      },
+      "raw_sha256": "415f13abe25e97e4e3ec4cf9ba8fe8d175afb7d0819c23b84476063680b9f7fe",
+      "prediction_s": 0.11898797800131433,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.851252555847168,
+          "iou": 0.9092574092574093
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.814221978187561,
+          "iou": 0.860992724611477
+        },
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7934271097183228,
+          "iou": 0.8360437949516698
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.8799982666969299,
+          "iou": 0.8068140038400261
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_6",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 605,
+        "nsecs": 317000000,
+        "seconds": 605.317
+      },
+      "raw_sha256": "e6562964e1546bf3efe4dfe31eff2b9c23e916b2199c860c0472ed0925f51222",
+      "prediction_s": null,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.77621,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.90434,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.88298,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.87295,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.88254,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_6",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 605,
+        "nsecs": 317000000,
+        "seconds": 605.317
+      },
+      "raw_sha256": "e6562964e1546bf3efe4dfe31eff2b9c23e916b2199c860c0472ed0925f51222",
+      "prediction_s": 0.18813988900001277,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6924845576286316,
+          "iou": 0.9585909605503788
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.732722282409668,
+          "iou": 0.9570606670096824
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7759168744087219,
+          "iou": 0.9281167404980829
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8409562110900879,
+          "iou": 0.9134253450439147
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8185378313064575,
+          "iou": 0.896588486140725
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_6",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 605,
+        "nsecs": 317000000,
+        "seconds": 605.317
+      },
+      "raw_sha256": "e6562964e1546bf3efe4dfe31eff2b9c23e916b2199c860c0472ed0925f51222",
+      "prediction_s": 0.2822380609995889,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8160997629165649,
+          "iou": 0.9626139948999438
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8407469987869263,
+          "iou": 0.9098915989159891
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8832436203956604,
+          "iou": 0.9050505050505051
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8558962941169739,
+          "iou": 0.8909774436090225
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8531590700149536,
+          "iou": 0.8726544622425629
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_6",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 605,
+        "nsecs": 317000000,
+        "seconds": 605.317
+      },
+      "raw_sha256": "e6562964e1546bf3efe4dfe31eff2b9c23e916b2199c860c0472ed0925f51222",
+      "prediction_s": 0.11819997199927457,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.9024478197097778,
+          "iou": 0.9882352941176471
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8778281807899475,
+          "iou": 0.9811320754716981
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8789777755737305,
+          "iou": 0.9809885931558935
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8845436573028564,
+          "iou": 0.9704797047970479
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7960788011550903,
+          "iou": 0.9615384615384616
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260928_judge_demo_2",
+      "point": "POINT_6",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 605,
+        "nsecs": 317000000,
+        "seconds": 605.317
+      },
+      "raw_sha256": "e6562964e1546bf3efe4dfe31eff2b9c23e916b2199c860c0472ed0925f51222",
+      "prediction_s": 0.10138990800078318,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8242245316505432,
+          "iou": 0.930116472545757
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7411109209060669,
+          "iou": 0.9066784608580274
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7429202198982239,
+          "iou": 0.8894655338383627
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8163142204284668,
+          "iou": 0.8873403924011212
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7920079827308655,
+          "iou": 0.8861246853250407
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_2",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 549,
+        "nsecs": 258000000,
+        "seconds": 549.258
+      },
+      "raw_sha256": "873d18318637e6ed22d3b3a694fad044429b4ed1d20409f29734ea48a1e8faf3",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.61698,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.82172,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89187,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_2",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 549,
+        "nsecs": 258000000,
+        "seconds": 549.258
+      },
+      "raw_sha256": "873d18318637e6ed22d3b3a694fad044429b4ed1d20409f29734ea48a1e8faf3",
+      "prediction_s": 0.17812497799968696,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7474734783172607,
+          "iou": 0.9547856984232733
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7833218574523926,
+          "iou": 0.9253485175731396
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.32397329807281494,
+          "iou": 0.8978147980343638
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_2",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 549,
+        "nsecs": 258000000,
+        "seconds": 549.258
+      },
+      "raw_sha256": "873d18318637e6ed22d3b3a694fad044429b4ed1d20409f29734ea48a1e8faf3",
+      "prediction_s": 0.2805763100004697,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.797138512134552,
+          "iou": 0.9333245138245799
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8000317215919495,
+          "iou": 0.9057572718154463
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.3769398629665375,
+          "iou": 0.8659263271939328
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_2",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 549,
+        "nsecs": 258000000,
+        "seconds": 549.258
+      },
+      "raw_sha256": "873d18318637e6ed22d3b3a694fad044429b4ed1d20409f29734ea48a1e8faf3",
+      "prediction_s": 0.12851655300073617,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8945226669311523,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8820750713348389,
+          "iou": 0.974090541632983
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.5486394762992859,
+          "iou": 0.9558646988207048
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_2",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 549,
+        "nsecs": 258000000,
+        "seconds": 549.258
+      },
+      "raw_sha256": "873d18318637e6ed22d3b3a694fad044429b4ed1d20409f29734ea48a1e8faf3",
+      "prediction_s": 0.13965023499986273,
+      "expected": 3,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_001",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7122427225112915,
+          "iou": 0.9355604235122308
+        },
+        {
+          "person_id": "PERSON_002",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6982420086860657,
+          "iou": 0.8448464689895753
+        },
+        {
+          "person_id": "PERSON_003",
+          "expected_class": "stranger",
+          "detected_class": "resident",
+          "confidence": 0.5165463089942932,
+          "iou": 0.5492500871991629
+        }
+      ],
+      "missing": 0,
+      "extra": 2,
+      "wrong_class": 1
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_3",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 562,
+        "nsecs": 726000000,
+        "seconds": 562.726
+      },
+      "raw_sha256": "7d313c57d17f306c82c76792433ee6b08d3c677ea35b082300abbcf66ebb4268",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.86832,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.83373,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.82676,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_3",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 562,
+        "nsecs": 726000000,
+        "seconds": 562.726
+      },
+      "raw_sha256": "7d313c57d17f306c82c76792433ee6b08d3c677ea35b082300abbcf66ebb4268",
+      "prediction_s": 0.18450235099953716,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7523894309997559,
+          "iou": 0.9616210561092451
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7342860698699951,
+          "iou": 0.951170774196854
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7854950428009033,
+          "iou": 0.9394094730367029
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_3",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 562,
+        "nsecs": 726000000,
+        "seconds": 562.726
+      },
+      "raw_sha256": "7d313c57d17f306c82c76792433ee6b08d3c677ea35b082300abbcf66ebb4268",
+      "prediction_s": 0.2790262870003062,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8114081025123596,
+          "iou": 0.9529707112970711
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.872296154499054,
+          "iou": 0.926308717895716
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7819439768791199,
+          "iou": 0.8912792931233192
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_3",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 562,
+        "nsecs": 726000000,
+        "seconds": 562.726
+      },
+      "raw_sha256": "7d313c57d17f306c82c76792433ee6b08d3c677ea35b082300abbcf66ebb4268",
+      "prediction_s": 0.1168838230005349,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8329975605010986,
+          "iou": 0.9833333333333333
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8450281620025635,
+          "iou": 0.9525933267261315
+        },
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8812849521636963,
+          "iou": 0.949326491340603
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_3",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 562,
+        "nsecs": 726000000,
+        "seconds": 562.726
+      },
+      "raw_sha256": "7d313c57d17f306c82c76792433ee6b08d3c677ea35b082300abbcf66ebb4268",
+      "prediction_s": 0.14083012499941105,
+      "expected": 3,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_006",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7051063776016235,
+          "iou": 0.9173553719008265
+        },
+        {
+          "person_id": "PERSON_004",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7106940150260925,
+          "iou": 0.9103645833333334
+        },
+        {
+          "person_id": "PERSON_005",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7436404824256897,
+          "iou": 0.8596931659693166
+        }
+      ],
+      "missing": 0,
+      "extra": 1,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_4",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 577,
+        "nsecs": 125000000,
+        "seconds": 577.125
+      },
+      "raw_sha256": "5d6232f8956cf8bc287fa6cd9a58101e520d4d09f202022679e0265a5dadae7d",
+      "prediction_s": null,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.73821,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.85196,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89228,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_4",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 577,
+        "nsecs": 125000000,
+        "seconds": 577.125
+      },
+      "raw_sha256": "5d6232f8956cf8bc287fa6cd9a58101e520d4d09f202022679e0265a5dadae7d",
+      "prediction_s": 0.18275252800049202,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7961874008178711,
+          "iou": 0.9408257226960526
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7742362022399902,
+          "iou": 0.9163496637848223
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7791711688041687,
+          "iou": 0.9121879045681524
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_4",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 577,
+        "nsecs": 125000000,
+        "seconds": 577.125
+      },
+      "raw_sha256": "5d6232f8956cf8bc287fa6cd9a58101e520d4d09f202022679e0265a5dadae7d",
+      "prediction_s": 0.27846087499892747,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8541145324707031,
+          "iou": 0.9369504858861638
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7714873552322388,
+          "iou": 0.896454311687371
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8421463370323181,
+          "iou": 0.8933712121212121
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_4",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 577,
+        "nsecs": 125000000,
+        "seconds": 577.125
+      },
+      "raw_sha256": "5d6232f8956cf8bc287fa6cd9a58101e520d4d09f202022679e0265a5dadae7d",
+      "prediction_s": 0.1238121369988221,
+      "expected": 3,
+      "detected": 3,
+      "matches": [
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8698116540908813,
+          "iou": 0.9891304347826086
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8083474636077881,
+          "iou": 0.9652272727272727
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8758127689361572,
+          "iou": 0.9642482822871783
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_4",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 577,
+        "nsecs": 125000000,
+        "seconds": 577.125
+      },
+      "raw_sha256": "5d6232f8956cf8bc287fa6cd9a58101e520d4d09f202022679e0265a5dadae7d",
+      "prediction_s": 0.13728258300034213,
+      "expected": 3,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_008",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7381472587585449,
+          "iou": 0.9051576821500699
+        },
+        {
+          "person_id": "PERSON_009",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7268083095550537,
+          "iou": 0.8534848484848485
+        },
+        {
+          "person_id": "PERSON_007",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7442094087600708,
+          "iou": 0.8449195837275307
+        }
+      ],
+      "missing": 0,
+      "extra": 2,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_5",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 726000000,
+        "seconds": 585.726
+      },
+      "raw_sha256": "4e516af5c8479cec6e27089719d351545764e99444dfb888cddf7aac9deed005",
+      "prediction_s": null,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.86346,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.806,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.87397,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.85325,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_5",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 726000000,
+        "seconds": 585.726
+      },
+      "raw_sha256": "4e516af5c8479cec6e27089719d351545764e99444dfb888cddf7aac9deed005",
+      "prediction_s": 0.17949128200052655,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7312154769897461,
+          "iou": 0.9542365201631173
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7808524966239929,
+          "iou": 0.9307215121362254
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.776655912399292,
+          "iou": 0.9129460776607452
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.8497928977012634,
+          "iou": 0.902127659574468
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_5",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 726000000,
+        "seconds": 585.726
+      },
+      "raw_sha256": "4e516af5c8479cec6e27089719d351545764e99444dfb888cddf7aac9deed005",
+      "prediction_s": 0.28278252400014026,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8223286867141724,
+          "iou": 0.9388985295460772
+        },
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8488794565200806,
+          "iou": 0.9245026566168294
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8379018306732178,
+          "iou": 0.8773226168870452
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.9075943827629089,
+          "iou": 0.8215860735009671
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_5",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 726000000,
+        "seconds": 585.726
+      },
+      "raw_sha256": "4e516af5c8479cec6e27089719d351545764e99444dfb888cddf7aac9deed005",
+      "prediction_s": 0.12278536899975734,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8862101435661316,
+          "iou": 0.9925093632958801
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8685963153839111,
+          "iou": 0.9885057471264368
+        },
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8688472509384155,
+          "iou": 0.9876543209876543
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.7949775457382202,
+          "iou": 0.9787234042553191
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_5",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 585,
+        "nsecs": 726000000,
+        "seconds": 585.726
+      },
+      "raw_sha256": "4e516af5c8479cec6e27089719d351545764e99444dfb888cddf7aac9deed005",
+      "prediction_s": 0.10818189800011169,
+      "expected": 4,
+      "detected": 4,
+      "matches": [
+        {
+          "person_id": "PERSON_010",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8534085154533386,
+          "iou": 0.944577704835248
+        },
+        {
+          "person_id": "PERSON_013",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.784383237361908,
+          "iou": 0.8916132627472834
+        },
+        {
+          "person_id": "PERSON_011",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8216255903244019,
+          "iou": 0.8855327975110189
+        },
+        {
+          "person_id": "PERSON_012",
+          "expected_class": "stranger",
+          "detected_class": "stranger",
+          "confidence": 0.8805128335952759,
+          "iou": 0.7922630560928433
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_6",
+      "variant": "saved_baseline",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 792000000,
+        "seconds": 599.792
+      },
+      "raw_sha256": "f6050f20fa2dc82c475b773b8dd6f9a2ebebd6fa9c08520fd9f43d6bf5e7798f",
+      "prediction_s": null,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.74356,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.87384,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.85327,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.89554,
+          "iou": 1.0
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.87752,
+          "iou": 1.0
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_6",
+      "variant": "full_768",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 792000000,
+        "seconds": 599.792
+      },
+      "raw_sha256": "f6050f20fa2dc82c475b773b8dd6f9a2ebebd6fa9c08520fd9f43d6bf5e7798f",
+      "prediction_s": 0.16738051799984532,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.774112343788147,
+          "iou": 0.9536279323513366
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6724269986152649,
+          "iou": 0.9416803123819121
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7663859128952026,
+          "iou": 0.9388614755084848
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8156073689460754,
+          "iou": 0.9189532621212723
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7982593178749084,
+          "iou": 0.8781758087670684
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_6",
+      "variant": "full_960",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 792000000,
+        "seconds": 599.792
+      },
+      "raw_sha256": "f6050f20fa2dc82c475b773b8dd6f9a2ebebd6fa9c08520fd9f43d6bf5e7798f",
+      "prediction_s": 0.27482123100162426,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8294509053230286,
+          "iou": 0.955926862639413
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8181089162826538,
+          "iou": 0.9202672917468425
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8254492282867432,
+          "iou": 0.9174670633234169
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7930945158004761,
+          "iou": 0.917094017094017
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8860340714454651,
+          "iou": 0.8545709609539397
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_6",
+      "variant": "gamma_0.65",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 792000000,
+        "seconds": 599.792
+      },
+      "raw_sha256": "f6050f20fa2dc82c475b773b8dd6f9a2ebebd6fa9c08520fd9f43d6bf5e7798f",
+      "prediction_s": 0.12324715900103911,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8736740946769714,
+          "iou": 0.9890909090909091
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8991858959197998,
+          "iou": 0.9778183175090178
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8930029273033142,
+          "iou": 0.9679682020107552
+        },
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.878990888595581,
+          "iou": 0.967032967032967
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.6907906532287598,
+          "iou": 0.9354109750750447
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "point": "POINT_6",
+      "variant": "group_crop",
+      "source_stamp": {
+        "secs": 599,
+        "nsecs": 792000000,
+        "seconds": 599.792
+      },
+      "raw_sha256": "f6050f20fa2dc82c475b773b8dd6f9a2ebebd6fa9c08520fd9f43d6bf5e7798f",
+      "prediction_s": 0.10489217600115808,
+      "expected": 5,
+      "detected": 5,
+      "matches": [
+        {
+          "person_id": "PERSON_017",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7322052717208862,
+          "iou": 0.91001221001221
+        },
+        {
+          "person_id": "PERSON_016",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8258997797966003,
+          "iou": 0.9092531226102473
+        },
+        {
+          "person_id": "PERSON_014",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.8120731115341187,
+          "iou": 0.9025017710003356
+        },
+        {
+          "person_id": "PERSON_015",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7227198481559753,
+          "iou": 0.9016128363530826
+        },
+        {
+          "person_id": "PERSON_018",
+          "expected_class": "resident",
+          "detected_class": "resident",
+          "confidence": 0.7882193326950073,
+          "iou": 0.8766980870529526
+        }
+      ],
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0
+    }
+  ],
+  "aggregates": {
+    "full_768": {
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 1,
+      "confidence_min": 0.32397329807281494,
+      "confidence_median": 0.7722864747047424,
+      "correct_outsider_min": 0.32397329807281494,
+      "prediction_median_s": 0.17968613200173422
+    },
+    "full_960": {
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0,
+      "confidence_min": 0.3769398629665375,
+      "confidence_median": 0.8217883110046387,
+      "correct_outsider_min": 0.3769398629665375,
+      "prediction_median_s": 0.2822380609995889
+    },
+    "gamma_0.65": {
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0,
+      "confidence_min": 0.5486394762992859,
+      "confidence_median": 0.8756996393203735,
+      "correct_outsider_min": 0.5486394762992859,
+      "prediction_median_s": 0.1202899059990159
+    },
+    "group_crop": {
+      "missing": 0,
+      "extra": 8,
+      "wrong_class": 3,
+      "confidence_min": 0.4129013419151306,
+      "confidence_median": 0.7395472824573517,
+      "correct_outsider_min": 0.8741708397865295,
+      "prediction_median_s": 0.13334174900046492
+    },
+    "saved_baseline": {
+      "missing": 0,
+      "extra": 0,
+      "wrong_class": 0,
+      "confidence_min": 0.58539,
+      "confidence_median": 0.86419,
+      "correct_outsider_min": 0.58539,
+      "prediction_median_s": null
+    }
+  },
+  "note": "Offline evaluation only; scores unchanged; references from audited reports. Timing includes standalone prediction, not the live ROS callback."
+}

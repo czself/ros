@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_9",
+  "text": "学ABCDEF",
+  "valid": true,
+  "confidence": 0.9826189875602722,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "学A·BCDEF",
+      "text": "学ABCDEF",
+      "display": "学A·BCDEF",
+      "confidence": 0.9826937913894653,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 142.715,
+      "recognition_band": [
+        0,
+        35,
+        441,
+        124
+      ],
+      "input_shape": [
+        89,
+        441,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "a107212e011cf51a0d8ec8a08e2aa8b7970d2d3c188872ded2f5a3232a04ab99",
+      "source_stamp": {
+        "secs": 642,
+        "nsecs": 368000000,
+        "seconds": 642.368
+      },
+      "box": [
+        1164,
+        711,
+        1605,
+        888
+      ],
+      "image_sha256": "0cd8545e1710c9cdaa6c9fd11ba2a9ca3dd2d40d333c290a8670e0a0f2bcb8da"
+    },
+    {
+      "raw": "学A·BCDEF",
+      "text": "学ABCDEF",
+      "display": "学A·BCDEF",
+      "confidence": 0.9826189875602722,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 128.501,
+      "recognition_band": [
+        0,
+        35,
+        441,
+        124
+      ],
+      "input_shape": [
+        89,
+        441,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "67200bf9959001028662058667cc9be35c31abc45afed79bebe0a0fbcab90022",
+      "source_stamp": {
+        "secs": 642,
+        "nsecs": 775000000,
+        "seconds": 642.775
+      },
+      "box": [
+        1164,
+        711,
+        1605,
+        888
+      ],
+      "image_sha256": "8ad171256ed8f8e61e36853838d3921dbfeafc626b9d721ead9bb0604fe269dd"
+    },
+    {
+      "raw": "学A·BCDEF",
+      "text": "学ABCDEF",
+      "display": "学A·BCDEF",
+      "confidence": 0.9826628565788269,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 130.15,
+      "recognition_band": [
+        0,
+        35,
+        441,
+        124
+      ],
+      "input_shape": [
+        89,
+        441,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_2.crop.input.png",
+      "recognition_image_sha256": "f41285d38a00af489e40e5401ac0b7d8b532c02f679b7bc7793b01e812ab6b49",
+      "source_stamp": {
+        "secs": 642,
+        "nsecs": 565000000,
+        "seconds": 642.565
+      },
+      "box": [
+        1164,
+        711,
+        1605,
+        888
+      ],
+      "image_sha256": "2e6346a470725b4bb40c1d1a42b752e1cdd7e7c149f078dce309934607b898db"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "6d67379a34e4fa2d1f1c1d035333d4f0ad07141e58b15e622a3cee776c005763",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 407.748,
+  "low_resolution_comparison": {
+    "raw": "学A·BCDEF",
+    "text": "学ABCDEF",
+    "display": "学A·BCDEF",
+    "confidence": 0.9853192567825317,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 113.002,
+    "recognition_band": [
+      0,
+      11,
+      147,
+      42
+    ],
+    "input_shape": [
+      31,
+      147,
+      3
+    ],
+    "box": [
+      388,
+      237,
+      535,
+      296
+    ]
+  },
+  "source_stamp": {
+    "secs": 642,
+    "nsecs": 368000000,
+    "seconds": 642.368
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9.annotated.png",
+  "published_stamp": 643.75
+}

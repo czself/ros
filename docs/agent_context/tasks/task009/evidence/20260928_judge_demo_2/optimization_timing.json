@@ -1,0 +1,15 @@
+{
+  "run": "20260928_judge_demo_2",
+  "state_seconds": {
+    "UNKNOWN": 2.258000000000038,
+    "TRACKING": 73.32199999999989,
+    "GOAL_SETTLE": 4.584999999999809,
+    "GOAL_REACHED": 18.527000000000157,
+    "ALIGNMENT_BRAKING": 0.7320000000000846,
+    "ALIGNING_TO_PATH": 16.37299999999982,
+    "FINAL_HEADING": 26.485000000000127,
+    "SIGNAL_WAIT": 4.863000000000056
+  },
+  "signal_wait_s": 4.863000000000056,
+  "definition": "time until next controller/gate event, capped at 0.1 s; signal WAIT takes priority"
+}

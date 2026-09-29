@@ -1,0 +1,2611 @@
+{
+  "copied_files": [
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_1/POINT_1_20260928_123035.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_1/POINT_1_20260928_123035.detections.json",
+      "bytes": 964,
+      "sha256": "fb22aa935c2726b8d6135b5157d2fe6c66f74efd5986617958cebdb2364a1c9e"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_1/POINT_1_20260928_123035.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_1/POINT_1_20260928_123035.json",
+      "bytes": 2988,
+      "sha256": "332b8eec47e262efff2b611407c00351be50feb57ff4b92b9773a24615d1ab5a"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_1/POINT_1_20260928_123035.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_1/POINT_1_20260928_123035.raw.png",
+      "bytes": 78999,
+      "sha256": "dc2cbec34893b479320d052a0324d066fb912b3c440f8d880aa3914e77ee11d3"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_10/POINT_10_20260928_123235.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_10/POINT_10_20260928_123235.detections.json",
+      "bytes": 684,
+      "sha256": "0f960b0ea5d9b29e256f49053b1412c00eda852ef6bf1d3ae379c6a0287269db"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_10/POINT_10_20260928_123235.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_10/POINT_10_20260928_123235.json",
+      "bytes": 3404,
+      "sha256": "8d25bec1c89bab265c40847e7fa7878eca77393376d9981749ff5c5223fc1c30"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_10/POINT_10_20260928_123235.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_10/POINT_10_20260928_123235.raw.png",
+      "bytes": 109732,
+      "sha256": "8e66db3b152281bdce7892414c029e94b91276d5514c7b031d12eafbf772fa16"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_2/POINT_2_20260928_123052.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_2/POINT_2_20260928_123052.detections.json",
+      "bytes": 1397,
+      "sha256": "653e06068c571fc683c63c0a431d31c0b365fe9f44300d36bc02d735107d7b49"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_2/POINT_2_20260928_123052.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_2/POINT_2_20260928_123052.json",
+      "bytes": 5208,
+      "sha256": "218a0ad0bf262e2d79e3bb0a47c59a9df491af0f47d458efddd69d1b5505aea9"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_2/POINT_2_20260928_123052.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_2/POINT_2_20260928_123052.raw.png",
+      "bytes": 110817,
+      "sha256": "cac82de9260681c7090b341a41d9eac0af5507485cd01150b20c504eec320897"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_3/POINT_3_20260928_123107.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_3/POINT_3_20260928_123107.detections.json",
+      "bytes": 1110,
+      "sha256": "bf1dc59cdec3ab64730e06bc366ccf8e4e92fedf0f6bc70dc511220107f5dbbb"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_3/POINT_3_20260928_123107.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_3/POINT_3_20260928_123107.json",
+      "bytes": 5201,
+      "sha256": "f7fa3ca4051787072e99f247df2d2ef9a791d61756b69b7ac9dbb3be8b196ff5"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_3/POINT_3_20260928_123107.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_3/POINT_3_20260928_123107.raw.png",
+      "bytes": 92719,
+      "sha256": "50fe92a947af9c3366e03d0ef2a1a6eb3b702b523c1e1a6b77a81b2acc4f3bf3"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_4/POINT_4_20260928_123121.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_4/POINT_4_20260928_123121.detections.json",
+      "bytes": 963,
+      "sha256": "685da8466a90c5764b726949117025c8c7773bec4cfb712be250328a4bb5d4b9"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_4/POINT_4_20260928_123121.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_4/POINT_4_20260928_123121.json",
+      "bytes": 5216,
+      "sha256": "1541db612600c6f9bf9f96416ef2469dfcdbdec2c4cdc6e01bf1a142bcaa9872"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_4/POINT_4_20260928_123121.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_4/POINT_4_20260928_123121.raw.png",
+      "bytes": 94653,
+      "sha256": "f57b815e3cc98de6a1559316d6181200f5a8d0d7b4e1be6872b1f9b3f4549d44"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_5/POINT_5_20260928_123131.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_5/POINT_5_20260928_123131.detections.json",
+      "bytes": 1527,
+      "sha256": "ebe7fb54f647e2927e7bab2f6a6464f892b7e26f973c64d69c711717689478b0"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_5/POINT_5_20260928_123131.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_5/POINT_5_20260928_123131.json",
+      "bytes": 6748,
+      "sha256": "7e6d5688b300a0505f6bba1130699a866f4cd5751802c96441f49ae949041fd2"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_5/POINT_5_20260928_123131.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_5/POINT_5_20260928_123131.raw.png",
+      "bytes": 130777,
+      "sha256": "415f13abe25e97e4e3ec4cf9ba8fe8d175afb7d0819c23b84476063680b9f7fe"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_6/POINT_6_20260928_123146.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_6/POINT_6_20260928_123146.detections.json",
+      "bytes": 1250,
+      "sha256": "584b6e41be9fedb61db585fe0b47e2e675fc7566a9ca6084ae534ecb31c62dba"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_6/POINT_6_20260928_123146.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_6/POINT_6_20260928_123146.json",
+      "bytes": 7264,
+      "sha256": "e34398a08f0bed1146cb701d655c2b3399d76aeb3ada2e7be541f4ca756ae510"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_6/POINT_6_20260928_123146.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_6/POINT_6_20260928_123146.raw.png",
+      "bytes": 133945,
+      "sha256": "e6562964e1546bf3efe4dfe31eff2b9c23e916b2199c860c0472ed0925f51222"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_7/POINT_7_20260928_123153.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_7/POINT_7_20260928_123153.detections.json",
+      "bytes": 963,
+      "sha256": "680a3544684f959e40b02eaf325adfce327700194f9aa7a3e9812d6dde591c5f"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_7/POINT_7_20260928_123153.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_7/POINT_7_20260928_123153.json",
+      "bytes": 2989,
+      "sha256": "9981d97ecff9bcd6762ffab5f430b15024f20f95071a9672957a987b9bc75ed9"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_7/POINT_7_20260928_123153.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_7/POINT_7_20260928_123153.raw.png",
+      "bytes": 72340,
+      "sha256": "f056103b5e64faf75f61b8d1ed746169386dd8ba85cc8a34cc1439fbf3648dff"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_8/POINT_8_20260928_123213.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_8/POINT_8_20260928_123213.detections.json",
+      "bytes": 684,
+      "sha256": "9338f1142f3c9351b523e0f168c794353797a937ebb40bab4d17b7d2bd268126"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_8/POINT_8_20260928_123213.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_8/POINT_8_20260928_123213.json",
+      "bytes": 3391,
+      "sha256": "dbb28c1eb3538465d1c4a557fbb923c246478569e02647088ec6d621f85d4096"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_8/POINT_8_20260928_123213.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_8/POINT_8_20260928_123213.raw.png",
+      "bytes": 88349,
+      "sha256": "22dec79a4b85eb6e38ab646106cef21d3a8534913531a5b8d8241f7307719fd3"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_9/POINT_9_20260928_123225.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_9/POINT_9_20260928_123225.detections.json",
+      "bytes": 684,
+      "sha256": "6bfbae2891386c983248edca78bd6644fb27bbda26a913963182dd50b0bedb23"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_9/POINT_9_20260928_123225.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_9/POINT_9_20260928_123225.json",
+      "bytes": 3384,
+      "sha256": "1003eac6d4983ee15c9a89f4fb0627e33b74faf3301f048061af1639b6d81823"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/POINT_9/POINT_9_20260928_123225.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/POINT_9/POINT_9_20260928_123225.raw.png",
+      "bytes": 111075,
+      "sha256": "0a5a664cce138ab86dad0d9e1314d69d760bc9c89805a097f3de50aa5cb69f06"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/audit_inputs/plate_scene_truth.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/audit_inputs/plate_scene_truth.json",
+      "bytes": 757,
+      "sha256": "495501f234e0ad947c56c22f18d404b93df6919d1bdd78885a5888ed2b23fbc4"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/independent_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/independent_audit.json",
+      "bytes": 19681,
+      "sha256": "1d177800800efa7837fb33e2fd78e0326eadd362b36399272315a371b6eec5e2"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_10.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10.annotated.png",
+      "bytes": 746256,
+      "sha256": "b8abc2dc7a9212aa51ef8f25303d9191e2e8e9a8b1b52987f5b58708df04ec15"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_10.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10.job.json",
+      "bytes": 2998,
+      "sha256": "7e4508b836455cac758397a7407f4d327638ea535177eaabf93ab76be01814c2"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_10.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10.published.json",
+      "bytes": 4059,
+      "sha256": "c243673ea2651d2ff9ae936edfca460beb14fe9ec10abd47a6afa7fe4a73e342"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_10.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10.result.json",
+      "bytes": 3822,
+      "sha256": "de999018ece2b6d59a195b54e529f36edd0736bd1100e692556970652d4388cd"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_10_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_0.crop.png",
+      "bytes": 51036,
+      "sha256": "2a7f95219aa2d8406c6432fbf172845fc2e3bb745c332318e2c4ecad300cf0eb"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_10_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_1.crop.png",
+      "bytes": 51204,
+      "sha256": "b2c8cbe046f3a79b43bfda480f8010415b5b51c101dd3d09fa23c832c87eb611"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_10_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_10_frame_2.crop.png",
+      "bytes": 51358,
+      "sha256": "e9df3eb0a02e73ca629074d0d2b3f0f3c5af89961c2e2b4d9530caccbd1a477a"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_8.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8.annotated.png",
+      "bytes": 550972,
+      "sha256": "40186364380f5e1b29fb6dcadf6395a2c11686ae1ddd0b8f48b0d6d57eb72dab"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_8.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8.job.json",
+      "bytes": 2993,
+      "sha256": "58a57039f8278b46a821c72fe300e10dcab8e0487727836661f6f45856d6b331"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_8.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8.published.json",
+      "bytes": 4064,
+      "sha256": "76daa6165a2c6a197005be2892f730e48c57d2a1ff1b846d53d2b9d164c1632e"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_8.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8.result.json",
+      "bytes": 3829,
+      "sha256": "586f1faf4c283cbf3592642a4b81fc0e49b57cd21fcedcebfc78b5160f2b53ed"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_8_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_0.crop.png",
+      "bytes": 41015,
+      "sha256": "e881778c94fa64d482fb2bd63d3692ef4bba04d3d893f523b05d59d3981ce6ff"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_8_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_1.crop.png",
+      "bytes": 41085,
+      "sha256": "ece884c71eb2b27da21d3a70a4a3a821dd9f526b1625a2f75941782800a57420"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_8_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_8_frame_2.crop.png",
+      "bytes": 41094,
+      "sha256": "5a3d7828d2d2a436a268a5eca914eaa8e25c1d2508899e403c56d11e1d8d7003"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_9.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9.annotated.png",
+      "bytes": 743018,
+      "sha256": "5870a78148044a0a6331e13460a8a26880fe7f4c74e00468a91defb18f3a2bdc"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_9.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9.job.json",
+      "bytes": 2994,
+      "sha256": "ce5cf9f1842b0ff40407354ec8dc3d0b400fc2bcc7f28eeb09b30fa3643b0299"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_9.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9.published.json",
+      "bytes": 4053,
+      "sha256": "4abb4a27ec590819693c814d6d577b67ba49b996eff2dceeae89a5e1fee42e8d"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_9.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9.result.json",
+      "bytes": 3817,
+      "sha256": "4c60addae2992035a89e63b6f93c44b106a439977abd616bdce662479476420a"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_9_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_0.crop.png",
+      "bytes": 56796,
+      "sha256": "f6efb4307ca1368fab579c0b32fddd700ea8501c2be4da29ac2f18d4828b9465"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_9_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_1.crop.png",
+      "bytes": 56822,
+      "sha256": "2a7e90f01b87d6acb24b7162082eaa8632cd0fde5f04201acce879d3b1651c2f"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/ocr/POINT_9_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/ocr/POINT_9_frame_2.crop.png",
+      "bytes": 56853,
+      "sha256": "e4330cbb773584d94683149d5471c28006a804f4b9ec7abd107d32826c41076c"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/optimization_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/optimization_timing.json",
+      "bytes": 515,
+      "sha256": "6fa7713c1984eab7c53caae026258b4f5f153e8acc7502626cb70a31f6aca08b"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/person_report.audio.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/person_report.audio.json",
+      "bytes": 422,
+      "sha256": "54b4f921067305b32c70dd63120c7fbc087800a122ed07d2d806b6c23d9ff93e"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/person_report.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/person_report.json",
+      "bytes": 24972,
+      "sha256": "458bebec28a71595b1841769a3de1b4b7b60937fac4d8eed6c0d7af789645a5c"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/person_report.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/person_report.txt",
+      "bytes": 505,
+      "sha256": "d00812b46480231c797637fa7541daeb31200746b10aef5d931637f145d9181b"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/person_reporting_config.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/person_reporting_config.json",
+      "bytes": 1220,
+      "sha256": "9dc34e3f65812c5c59be76da368142ca81b2130a42c53b439753b5bddec4be93"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/persons/PERSON_003_POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/persons/PERSON_003_POINT_2.png",
+      "bytes": 28335,
+      "sha256": "3d1a89e17bbce53a2a52d0ee017222b885dc9e6843a2bf547efe1158e1aa7efa"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/persons/PERSON_012_POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/persons/PERSON_012_POINT_5.png",
+      "bytes": 28862,
+      "sha256": "e59406f5c383d902cdbc6ae9580a8dcdb5015dcf5ec86644cf7370bb20e47c20"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/persons/POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/persons/POINT_2.png",
+      "bytes": 127541,
+      "sha256": "79cfa7bed96c26fe7600912041bd740e2126f1c3261c79cb2cc36fc47d455b8c"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/persons/POINT_3.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/persons/POINT_3.png",
+      "bytes": 112745,
+      "sha256": "0d89f8008d039c4cf4545660c4cd91362c784135843e1e08f69ee0145f39c8fe"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/persons/POINT_4.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/persons/POINT_4.png",
+      "bytes": 116141,
+      "sha256": "5a3755f3e6c788c49c8d35504e88646e417d427f587c0ea5138605553ac8c048"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/persons/POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/persons/POINT_5.png",
+      "bytes": 159044,
+      "sha256": "4621f7a17a5a6034733c56886a6747579548aebb998688139be90675da51ba2c"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/persons/POINT_6.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/persons/POINT_6.png",
+      "bytes": 167605,
+      "sha256": "002c7ee7d85921ac282fa7e95c946d7e295b9dd7e12d9b8574fd84b7e93d204f"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/photo_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/photo_timing.json",
+      "bytes": 1460,
+      "sha256": "36c3e62731ce239124e8c5b6ec64ed08e99b47ee3061716a95484571f06d9fa6"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/plate_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/plate_audit.json",
+      "bytes": 1856,
+      "sha256": "fea8a5b70698afd4575aec4502e90451bd86623c7f1adef675a719f9ec486354"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/route_executor.log",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/route_executor.log",
+      "bytes": 6195,
+      "sha256": "a7399dd5cf3153f271e9a55d8e39e6fcb4386cd0a535c3f4cf9e19152fa39a44"
+    },
+    {
+      "path": "evidence/20260928_judge_demo_2/run_summary.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/run_summary.json",
+      "bytes": 52556,
+      "sha256": "a755a1edb9a3cff961b923b6b88a4699bd54d93b196c06b1d0591273bb75bcec"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_1/POINT_1_20260928_112523.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_1/POINT_1_20260928_112523.detections.json",
+      "bytes": 957,
+      "sha256": "88bcfe0ee36934df880aabd5a2df14742dde4c6dcf3b6b0eaefdbb8db97d4f2d"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_1/POINT_1_20260928_112523.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_1/POINT_1_20260928_112523.json",
+      "bytes": 2982,
+      "sha256": "0312d64cc30481ab84a2229444932eb510d0eca8534dfce67d3f26c8158aac09"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_1/POINT_1_20260928_112523.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_1/POINT_1_20260928_112523.raw.png",
+      "bytes": 78451,
+      "sha256": "1c8d85f59ca58d6fb51fe03f493d4b41058156c1a822306e01aa50d133833be5"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_10/POINT_10_20260928_112726.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_10/POINT_10_20260928_112726.detections.json",
+      "bytes": 684,
+      "sha256": "1435f6efec9f24f0b31af12d6cdf6f1abac18b9ac65f9b2c6095560401751a70"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_10/POINT_10_20260928_112726.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_10/POINT_10_20260928_112726.json",
+      "bytes": 3398,
+      "sha256": "a3073a1d261bd3dd5a87924c7071bc42d749ecc9840b752222be0049b1594e75"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_10/POINT_10_20260928_112726.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_10/POINT_10_20260928_112726.raw.png",
+      "bytes": 120332,
+      "sha256": "a8fb472e24085904dc2b58cd3e26b86ea8e932fcc30c317c1a9a03d3cb017332"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_2/POINT_2_20260928_112538.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_2/POINT_2_20260928_112538.detections.json",
+      "bytes": 1396,
+      "sha256": "443f74beead0fa3753676efe9f65e84cb4476e5458e0bdf4e1627ecf54df9d29"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_2/POINT_2_20260928_112538.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_2/POINT_2_20260928_112538.json",
+      "bytes": 5213,
+      "sha256": "343177873fffad33b896e467040e8c796550a4578bd9f51eed7d4de62047d50f"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_2/POINT_2_20260928_112538.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_2/POINT_2_20260928_112538.raw.png",
+      "bytes": 106299,
+      "sha256": "421a0e2f02944a2abb0baffa7fd243277d48ffdd34b7f0f5d956c5c0daeecff7"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_3/POINT_3_20260928_112553.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_3/POINT_3_20260928_112553.detections.json",
+      "bytes": 1112,
+      "sha256": "70a564bdbe01f83599aa2129323614f1b291b4c14b13a3b8d92faaefe6fff422"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_3/POINT_3_20260928_112553.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_3/POINT_3_20260928_112553.json",
+      "bytes": 5214,
+      "sha256": "daa3da43799218a91ac9c4368eeb8e34cd27eae7da2230ce5de65ed4f7af6b7a"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_3/POINT_3_20260928_112553.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_3/POINT_3_20260928_112553.raw.png",
+      "bytes": 98404,
+      "sha256": "9515d7bf104047ed79b90f05cc66e66efe141d1f8b21a67263bb7501e2538b99"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_4/POINT_4_20260928_112608.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_4/POINT_4_20260928_112608.detections.json",
+      "bytes": 962,
+      "sha256": "2a18844cbdee1ed5389c6e9ffdc30d31c16f37623f12cd74298d227889e2f5ac"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_4/POINT_4_20260928_112608.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_4/POINT_4_20260928_112608.json",
+      "bytes": 5222,
+      "sha256": "69d829c74d5f73f855458daee03f337d4b3ea8ec58e9830d1fde76b5d10bfd02"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_4/POINT_4_20260928_112608.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_4/POINT_4_20260928_112608.raw.png",
+      "bytes": 92712,
+      "sha256": "80dfb168e77c712d2ae6bb66135573caad9d970181402457369aa88b1dd1aa55"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_5/POINT_5_20260928_112618.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_5/POINT_5_20260928_112618.detections.json",
+      "bytes": 1390,
+      "sha256": "5206393e3787c269eef3fe30c27b3af20f02123f50d96a6ef83a109192690480"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_5/POINT_5_20260928_112618.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_5/POINT_5_20260928_112618.json",
+      "bytes": 6224,
+      "sha256": "2969fa040183fd48b63f4191fc255c056c293316664d404c40a71a275d19aeef"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_5/POINT_5_20260928_112618.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_5/POINT_5_20260928_112618.raw.png",
+      "bytes": 132448,
+      "sha256": "b46b5f5f6792017112a97503d63210d43a6ae250cb9bb4b2349fb1ef01844d8f"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_6/POINT_6_20260928_112633.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_6/POINT_6_20260928_112633.detections.json",
+      "bytes": 1248,
+      "sha256": "d917e8a18fd43408c97966b6cd3cd80dd434819037c01ffa75f9c67206aed40b"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_6/POINT_6_20260928_112633.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_6/POINT_6_20260928_112633.json",
+      "bytes": 7269,
+      "sha256": "0b16ddfdaf31d0c5a8fff2477e9a472e01b789c2e98b052be5eda7e310beb5dc"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_6/POINT_6_20260928_112633.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_6/POINT_6_20260928_112633.raw.png",
+      "bytes": 146355,
+      "sha256": "aa6b2ede858959dcd06bfb6932d5b153d0f59932f2a2ba3a8ea7b17d47f853af"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_7/POINT_7_20260928_112646.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_7/POINT_7_20260928_112646.detections.json",
+      "bytes": 959,
+      "sha256": "6cff36fb2f0770a5da823d13cb97e5bc5b9518d2ecfed3c81809169ae15de4da"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_7/POINT_7_20260928_112646.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_7/POINT_7_20260928_112646.json",
+      "bytes": 2991,
+      "sha256": "adefdaae4fe3763ae8ad6222064896b0a16557da5b3a179c55f24a245132b8d8"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_7/POINT_7_20260928_112646.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_7/POINT_7_20260928_112646.raw.png",
+      "bytes": 75057,
+      "sha256": "8195c22f23448faab7a57769a877a54a1f15da0d18d37ee8a4e41b17f2793c66"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.detections.json",
+      "bytes": 683,
+      "sha256": "a7b4d69d4af07c9ed92c379fc4c700f258ad937cfe0decc89d3b95e6bb7a18d9"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.json",
+      "bytes": 3388,
+      "sha256": "d70fd07671efb21670a4124a6f41c139195e01b36be116798b88401d800061e0"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_8/POINT_8_20260928_112704.raw.png",
+      "bytes": 91959,
+      "sha256": "883a79fdb6dd70e98463f388e344777687c44d4bdc79ce0c54fe87f5ee01e8cd"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_9/POINT_9_20260928_112715.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_9/POINT_9_20260928_112715.detections.json",
+      "bytes": 684,
+      "sha256": "573242901cf974b5f2563c5ebd426fd2fb4c7bf85f9de9195c138d595d8cab59"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_9/POINT_9_20260928_112715.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_9/POINT_9_20260928_112715.json",
+      "bytes": 3388,
+      "sha256": "68339a3c352a7b4c5ee38d4eaa49f15488d1cbd98062f1103ddec7d6fde6c3c3"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/POINT_9/POINT_9_20260928_112715.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/POINT_9/POINT_9_20260928_112715.raw.png",
+      "bytes": 112647,
+      "sha256": "b0db5c6cf65d1d5752749d974e517fcac9060162b67315e89eb9f4f2704e7631"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/audit_inputs/plate_scene_truth.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/audit_inputs/plate_scene_truth.json",
+      "bytes": 757,
+      "sha256": "b1e80b0787a3126208509d1f6842f3352800abf7ab2da18481674264b9e0e946"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/independent_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/independent_audit.json",
+      "bytes": 19684,
+      "sha256": "7d97e8e16434d1adf2daa979775a80d76c070a12d95c7e4afbfe6dd08af4af16"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_10.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10.annotated.png",
+      "bytes": 829752,
+      "sha256": "1883da283c8b059bcad39cf881440827e7c4e179917f7bef502bd1b499c88e08"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_10.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10.job.json",
+      "bytes": 2198,
+      "sha256": "4c27fa4be480588af53207145dfb4b73294979f6bde537466080eea66de26ad9"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_10.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10.published.json",
+      "bytes": 3067,
+      "sha256": "b42d6e91e46b5ebfce4add3905e7c32566be1f9cf53f7f0044e2456616781d60"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_10.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10.result.json",
+      "bytes": 2830,
+      "sha256": "3d5f9f917c55fd723f4f6ad814f08a44e4de211933fddaa8739d6fe53b34a0e1"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_10_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_0.crop.png",
+      "bytes": 62656,
+      "sha256": "061adb03f32d8952a0cc1861af3985f580d00babd4b4341652af8b9f1471671b"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_10_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_10_frame_1.crop.png",
+      "bytes": 62581,
+      "sha256": "246df3e8cc41c13325f736ae82b698d0ab854a9b2f1fa14d630fae5c5bf19505"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_8.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8.annotated.png",
+      "bytes": 599030,
+      "sha256": "36478554625486497a488c6c53cfc748e732c4378e7562d0ef449be9b89f9f47"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_8.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8.job.json",
+      "bytes": 2993,
+      "sha256": "0c4cca0093df3cacbeeaa5cf0d63a03674a754732e4b14405d0cb7906c0cd0e2"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_8.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8.published.json",
+      "bytes": 4047,
+      "sha256": "6cc585acd1d088835c67940ff9e100884a0f610d5debd1cb236248b1d92cd1b7"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_8.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8.result.json",
+      "bytes": 3812,
+      "sha256": "c04462599f9b0ab5cba42aeb1a2e685fd2e5f5a934b3e52ffc80b4e444fa33cf"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_8_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_0.crop.png",
+      "bytes": 45105,
+      "sha256": "657b8ce00a85b11efbf698adfe4ef51db8ed89f9ebc5a851bb8e5c4a66e66be8"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_8_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_1.crop.png",
+      "bytes": 45105,
+      "sha256": "657b8ce00a85b11efbf698adfe4ef51db8ed89f9ebc5a851bb8e5c4a66e66be8"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_8_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_8_frame_2.crop.png",
+      "bytes": 45075,
+      "sha256": "efff363029d917768a67761a87083208e75d9b2313ee063e3be1a5b532e806ac"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_9.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_9.annotated.png",
+      "bytes": 770945,
+      "sha256": "bc8c5df393d0f84053b481702150df4bd1b39ff480e499819b9e33db5ef4c6f2"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_9.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_9.job.json",
+      "bytes": 2996,
+      "sha256": "b7912d805baa58b7b7d73037627abe0bc76f2dcc677218db98ba0ec89d264849"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_9.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_9.published.json",
+      "bytes": 4055,
+      "sha256": "fcc3cf2d1dc0d88ddfe7d4288b4fa9ffbeaab054e2e5b1542ba270df12a317db"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_9.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_9.result.json",
+      "bytes": 3819,
+      "sha256": "0d9af8fb2e0ac8a663546439aa1f5eece7cd8c84480c03afd27825989b2cdd01"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_9_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_9_frame_0.crop.png",
+      "bytes": 60179,
+      "sha256": "0a76f0f30c797b6f23b6b21c35fa7b48ba1038bffac4c8379e7e7273275fcbbe"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_9_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_9_frame_1.crop.png",
+      "bytes": 60139,
+      "sha256": "5784771cf49c10ba09af20e8865f4971f8874d74003185365f9a6887bf3c12d3"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/ocr/POINT_9_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/ocr/POINT_9_frame_2.crop.png",
+      "bytes": 60119,
+      "sha256": "54686ea2e0d970fa7575b9ce4347960d489d5c7bfdc0ff7d639e1d4bae216a85"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/person_report.audio.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/person_report.audio.json",
+      "bytes": 422,
+      "sha256": "166090d8fc2523aa5dad8cfd2f021e3b8b8f6450d6ccf5ec4c0234dd54f0bce8"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/person_report.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/person_report.json",
+      "bytes": 24991,
+      "sha256": "ca4495c4a1721d2a0e1f76f1205cb6a24af1cc7c8967c258c0ea998eed16f6cd"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/person_report.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/person_report.txt",
+      "bytes": 505,
+      "sha256": "c01adee1b6ea8b1204719cceb5463ae7a7ecbc3178a6476ba0972842e8afb6b0"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/person_reporting_config.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/person_reporting_config.json",
+      "bytes": 1220,
+      "sha256": "9dc34e3f65812c5c59be76da368142ca81b2130a42c53b439753b5bddec4be93"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/persons/PERSON_003_POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/persons/PERSON_003_POINT_2.png",
+      "bytes": 26402,
+      "sha256": "6c902bf46915da9e2550a3cc4c44b15e3da395cc828706d2fa298b69f8c51f83"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/persons/PERSON_012_POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/persons/PERSON_012_POINT_5.png",
+      "bytes": 29574,
+      "sha256": "773578859449c2b032e4e550c452d87f445542ae13a2da105c81bb65d3042ce1"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/persons/POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/persons/POINT_2.png",
+      "bytes": 123688,
+      "sha256": "18866d0254997b56e0c46fc010d6e53bfd9c56d537b3d5dae3c901e6b84b036b"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/persons/POINT_3.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/persons/POINT_3.png",
+      "bytes": 118826,
+      "sha256": "3d65e3b17acea4ab780e6f6e187bf31d3bc5a674f1d6374548cbc46934017384"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/persons/POINT_4.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/persons/POINT_4.png",
+      "bytes": 113919,
+      "sha256": "1a75a5b24819e723a1570fe3a361e671d509f98d1c8dd2d9b052c8ade1692dc2"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/persons/POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/persons/POINT_5.png",
+      "bytes": 160746,
+      "sha256": "b43a5e7d301f340672710493989a4e0fd43c1c017fb394c70c1d6a7570e770fb"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/persons/POINT_6.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/persons/POINT_6.png",
+      "bytes": 180924,
+      "sha256": "d32077c1c8607308b2fb6a28b1b43522ea368f574d458c5207b2c8b7d8605516"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/plate_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/plate_audit.json",
+      "bytes": 1855,
+      "sha256": "009d1e17144d9fd89d159b6e6b9420c11af119f727d98389207ce431675626c2"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/route_executor.log",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/route_executor.log",
+      "bytes": 6194,
+      "sha256": "ddf03696e1353d5c710f33f0fa1abc8d34ce3a63f603bacabbbd5d6ca35be256"
+    },
+    {
+      "path": "evidence/20260928_ocr_closer_1/run_summary.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/run_summary.json",
+      "bytes": 51374,
+      "sha256": "4d25a9ce82e1ea5d189f307efd97554d7c20c223121b677de4fcea4ac7015a0c"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_1/POINT_1_20260929_040144.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_1/POINT_1_20260929_040144.detections.json",
+      "bytes": 962,
+      "sha256": "a6d3d239b93f679cae9f217b4564f3c52c4da8fde4aae0bd1e91162f0ddcf254"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_1/POINT_1_20260929_040144.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_1/POINT_1_20260929_040144.json",
+      "bytes": 3036,
+      "sha256": "aaa8833d6f01430ee633cfcfad77efea48ac5a69220abce5f0eaf9f702e520e9"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_1/POINT_1_20260929_040144.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_1/POINT_1_20260929_040144.raw.png",
+      "bytes": 79340,
+      "sha256": "f2918177d83a741bb93b470d03ac2816e43d6f3e8b2b328beadd369c93ed3135"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_10/POINT_10_20260929_040346.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_10/POINT_10_20260929_040346.detections.json",
+      "bytes": 683,
+      "sha256": "1e9128eda9f7ceff6238586e2748ab88983f0a94947b9689c6dead9d7c882bed"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_10/POINT_10_20260929_040346.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_10/POINT_10_20260929_040346.json",
+      "bytes": 3461,
+      "sha256": "a3ba3c77f8976a3f580e67c26ec86004c46b4a42fdcb701672b8e0c1ceea29db"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_10/POINT_10_20260929_040346.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_10/POINT_10_20260929_040346.raw.png",
+      "bytes": 116199,
+      "sha256": "988adbf78f5d0cac1cd313fdcf5db2d977f0981ea6d8f3f690abdc02866600df"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_2/POINT_2_20260929_040157.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_2/POINT_2_20260929_040157.detections.json",
+      "bytes": 1396,
+      "sha256": "f65ca92b54458f40e5188c59d4855a8a99bfdf3ca635a9a7baf87e809215492f"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_2/POINT_2_20260929_040157.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_2/POINT_2_20260929_040157.json",
+      "bytes": 5273,
+      "sha256": "b6b105e13664bdab25591a7968e1a2fe1f8a11aa7f1e02db179d2d5904c19fa2"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_2/POINT_2_20260929_040157.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_2/POINT_2_20260929_040157.raw.png",
+      "bytes": 116108,
+      "sha256": "873d18318637e6ed22d3b3a694fad044429b4ed1d20409f29734ea48a1e8faf3"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_3/POINT_3_20260929_040211.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_3/POINT_3_20260929_040211.detections.json",
+      "bytes": 963,
+      "sha256": "fa04a09cfc380982b29ba039b727ed1d7c563fb590ca5331f54c2f04a9b6654d"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_3/POINT_3_20260929_040211.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_3/POINT_3_20260929_040211.json",
+      "bytes": 5265,
+      "sha256": "f7bda5281a1c3fd906cf543c1ee055b204dc0a121963c6303efce3dc2114cdbe"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_3/POINT_3_20260929_040211.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_3/POINT_3_20260929_040211.raw.png",
+      "bytes": 91244,
+      "sha256": "7d313c57d17f306c82c76792433ee6b08d3c677ea35b082300abbcf66ebb4268"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_4/POINT_4_20260929_040225.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_4/POINT_4_20260929_040225.detections.json",
+      "bytes": 964,
+      "sha256": "50be9ecfc60d3f27d54e281eebd7a4ed8f878f21df1aff72a02e9e3acbcc7f5a"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_4/POINT_4_20260929_040225.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_4/POINT_4_20260929_040225.json",
+      "bytes": 5284,
+      "sha256": "5f84f1029f634528e765220800288bb56e08bebc6412afe601ad163e82602440"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_4/POINT_4_20260929_040225.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_4/POINT_4_20260929_040225.raw.png",
+      "bytes": 98529,
+      "sha256": "5d6232f8956cf8bc287fa6cd9a58101e520d4d09f202022679e0265a5dadae7d"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_5/POINT_5_20260929_040234.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_5/POINT_5_20260929_040234.detections.json",
+      "bytes": 1247,
+      "sha256": "f6a3f61ff90b94b81d196f3d0469bba266645a2702d255486acc5366247bbd0c"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_5/POINT_5_20260929_040234.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_5/POINT_5_20260929_040234.json",
+      "bytes": 6291,
+      "sha256": "1c228210668dc9bb55fa779f38580da536292266bb57565815f62ad810108e43"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_5/POINT_5_20260929_040234.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_5/POINT_5_20260929_040234.raw.png",
+      "bytes": 131630,
+      "sha256": "4e516af5c8479cec6e27089719d351545764e99444dfb888cddf7aac9deed005"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_6/POINT_6_20260929_040249.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_6/POINT_6_20260929_040249.detections.json",
+      "bytes": 1251,
+      "sha256": "5c5c38711de5352e37fb6daae0df53b396cb4b2dca6b9d063e28973121adaf6e"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_6/POINT_6_20260929_040249.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_6/POINT_6_20260929_040249.json",
+      "bytes": 7342,
+      "sha256": "5a808d8910075f03b326795e31dfc2744269bcd7405e4fb686bea5b1a3183d09"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_6/POINT_6_20260929_040249.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_6/POINT_6_20260929_040249.raw.png",
+      "bytes": 138698,
+      "sha256": "f6050f20fa2dc82c475b773b8dd6f9a2ebebd6fa9c08520fd9f43d6bf5e7798f"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_7/POINT_7_20260929_040256.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_7/POINT_7_20260929_040256.detections.json",
+      "bytes": 965,
+      "sha256": "a822836f3ee4e10cbc9a0fb1c76e6140b65d1226e168c5f56f0abd8da2777398"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_7/POINT_7_20260929_040256.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_7/POINT_7_20260929_040256.json",
+      "bytes": 3031,
+      "sha256": "d88b1ec94cd5735b1c3c1c86b2ce28584fb53318df84bfa2fe6e9c4d7f037b01"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_7/POINT_7_20260929_040256.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_7/POINT_7_20260929_040256.raw.png",
+      "bytes": 71807,
+      "sha256": "43c3677ead75f49cfdd3f2ec574919efd893a1efeb8e9ebd10a83b236fef7d33"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_8/POINT_8_20260929_040321.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_8/POINT_8_20260929_040321.detections.json",
+      "bytes": 684,
+      "sha256": "0efa58c7380d8224f099a2081cbf6e525353666e1f1a3af41776580ba979f85e"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_8/POINT_8_20260929_040321.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_8/POINT_8_20260929_040321.json",
+      "bytes": 3448,
+      "sha256": "4773500213f9f968dd78565cf5807c4ce24886e0ee8a6c504c11236a36eb0f84"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_8/POINT_8_20260929_040321.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_8/POINT_8_20260929_040321.raw.png",
+      "bytes": 89903,
+      "sha256": "326d95e0253c336bc38bdefb4af4c775ca706fc4c280b9ea18f774a1ef02b91e"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_9/POINT_9_20260929_040332.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_9/POINT_9_20260929_040332.detections.json",
+      "bytes": 682,
+      "sha256": "e9ca74e29991cdab624a86da80add43be79bc90bb2ff7e51236db990ab6ae0aa"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_9/POINT_9_20260929_040332.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_9/POINT_9_20260929_040332.json",
+      "bytes": 3449,
+      "sha256": "cc1c9db80d085bb9958a1ae9bdbbb30c4584dc7ba1ef7a59e0aed60d30c52de6"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/POINT_9/POINT_9_20260929_040332.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/POINT_9/POINT_9_20260929_040332.raw.png",
+      "bytes": 110633,
+      "sha256": "700eae72df7b37ab570a45b26ee21e49b884799841fc7cbab41bafc82bf1c5fd"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/audit_inputs/plate_scene_truth.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/audit_inputs/plate_scene_truth.json",
+      "bytes": 757,
+      "sha256": "9ef1058bad5a8082d13cac8224a57499d2e840be16ad5bc317b2325dc04130b2"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/independent_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/independent_audit.json",
+      "bytes": 19685,
+      "sha256": "c590df3129dd22825a4dadfcfabc40559625edc090c0049e1728268595394ee5"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_10.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_10.annotated.png",
+      "bytes": 787791,
+      "sha256": "45dd3de6345d5c76a56d4e99009fb4f6c4d8a7d01a3f9eeaf1cd7df7c4d16ec4"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_10.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_10.job.json",
+      "bytes": 3019,
+      "sha256": "893fce0bdda5b345f888acdd30fbb9ab77131e4bee0f5413b6805f506a4167ca"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_10.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_10.published.json",
+      "bytes": 4086,
+      "sha256": "dd3c3a8947b51daaaed96732ba421463d85c9cf802583570e13def63eb95087b"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_10.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_10.result.json",
+      "bytes": 3845,
+      "sha256": "f3ab9bc74c2a7e067a7bdb14644f93107476e9b029573c9fc559fa7e70f69dbb"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_10_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_10_frame_0.crop.png",
+      "bytes": 59012,
+      "sha256": "804d02f910996239ff018066f80cfb1200567027423b7f14565419a4633ced42"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_10_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_10_frame_1.crop.png",
+      "bytes": 58939,
+      "sha256": "a1a82bf523e44bebf2f2d99d458c4bfdaa97f815980923284335fe93d14ad7ff"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_10_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_10_frame_2.crop.png",
+      "bytes": 59126,
+      "sha256": "61716c68889302f7ab07cb0ef562836613d8fd1d46a506f7ff349e045a753829"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_8.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8.annotated.png",
+      "bytes": 574035,
+      "sha256": "f3c6ee7dc52296e19931d1afb3db5c9afd2ece58b86e6ad660ad91fd051cf6d6"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_8.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8.job.json",
+      "bytes": 3016,
+      "sha256": "ba27a065172d4b9eef482f6d8f3b3b87d1b39664bfcbe91bc3066df2480b2649"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_8.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8.published.json",
+      "bytes": 4076,
+      "sha256": "f5a656c87f57e7aa18fe6568f8caeec28f6efc3285f3654d21bfccbb8573f7aa"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_8.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8.result.json",
+      "bytes": 3836,
+      "sha256": "86c4645e94e317338efda39cf3e55da623f96b19320d172df88484d64f81b0b7"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_8_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_0.crop.png",
+      "bytes": 41956,
+      "sha256": "b637552f668738e5ab2c87eed0964345f49083783f566c98fe8d3f77eb351aae"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_8_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_1.crop.png",
+      "bytes": 41960,
+      "sha256": "0da94fe5a180c1ffac80ea847e4e35f57d7d42dd1dc1dd353be32c3151611269"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_8_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_8_frame_2.crop.png",
+      "bytes": 41939,
+      "sha256": "9c848306ef8c83eecbd8ba7ca2370ff0f8a60f5d2304fbeed64c6630d4afd462"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_9.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_9.annotated.png",
+      "bytes": 739459,
+      "sha256": "ad991b5136a6f7d7d8c2558d3d555196a7cb0af10589baa11ebb303132efdda1"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_9.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_9.job.json",
+      "bytes": 3014,
+      "sha256": "38efd1625b0c6cbeb454b417e6c0dc9b298c008a000a0e05534fa9f30c9b9ec2"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_9.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_9.published.json",
+      "bytes": 4082,
+      "sha256": "ae6e4d8a4a28f7e3296c98d3f65ee91453b65accdfe8967e7ec4739d38f2f002"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_9.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_9.result.json",
+      "bytes": 3842,
+      "sha256": "405ac7d910a4f78c58ca49114995ee3a18a0da106b24a57f4f70f1c711d0f2ea"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_9_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_9_frame_0.crop.png",
+      "bytes": 52997,
+      "sha256": "15cad91237f192a08405665829f9e0b64b0bd10c0372cd5efb9411897acb61d5"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_9_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_9_frame_1.crop.png",
+      "bytes": 53109,
+      "sha256": "ef116df5ea5b46b046e19099b17f7ea917495558fad5abf5bbb03f8de458d4b8"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/ocr/POINT_9_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/ocr/POINT_9_frame_2.crop.png",
+      "bytes": 53292,
+      "sha256": "49041ca8eeb8b20f2617bca4a851bc44bee8826c5abd87af39cb28db5aedb71b"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/optimization_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/optimization_timing.json",
+      "bytes": 519,
+      "sha256": "e2dc6aee06eed402fbffa37106b4a0054ff467af6b0bebc56ee90e3cfe2e4514"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/person_input_benchmark.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/person_input_benchmark.json",
+      "bytes": 94663,
+      "sha256": "8bd020e2674c6f075c8bb0711fb573e0c07a2dceeae85f911bdb2f1fed5eb912"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/person_report.audio.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/person_report.audio.json",
+      "bytes": 422,
+      "sha256": "a7ef729ff7c137614eb9880fc79d0fbf09db172c175bf04530497c1cd8133fc3"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/person_report.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/person_report.json",
+      "bytes": 25080,
+      "sha256": "04dac145a99194231cda263e2f34e71dec1d2102120d76ab149d6a9f869dacd6"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/person_report.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/person_report.txt",
+      "bytes": 513,
+      "sha256": "e34001c51f810166e6128f8f8bba55c571afd8a0d07a84bf7383f4d123afe039"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/person_reporting_config.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/person_reporting_config.json",
+      "bytes": 1220,
+      "sha256": "9dc34e3f65812c5c59be76da368142ca81b2130a42c53b439753b5bddec4be93"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/persons/PERSON_003_POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/persons/PERSON_003_POINT_2.png",
+      "bytes": 29713,
+      "sha256": "0d27792a59a99f6e049d2d6eeb611f3599134a7a85f71aa3c606f2e719b69b73"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/persons/PERSON_012_POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/persons/PERSON_012_POINT_5.png",
+      "bytes": 29763,
+      "sha256": "f395fd9ea01e332c3ab8b81e1edf247fe4409d0e7c6000aa483073fc4b300425"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/persons/POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/persons/POINT_2.png",
+      "bytes": 133795,
+      "sha256": "d47caa4e85b668332d1f4661882021958e1c82e5a4b74ac6c65770a70e1123bc"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/persons/POINT_3.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/persons/POINT_3.png",
+      "bytes": 110819,
+      "sha256": "cc949b533cd5039894fc2bb134c739119786bf8bde42824d0a83b62eab276731"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/persons/POINT_4.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/persons/POINT_4.png",
+      "bytes": 120314,
+      "sha256": "ba6ee3664765677263339d0731560bcb968d8aa4528dfd6577507c6d45670b27"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/persons/POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/persons/POINT_5.png",
+      "bytes": 159575,
+      "sha256": "89b48782579f34a6b4eaf326057106a9e872ae3de349f2aee9cb7d1325ac056d"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/persons/POINT_6.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/persons/POINT_6.png",
+      "bytes": 173119,
+      "sha256": "2bed2c8ad8a7a30cd62d65139ec92e15fa77c5fe92c4972aad0d4fe39b79f699"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/photo_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/photo_timing.json",
+      "bytes": 1464,
+      "sha256": "8dfa0002742f128577d3c5005ec1972563bfc8482a763191feb1abf72190dd60"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/plate_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/plate_audit.json",
+      "bytes": 1857,
+      "sha256": "8987075e25ff64a3eb7e4101ec04a91b8b8493edbc89f50b81562034c937803e"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/route_executor.log",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/route_executor.log",
+      "bytes": 7216,
+      "sha256": "569634517cb9ea3aa24a5e7da70650a5bffb21d16062b27fecf2363fcd7c8434"
+    },
+    {
+      "path": "evidence/20260929_task009_settle_1/run_summary.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/run_summary.json",
+      "bytes": 53010,
+      "sha256": "d609883c70f523e3ce0f5454b6f133ef2d0c77fa2c0a2bbd7c654297aebd2cf3"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_1/POINT_1_20260929_041622.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_1/POINT_1_20260929_041622.detections.json",
+      "bytes": 961,
+      "sha256": "311e09f99e7c6eeb3e96558a4b76413c505205f25575c13c7331fb618510224b"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_1/POINT_1_20260929_041622.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_1/POINT_1_20260929_041622.json",
+      "bytes": 3036,
+      "sha256": "0ff73c65bdb71b863f180ba4e74a7579120ac1d0c0c123e07c8a083c1d5a90dd"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_1/POINT_1_20260929_041622.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_1/POINT_1_20260929_041622.raw.png",
+      "bytes": 79281,
+      "sha256": "a2305e0a96a75489a959d63e9459ecdd60d48a331c827340ac12dc22290d9c05"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_10/POINT_10_20260929_041817.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_10/POINT_10_20260929_041817.detections.json",
+      "bytes": 684,
+      "sha256": "b60bc003303195d5a70c055c3aee54e77d0906020e01eae41b14b01298b77220"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_10/POINT_10_20260929_041817.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_10/POINT_10_20260929_041817.json",
+      "bytes": 3469,
+      "sha256": "c582e2954f80c915ebceb8bde9c1757c28151faf0e3831926402d97d326dfa73"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_10/POINT_10_20260929_041817.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_10/POINT_10_20260929_041817.raw.png",
+      "bytes": 122956,
+      "sha256": "d6f67ea9d7a252b5142a21c8745f1bc701cb71b91e5487c65ab3c82432189d33"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_2/POINT_2_20260929_041635.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_2/POINT_2_20260929_041635.detections.json",
+      "bytes": 1397,
+      "sha256": "c5827e5a09b77a256315ce09c61ef637eca6dea38bf036bd29b0bf9b5d53bf95"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_2/POINT_2_20260929_041635.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_2/POINT_2_20260929_041635.json",
+      "bytes": 5277,
+      "sha256": "9dc70daa4f27aa1f13e36d30f15c941fbae49412afb53bd2dd96753f5b89bd68"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_2/POINT_2_20260929_041635.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_2/POINT_2_20260929_041635.raw.png",
+      "bytes": 108170,
+      "sha256": "d2eb3c3d9a92a47aa3432e0dae2d79b94b1ea4a848dddbaa9ab7954b660668e1"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_3/POINT_3_20260929_041649.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_3/POINT_3_20260929_041649.detections.json",
+      "bytes": 1112,
+      "sha256": "cc0d2524e8f2f893476247ed4fbd2f0cd39fb399281d3e75942672ce73880f0b"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_3/POINT_3_20260929_041649.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_3/POINT_3_20260929_041649.json",
+      "bytes": 5275,
+      "sha256": "645946a68541b055d76b64e5e8eb9147edc6cb13b5f99b114eae402868db76c7"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_3/POINT_3_20260929_041649.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_3/POINT_3_20260929_041649.raw.png",
+      "bytes": 90066,
+      "sha256": "fcadbb1c196e1fe755d4e7bbb0d81d049c2b605209e91f904b03a7f4189e9725"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_4/POINT_4_20260929_041702.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_4/POINT_4_20260929_041702.detections.json",
+      "bytes": 962,
+      "sha256": "50a9c989eab20b5d3b361a0e395d66e34b7cebab6e02ef039a13cf4c7cb3f494"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_4/POINT_4_20260929_041702.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_4/POINT_4_20260929_041702.json",
+      "bytes": 5289,
+      "sha256": "5dc3840b47d0bf227a643dde1aed667cd09188ca506ef04aaf62508db41df125"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_4/POINT_4_20260929_041702.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_4/POINT_4_20260929_041702.raw.png",
+      "bytes": 94136,
+      "sha256": "3dca570d946c9c2105b4aab84e8caaff4ac68ce33f0752cd8c6f28b8e44b30a6"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_5/POINT_5_20260929_041711.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_5/POINT_5_20260929_041711.detections.json",
+      "bytes": 1392,
+      "sha256": "c368f1b04c97794179598fd7cd787028961db6e0916e6b4e565dfa7b855054b3"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_5/POINT_5_20260929_041711.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_5/POINT_5_20260929_041711.json",
+      "bytes": 6299,
+      "sha256": "910dc592061156be6793014722580bb4917764204e3c7cd0096fb43ad393e558"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_5/POINT_5_20260929_041711.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_5/POINT_5_20260929_041711.raw.png",
+      "bytes": 133672,
+      "sha256": "7ebea0c8e2d368b93f91a2e66a1d5e35f7ad26e1fb27bb8a4529a168e8e64f20"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_6/POINT_6_20260929_041725.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_6/POINT_6_20260929_041725.detections.json",
+      "bytes": 1251,
+      "sha256": "c733b151d93f6ea6122840380bbba502f015a69869c7af23622118061d393fae"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_6/POINT_6_20260929_041725.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_6/POINT_6_20260929_041725.json",
+      "bytes": 7348,
+      "sha256": "2cdbfa541cce50899a0c841ae4bb12b2c98dd2c5f93182da383e0ff55fb7b764"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_6/POINT_6_20260929_041725.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_6/POINT_6_20260929_041725.raw.png",
+      "bytes": 132740,
+      "sha256": "0d5d69865fc38a8445ce33bc5ef1b01ba860c65c4782fd72a352382471b7549d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_7/POINT_7_20260929_041732.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_7/POINT_7_20260929_041732.detections.json",
+      "bytes": 966,
+      "sha256": "e7739d2a3cae42baf8feb0d88a899c4848aa9cfa5bcfc7cb1c67f92e7346e430"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_7/POINT_7_20260929_041732.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_7/POINT_7_20260929_041732.json",
+      "bytes": 3040,
+      "sha256": "6581567ad146575b5f1a484926ef436ed6971f77a24c0dd46f2bcc3fa9fe09f8"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_7/POINT_7_20260929_041732.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_7/POINT_7_20260929_041732.raw.png",
+      "bytes": 72579,
+      "sha256": "d2464ef43258e2acb26ae95e7490743a7d275c0df7f6d33419fcb18752af3342"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_8/POINT_8_20260929_041757.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_8/POINT_8_20260929_041757.detections.json",
+      "bytes": 683,
+      "sha256": "25c5f453efe297588f0f935853b269fefe3a3f4eb28292e32ba08d6a190da63c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_8/POINT_8_20260929_041757.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_8/POINT_8_20260929_041757.json",
+      "bytes": 3458,
+      "sha256": "d90b6a58a164b3ea567b55e69b8f1dd7e527f9895496a38cffad13a9208fc7fb"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_8/POINT_8_20260929_041757.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_8/POINT_8_20260929_041757.raw.png",
+      "bytes": 82983,
+      "sha256": "86f0f7a2d300ef122c7cbd577b28091a06ce0f52f38f52664cde462f742ffc31"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_9/POINT_9_20260929_041807.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_9/POINT_9_20260929_041807.detections.json",
+      "bytes": 684,
+      "sha256": "5e886fc284ff6ad0d4bfe14f4065bf81333879c08943e92b21d803dce43fe944"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_9/POINT_9_20260929_041807.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_9/POINT_9_20260929_041807.json",
+      "bytes": 3455,
+      "sha256": "f99ea494d49b1222fa054283b9071d9c1bfac3e1d13dfffd4c6c4a66858611c2"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/POINT_9/POINT_9_20260929_041807.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/POINT_9/POINT_9_20260929_041807.raw.png",
+      "bytes": 115314,
+      "sha256": "cc78cff7a4c02112fd8730ac031e56f5dd2444a2e7c218b2cbfed14eeb2f5b17"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/audit_inputs/plate_scene_truth.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/audit_inputs/plate_scene_truth.json",
+      "bytes": 757,
+      "sha256": "a1b51b4fcedeef54693369afb213189fbb4312a1c0c4c49af3286d08cdbcbff3"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/independent_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/independent_audit.json",
+      "bytes": 19692,
+      "sha256": "430f9361398cf2e29921dc7219c4047531396219bb0c39ccafc49ce1a83cbf88"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/judge/dashboard_state.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/judge/dashboard_state.json",
+      "bytes": 492,
+      "sha256": "fb8b33cf6ed1ed331e9a575973828f01804e5d2d22911efe37fdb55f17ef1da5"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/judge/presentation_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/judge/presentation_audit.json",
+      "bytes": 480,
+      "sha256": "bb1201c249034939f2c2050e40383c4f4285d29274f52b33e9c493191aa9fdac"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/judge/recognition_events.jsonl",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/judge/recognition_events.jsonl",
+      "bytes": 524529,
+      "sha256": "4cd88c63a921f185ac6e7b7bfcbfdd1c2b427bb36d91964e4f419ef79480baa2"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/judge/recognition_terminal.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/judge/recognition_terminal.txt",
+      "bytes": 255677,
+      "sha256": "514358ce18763a45ed7e5d3637c4bb403e59d70c08153898c5af5ff03b2ee1df"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_10.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_10.annotated.png",
+      "bytes": 843683,
+      "sha256": "5d999b47ecd7d885000107cc85d85ec33a93aceee722bd2100fe1fdc6abb8ea9"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_10.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_10.job.json",
+      "bytes": 3028,
+      "sha256": "67be912f6c36d037d9ccbb7bbddbcdddd485670bee9aa42129c69df0ee03fc0a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_10.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_10.published.json",
+      "bytes": 4096,
+      "sha256": "b5cac1a93b7fda8f43b1d8e63daebc21d870fc5c630cf1e99f2fc81a2e3a9271"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_10.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_10.result.json",
+      "bytes": 3854,
+      "sha256": "da76207caaa38d23b65566cf21809bd065b5e513b391d845d50bc9bb1f2d4382"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_10_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_10_frame_0.crop.png",
+      "bytes": 67535,
+      "sha256": "f1fb8982355d8dc2979740a651438917db2766c4205add848b41aaac66ed693c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_10_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_10_frame_1.crop.png",
+      "bytes": 67671,
+      "sha256": "ed3c419cef08d130c0881f69685cc93eb0f660000772853665ca6d7450666843"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_10_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_10_frame_2.crop.png",
+      "bytes": 68024,
+      "sha256": "5f0ef99e3db01b134a394042da822421cc2fe53eee6a862a6a59fe25bbe63f74"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_8.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_8.annotated.png",
+      "bytes": 486874,
+      "sha256": "ebe6791c10f9bc33af290340dcb9fa480d082f0cebffe229f5573ad5b7809404"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_8.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_8.job.json",
+      "bytes": 3019,
+      "sha256": "74d0e21db0561a36aaca304700a651e874c4d1d87d820fa2b225b588a7557ae3"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_8.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_8.published.json",
+      "bytes": 4081,
+      "sha256": "df7981d3f37dfe652f3e388beadae86dbe53398a2266efcf727d6c5eaab6bb80"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_8.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_8.result.json",
+      "bytes": 3840,
+      "sha256": "7350c19f94a6b13e995e0c11173aac2b671248b2a7543bc55f087b57aa78f0b0"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_8_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_8_frame_0.crop.png",
+      "bytes": 36944,
+      "sha256": "b111a07d03321e5a81754fb2d53346756332adb1461145c32c7dfc4ac600b36a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_8_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_8_frame_1.crop.png",
+      "bytes": 36939,
+      "sha256": "c67fad37ccbbb966abb42bd365cb6dadb7b91310d4554b0dc54388063aa9ce44"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_8_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_8_frame_2.crop.png",
+      "bytes": 36956,
+      "sha256": "c2068564a1d3237a88d6c350aa54283b5aad1a147883e69b236e1e8bb6dd6c01"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_9.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_9.annotated.png",
+      "bytes": 771840,
+      "sha256": "748b6277bf364ee149d8b625eed4271719cd09def44ec0ceef3d3ad2051702d2"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_9.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_9.job.json",
+      "bytes": 3021,
+      "sha256": "3ed65ea84fbe68bdba1a40ea335a3a96f51454ae43c8c3b847873ec821e627d1"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_9.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_9.published.json",
+      "bytes": 4081,
+      "sha256": "d3121b62b432b9add924e5d21f72035fd8ac2d5f2a839a715a2d26f99ad5ee21"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_9.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_9.result.json",
+      "bytes": 3840,
+      "sha256": "32ff6be6e5fdb63547d2a29c410a7b4fe6f8d2e0cda545ca85caebfbe650fa97"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_9_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_9_frame_0.crop.png",
+      "bytes": 60088,
+      "sha256": "81f3d32be48f5c32f32d925625f0e96f63152029eaef6a029ec571cd5c44e97d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_9_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_9_frame_1.crop.png",
+      "bytes": 60001,
+      "sha256": "773d126edab0749419cb9b4758a7af8fb677aeeb23fa43553323c111674a20af"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/ocr/POINT_9_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/ocr/POINT_9_frame_2.crop.png",
+      "bytes": 60080,
+      "sha256": "17e597a0183c64418f45d8dbb77c69bef5c2d574bfe09d8f7411d7b0c357a25c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/optimization_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/optimization_timing.json",
+      "bytes": 521,
+      "sha256": "ecc3b05d9dc4b59ae084a6e105d559d77af2ed99dddfa2be477cab5c0f298747"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/person_report.audio.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/person_report.audio.json",
+      "bytes": 422,
+      "sha256": "959764c6266985ff117ad61ebd7e4f6e0cf3e2256c1cff37dc059e390a6e49e3"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/person_report.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/person_report.json",
+      "bytes": 25101,
+      "sha256": "7fc6b79f412657e33daa652139d56ef0829cf03f7a353dc59dd5184b9e759232"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/person_report.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/person_report.txt",
+      "bytes": 515,
+      "sha256": "a40cf729b70ca12a9c9cd3873d76b407ea22ab2a153dfaa1c175a5f46bc1b4a1"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/person_reporting_config.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/person_reporting_config.json",
+      "bytes": 1220,
+      "sha256": "9dc34e3f65812c5c59be76da368142ca81b2130a42c53b439753b5bddec4be93"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/persons/PERSON_003_POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/PERSON_003_POINT_2.png",
+      "bytes": 26859,
+      "sha256": "fa900b97f7bd8f7ffc798e7d025752b44014cc6bed3b0731a092d6a699c45500"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/persons/PERSON_012_POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/PERSON_012_POINT_5.png",
+      "bytes": 29888,
+      "sha256": "4401f8acac87043e23cf755bc1aec1cc9327154cb4dd8c6fb32e75b92e77da9c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/persons/POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_2.png",
+      "bytes": 125482,
+      "sha256": "a31159a9d5395078c16740f5b53994a5d5f46e3c315cf201ac823a92b9f9723d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/persons/POINT_3.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_3.png",
+      "bytes": 109606,
+      "sha256": "7ccb40a018dc345c00867d887b6f324a2768f51124cf896e698445e3359edacc"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/persons/POINT_4.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_4.png",
+      "bytes": 115582,
+      "sha256": "ff3ef846a8f1917d1003a42e6f4aecbfc990f899edc348f58bc5a95ceaa6c85c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/persons/POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_5.png",
+      "bytes": 160934,
+      "sha256": "bee830fee69914cc785ebbb93d58b234f4382769e9e4a5de5f4f08aa3e83bf61"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/persons/POINT_6.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/persons/POINT_6.png",
+      "bytes": 166622,
+      "sha256": "f023ab6a62d06d17c3d922e2bbd8c84fbb706b8931ed7e7a442599c5de45fb42"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/photo_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/photo_timing.json",
+      "bytes": 1462,
+      "sha256": "92484c591736110f66dec6ae9e8fb7c934c5df7967c8e97cb1df7b97679a6526"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/plate_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/plate_audit.json",
+      "bytes": 1856,
+      "sha256": "1a9a4701582765cd64eae727d1f00bcbeeb0510f3d49d1d17a30ef9aafe36b24"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/route_executor.log",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/route_executor.log",
+      "bytes": 7230,
+      "sha256": "098523ef6fde336f2207edb54429a91402bb242f7bee3d12fdff57242ef168e5"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_1/run_summary.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/run_summary.json",
+      "bytes": 53041,
+      "sha256": "73e52caa8c75ce1f9005416f965282f4453cb78afbe3d0fe265ad2443bb8b018"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_1/POINT_1_20260929_042232.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_1/POINT_1_20260929_042232.detections.json",
+      "bytes": 961,
+      "sha256": "f7108c94071a8c664f0b18cbfcf2925b2746797d70e68a9cdf0b6bd377e4f805"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_1/POINT_1_20260929_042232.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_1/POINT_1_20260929_042232.json",
+      "bytes": 3036,
+      "sha256": "5b6a91a9cb3eed984086bae3af0cef755ff820aca5e35d43b80b93b32735bc86"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_1/POINT_1_20260929_042232.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_1/POINT_1_20260929_042232.raw.png",
+      "bytes": 79394,
+      "sha256": "66fe13c56e71866551d7629557b5630258fff90c2682937e69aca739bea938f9"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_10/POINT_10_20260929_042432.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_10/POINT_10_20260929_042432.detections.json",
+      "bytes": 684,
+      "sha256": "ec6437e5ddf6aa0bab94cbe2586eaa593668982318c38c91bf6f5368198ec76c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_10/POINT_10_20260929_042432.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_10/POINT_10_20260929_042432.json",
+      "bytes": 3465,
+      "sha256": "e0968285ec0606f001dcedf7cb8f647006b5584cb2bc1d498f6073dd5a0c9013"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_10/POINT_10_20260929_042432.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_10/POINT_10_20260929_042432.raw.png",
+      "bytes": 116770,
+      "sha256": "6d414810de81c7258cd66f51827cc3b12cac5ec57ebb1912893efff428e99c11"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_2/POINT_2_20260929_042246.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_2/POINT_2_20260929_042246.detections.json",
+      "bytes": 1393,
+      "sha256": "1903d985876d6656de81ce2dc2930699ee6cf35ef943a6bc9f26d189da44b4bb"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_2/POINT_2_20260929_042246.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_2/POINT_2_20260929_042246.json",
+      "bytes": 5274,
+      "sha256": "ee910b4efaea4ae801d9eca0b353d183808727c2c76d04e25607f0a4f306335a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_2/POINT_2_20260929_042246.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_2/POINT_2_20260929_042246.raw.png",
+      "bytes": 105242,
+      "sha256": "f660a7dbd41fae96b3c510374e985dad87b61a285e603ea132abf2cc17f4b6ac"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_3/POINT_3_20260929_042259.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_3/POINT_3_20260929_042259.detections.json",
+      "bytes": 1111,
+      "sha256": "69e76cfc1969af1ce575328bf89e4579febed97a9078e3eb4ceddb622669bb5b"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_3/POINT_3_20260929_042259.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_3/POINT_3_20260929_042259.json",
+      "bytes": 5272,
+      "sha256": "aa572ac9069ed4ef8c8c30425d345439ba8442202ef1d0732c86c04da0aed852"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_3/POINT_3_20260929_042259.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_3/POINT_3_20260929_042259.raw.png",
+      "bytes": 91865,
+      "sha256": "c696c012965ab9acfaf213eab786165f3c84c3633785875e6882748848a2f5b4"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_4/POINT_4_20260929_042314.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_4/POINT_4_20260929_042314.detections.json",
+      "bytes": 962,
+      "sha256": "9a66a64919d1ef860e4941e4447f6d8dbd8be3a7ab4a457e5f0d0ddd31f5ce24"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_4/POINT_4_20260929_042314.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_4/POINT_4_20260929_042314.json",
+      "bytes": 5280,
+      "sha256": "17e40782a1542017c0aabe712ad1c0ddf21f89002087c6b59927a5fb5e806366"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_4/POINT_4_20260929_042314.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_4/POINT_4_20260929_042314.raw.png",
+      "bytes": 100819,
+      "sha256": "2c80415e17a3b14bf2f05971fd6d9e17393f09bd88d1c3680fb5ebeff63e5587"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_5/POINT_5_20260929_042327.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_5/POINT_5_20260929_042327.detections.json",
+      "bytes": 1248,
+      "sha256": "ab7dfab110be905658dd094e87e9430f36549cfbb6e1108922d9e99d6cbdf996"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_5/POINT_5_20260929_042327.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_5/POINT_5_20260929_042327.json",
+      "bytes": 6295,
+      "sha256": "f512ed8dc04404cecfc364d67e8bedd4656cee3505cdcb69c3809f4e64598b49"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_5/POINT_5_20260929_042327.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_5/POINT_5_20260929_042327.raw.png",
+      "bytes": 127975,
+      "sha256": "67d461c404a7d77265efbd5964b6d744f21728728907c782dcfebbae39d8f760"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_6/POINT_6_20260929_042341.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_6/POINT_6_20260929_042341.detections.json",
+      "bytes": 1250,
+      "sha256": "87f1b93d8a80316444679b3305a25930901ba602821663c71adf7e586f3a8276"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_6/POINT_6_20260929_042341.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_6/POINT_6_20260929_042341.json",
+      "bytes": 7345,
+      "sha256": "f02cd93f7ea6363e7c9222c978c816fb86ab3c47aee640d944f071cd383354c0"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_6/POINT_6_20260929_042341.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_6/POINT_6_20260929_042341.raw.png",
+      "bytes": 136001,
+      "sha256": "a759651e161f15d8e73648a6ac61f31ecb588cf78962391f765d4eaad2ad19b0"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.detections.json",
+      "bytes": 962,
+      "sha256": "35a2e5088319257312f9ca159465cd94d14164cd6a635c345c7eaf395da21be8"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.json",
+      "bytes": 3041,
+      "sha256": "86f5eab56cff4ef7f5118270b91b3f7547cde7a41f37af7ef520b3dacd09d985"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_7/POINT_7_20260929_042348.raw.png",
+      "bytes": 73086,
+      "sha256": "49dd3d7f99fd90f7715c05414c54402ecf454271ec9705e0a90161e07695efaf"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_8/POINT_8_20260929_042412.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_8/POINT_8_20260929_042412.detections.json",
+      "bytes": 684,
+      "sha256": "a8dd06fc3e094a943ec4c616010b883868abd5338e27b18dc18442371ed15c42"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_8/POINT_8_20260929_042412.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_8/POINT_8_20260929_042412.json",
+      "bytes": 3458,
+      "sha256": "fefe10203f3d87e9881423ffd19a4936a7f982f7afef269f2686497a2e44155f"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_8/POINT_8_20260929_042412.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_8/POINT_8_20260929_042412.raw.png",
+      "bytes": 97761,
+      "sha256": "43c7efe77484e72ec6a96085379c3359fd10b26f63af5b54b8a80fc7b27e0808"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_9/POINT_9_20260929_042423.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_9/POINT_9_20260929_042423.detections.json",
+      "bytes": 684,
+      "sha256": "58861635b3253f823a6d99382b13d361e65e79c6855ddefad7168723527554b9"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_9/POINT_9_20260929_042423.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_9/POINT_9_20260929_042423.json",
+      "bytes": 3451,
+      "sha256": "59454d80f9511963d8b2efbba5c94b257951a82b3de462496f4934fcd97dfcdb"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/POINT_9/POINT_9_20260929_042423.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/POINT_9/POINT_9_20260929_042423.raw.png",
+      "bytes": 109900,
+      "sha256": "ba9df12fa5c4c52d63c1ca8abc8fcfc275c99b2535a1f1cbe89909c6f140adcf"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/audit_inputs/plate_scene_truth.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/audit_inputs/plate_scene_truth.json",
+      "bytes": 757,
+      "sha256": "53f383b54072501df0c41af197ed84adeccff750d572f78909251ad684fdf34e"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/independent_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/independent_audit.json",
+      "bytes": 19729,
+      "sha256": "c4ad038dba1e66ec5db99a8279a034250664bf23ec6aefd7895454d780bc1f2e"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/judge/dashboard_state.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/judge/dashboard_state.json",
+      "bytes": 492,
+      "sha256": "632503c26b12d5a9ead3a602b54e3bf72106bb2ea9135cf8aeec7c629316b207"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/judge/presentation_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/judge/presentation_audit.json",
+      "bytes": 480,
+      "sha256": "a2b292e8e312f20a7c5cbcfeb87712d2978115b5de768a660d2f322c954ce43a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/judge/recognition_events.jsonl",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/judge/recognition_events.jsonl",
+      "bytes": 570279,
+      "sha256": "1c4e51a5284428aa6089716e4f997481bd2142df964cd19a35625690ecae5875"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/judge/recognition_terminal.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/judge/recognition_terminal.txt",
+      "bytes": 281582,
+      "sha256": "6ae1d7438ff39d889c7be05d790aeeb6b5cf7835965262c56e33441a80bebc4d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_10.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10.annotated.png",
+      "bytes": 790798,
+      "sha256": "01a325f247f67e6b7b173e711d6fcffc2a6f2ebe0e36717b68ab40f6dc28d50e"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_10.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10.job.json",
+      "bytes": 3029,
+      "sha256": "810126cdbfb827b8b7eca001b176e7b851c8e9adb146e3f0d20aee12dfe4001e"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_10.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10.published.json",
+      "bytes": 4094,
+      "sha256": "409ea7a2c4ae877da88a7cc1728e84c3fd23a040e10807a6e030ba9f5b1fe801"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_10.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10.result.json",
+      "bytes": 3853,
+      "sha256": "02fb770e3a68598b9a197ea098d74b837c067ae34cb6db19361f13e34f4028ad"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_10_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_0.crop.png",
+      "bytes": 60298,
+      "sha256": "8a104617c41023785fb259dbdf02a06ba7d515b73b0e1ef22e475910930893c5"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_10_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_1.crop.png",
+      "bytes": 60513,
+      "sha256": "594ae02ac13b274021f9210f1137f7e71e541786ad3e45c4e81bc3df2885d9ff"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_10_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_10_frame_2.crop.png",
+      "bytes": 60577,
+      "sha256": "f26357f4ad907293bdc6619f1fd740031cf37cee1b0adc4bc2803192dfd0aa43"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_8.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_8.annotated.png",
+      "bytes": 636320,
+      "sha256": "7b7c8c6d9deae5d9121eeb3fca7c511f889e17b3023d624e544b6edff24b675b"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_8.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_8.job.json",
+      "bytes": 3020,
+      "sha256": "25781493248809d7c9b535aa43e826e1fe5fa100875fb2718a2a4fbbbcc6751c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_8.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_8.published.json",
+      "bytes": 4084,
+      "sha256": "4ace9ce130738a3926a76b2332c04d5e7a4397fd60361303d7a5639d9e36646c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_8.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_8.result.json",
+      "bytes": 3844,
+      "sha256": "9482ef6bd513a6b8d185b57e3c0b10c56677bf45c156f4c91435cc53888f7eec"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_8_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_8_frame_0.crop.png",
+      "bytes": 44466,
+      "sha256": "52eeeb5e99ef2be80bc7029b2c14d6a74ee0822ab1cc73e9b97f3a68ca9bdfe0"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_8_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_8_frame_1.crop.png",
+      "bytes": 44329,
+      "sha256": "033fb8134d4255d29d3b2d6f74fe1b9be9cd800a1864227ca711c6022165ac49"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_8_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_8_frame_2.crop.png",
+      "bytes": 44468,
+      "sha256": "77cc2dc7a3399b69d6dc51011c89cd343d9fa59e1f5de90948fa980a4a1c5e29"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_9.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9.annotated.png",
+      "bytes": 745031,
+      "sha256": "68cbd8fcbfe0871a6b7e8cb6d500469fe94019b793c2c62be42acd199fe61c89"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_9.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9.job.json",
+      "bytes": 3024,
+      "sha256": "6d67379a34e4fa2d1f1c1d035333d4f0ad07141e58b15e622a3cee776c005763"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_9.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9.published.json",
+      "bytes": 4090,
+      "sha256": "a570f2c1269193e241a2d9bbb12487bb394381267681def19b565422bcee935d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_9.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9.result.json",
+      "bytes": 3850,
+      "sha256": "7b80f55440672c38a8f99ecbd2c5fa1f5409c3a2e41f145c0b604ef4c3d80ad1"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_9_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_0.crop.png",
+      "bytes": 60800,
+      "sha256": "0cd8545e1710c9cdaa6c9fd11ba2a9ca3dd2d40d333c290a8670e0a0f2bcb8da"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_9_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_1.crop.png",
+      "bytes": 60825,
+      "sha256": "8ad171256ed8f8e61e36853838d3921dbfeafc626b9d721ead9bb0604fe269dd"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/ocr/POINT_9_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/ocr/POINT_9_frame_2.crop.png",
+      "bytes": 60828,
+      "sha256": "2e6346a470725b4bb40c1d1a42b752e1cdd7e7c149f078dce309934607b898db"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/optimization_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/optimization_timing.json",
+      "bytes": 521,
+      "sha256": "f373ff2fa229744deb515c9eee417d737b24993545976d3f45ac346a3e31a909"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/person_report.audio.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/person_report.audio.json",
+      "bytes": 422,
+      "sha256": "efc49da7ff6ecc987accaf43ac94ee0333d1b9fa0cd878ec11e9c6ddd91cb869"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/person_report.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/person_report.json",
+      "bytes": 25101,
+      "sha256": "949358589f3446ffd3f0ab7f927b65e63452b8047815a7eb98a61ee27c6301bf"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/person_report.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/person_report.txt",
+      "bytes": 515,
+      "sha256": "6d2913e260c71e50e65a51f192ad1c1546bb9c121f39f60f95085d2e3a2523a0"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/person_reporting_config.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/person_reporting_config.json",
+      "bytes": 1220,
+      "sha256": "9dc34e3f65812c5c59be76da368142ca81b2130a42c53b439753b5bddec4be93"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/persons/PERSON_003_POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/persons/PERSON_003_POINT_2.png",
+      "bytes": 27193,
+      "sha256": "7350081c46ff37c615c71da8e6c9d8749d8a6b3bd8e9ca684b159db322d688e3"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/persons/PERSON_012_POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/persons/PERSON_012_POINT_5.png",
+      "bytes": 28743,
+      "sha256": "34c305da3f31c1135f8de827196c8e869e2496ae117d3926d430b6a7ee11cefd"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/persons/POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/persons/POINT_2.png",
+      "bytes": 123355,
+      "sha256": "55a8260bf9f0b2469275d61b314b8871abc252c0a25bfc9481015886824ccd75"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/persons/POINT_3.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/persons/POINT_3.png",
+      "bytes": 111668,
+      "sha256": "54a2675be78997ee238eddb98cae938d803b8e92aa9c6f7d2b8385f675d2f785"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/persons/POINT_4.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/persons/POINT_4.png",
+      "bytes": 122112,
+      "sha256": "ecab1c9a1f1e8a7247009b0b36b20927a74e2b3570de35001d7a1ca0a7ead431"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/persons/POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/persons/POINT_5.png",
+      "bytes": 155630,
+      "sha256": "56041fecaf82dec4934bffbbb7e611025ec02831947674cac2ab470c09f4a3fb"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/persons/POINT_6.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/persons/POINT_6.png",
+      "bytes": 170207,
+      "sha256": "fa35b8e37fe654356653a353bc24f4a34ec11770884adc6cbe7d19d8d08c5599"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/photo_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/photo_timing.json",
+      "bytes": 1463,
+      "sha256": "5517ec209883b6e4655acf6372ffe3b969b673ffe987351a4a7b5344a6b3d122"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/plate_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/plate_audit.json",
+      "bytes": 1855,
+      "sha256": "939d0bc2799074ead9a4c0e4bb57ad7e3b83c9c44c632466e09337c209b9be72"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/route_executor.log",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/route_executor.log",
+      "bytes": 7230,
+      "sha256": "67972d81d62fd2a9671d5cdba45cb1c1ea3ca96c1838fed29455129c34850a16"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_2/run_summary.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/run_summary.json",
+      "bytes": 53058,
+      "sha256": "7c623511b8aaaf1c217196a769a6880e78c8e00775bc12ce346f1ee04aa1d66a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_1/POINT_1_20260929_042933.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_1/POINT_1_20260929_042933.detections.json",
+      "bytes": 962,
+      "sha256": "5a24face9d0b46b2bc40160575e387f316a25e44893b52118a9a0587d4170eb2"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_1/POINT_1_20260929_042933.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_1/POINT_1_20260929_042933.json",
+      "bytes": 3042,
+      "sha256": "a1af580606bbdfb0b34669fcf36f5d6f7161f7776eae6d3b71b1ad0f3899e5e2"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_1/POINT_1_20260929_042933.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_1/POINT_1_20260929_042933.raw.png",
+      "bytes": 79104,
+      "sha256": "ecc8cab817f6431cb98d64fc60b842a1ffd929a10aac479c4a301e013f502009"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_10/POINT_10_20260929_043135.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_10/POINT_10_20260929_043135.detections.json",
+      "bytes": 684,
+      "sha256": "6c30c368aa68363dd0a3fac066bcde4f280a15ba999ec52dff20d676226d1595"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_10/POINT_10_20260929_043135.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_10/POINT_10_20260929_043135.json",
+      "bytes": 3465,
+      "sha256": "7661ebb4ff47e217246a44d2b97259dac730876580f798b1140baf0f2f828d97"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_10/POINT_10_20260929_043135.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_10/POINT_10_20260929_043135.raw.png",
+      "bytes": 118980,
+      "sha256": "1f4497dedb289781212ddd83793845f4be36b30a9d0a299c85bb7980ccba80e8"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_2/POINT_2_20260929_042946.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_2/POINT_2_20260929_042946.detections.json",
+      "bytes": 1395,
+      "sha256": "fc8dc2178bff4e3412b0117511a46ad9bdd7193d64667d7faed5411d08bd9986"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_2/POINT_2_20260929_042946.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_2/POINT_2_20260929_042946.json",
+      "bytes": 5275,
+      "sha256": "a93cda86366669f863a1f8b14b228409ea3c591e33bb132449a24d0e21c1571a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_2/POINT_2_20260929_042946.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_2/POINT_2_20260929_042946.raw.png",
+      "bytes": 117415,
+      "sha256": "6993d30d782e1a5f1ee612fa1c4a588a950ce03a218779b730e93fddf7b50ab2"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_3/POINT_3_20260929_042959.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_3/POINT_3_20260929_042959.detections.json",
+      "bytes": 1111,
+      "sha256": "bf1851c196241414f639e80c6c105769167d353d1b71df71239daaf6615aec2d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_3/POINT_3_20260929_042959.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_3/POINT_3_20260929_042959.json",
+      "bytes": 5273,
+      "sha256": "8a6d50864f6005d0e5bf12383a16a5bfb5bfe038c48b942ff20e32faf7ef3769"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_3/POINT_3_20260929_042959.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_3/POINT_3_20260929_042959.raw.png",
+      "bytes": 96581,
+      "sha256": "f4eb813541047621b5d6d6af8dfca7061accca8d45dca7e200c6ba018972e169"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_4/POINT_4_20260929_043013.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_4/POINT_4_20260929_043013.detections.json",
+      "bytes": 964,
+      "sha256": "5416ee8e8abedcbd2359ce8a5d978941f22f15b838a356d99ee95680a21c35a9"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_4/POINT_4_20260929_043013.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_4/POINT_4_20260929_043013.json",
+      "bytes": 5291,
+      "sha256": "a7a34ffae174a55117a826783c906184eb0f916f45c80875ebbaf62ff19bf74f"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_4/POINT_4_20260929_043013.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_4/POINT_4_20260929_043013.raw.png",
+      "bytes": 92706,
+      "sha256": "e5cff470fe5868fe0c0e72ba4d182fe3faf7aa2ad1b5fa39be704395401ab477"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_5/POINT_5_20260929_043022.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_5/POINT_5_20260929_043022.detections.json",
+      "bytes": 1389,
+      "sha256": "15cbccb175d3feee11f2a53b33a691a8fd6a0b662229d11276f2f959986ece13"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_5/POINT_5_20260929_043022.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_5/POINT_5_20260929_043022.json",
+      "bytes": 6293,
+      "sha256": "7a696a87443432eeeaa1d90f0f6266506e8350816af0d70064f00934173464b1"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_5/POINT_5_20260929_043022.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_5/POINT_5_20260929_043022.raw.png",
+      "bytes": 123833,
+      "sha256": "54171bce115d1c25ea78b41f1fb8e861097af1ea455e66479ae23ea6cec01c87"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_6/POINT_6_20260929_043036.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_6/POINT_6_20260929_043036.detections.json",
+      "bytes": 1250,
+      "sha256": "b540a81d9ee293c72e399e31ce00c419f8468b947fc33d0e93387dfcdb8597f8"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_6/POINT_6_20260929_043036.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_6/POINT_6_20260929_043036.json",
+      "bytes": 7345,
+      "sha256": "80c12f0514053ba6a89592e6e84f0646c693db59094e3d0f46105ca5a767a57a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_6/POINT_6_20260929_043036.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_6/POINT_6_20260929_043036.raw.png",
+      "bytes": 140661,
+      "sha256": "aac582b0e0f0b387e3acb4d23c410846e97a76f162989b0d544442562b3704fb"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_7/POINT_7_20260929_043047.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_7/POINT_7_20260929_043047.detections.json",
+      "bytes": 964,
+      "sha256": "2a1209bd9d548aff93ef9e48b0eee598dac870906e323bf125ab264e134dc7a7"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_7/POINT_7_20260929_043047.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_7/POINT_7_20260929_043047.json",
+      "bytes": 3043,
+      "sha256": "14bd555dc86c60e2fa4c22d66f72c39f5487b22a5c1d8087081fbace778a2a6e"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_7/POINT_7_20260929_043047.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_7/POINT_7_20260929_043047.raw.png",
+      "bytes": 70625,
+      "sha256": "b3477329730890318b7d1cc10db8107709dcc48d451950d9fcf459de9d0031d5"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_8/POINT_8_20260929_043113.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_8/POINT_8_20260929_043113.detections.json",
+      "bytes": 683,
+      "sha256": "3502a339fa566b0f7eff5d539b76623b026ee173ed66ab3fa167a013535bdddb"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_8/POINT_8_20260929_043113.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_8/POINT_8_20260929_043113.json",
+      "bytes": 3458,
+      "sha256": "fb9a5c6bb910eeeae781d7a9a41abbf049c9fa71084985ec203e036fa5c35746"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_8/POINT_8_20260929_043113.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_8/POINT_8_20260929_043113.raw.png",
+      "bytes": 85704,
+      "sha256": "88424512c412a55e3e8ebb4b0e2c18fa7119141682cd4d168d5100bfa56a7fc1"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_9/POINT_9_20260929_043126.detections.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_9/POINT_9_20260929_043126.detections.json",
+      "bytes": 684,
+      "sha256": "3f563202e5c7f4f344c55071df368be5b49aeb52fed423de5f45fb205c5cec34"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_9/POINT_9_20260929_043126.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_9/POINT_9_20260929_043126.json",
+      "bytes": 3451,
+      "sha256": "964ba18cc88d49efa7ee3b04ef1bb3a6f4861fa6baeb29cfe8a860cb0f61549c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/POINT_9/POINT_9_20260929_043126.raw.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/POINT_9/POINT_9_20260929_043126.raw.png",
+      "bytes": 108892,
+      "sha256": "babf833188c7ef2c5508a1073f7c0290660fe40e73e072e97092d09c0f2d65e5"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/audit_inputs/plate_scene_truth.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/audit_inputs/plate_scene_truth.json",
+      "bytes": 757,
+      "sha256": "55777e0941dafd58efcefe2f1b50516811a22219791352ea9278164a07d9157f"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/independent_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/independent_audit.json",
+      "bytes": 19710,
+      "sha256": "7243261087e92fdbb9158901e6a64744d7c5e30cc7785fc8cf7b2f9ea4c33534"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/judge/dashboard_state.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/judge/dashboard_state.json",
+      "bytes": 494,
+      "sha256": "9d9217d3b657b33e483a64a97f215e4df1cf57b3223588a13356db52d4d3eb2d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/judge/presentation_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/judge/presentation_audit.json",
+      "bytes": 480,
+      "sha256": "3ae9dd65574d2d95250c7301f61b6df7cbfdfdb7ba73e356ba05006f8ea18e5d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/judge/recognition_events.jsonl",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/judge/recognition_events.jsonl",
+      "bytes": 561035,
+      "sha256": "dbffaf78253c36c281c75090018bc0b4153ce6d8b121b703fb2a337ca195a879"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/judge/recognition_terminal.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/judge/recognition_terminal.txt",
+      "bytes": 275156,
+      "sha256": "5cca9778ed8c9b8689bdd8865304389ed5a48c44e81c02e23362cca76f4f321e"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/judge/screenshots/01_traffic.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/judge/screenshots/01_traffic.png",
+      "bytes": 531735,
+      "sha256": "5ef8418ad4636e4689eb4e702855a637f8caed4de159f860ff5f37453ef32118"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/judge/screenshots/02_people.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/judge/screenshots/02_people.png",
+      "bytes": 459432,
+      "sha256": "cfa27596df0fa4dc69d839221f9d896fa930e52df88bfee4eb373c56f93ad9f0"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/judge/screenshots/03_ocr.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/judge/screenshots/03_ocr.png",
+      "bytes": 428449,
+      "sha256": "58971017711f9c11dd220e0b64eefc809fd036c305a9c61fb253a4651c4f792d"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/judge/screenshots/04_complete.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/judge/screenshots/04_complete.png",
+      "bytes": 412969,
+      "sha256": "37e8bbc418b8fa9aed30d1c5b8b84aa69dce914b1ab0cfe0379497b4552c6f0a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_10.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_10.annotated.png",
+      "bytes": 813096,
+      "sha256": "5ef8fab7e88c1851e9e9c10d1cdb8e40b5f756e0785008363f748bc5d3b6ecd8"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_10.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_10.job.json",
+      "bytes": 3010,
+      "sha256": "234e863807710a58d36cede2433c450ca5361ef77e1fce6f3795cbb99088e0b3"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_10.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_10.published.json",
+      "bytes": 4097,
+      "sha256": "8c3dee13bded625b8b3ce98ebed892a582bedcc896ef6d5a7e992bebd3c97810"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_10.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_10.result.json",
+      "bytes": 3855,
+      "sha256": "6cc2cfdab440e5c331d3955c52f9379466268293f0f48b9f0e65cde4578a4bad"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_10_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_10_frame_0.crop.png",
+      "bytes": 54102,
+      "sha256": "5fb04c07a9c0b0330f01e03d43402925c84854f4ae2e721cb4e38e5a6aefe7a6"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_10_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_10_frame_1.crop.png",
+      "bytes": 54098,
+      "sha256": "4b34585b29b7b9882b6847223712662d7bb39fa1c550d2d712cf575d520c7bd9"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_10_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_10_frame_2.crop.png",
+      "bytes": 54089,
+      "sha256": "1c0d487306145d49f078ee8e2d629bff6f222bcd80cdb42fa09bc3a583e41492"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_8.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_8.annotated.png",
+      "bytes": 516629,
+      "sha256": "fcaaa3b5e359d0100e6a6babbdee4e3dcddc183db2d59a14456c78084e629afa"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_8.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_8.job.json",
+      "bytes": 3024,
+      "sha256": "195e4a21744d51dfe7a280cb6efaf2d3f399944cadb0f94fd1b7ed674c0ef834"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_8.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_8.published.json",
+      "bytes": 4084,
+      "sha256": "03e3fea6a55679d517d6b8f70addfa29b7971ecd9717aec36dafb52edd619458"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_8.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_8.result.json",
+      "bytes": 3843,
+      "sha256": "e6734553082fcbc2d73aff82bdc29371fee0dfb2815f95366ecd1a7a6bbce97b"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_8_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_8_frame_0.crop.png",
+      "bytes": 41376,
+      "sha256": "8bb99f405d408b511afe602fa6b2887ccd28eada94a024e6dd49a380a76950f0"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_8_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_8_frame_1.crop.png",
+      "bytes": 41185,
+      "sha256": "d598f9e21cbbd1f26aa5ddaee83a7e201662c5ba09fe4cc64b9063eb119e1843"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_8_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_8_frame_2.crop.png",
+      "bytes": 41322,
+      "sha256": "3ac060253e5e505ac5fae98263526eb74f8f6614a50516ff0b50607a694fb831"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_9.annotated.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_9.annotated.png",
+      "bytes": 723543,
+      "sha256": "ecad514a8cee08bfa01d78d6b64e8cfdfd47313e5e9bd2115d10694183deb8f5"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_9.job.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_9.job.json",
+      "bytes": 3026,
+      "sha256": "bea7f4e3afc4f4207bf178083299e4a41c2baff2220e05879ccc0f2bf29ad0c0"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_9.published.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_9.published.json",
+      "bytes": 4088,
+      "sha256": "a101f5199b74a6226f0b317a831701619cad829733a49e1f2d007b37124284a9"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_9.result.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_9.result.json",
+      "bytes": 3847,
+      "sha256": "ba259ac8cf2321d199d65a00b7e4484d2ba324a6acc7d960d6027059c6dd439b"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_9_frame_0.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_9_frame_0.crop.png",
+      "bytes": 52051,
+      "sha256": "a914e495625a71ef9b1012bfd297a08f262298c92684362eda59ae7b2808203f"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_9_frame_1.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_9_frame_1.crop.png",
+      "bytes": 52103,
+      "sha256": "1f6932ec046249403f0d91b2523d2fe03569c09df650e3a89e612217579683c7"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/ocr/POINT_9_frame_2.crop.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/ocr/POINT_9_frame_2.crop.png",
+      "bytes": 52098,
+      "sha256": "104a68e5cf8651a6a490bfc451840d0151a296e556916f36deaa409ab55339ad"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/optimization_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/optimization_timing.json",
+      "bytes": 520,
+      "sha256": "0c273dac717fb5aaedcf8a0f8c0bbfb997322091e11c8fa17205eab34d410980"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/person_report.audio.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/person_report.audio.json",
+      "bytes": 422,
+      "sha256": "ad0dcb9aceeff774d8d71fe62d751634d4374e95481676bb125af352bb662a18"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/person_report.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/person_report.json",
+      "bytes": 25098,
+      "sha256": "fc42d80df5b85fc7003a651808f0354660d71a15ef62773b8e409a1e708198da"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/person_report.txt",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/person_report.txt",
+      "bytes": 515,
+      "sha256": "65275d0f7ad12accaff3e34eb23e139afd5899bdc455f25062d625a05fb536ee"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/person_reporting_config.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/person_reporting_config.json",
+      "bytes": 1220,
+      "sha256": "9dc34e3f65812c5c59be76da368142ca81b2130a42c53b439753b5bddec4be93"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/persons/PERSON_003_POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/persons/PERSON_003_POINT_2.png",
+      "bytes": 29607,
+      "sha256": "1113cfb0e47d88d0b683967be933aac17c11d63388d0ec428f53dc8be3363e7a"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/persons/PERSON_012_POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/persons/PERSON_012_POINT_5.png",
+      "bytes": 26974,
+      "sha256": "a6d579779f17609928e68b0793221e232a7905d38a4b358bc41f591aadd4cd77"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/persons/POINT_2.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/persons/POINT_2.png",
+      "bytes": 135308,
+      "sha256": "da0c464c526ed7cb34c547e3c6f3d5e54e53cf4761a0c1720e60137e9a39a334"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/persons/POINT_3.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/persons/POINT_3.png",
+      "bytes": 116971,
+      "sha256": "fe3a8f28033bad7a49b3a4dcf144ec58be0025c544895c8d073e868d2cdb25e3"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/persons/POINT_4.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/persons/POINT_4.png",
+      "bytes": 114683,
+      "sha256": "2678b1af29cd9cd5a84a5cb39360ce6ae9a49f11800651bec36224955f638b29"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/persons/POINT_5.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/persons/POINT_5.png",
+      "bytes": 150697,
+      "sha256": "06ed0ebc5ea35bdb61ce1353ea6a3fffa0c2c1486f1186980082db69fd4af90c"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/persons/POINT_6.png",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/persons/POINT_6.png",
+      "bytes": 174750,
+      "sha256": "e884e59f81e7cf4072c36bebf7dc4209b4a3e29a7f3e329dd74131064f20e877"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/photo_timing.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/photo_timing.json",
+      "bytes": 1463,
+      "sha256": "38d9662cef3ccc83041acae3aff5de52a67c5c1627049d3eaf11d4fe6e93ed61"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/plate_audit.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/plate_audit.json",
+      "bytes": 1856,
+      "sha256": "3c69b23958ba981b7309b0dee3f4e885a93018b476376fd5b0a4ac404b22045f"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/route_executor.log",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/route_executor.log",
+      "bytes": 7230,
+      "sha256": "167edc9caf6b7be9cb99044bbcf5b1bf34e2a789985009be929cfee4e2ed0a99"
+    },
+    {
+      "path": "evidence/20260929_task009_heading_3/run_summary.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/run_summary.json",
+      "bytes": 53059,
+      "sha256": "2e38d5ff5644fc4fc7956fcbb268715e533fbaceec0b01f42351a43e251c25c7"
+    }
+  ],
+  "local_bags": [
+    {
+      "run": "20260928_judge_demo_2",
+      "path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/motion.bag",
+      "bytes": 9262262871,
+      "github_uploaded": false
+    },
+    {
+      "run": "20260928_ocr_closer_1",
+      "path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/motion.bag",
+      "bytes": 8927806487,
+      "github_uploaded": false
+    },
+    {
+      "run": "20260929_task009_settle_1",
+      "path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_settle_1/motion.bag",
+      "bytes": 9581296727,
+      "github_uploaded": false
+    },
+    {
+      "run": "20260929_task009_heading_1",
+      "path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_1/motion.bag",
+      "bytes": 8946598534,
+      "github_uploaded": false
+    },
+    {
+      "run": "20260929_task009_heading_2",
+      "path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/motion.bag",
+      "bytes": 9344088936,
+      "github_uploaded": false
+    },
+    {
+      "run": "20260929_task009_heading_3",
+      "path": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/motion.bag",
+      "bytes": 9300347227,
+      "github_uploaded": false
+    }
+  ],
+  "note": "GitHub archive contains selected raw RGB, detection/pose metadata, OCR crops/results, reports, logs and audits. Full motion bags, depth arrays and full HD burst frames remain at the original local run paths."
+}

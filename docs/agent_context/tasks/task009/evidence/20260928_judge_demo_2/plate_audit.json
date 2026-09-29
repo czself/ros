@@ -1,0 +1,70 @@
+{
+  "pass": true,
+  "checks": {
+    "all_three_exact": true,
+    "three_distinct_scene_plates": true,
+    "all_consensus_valid": true,
+    "all_camera_evidence_valid": true,
+    "all_ros_messages_synchronized": true,
+    "terminal_saved": true
+  },
+  "plates": [
+    {
+      "waypoint": "POINT_8",
+      "text": "冀K0BB17",
+      "expected": "冀K0BB17",
+      "truth_model": "car_standee_plate_3",
+      "confidence": 0.9484769105911255,
+      "exact_match": true,
+      "valid_consensus": true,
+      "source_evidence_pass": true,
+      "job_sha_pass": true,
+      "source_stamp": {
+        "secs": 632,
+        "nsecs": 520000000,
+        "seconds": 632.52
+      },
+      "elapsed_ms": 322.986,
+      "topic_sync_pass": true
+    },
+    {
+      "waypoint": "POINT_9",
+      "text": "豫W5U8Y1",
+      "expected": "豫W5U8Y1",
+      "truth_model": "car_standee_plate_2",
+      "confidence": 0.9419026970863342,
+      "exact_match": true,
+      "valid_consensus": true,
+      "source_evidence_pass": true,
+      "job_sha_pass": true,
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 498000000,
+        "seconds": 643.498
+      },
+      "elapsed_ms": 310.796,
+      "topic_sync_pass": true
+    },
+    {
+      "waypoint": "POINT_10",
+      "text": "浙TF9E07",
+      "expected": "浙TF9E07",
+      "truth_model": "car_standee_plate_1",
+      "confidence": 0.9798133373260498,
+      "exact_match": true,
+      "valid_consensus": true,
+      "source_evidence_pass": true,
+      "job_sha_pass": true,
+      "source_stamp": {
+        "secs": 653,
+        "nsecs": 721000000,
+        "seconds": 653.721
+      },
+      "elapsed_ms": 342.537,
+      "topic_sync_pass": true
+    }
+  ],
+  "plate_exact_accuracy": 1.0,
+  "maximum_batch_elapsed_ms": 342.537,
+  "truth_scope": "Scene filenames are read only here for evaluation, never by the OCR worker."
+}
