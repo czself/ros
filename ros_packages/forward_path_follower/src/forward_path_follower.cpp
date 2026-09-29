@@ -35,7 +35,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
         lookahead_(0.32), xy_tolerance_(0.03), yaw_tolerance_(0.02),
         target_xy_tolerance_(0.03), target_yaw_tolerance_(0.02),
         prediction_time_(0.75), prediction_step_(0.05),
-        linear_accel_(0.75), angular_accel_(1.8), last_v_(0.0),
+        linear_accel_(0.75), angular_accel_(1.8), final_heading_gain_(1.8), last_v_(0.0),
         last_w_(0.0), have_last_command_(false), path_alignment_active_(false),
         final_heading_active_(false),
         goal_settle_tracking_(false), goal_settle_x_(0.0), goal_settle_y_(0.0),
@@ -69,6 +69,11 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
     private_nh.param("prediction_step", prediction_step_, 0.05);
     private_nh.param("linear_accel", linear_accel_, 0.75);
     private_nh.param("angular_accel", angular_accel_, 1.8);
+    private_nh.param("final_heading_gain", final_heading_gain_, 1.8);
+    if (!std::isfinite(final_heading_gain_) || final_heading_gain_ <= 0.0) {
+      ROS_ERROR("ForwardPathFollower: final_heading_gain must be positive and finite");
+      return;
+    }
     private_nh.param("start_backtrack_tolerance", start_backtrack_tolerance_, 0.10);
     XmlRpc::XmlRpcValue raw_points;
     if (!private_nh.getParam("route_contract/points", raw_points) ||
@@ -282,7 +287,8 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
         publishPlan(path);
         return true;
       }
-      const double w = std::max(-max_yaw_rate_, std::min(max_yaw_rate_, 1.8 * yaw_error));
+      const double w = std::max(-max_yaw_rate_,
+          std::min(max_yaw_rate_, final_heading_gain_ * yaw_error));
       smoothCommand(0.0, w, command);
       publishStatus("FINAL_HEADING");
       publishPlan(path);
@@ -778,7 +784,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
   double xy_tolerance_, yaw_tolerance_;
   double target_xy_tolerance_, target_yaw_tolerance_;
   double prediction_time_, prediction_step_;
-  double linear_accel_, angular_accel_;
+  double linear_accel_, angular_accel_, final_heading_gain_;
   double last_v_, last_w_;
   bool have_last_command_;
   bool path_alignment_active_;
