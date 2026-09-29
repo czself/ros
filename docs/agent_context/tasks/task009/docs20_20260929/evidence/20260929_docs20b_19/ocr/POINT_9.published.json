@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_9",
+  "text": "辽ZR6314",
+  "valid": true,
+  "confidence": 0.9566649198532104,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "辽Z·R63I4",
+      "text": "辽ZR6314",
+      "display": "辽Z·R6314",
+      "confidence": 0.9598714113235474,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 89.172,
+      "recognition_band": [
+        0,
+        33,
+        426,
+        116
+      ],
+      "input_shape": [
+        83,
+        426,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "d00c395778318496771be9038d99b9ad2b5362c43e29bc51d14dc34d540921ab",
+      "source_stamp": {
+        "secs": 625,
+        "nsecs": 145000000,
+        "seconds": 625.145
+      },
+      "box": [
+        1125,
+        711,
+        1551,
+        876
+      ],
+      "image_sha256": "f1ecee91f7c828a6829ca1fb16d41fb5d7a998e7075f4029cf29ca316475e1ca"
+    },
+    {
+      "raw": "辽Z·R63I4",
+      "text": "辽ZR6314",
+      "display": "辽Z·R6314",
+      "confidence": 0.9605711698532104,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 100.141,
+      "recognition_band": [
+        0,
+        33,
+        426,
+        116
+      ],
+      "input_shape": [
+        83,
+        426,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "b01407a12f174efa525a0bc67ef5e85365f2411dd8af0d1a54d9090cf189b5c7",
+      "source_stamp": {
+        "secs": 624,
+        "nsecs": 943000000,
+        "seconds": 624.943
+      },
+      "box": [
+        1125,
+        711,
+        1551,
+        876
+      ],
+      "image_sha256": "04b237248f75cf3d617ec1b64a1bc1e106501dea34295d95d29a2ad41d1efb1e"
+    },
+    {
+      "raw": "辽Z·R63I4",
+      "text": "辽ZR6314",
+      "display": "辽Z·R6314",
+      "confidence": 0.9566649198532104,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 93.976,
+      "recognition_band": [
+        0,
+        33,
+        426,
+        116
+      ],
+      "input_shape": [
+        83,
+        426,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_9_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_9_frame_2.crop.input.png",
+      "recognition_image_sha256": "d6a0429d3c61ebf4f6d7d15ac70eee842a9c81e984e29a0916be61ac9924279a",
+      "source_stamp": {
+        "secs": 625,
+        "nsecs": 357000000,
+        "seconds": 625.357
+      },
+      "box": [
+        1125,
+        711,
+        1551,
+        876
+      ],
+      "image_sha256": "1e35ea754ec76b45a3c73bdfee11accc1c41e5ae20706fbe60f3ca006dd9b518"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "f0f492097c71fcad869091990d743939292aa9872d642cd650ba2780d5692cf8",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 289.203,
+  "low_resolution_comparison": {
+    "raw": "辽Z·R63I4",
+    "text": "辽ZR6314",
+    "display": "辽Z·R6314",
+    "confidence": 0.9180341958999634,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 89.066,
+    "recognition_band": [
+      0,
+      10,
+      142,
+      39
+    ],
+    "input_shape": [
+      29,
+      142,
+      3
+    ],
+    "box": [
+      375,
+      237,
+      517,
+      292
+    ]
+  },
+  "source_stamp": {
+    "secs": 625,
+    "nsecs": 145000000,
+    "seconds": 625.145
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_9.annotated.png",
+  "published_stamp": 626.259
+}

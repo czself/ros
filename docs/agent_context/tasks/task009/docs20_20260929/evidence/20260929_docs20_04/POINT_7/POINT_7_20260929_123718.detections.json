@@ -1,0 +1,58 @@
+{
+  "source_stamp": {
+    "secs": 600,
+    "nsecs": 406000000,
+    "seconds": 600.406
+  },
+  "frame_seq": 1313,
+  "width": 640,
+  "height": 480,
+  "checkpoint_sha256": "fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad",
+  "classes": [
+    "green_off",
+    "green_on",
+    "license_plate",
+    "red_off",
+    "red_on",
+    "resident",
+    "stranger",
+    "yellow_off",
+    "yellow_on"
+  ],
+  "traffic_state": "GREEN",
+  "traffic_confidence": 0.94899,
+  "frame_age_ms": 153.0,
+  "latency_ms": 125.768,
+  "detections": [
+    {
+      "class": "green_on",
+      "confidence": 0.94899,
+      "box": [
+        408,
+        12,
+        506,
+        113
+      ]
+    },
+    {
+      "class": "yellow_off",
+      "confidence": 0.94351,
+      "box": [
+        274,
+        18,
+        371,
+        114
+      ]
+    },
+    {
+      "class": "red_off",
+      "confidence": 0.93391,
+      "box": [
+        144,
+        19,
+        243,
+        116
+      ]
+    }
+  ]
+}

@@ -80,6 +80,9 @@ def build(root, output):
             'person_full_audit_pass': audit['person_report_pass'],
             'person_count_matches_truth': person_checks.get('counts_match_truth', False),
             'person_all_classes_correct': person_checks.get('all_classes_correct', False),
+            'person_max_position_error_cm': (
+                100*audit['person_audit']['maximum_position_error_m']
+                if audit['person_audit'].get('maximum_position_error_m') is not None else None),
             'person_min_confidence': min(p['confidence'] for p in people),
             'foreign_A_confidence': outsiders['A'], 'foreign_B_confidence': outsiders['B'],
             'ocr_exact_count': sum(p['exact_match'] for p in plates),
@@ -94,7 +97,12 @@ def build(root, output):
             'home_physical_yaw_return_rad': gt['yaw_return_error_rad'],
             'home_physical_3cm_004rad_pass': gt['chassis_within_3cm_004rad'],
             'matched_commands': bag['command_decision_pairing']['matched_commands'],
+            'actual_command_records': bag['command_decision_pairing']['command_records'],
+            'unmatched_moving_commands': len(bag['command_decision_pairing']['unmatched_moving_commands']),
             'command_pairing_pass': bag['command_decision_pairing']['pass'],
+            'yolo_mean_processed_hz': bag['yolo_live_metrics']['mean_processed_hz'],
+            'yolo_window_latency_p95_ms': bag['yolo_live_metrics']['p95_of_window_p95_latency_ms'],
+            'yolo_max_frame_age_ms': bag['yolo_live_metrics']['max_of_window_max_frame_age_ms'],
             'judge_presentation_pass': judge['pass'] if judge else None,
             'bag_size_bytes': (run/'motion.bag').stat().st_size,
             'failed_audit_flags': ';'.join(k for k in ('goal_pass','photo_pass','parking_pass',
@@ -119,7 +127,7 @@ def build(root, output):
         'person_reported_inventory_match_runs': sum(r['person_reported_inventory_match'] for r in rows),
         'person_full_audit_pass_runs': sum(r['person_full_audit_pass'] for r in rows),
         'person_all_classes_correct_runs': sum(r['person_all_classes_correct'] for r in rows),
-        'ocr_exact_characters': sum(r['ocr_exact_count'] for r in rows),
+        'ocr_exact_plates': sum(r['ocr_exact_count'] for r in rows),
         'ocr_consensus_successes': sum(r['ocr_consensus_count'] for r in rows),
         'ocr_total': 3*len(rows),
         'physical_home_passes': sum(r['home_physical_3cm_004rad_pass'] for r in rows),
@@ -134,6 +142,8 @@ def build(root, output):
         'all_point7_postfinal_reentries': sum(r['point7_postfinal_path_reentries'] for r in rows),
         'all_point7_map_final_sign_crossings': sum(r['point7_map_final_sign_crossings'] for r in rows),
         'matched_commands': sum(r['matched_commands'] for r in rows),
+        'actual_command_records': sum(r['actual_command_records'] for r in rows),
+        'unmatched_moving_commands': sum(r['unmatched_moving_commands'] for r in rows),
         'judge_tested_runs': sum(r['judge_presentation_pass'] is not None for r in rows),
         'judge_passed_runs': sum(r['judge_presentation_pass'] is True for r in rows)}
     choices = {}
@@ -149,6 +159,9 @@ def build(root, output):
         choices['representative_with_display'] = min(display, key=lambda r:abs(r['mission_sim_s']-median))['run']
         choices['strong_visual_scores'] = max(passed, key=lambda r:min(
             r['foreign_A_confidence'],r['foreign_B_confidence'],r['ocr_min_reported_confidence']))['run']
+    reentries=[r for r in rows if r['point7_postfinal_path_reentries']]
+    if reentries:
+        choices['point7_reentry_counterexample']=max(reentries,key=lambda r:r['point7_goal_s'])['run']
     payload = {'source_commit': SOURCE_COMMIT, 'runtime_commit':'d9a61b4',
                'aggregates': aggregates, 'selected_examples': choices,
                'selection_note':'Examples are labeled; all twenty runs and all failures retained.',
@@ -244,7 +257,7 @@ def markdown(output, payload):
         f"| 报告人数18/16/2、A/B各9与场景库存一致 | {a['person_reported_inventory_match_runs']}/20 |",
         f"| 人物完整独立验收（含播报） | {a['person_full_audit_pass_runs']}/20 |",
         f"| 已完成独立审计中人数核对 / 类别全部正确 | {a['person_count_matches_truth_runs']} / {a['person_all_classes_correct_runs']} 轮 |",
-        f"| 车牌整牌字符正确 | {a['ocr_exact_characters']}/{a['ocr_total']} |",
+        f"| 车牌整牌字符正确 | {a['ocr_exact_plates']}/{a['ocr_total']} |",
         f"| OCR多帧一致且达到原阈值 | {a['ocr_consensus_successes']}/{a['ocr_total']} |",
         f"| 不同场景车牌号码 | {a['distinct_scene_plate_numbers']} 个 |",
         f"| 全部20次任务均值 / 中位数 | {t['mean']:.3f} / {t['median']:.3f} 秒 |",
@@ -253,7 +266,7 @@ def markdown(output, payload):
         f"| 第7点对齐后回到路径模式总次数 | {a['all_point7_postfinal_reentries']} |",
         f"| 第7点最终对齐map估计航向误差变号（>0.01rad）总次数 | {a['all_point7_map_final_sign_crossings']} |",
         f"| 比赛展示图文对应审计 | {a['judge_passed_runs']}/{a['judge_tested_runs']}；其余未采集 |",
-        f"| 同周期命令配对 | {a['matched_commands']} 条 |",'',
+        f"| 同周期命令配对 | {a['matched_commands']}/{a['actual_command_records']} 条，移动命令漏配{a['unmatched_moving_commands']}条 |",'',
         '人物置信度取模型原始输出，全体最低为 '+f"{a['person_min_confidence']:.5f}"+
         '。人数/类别正确不等于模型概率已校准或训练问题已经解决。'+
         'OCR失败轮次未进入完成播报流程，原人物审计因缺音频证据不能完成；'+
@@ -284,9 +297,17 @@ def markdown(output, payload):
         '它不能排除此前路径对齐先越过拍照朝向、随后摆正的动作。新增map航向误差变号检查只覆盖最终对齐/稳定阶段，'+
         '不能用来宣称第7点全程没有用户观察到的大转向。','', '## 失败与展示样例','']
     for r in rows:
+        if r['point7_postfinal_path_reentries']:
+            lines.append(f"`{r['run']}` 的第7点出现{r['point7_postfinal_path_reentries']}次对齐后回转补位，耗时{r['point7_goal_s']:.2f}秒。"+
+                '该轮仍达到原到点验收，但不满足动作完全无冗余的描述；作为反例保留。')
+    for r in rows:
         if not r['independent_acceptance']:
             lines.append(f"- `{r['run']}`：原审计失败项 `{r['failed_audit_flags']}`。"+
                          '参阅原审计和对应源图，未回写结果。')
+            if not r['command_pairing_pass']:
+                lines.append(f"  移动命令漏配{r['unmatched_moving_commands']}条；原同周期配对上限0.025秒，未放宽。")
+            if r['person_max_position_error_cm'] is not None and r['person_max_position_error_cm']>8:
+                lines.append(f"  人物最大位置误差{r['person_max_position_error_cm']:.3f}厘米，原要求8厘米；人数和类别正确仍不能替代位置验收。")
             for point,frames in payload['details'][r['run']]['failed_ocr_frames'].items():
                 source = next(p for p in payload['details'][r['run']]['ocr'] if p['waypoint']==point)
                 lines.append(f"  `{point}` 真值 `{source['expected']}`；"+
@@ -295,6 +316,20 @@ def markdown(output, payload):
                     '。保留0.85和至少2帧一致的原规则，未用真值补写识别结果。')
     for label,name in payload['selected_examples'].items():
         lines.append(f'- `{label}`：`{name}`，只作为明确标注的展示样例。')
+    selected=payload['selected_examples']
+    if selected:
+        visual=selected['strong_visual_scores']
+        example=selected['representative_with_display']
+        lines += ['', '## 可用于PPT的原始展示图片','',
+            f'人员示例来自 `{visual}`，框与置信度为原始检测结果：','',
+            f'![人物统计示例](evidence/{visual}/persons/POINT_2.png)','',
+            f'车牌示例来自同一轮的POINT_10：','',
+            f'![车牌OCR示例](evidence/{visual}/ocr/POINT_10.annotated.png)','']
+        folder=output/'evidence'/example/'POINT_7'
+        annotation=next((p for p in sorted(folder.glob('*.png')) if not p.name.endswith('.raw.png')),None)
+        if annotation:
+            lines += [f'红绿灯示例来自 `{example}`，对应原图和终端审计均保留：','',
+                      f'![红绿灯标注示例]({annotation.relative_to(output).as_posix()})','']
     lines += ['', 'PPT可展示示例照片、终端与OCR裁剪，并同时报告20次总体通过率、时长范围及物理回位差异。'+
         '不使用最佳样例的耗时或置信度冒充均值，不写20/20完美任务。','',
         '## 数据与复现','',

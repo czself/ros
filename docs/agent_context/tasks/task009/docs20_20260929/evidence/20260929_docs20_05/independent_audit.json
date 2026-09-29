@@ -1,0 +1,522 @@
+{
+  "run_dir": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_05",
+  "route_status": "FAILED",
+  "strict_acceptance": true,
+  "yolo_checkpoint_hash_pass": true,
+  "goal_pass": true,
+  "goal_pose_checks": [
+    {
+      "goal": "POINT_1",
+      "xy_error_m": 0.01831252521575736,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.025025389067178327,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_2",
+      "xy_error_m": 0.02270008851389458,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.029322823446955137,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_3",
+      "xy_error_m": 0.0414127341163145,
+      "xy_limit_m": 0.05,
+      "yaw_error_rad": 0.03530977136318736,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_4",
+      "xy_error_m": 0.02366542131046039,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.03113046510101974,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_5",
+      "xy_error_m": 0.010543044512833437,
+      "xy_limit_m": 0.025,
+      "yaw_error_rad": 0.021658807997828797,
+      "yaw_limit_rad": 0.025,
+      "pass": true
+    },
+    {
+      "goal": "POINT_6",
+      "xy_error_m": 0.01742339633486714,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.030306235748409852,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_7",
+      "xy_error_m": 0.03926961836008375,
+      "xy_limit_m": 0.05,
+      "yaw_error_rad": 0.0331523777143743,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_8",
+      "xy_error_m": 0.018964903704828475,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.030597830319277545,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_9",
+      "xy_error_m": 0.010718417664270587,
+      "xy_limit_m": 0.03,
+      "yaw_error_rad": 0.029722117488616195,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    },
+    {
+      "goal": "POINT_10",
+      "xy_error_m": 0.03599937631146928,
+      "xy_limit_m": 0.05,
+      "yaw_error_rad": 0.03444749429124804,
+      "yaw_limit_rad": 0.04,
+      "pass": true
+    }
+  ],
+  "photo_pass": true,
+  "parking_pass": false,
+  "speed_pass": true,
+  "translation_speed_threshold_mps": 0.15,
+  "maximum_mission_duration_s": 180.0,
+  "bag_safety_pass": true,
+  "person_report_pass": false,
+  "person_audit": {
+    "pass": false,
+    "error": "[Errno 2] No such file or directory: '/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_05/person_report.audio.json'",
+    "reason": "PERSON_EVIDENCE_INCOMPLETE_OR_INVALID"
+  },
+  "plate_ocr_pass": false,
+  "plate_audit": {
+    "pass": false,
+    "checks": {
+      "all_three_exact": false,
+      "three_distinct_scene_plates": true,
+      "all_consensus_valid": false,
+      "all_camera_evidence_valid": true,
+      "all_ros_messages_synchronized": false,
+      "terminal_saved": true
+    },
+    "plates": [
+      {
+        "waypoint": "POINT_8",
+        "text": "学ABCDEG",
+        "expected": "学ABCDEG",
+        "truth_model": "car_standee_plate_3",
+        "confidence": 0.9679970145225525,
+        "exact_match": true,
+        "valid_consensus": true,
+        "source_evidence_pass": true,
+        "job_sha_pass": true,
+        "source_stamp": {
+          "secs": 632,
+          "nsecs": 572000000,
+          "seconds": 632.572
+        },
+        "elapsed_ms": 282.054,
+        "topic_sync_pass": true
+      },
+      {
+        "waypoint": "POINT_9",
+        "text": "",
+        "expected": "晋QQ11T7",
+        "truth_model": "car_standee_plate_2",
+        "confidence": 0.0,
+        "exact_match": false,
+        "valid_consensus": false,
+        "source_evidence_pass": true,
+        "job_sha_pass": true,
+        "source_stamp": {
+          "secs": 643,
+          "nsecs": 171000000,
+          "seconds": 643.171
+        },
+        "elapsed_ms": 179.649,
+        "topic_sync_pass": false
+      },
+      {
+        "waypoint": "POINT_10",
+        "text": "桂VK2T43",
+        "expected": "桂VK2T43",
+        "truth_model": "car_standee_plate_1",
+        "confidence": 0.9974741339683533,
+        "exact_match": true,
+        "valid_consensus": true,
+        "source_evidence_pass": true,
+        "job_sha_pass": true,
+        "source_stamp": {
+          "secs": 652,
+          "nsecs": 60000000,
+          "seconds": 652.06
+        },
+        "elapsed_ms": 287.563,
+        "topic_sync_pass": true
+      }
+    ],
+    "plate_exact_accuracy": 0.6666666666666666,
+    "maximum_batch_elapsed_ms": 287.563,
+    "truth_scope": "Scene filenames are read only here for evaluation, never by the OCR worker."
+  },
+  "photos": {
+    "pass": true,
+    "points": [
+      {
+        "waypoint": "POINT_1",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 0,
+          "red_on": 1,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 1,
+          "green_on": 0,
+          "green_off": 1
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 140.0,
+        "latency_ms": 123.131,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_2",
+        "pass": true,
+        "detector_counts": {
+          "resident": 2,
+          "stranger": 1,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 1,
+          "yellow_on": 0,
+          "yellow_off": 1,
+          "green_on": 1,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 211.0,
+        "latency_ms": 149.121,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_3",
+        "pass": true,
+        "detector_counts": {
+          "resident": 3,
+          "stranger": 0,
+          "license_plate": 1,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 166.0,
+        "latency_ms": 136.643,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_4",
+        "pass": true,
+        "detector_counts": {
+          "resident": 3,
+          "stranger": 0,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 150.0,
+        "latency_ms": 125.154,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_5",
+        "pass": true,
+        "detector_counts": {
+          "resident": 3,
+          "stranger": 1,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 1
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 4,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 153.0,
+        "latency_ms": 128.545,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_6",
+        "pass": true,
+        "detector_counts": {
+          "resident": 5,
+          "stranger": 0,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 5,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 145.0,
+        "latency_ms": 125.589,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_7",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 0,
+          "red_on": 0,
+          "red_off": 1,
+          "yellow_on": 0,
+          "yellow_off": 1,
+          "green_on": 1,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 3,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 163.0,
+        "latency_ms": 132.581,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_8",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 1,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 1,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 171.0,
+        "latency_ms": 141.943,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_9",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 1,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 1,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 157.0,
+        "latency_ms": 138.649,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      },
+      {
+        "waypoint": "POINT_10",
+        "pass": true,
+        "detector_counts": {
+          "resident": 0,
+          "stranger": 0,
+          "license_plate": 1,
+          "red_on": 0,
+          "red_off": 0,
+          "yellow_on": 0,
+          "yellow_off": 0,
+          "green_on": 0,
+          "green_off": 0
+        },
+        "edge_clipped_person_boxes_excluded": 0,
+        "independent_required_box_count": 1,
+        "independent_edge_person_boxes_excluded": 0,
+        "summary_edge_person_boxes_excluded": 0,
+        "frame_age_ms": 167.0,
+        "latency_ms": 137.119,
+        "depth": "PASS",
+        "same_stamp_record_pass": true,
+        "frame_shape_640x480": true
+      }
+    ]
+  },
+  "bag_audit": {
+    "bag_path": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_05/motion.bag",
+    "mission_duration_s": 148.26100000000008,
+    "sampled_pose_count": 10895,
+    "max_raw_pose_gap_s": 0.02800000000002001,
+    "max_translation_gap_m": 0.009800246823001922,
+    "max_yaw_gap_deg": 0.9975308199717473,
+    "ordinary_paint_contact_samples": 0,
+    "out_of_bounds_pose_samples": 0,
+    "first_ordinary_contact": null,
+    "conditional_marking_contact_samples": {
+      "start_line": 269,
+      "NORTHBOUND": 59,
+      "NORTHBOUND_zebra": 79,
+      "WESTBOUND": 59,
+      "WESTBOUND_zebra": 83
+    },
+    "unauthorized_conditional_contacts": [],
+    "gate_status_counts": {
+      "CLEAR": 2531,
+      "NORTHBOUND:APPROACH": 36,
+      "NORTHBOUND:WAIT_RED": 2,
+      "NORTHBOUND:WAIT_GREEN": 8,
+      "NORTHBOUND:GO_GREEN": 9,
+      "NORTHBOUND:CLEARING": 6,
+      "NORTHBOUND:CLEARED": 1,
+      "WESTBOUND:APPROACH": 31,
+      "WESTBOUND:WAIT_GREEN_ENDING": 39,
+      "WESTBOUND:WAIT_YELLOW": 59,
+      "WESTBOUND:WAIT_RED": 203,
+      "WESTBOUND:WAIT_GREEN": 8,
+      "WESTBOUND:GO_GREEN": 9,
+      "WESTBOUND:CLEARING": 7,
+      "WESTBOUND:CLEARED": 1
+    },
+    "white_line_gate_status_count": 0,
+    "green_authorization_transitions": [
+      {
+        "stamp": 537.838,
+        "gate_status": "NORTHBOUND:GO_GREEN",
+        "sim_state": "GREEN",
+        "green_remaining_s": 14.296,
+        "last_three_yolo_green_fresh_at_receive": [
+          true,
+          true,
+          true
+        ],
+        "latest_yolo_source_fresh_at_authorization": true,
+        "source_stamps_consecutive": true,
+        "pass": true
+      },
+      {
+        "stamp": 620.519,
+        "gate_status": "WESTBOUND:GO_GREEN",
+        "sim_state": "GREEN",
+        "green_remaining_s": 14.297,
+        "last_three_yolo_green_fresh_at_receive": [
+          true,
+          true,
+          true
+        ],
+        "latest_yolo_source_fresh_at_authorization": true,
+        "source_stamps_consecutive": true,
+        "pass": true
+      }
+    ],
+    "all_green_authorizations_valid": true,
+    "active_route_progress_m": 12.845500000000001,
+    "active_route_seconds_excluding_signal_waits": 112.56700000000023,
+    "active_route_speed_mps": 0.1141142608402105,
+    "yolo_live_metrics": {
+      "metric_windows": 144,
+      "active_metric_windows": 128,
+      "inactive_metric_windows_excluded": 16,
+      "mean_processed_hz": 5.1484375,
+      "fraction_windows_at_least_5_hz": 1.0,
+      "p95_of_window_p95_latency_ms": 193.73761999999988,
+      "max_of_window_max_frame_age_ms": 321.0,
+      "maximum_detection_source_gap_s": 0.33299999999997,
+      "checkpoint_and_class_map_valid": true,
+      "pass": true
+    },
+    "forward_command_seconds_excluding_signal_waits": 68.70500000000004,
+    "translation_route_speed_mps": 0.1869660141183319,
+    "rotation_command_seconds_excluding_signal_waits": 37.97700000000009,
+    "maximum_forward_command_mps": 0.34999999999325043,
+    "maximum_signal_approach_command_mps": 0.12,
+    "command_decision_pairing_required": true,
+    "command_decision_pairing": {
+      "present": true,
+      "decision_records": 2949,
+      "command_records": 2949,
+      "matched_commands": 2949,
+      "matched_moving_commands": 2119,
+      "unmatched_moving_commands": [],
+      "schema_errors": [],
+      "invalid_commands": [],
+      "unmatched_moving_decisions": [],
+      "maximum_allowed_pair_skew_s": 0.025,
+      "maximum_observed_pair_skew_s": 0.014999999999986358,
+      "pass": true,
+      "scope": "Each moving Twist must match one unused decision by time and values, and its public gate status must be present in the same time window. Speed limits and independent green/paint checks are applied separately."
+    }
+  },
+  "acceptance_pass": false
+}

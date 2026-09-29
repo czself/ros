@@ -1,0 +1,3 @@
+街区内共有18人，其中社区人员16人，外来人员2人。A街区9人，社区人员8人，外来人员1人。B街区9人，社区人员8人，外来人员1人。外来人员图片已保存。
+A街区发现外来人员PERSON_003，置信度0.772，图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/persons/POINT_2.png
+B街区发现外来人员PERSON_012，置信度0.815，图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/persons/POINT_5.png

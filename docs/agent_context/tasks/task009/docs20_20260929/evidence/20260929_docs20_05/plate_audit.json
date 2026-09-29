@@ -1,0 +1,70 @@
+{
+  "pass": false,
+  "checks": {
+    "all_three_exact": false,
+    "three_distinct_scene_plates": true,
+    "all_consensus_valid": false,
+    "all_camera_evidence_valid": true,
+    "all_ros_messages_synchronized": false,
+    "terminal_saved": true
+  },
+  "plates": [
+    {
+      "waypoint": "POINT_8",
+      "text": "学ABCDEG",
+      "expected": "学ABCDEG",
+      "truth_model": "car_standee_plate_3",
+      "confidence": 0.9679970145225525,
+      "exact_match": true,
+      "valid_consensus": true,
+      "source_evidence_pass": true,
+      "job_sha_pass": true,
+      "source_stamp": {
+        "secs": 632,
+        "nsecs": 572000000,
+        "seconds": 632.572
+      },
+      "elapsed_ms": 282.054,
+      "topic_sync_pass": true
+    },
+    {
+      "waypoint": "POINT_9",
+      "text": "",
+      "expected": "晋QQ11T7",
+      "truth_model": "car_standee_plate_2",
+      "confidence": 0.0,
+      "exact_match": false,
+      "valid_consensus": false,
+      "source_evidence_pass": true,
+      "job_sha_pass": true,
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 171000000,
+        "seconds": 643.171
+      },
+      "elapsed_ms": 179.649,
+      "topic_sync_pass": false
+    },
+    {
+      "waypoint": "POINT_10",
+      "text": "桂VK2T43",
+      "expected": "桂VK2T43",
+      "truth_model": "car_standee_plate_1",
+      "confidence": 0.9974741339683533,
+      "exact_match": true,
+      "valid_consensus": true,
+      "source_evidence_pass": true,
+      "job_sha_pass": true,
+      "source_stamp": {
+        "secs": 652,
+        "nsecs": 60000000,
+        "seconds": 652.06
+      },
+      "elapsed_ms": 287.563,
+      "topic_sync_pass": true
+    }
+  ],
+  "plate_exact_accuracy": 0.6666666666666666,
+  "maximum_batch_elapsed_ms": 287.563,
+  "truth_scope": "Scene filenames are read only here for evaluation, never by the OCR worker."
+}

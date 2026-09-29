@@ -1,0 +1,118 @@
+{
+  "waypoint": "POINT_8",
+  "text": "川NH0U34",
+  "valid": true,
+  "confidence": 0.9759101867675781,
+  "matching_frames": 2,
+  "frames": [
+    {
+      "raw": "川N·H0U34",
+      "text": "川NH0U34",
+      "display": "川N·H0U34",
+      "confidence": 0.9759101867675781,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 95.486,
+      "recognition_band": [
+        0,
+        31,
+        327,
+        97
+      ],
+      "input_shape": [
+        66,
+        327,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "dcfbaa58677bcc96a7bf5ff724beb22105f817a7e9e340707f5150a2a4edc6fa",
+      "source_stamp": {
+        "secs": 614,
+        "nsecs": 41000000,
+        "seconds": 614.041
+      },
+      "box": [
+        735,
+        708,
+        1062,
+        846
+      ],
+      "image_sha256": "650352cbceba5c4521b34b05d2b2f5622093d10e209be24554931fd548129c4e"
+    },
+    {
+      "raw": "川N·H0U34",
+      "text": "川NH0U34",
+      "display": "川N·H0U34",
+      "confidence": 0.9759566187858582,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 92.656,
+      "recognition_band": [
+        0,
+        31,
+        327,
+        97
+      ],
+      "input_shape": [
+        66,
+        327,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "f7abb35aed7cf5fd22ce3215513f192f0c6d3abab0086bfeb70b413cf265267b",
+      "source_stamp": {
+        "secs": 613,
+        "nsecs": 837000000,
+        "seconds": 613.837
+      },
+      "box": [
+        735,
+        708,
+        1062,
+        846
+      ],
+      "image_sha256": "bac36b9ba44c81d563be7c640e71bb7bcfc3eac34a988abbd313b7b4a3d468df"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "1792c91f7e5edad9beae60e3d37258ffa8adc752461cd0ab798e00dc1265b8f3",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 191.933,
+  "low_resolution_comparison": {
+    "raw": "MIN-HOU34",
+    "text": "",
+    "display": "",
+    "confidence": 0.7927303910255432,
+    "valid": false,
+    "issue": "首字 'M' 不是有效的省份简称",
+    "elapsed_ms": 91.214,
+    "recognition_band": [
+      0,
+      0,
+      109,
+      46
+    ],
+    "input_shape": [
+      46,
+      109,
+      3
+    ],
+    "box": [
+      245,
+      236,
+      354,
+      282
+    ]
+  },
+  "source_stamp": {
+    "secs": 614,
+    "nsecs": 41000000,
+    "seconds": 614.041
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_8.annotated.png",
+  "published_stamp": 614.918
+}

@@ -1,0 +1,146 @@
+{
+  "waypoint": "POINT_8",
+  "text": "学ABCDEG",
+  "valid": true,
+  "confidence": 0.965572714805603,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "学A·BCDEG",
+      "text": "学ABCDEG",
+      "display": "学A·BCDEG",
+      "confidence": 0.965572714805603,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 100.616,
+      "recognition_band": [
+        0,
+        30,
+        321,
+        94
+      ],
+      "input_shape": [
+        64,
+        321,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "8bc766a2f8f9c8f7b55b0a2aafea849868ec0116fa22a446fe196059bdb2ea26",
+      "source_stamp": {
+        "secs": 615,
+        "nsecs": 411000000,
+        "seconds": 615.411
+      },
+      "box": [
+        741,
+        708,
+        1062,
+        846
+      ],
+      "image_sha256": "1987607b4aa701a3153cc52451755c48b17ba40b7471bf85755eeef66492551b"
+    },
+    {
+      "raw": "学A·BCDEG",
+      "text": "学ABCDEG",
+      "display": "学A·BCDEG",
+      "confidence": 0.9660987854003906,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 86.816,
+      "recognition_band": [
+        0,
+        30,
+        321,
+        94
+      ],
+      "input_shape": [
+        64,
+        321,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "c2dcbf43f93ff7b87d81bc9b5e34f3e25d36c3920bd6ce2e1240f1c40e588098",
+      "source_stamp": {
+        "secs": 615,
+        "nsecs": 243000000,
+        "seconds": 615.243
+      },
+      "box": [
+        741,
+        708,
+        1062,
+        846
+      ],
+      "image_sha256": "dbd68e9142ada495cb4b67669f523c51fe2fe12ee0a54030ca6cfb3ac3a1ef15"
+    },
+    {
+      "raw": "学A·BCDEG",
+      "text": "学ABCDEG",
+      "display": "学A·BCDEG",
+      "confidence": 0.965868353843689,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 104.606,
+      "recognition_band": [
+        0,
+        30,
+        321,
+        94
+      ],
+      "input_shape": [
+        64,
+        321,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_8_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_19/ocr/POINT_8_frame_2.crop.input.png",
+      "recognition_image_sha256": "f569e05355e77d9f293e75a3500cefafbb0516d6deb6bfb36a19a2a50ea1f8b2",
+      "source_stamp": {
+        "secs": 615,
+        "nsecs": 35000000,
+        "seconds": 615.035
+      },
+      "box": [
+        741,
+        708,
+        1062,
+        846
+      ],
+      "image_sha256": "ea54406bd1e79b44ef76f0c26dba805a4edf5fd1a09baafc3e803382c63bbe07"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "c5cdee56f5f82ae5db58b624f2d32d6ed46c98b622575ced9f969af70add7107",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 297.661,
+  "low_resolution_comparison": {
+    "raw": "学A·BCDEG",
+    "text": "学ABCDEG",
+    "display": "学A·BCDEG",
+    "confidence": 0.9658464193344116,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 88.923,
+    "recognition_band": [
+      0,
+      7,
+      107,
+      38
+    ],
+    "input_shape": [
+      31,
+      107,
+      3
+    ],
+    "box": [
+      247,
+      236,
+      354,
+      282
+    ]
+  }
+}

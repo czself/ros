@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_9",
+  "text": "学C88K55",
+  "valid": true,
+  "confidence": 0.9493810534477234,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "学C·88K55",
+      "text": "学C88K55",
+      "display": "学C·88K55",
+      "confidence": 0.9493810534477234,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 98.528,
+      "recognition_band": [
+        0,
+        35,
+        396,
+        117
+      ],
+      "input_shape": [
+        82,
+        396,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_06/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_06/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "4e18aa78676256ab1edef605e365ddac00ba6fe7ff481d60257824855a41a5c2",
+      "source_stamp": {
+        "secs": 642,
+        "nsecs": 106000000,
+        "seconds": 642.106
+      },
+      "box": [
+        1152,
+        708,
+        1548,
+        873
+      ],
+      "image_sha256": "29771ce3d8e5a0398faf48bb59eaa9d70e1ad844d8943bc4e22e310bbcf3a865"
+    },
+    {
+      "raw": "学C·88K55",
+      "text": "学C88K55",
+      "display": "学C·88K55",
+      "confidence": 0.9522271156311035,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 85.167,
+      "recognition_band": [
+        0,
+        35,
+        396,
+        117
+      ],
+      "input_shape": [
+        82,
+        396,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_06/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_06/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "fe9a8b83b01eb6d8f1a8d267924f5618870096ddd87225b79c2873038186401e",
+      "source_stamp": {
+        "secs": 641,
+        "nsecs": 709000000,
+        "seconds": 641.709
+      },
+      "box": [
+        1152,
+        708,
+        1548,
+        873
+      ],
+      "image_sha256": "69a9cdd250184f23e65d89978a0d0926615c0a675a6f9901608e4dcc345222fc"
+    },
+    {
+      "raw": "学C·88K55",
+      "text": "学C88K55",
+      "display": "学C·88K55",
+      "confidence": 0.9497740864753723,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 88.653,
+      "recognition_band": [
+        0,
+        35,
+        396,
+        117
+      ],
+      "input_shape": [
+        82,
+        396,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_06/ocr/POINT_9_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_06/ocr/POINT_9_frame_2.crop.input.png",
+      "recognition_image_sha256": "fa7eb93119101aef62c297d5bb0818c86189de01a1317e05d44db4b02a9b5187",
+      "source_stamp": {
+        "secs": 641,
+        "nsecs": 904000000,
+        "seconds": 641.904
+      },
+      "box": [
+        1152,
+        708,
+        1548,
+        873
+      ],
+      "image_sha256": "3fa59bbf806998943d2e3970e1fd521dd3d2df7ea6cda694995155d66f4f016e"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "b479989bb6755f44525a401a514246d7023fbad0afb4064f53b4270b818671ce",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 279.233,
+  "low_resolution_comparison": {
+    "raw": "学C·88K55",
+    "text": "学C88K55",
+    "display": "学C·88K55",
+    "confidence": 0.9688335657119751,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 88.283,
+    "recognition_band": [
+      0,
+      11,
+      132,
+      39
+    ],
+    "input_shape": [
+      28,
+      132,
+      3
+    ],
+    "box": [
+      384,
+      236,
+      516,
+      291
+    ]
+  },
+  "source_stamp": {
+    "secs": 642,
+    "nsecs": 106000000,
+    "seconds": 642.106
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_06/ocr/POINT_9.annotated.png",
+  "published_stamp": 642.949
+}
