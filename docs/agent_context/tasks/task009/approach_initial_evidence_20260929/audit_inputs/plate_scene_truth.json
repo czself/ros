@@ -1,0 +1,21 @@
+{
+  "scope": "Evaluation only; never read by OCR worker",
+  "material_sha256": "906daa6e3f7035a50b61ae7a1598cd9558548a4e62a1d55c8bdd3d38766c1a29",
+  "plates": {
+    "car_standee_plate_1": {
+      "expected": "豫W5U8Y1",
+      "texture": "random_plate_1.jpg",
+      "texture_sha256": "47d763bb0dca6ded548e8215254e54c73df125d7a514d6f30e09a41bfad5b375"
+    },
+    "car_standee_plate_2": {
+      "expected": "川NH0U34",
+      "texture": "random_plate_2.jpg",
+      "texture_sha256": "39987a8541e4411604c7f36802865edf09dd9f81118339f64ec549b404d51125"
+    },
+    "car_standee_plate_3": {
+      "expected": "桂VK2T43",
+      "texture": "random_plate_3.jpg",
+      "texture_sha256": "fe56ff717d94fa5f50f6f53fe13cb17dfebabb3847453a43e4e24f7b75ee8749"
+    }
+  }
+}

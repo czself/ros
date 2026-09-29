@@ -1,0 +1,87 @@
+{
+  "bad_indices": [
+    545
+  ],
+  "windows": [
+    [
+      [
+        542.841,
+        "/my_car/cmd_vel",
+        {
+          "v": 0.12,
+          "w": -0.00958135094857466
+        }
+      ],
+      [
+        542.841,
+        "/traffic_light/gate_status",
+        "NORTHBOUND:APPROACH"
+      ],
+      [
+        542.864,
+        "/route/progress",
+        {
+          "stamp": 542.864,
+          "goal": "POINT_2",
+          "route_progress_m": 0.211,
+          "cross_track_m": 0.0009,
+          "goal_remaining_m": 1.5072,
+          "forward_speed_mps": 0.12,
+          "gate_status": "NORTHBOUND:APPROACH"
+        }
+      ],
+      [
+        542.913,
+        "/route/progress",
+        {
+          "stamp": 542.911,
+          "goal": "POINT_2",
+          "route_progress_m": 0.2158,
+          "cross_track_m": 0.0009,
+          "goal_remaining_m": 1.5024,
+          "forward_speed_mps": 0.12,
+          "gate_status": "NORTHBOUND:APPROACH"
+        }
+      ],
+      [
+        542.92,
+        "/my_car/cmd_vel",
+        {
+          "v": 0.3499966425787392,
+          "w": -0.00958135094857466
+        }
+      ],
+      [
+        542.921,
+        "/traffic_light/gate_status",
+        "NORTHBOUND:GO_GREEN"
+      ],
+      [
+        542.964,
+        "/my_car/cmd_vel",
+        {
+          "v": 0.34999773640325926,
+          "w": -0.007867288136879562
+        }
+      ],
+      [
+        542.965,
+        "/traffic_light/gate_status",
+        "NORTHBOUND:GO_GREEN"
+      ],
+      [
+        542.969,
+        "/route/progress",
+        {
+          "stamp": 542.968,
+          "goal": "POINT_2",
+          "route_progress_m": 0.2234,
+          "cross_track_m": 0.0009,
+          "goal_remaining_m": 1.4949,
+          "forward_speed_mps": 0.1187,
+          "gate_status": "NORTHBOUND:GO_GREEN"
+        }
+      ]
+    ]
+  ]
+}
