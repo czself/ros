@@ -1,0 +1,146 @@
+{
+  "waypoint": "POINT_9",
+  "text": "学C88K55",
+  "valid": true,
+  "confidence": 0.9391364455223083,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "学C·88K55",
+      "text": "学C88K55",
+      "display": "学C·88K55",
+      "confidence": 0.9393501281738281,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 116.843,
+      "recognition_band": [
+        0,
+        34,
+        426,
+        119
+      ],
+      "input_shape": [
+        85,
+        426,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_preferred_1/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_preferred_1/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "0dd3a3634821481b8749ec9b8bb1699549922b73bb20aee97671110071e37098",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 346000000,
+        "seconds": 643.346
+      },
+      "box": [
+        1035,
+        711,
+        1461,
+        882
+      ],
+      "image_sha256": "752db6a4c652c56395fde58a488bf609aa47b55ed75218e931cb287ffe74c241"
+    },
+    {
+      "raw": "学C·88K55",
+      "text": "学C88K55",
+      "display": "学C·88K55",
+      "confidence": 0.9391364455223083,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 88.388,
+      "recognition_band": [
+        0,
+        34,
+        426,
+        119
+      ],
+      "input_shape": [
+        85,
+        426,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_preferred_1/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_preferred_1/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "005a2a9e37dade08baf1417231ccbb8f2804444de0004a16f40dddb2bc23b769",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 540000000,
+        "seconds": 643.54
+      },
+      "box": [
+        1035,
+        711,
+        1461,
+        882
+      ],
+      "image_sha256": "24a45370015f6679f42dcc68801e3eb63e980564ab3b1b322fb465a5293d6789"
+    },
+    {
+      "raw": "学C·88K55",
+      "text": "学C88K55",
+      "display": "学C·88K55",
+      "confidence": 0.9395918846130371,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 124.238,
+      "recognition_band": [
+        0,
+        34,
+        426,
+        119
+      ],
+      "input_shape": [
+        85,
+        426,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_preferred_1/ocr/POINT_9_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_preferred_1/ocr/POINT_9_frame_2.crop.input.png",
+      "recognition_image_sha256": "922a77cbd21df03cdaaafe049bd49434d480ed4bf405ccef4bf90e503aa85bff",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 142000000,
+        "seconds": 643.142
+      },
+      "box": [
+        1035,
+        711,
+        1461,
+        882
+      ],
+      "image_sha256": "01fc6c449a648516e10908fd91927769d0bba7636fbf37345423a32f2d34f604"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "61a717760e15f007b01c61d46be59dff7de7fe4906377d315613c86bb2037c31",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 336.826,
+  "low_resolution_comparison": {
+    "raw": "学C·88K55",
+    "text": "学C88K55",
+    "display": "学C·88K55",
+    "confidence": 0.9807847142219543,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 112.048,
+    "recognition_band": [
+      0,
+      11,
+      142,
+      40
+    ],
+    "input_shape": [
+      29,
+      142,
+      3
+    ],
+    "box": [
+      345,
+      237,
+      487,
+      294
+    ]
+  }
+}
