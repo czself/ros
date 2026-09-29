@@ -2,6 +2,13 @@
 
 当前主线使用 ROS 1 Noetic / Gazebo Classic、GMapping、AMCL、Navfn、自定义 ForwardPathFollower、YOLO 九类检测、高清 PaddleOCR 和十点任务执行器。
 
+## 交接与版本入口
+
+- [当前交接：测试结果、未完成问题、复现与回退](docs/agent_context/tasks/task009/HANDOFF_20260929.md)
+- [GitHub分支与归档标签清单](docs/agent_context/tasks/task009/GITHUB_BRANCHES_20260929.md)
+
+当前开发分支为 `codex/navigation-photo-run-progress`。最新三轮验证版本标签 `verified/navigation-fast-20260929`；旧基线标签 `verified/navigation-baseline-20260929`。GitHub默认分支 `main` 保留原状，查看最新工程与交接时请切换当前开发分支。
+
 ## 当前运行入口
 
 ```bash
