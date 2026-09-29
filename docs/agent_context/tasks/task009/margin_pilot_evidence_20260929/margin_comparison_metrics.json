@@ -1,0 +1,72 @@
+{
+  "run": "20260929_task009_margin_1",
+  "signal_wait_estimate_s": 6.415000000000077,
+  "state_seconds": {
+    "UNKNOWN": 4.272000000000162,
+    "TRACKING": 76.59399999999994,
+    "GOAL_SETTLE": 4.517000000000053,
+    "GOAL_REACHED": 14.023000000000025,
+    "ALIGNMENT_BRAKING": 0.8780000000000427,
+    "ALIGNING_TO_PATH": 16.948999999999728,
+    "FINAL_HEADING": 20.27699999999993,
+    "SIGNAL_WAIT": 6.415000000000077
+  },
+  "by_goal": {
+    "POINT_1": {
+      "final_segments": 0,
+      "path_alignment_segments": 0,
+      "reentries_after_final": 0
+    },
+    "POINT_2": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_3": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_4": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_5": {
+      "final_segments": 1,
+      "path_alignment_segments": 3,
+      "reentries_after_final": 0
+    },
+    "POINT_6": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_7": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_8": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_9": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_10": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "HOME": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    }
+  },
+  "definition": "State integration on controller/gate events capped at 0.1 s; goals matched by target coordinates and executor progress. Reentry means FINAL_HEADING directly transitions to a moving/braking path mode."
+}

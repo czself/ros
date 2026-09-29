@@ -1,0 +1,146 @@
+{
+  "waypoint": "POINT_10",
+  "text": "赣N5B5T3",
+  "valid": true,
+  "confidence": 0.9689059257507324,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "赣N·5B5T3",
+      "text": "赣N5B5T3",
+      "display": "赣N·5B5T3",
+      "confidence": 0.9718632698059082,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 98.249,
+      "recognition_band": [
+        0,
+        33,
+        414,
+        117
+      ],
+      "input_shape": [
+        84,
+        414,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_margin_1/ocr/POINT_10_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_margin_1/ocr/POINT_10_frame_0.crop.input.png",
+      "recognition_image_sha256": "845979d39bce0ff3d5459b043abe4bfc0014953c91e08971240f0100b7fb9f5d",
+      "source_stamp": {
+        "secs": 653,
+        "nsecs": 535000000,
+        "seconds": 653.535
+      },
+      "box": [
+        855,
+        711,
+        1269,
+        879
+      ],
+      "image_sha256": "6491bba574b9f4c82ebb84ac3aa1270d4f4c16b1d9865472fa2b5287baee578c"
+    },
+    {
+      "raw": "赣N·5B5T3",
+      "text": "赣N5B5T3",
+      "display": "赣N·5B5T3",
+      "confidence": 0.9700253009796143,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 88.534,
+      "recognition_band": [
+        0,
+        33,
+        414,
+        117
+      ],
+      "input_shape": [
+        84,
+        414,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_margin_1/ocr/POINT_10_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_margin_1/ocr/POINT_10_frame_1.crop.input.png",
+      "recognition_image_sha256": "97b9cb860efaec541f910e679ab65d8b668da20af9050308562134fdad57b638",
+      "source_stamp": {
+        "secs": 653,
+        "nsecs": 730000000,
+        "seconds": 653.73
+      },
+      "box": [
+        855,
+        711,
+        1269,
+        879
+      ],
+      "image_sha256": "cf8db14b086d0c51209a009bbaa992c0adcafc4a65b060f3f5d4d34b0a4ca73b"
+    },
+    {
+      "raw": "赣N·5B5T3",
+      "text": "赣N5B5T3",
+      "display": "赣N·5B5T3",
+      "confidence": 0.9689059257507324,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 139.734,
+      "recognition_band": [
+        0,
+        33,
+        414,
+        117
+      ],
+      "input_shape": [
+        84,
+        414,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_margin_1/ocr/POINT_10_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_margin_1/ocr/POINT_10_frame_2.crop.input.png",
+      "recognition_image_sha256": "f54c6356db9b1d89d74f072418c0b93220bf5655d0591b9ace34854921821033",
+      "source_stamp": {
+        "secs": 653,
+        "nsecs": 928000000,
+        "seconds": 653.928
+      },
+      "box": [
+        855,
+        711,
+        1269,
+        879
+      ],
+      "image_sha256": "f0296467e4245ed71a7538371c062f49aa147008648260be1e5bc8aabd70f9c6"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "9abf7faf4acd0444263d37ac0450aa49d88c816b7c50fbbd1d8adcbbc712d6ae",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 332.222,
+  "low_resolution_comparison": {
+    "raw": "赣N·5B5T3",
+    "text": "赣N5B5T3",
+    "display": "赣N·5B5T3",
+    "confidence": 0.9848392605781555,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 99.958,
+    "recognition_band": [
+      0,
+      11,
+      138,
+      39
+    ],
+    "input_shape": [
+      28,
+      138,
+      3
+    ],
+    "box": [
+      285,
+      237,
+      423,
+      293
+    ]
+  }
+}
