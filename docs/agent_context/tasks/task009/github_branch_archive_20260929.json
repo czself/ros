@@ -1,0 +1,209 @@
+{
+  "repository": "git@github.com:czself/ros.git",
+  "date": "2026-09-29",
+  "before_heads": {
+    "backup/judge-before-frame-selection-fix-20260928": "a1379ac561859616b712455b494834df1c187118",
+    "backup/navigation-person-baseline-20260929": "9c0f878d65dd484c53a056c7f622076e528d1f6c",
+    "backup/ocr-before-closer-plates-20260928": "99d42fd716021a1c73cf3b7928ad76c969fab9ae",
+    "backup/ocr-hd-camera-20260928": "0634c714fc308cae6d4c192f7357b55ad2631a98",
+    "backup/person-refinement-20260928": "283754c540c4e7612de7f7bdd609fdfe04f4a027",
+    "backup/recognition-presentation-20260928": "996e82fc1280feaf15dfba2c1c5f8b4f3eb03856",
+    "backup/submission-organize-20260928": "93f3a8a56fef6afb145bacdff3f2a901fad9ceb6",
+    "backup/task009-before-approach-gain-20260929": "2cb25d36511c0b4e1c72f2eb494d51bdeb64ae3d",
+    "backup/task009-before-approach-record-20260929": "5b5ec5746db36877c2dcb120ffc9bcd7f4c2486c",
+    "backup/task009-before-command-decision-20260929": "fe33927484072ccdd07a7d9f4436a4e252c65f8b",
+    "backup/task009-before-diagnosis-20260929": "db6a9b2cd914b5efe56111f98176a56d76378981",
+    "backup/task009-before-diagnosis-record-20260929": "e714a22e9d3f37d67a5c9c2ea9c005c2d876018b",
+    "backup/task009-before-evidence-20260929": "3a9a23760a26b0f4cd3890f0599325734e12bb78",
+    "backup/task009-before-final-record-20260929": "1896418185abc13cae098e8c2ae07dc577fd82e2",
+    "backup/task009-before-heading-20260929": "49d2eb2abd8c53a17fa17baa16536a8f911c4a2c",
+    "backup/task009-before-margin-record-20260929": "0c03309f13096c84a772139c4e849ea02b336a4a",
+    "backup/task009-before-person-burst-analysis-20260929": "10b7ef5b87af6a015f97bec19142e9ca1afdceb2",
+    "backup/task009-before-phase-metrics-20260929": "678c722d33fe0ac60148a10da186bb1386b7a3c4",
+    "backup/task009-before-position-margin-20260929": "4a072e10fddb49440ff4665d71241c2a7bf0c08b",
+    "backup/task009-before-preferred-pilot-record-20260929": "f229b020a3fdd78c1a17c343d2f59523953004b9",
+    "backup/task009-before-preferred-record-20260929": "3af14f6a333de8583710038a4915760bf7314d03",
+    "backup/task009-before-preferred-w-20260929": "292fce01e61cc710c59f52e0d32952084b7221a0",
+    "backup/task009-before-results-20260929": "1ef2fcf6e6d3c96ab363f836706a8e7f54934364",
+    "backup/task009-before-review-20260929": "0efad7ba6d0fcdfcf56fec42e1aceb01d052078e",
+    "backup/task009-before-settle-20260929": "8d14112e242b454ed585be5a336c8c0c13bccef5",
+    "backup/task009-before-telemetry-integrity-20260929": "7318d2d5048b2fdcd3b9676935696064a2db215e",
+    "backup/task009-before-trace-error-isolation-20260929": "439ae249a76922deea75d9af27d90bed99151f0a",
+    "backup/task009-before-trace-freeze-20260929": "d9a61b48774e17dcf00d9c1676ff3e8306bb4d24",
+    "backup/task009-before-trace-implementation-20260929": "d0074f9ea8bf84fe964ad0178c380d073e887e29",
+    "backup/task009-before-trace-results-20260929": "80fa4089d4258d4aafcf44a0be8aabb15ea70a2c",
+    "backup/task009-before-trace-validation-record-20260929": "ee1672b95a9cd113f1370faa1e55adde1129fd65",
+    "backup/task009-before-verified-fast-results-20260929": "80fa4089d4258d4aafcf44a0be8aabb15ea70a2c",
+    "backup/task009-margin-pilot-20260929": "265b2dca8c21db512605b8bf4e2db4e08949a7aa",
+    "chore/repo-maintenance-20260926": "9cf4591c04df4a94ef2ffe966993176982e292b7",
+    "codex/navigation-before-rebuild": "52dc59030bdb5840548e8f677d00d79e6eb327e0",
+    "codex/navigation-photo-run-progress": "10b7ef5b87af6a015f97bec19142e9ca1afdceb2",
+    "main": "de2df5232be4d43535be4678bee8d7432b937f42"
+  },
+  "retained_branches": [
+    "backup/navigation-person-baseline-20260929",
+    "backup/task009-before-position-margin-20260929",
+    "chore/repo-maintenance-20260926",
+    "codex/navigation-before-rebuild",
+    "codex/navigation-photo-run-progress",
+    "main"
+  ],
+  "archived_branches": [
+    {
+      "branch": "backup/judge-before-frame-selection-fix-20260928",
+      "commit": "a1379ac561859616b712455b494834df1c187118",
+      "tag": "archive/branches/backup/judge-before-frame-selection-fix-20260928"
+    },
+    {
+      "branch": "backup/ocr-before-closer-plates-20260928",
+      "commit": "99d42fd716021a1c73cf3b7928ad76c969fab9ae",
+      "tag": "archive/branches/backup/ocr-before-closer-plates-20260928"
+    },
+    {
+      "branch": "backup/ocr-hd-camera-20260928",
+      "commit": "0634c714fc308cae6d4c192f7357b55ad2631a98",
+      "tag": "archive/branches/backup/ocr-hd-camera-20260928"
+    },
+    {
+      "branch": "backup/person-refinement-20260928",
+      "commit": "283754c540c4e7612de7f7bdd609fdfe04f4a027",
+      "tag": "archive/branches/backup/person-refinement-20260928"
+    },
+    {
+      "branch": "backup/recognition-presentation-20260928",
+      "commit": "996e82fc1280feaf15dfba2c1c5f8b4f3eb03856",
+      "tag": "archive/branches/backup/recognition-presentation-20260928"
+    },
+    {
+      "branch": "backup/submission-organize-20260928",
+      "commit": "93f3a8a56fef6afb145bacdff3f2a901fad9ceb6",
+      "tag": "archive/branches/backup/submission-organize-20260928"
+    },
+    {
+      "branch": "backup/task009-before-approach-gain-20260929",
+      "commit": "2cb25d36511c0b4e1c72f2eb494d51bdeb64ae3d",
+      "tag": "archive/branches/backup/task009-before-approach-gain-20260929"
+    },
+    {
+      "branch": "backup/task009-before-approach-record-20260929",
+      "commit": "5b5ec5746db36877c2dcb120ffc9bcd7f4c2486c",
+      "tag": "archive/branches/backup/task009-before-approach-record-20260929"
+    },
+    {
+      "branch": "backup/task009-before-command-decision-20260929",
+      "commit": "fe33927484072ccdd07a7d9f4436a4e252c65f8b",
+      "tag": "archive/branches/backup/task009-before-command-decision-20260929"
+    },
+    {
+      "branch": "backup/task009-before-diagnosis-20260929",
+      "commit": "db6a9b2cd914b5efe56111f98176a56d76378981",
+      "tag": "archive/branches/backup/task009-before-diagnosis-20260929"
+    },
+    {
+      "branch": "backup/task009-before-diagnosis-record-20260929",
+      "commit": "e714a22e9d3f37d67a5c9c2ea9c005c2d876018b",
+      "tag": "archive/branches/backup/task009-before-diagnosis-record-20260929"
+    },
+    {
+      "branch": "backup/task009-before-evidence-20260929",
+      "commit": "3a9a23760a26b0f4cd3890f0599325734e12bb78",
+      "tag": "archive/branches/backup/task009-before-evidence-20260929"
+    },
+    {
+      "branch": "backup/task009-before-final-record-20260929",
+      "commit": "1896418185abc13cae098e8c2ae07dc577fd82e2",
+      "tag": "archive/branches/backup/task009-before-final-record-20260929"
+    },
+    {
+      "branch": "backup/task009-before-heading-20260929",
+      "commit": "49d2eb2abd8c53a17fa17baa16536a8f911c4a2c",
+      "tag": "archive/branches/backup/task009-before-heading-20260929"
+    },
+    {
+      "branch": "backup/task009-before-margin-record-20260929",
+      "commit": "0c03309f13096c84a772139c4e849ea02b336a4a",
+      "tag": "archive/branches/backup/task009-before-margin-record-20260929"
+    },
+    {
+      "branch": "backup/task009-before-person-burst-analysis-20260929",
+      "commit": "10b7ef5b87af6a015f97bec19142e9ca1afdceb2",
+      "tag": "archive/branches/backup/task009-before-person-burst-analysis-20260929"
+    },
+    {
+      "branch": "backup/task009-before-phase-metrics-20260929",
+      "commit": "678c722d33fe0ac60148a10da186bb1386b7a3c4",
+      "tag": "archive/branches/backup/task009-before-phase-metrics-20260929"
+    },
+    {
+      "branch": "backup/task009-before-preferred-pilot-record-20260929",
+      "commit": "f229b020a3fdd78c1a17c343d2f59523953004b9",
+      "tag": "archive/branches/backup/task009-before-preferred-pilot-record-20260929"
+    },
+    {
+      "branch": "backup/task009-before-preferred-record-20260929",
+      "commit": "3af14f6a333de8583710038a4915760bf7314d03",
+      "tag": "archive/branches/backup/task009-before-preferred-record-20260929"
+    },
+    {
+      "branch": "backup/task009-before-preferred-w-20260929",
+      "commit": "292fce01e61cc710c59f52e0d32952084b7221a0",
+      "tag": "archive/branches/backup/task009-before-preferred-w-20260929"
+    },
+    {
+      "branch": "backup/task009-before-results-20260929",
+      "commit": "1ef2fcf6e6d3c96ab363f836706a8e7f54934364",
+      "tag": "archive/branches/backup/task009-before-results-20260929"
+    },
+    {
+      "branch": "backup/task009-before-review-20260929",
+      "commit": "0efad7ba6d0fcdfcf56fec42e1aceb01d052078e",
+      "tag": "archive/branches/backup/task009-before-review-20260929"
+    },
+    {
+      "branch": "backup/task009-before-settle-20260929",
+      "commit": "8d14112e242b454ed585be5a336c8c0c13bccef5",
+      "tag": "archive/branches/backup/task009-before-settle-20260929"
+    },
+    {
+      "branch": "backup/task009-before-telemetry-integrity-20260929",
+      "commit": "7318d2d5048b2fdcd3b9676935696064a2db215e",
+      "tag": "archive/branches/backup/task009-before-telemetry-integrity-20260929"
+    },
+    {
+      "branch": "backup/task009-before-trace-error-isolation-20260929",
+      "commit": "439ae249a76922deea75d9af27d90bed99151f0a",
+      "tag": "archive/branches/backup/task009-before-trace-error-isolation-20260929"
+    },
+    {
+      "branch": "backup/task009-before-trace-freeze-20260929",
+      "commit": "d9a61b48774e17dcf00d9c1676ff3e8306bb4d24",
+      "tag": "archive/branches/backup/task009-before-trace-freeze-20260929"
+    },
+    {
+      "branch": "backup/task009-before-trace-implementation-20260929",
+      "commit": "d0074f9ea8bf84fe964ad0178c380d073e887e29",
+      "tag": "archive/branches/backup/task009-before-trace-implementation-20260929"
+    },
+    {
+      "branch": "backup/task009-before-trace-results-20260929",
+      "commit": "80fa4089d4258d4aafcf44a0be8aabb15ea70a2c",
+      "tag": "archive/branches/backup/task009-before-trace-results-20260929"
+    },
+    {
+      "branch": "backup/task009-before-trace-validation-record-20260929",
+      "commit": "ee1672b95a9cd113f1370faa1e55adde1129fd65",
+      "tag": "archive/branches/backup/task009-before-trace-validation-record-20260929"
+    },
+    {
+      "branch": "backup/task009-before-verified-fast-results-20260929",
+      "commit": "80fa4089d4258d4aafcf44a0be8aabb15ea70a2c",
+      "tag": "archive/branches/backup/task009-before-verified-fast-results-20260929"
+    },
+    {
+      "branch": "backup/task009-margin-pilot-20260929",
+      "commit": "265b2dca8c21db512605b8bf4e2db4e08949a7aa",
+      "tag": "archive/branches/backup/task009-margin-pilot-20260929"
+    }
+  ],
+  "status": "planned; archive tags must be verified before deleting remote branches"
+}
