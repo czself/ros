@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build an inclusive report from all twenty closed, independently audited runs."""
 import argparse
+from collections import Counter
 import csv
 import hashlib
 import json
@@ -104,7 +105,10 @@ def build(root, output):
             {k: p.get(k) for k in ('waypoint','text','expected','confidence',
                                   'exact_match','valid_consensus')} for p in plates],
             'point7': supplement['point7'], 'physical_home': gt,
-            'person_audit_checks': person_checks}
+            'person_audit_checks': person_checks,
+            'failed_ocr_frames': {p['waypoint']: [
+                {k:f.get(k) for k in ('raw','text','confidence','valid','issue')}
+                for f in p['frames']] for p in summary['ocr_results'] if not p['valid']}}
     output.mkdir(parents=True, exist_ok=True)
     passed = [r for r in rows if r['independent_acceptance']]
     aggregates = {
@@ -133,6 +137,11 @@ def build(root, output):
         'judge_tested_runs': sum(r['judge_presentation_pass'] is not None for r in rows),
         'judge_passed_runs': sum(r['judge_presentation_pass'] is True for r in rows)}
     choices = {}
+    plate_frequency = Counter(p['expected'] for entry in detail.values() for p in entry['ocr'])
+    aggregates['distinct_scene_plate_numbers'] = len(plate_frequency)
+    aggregates['scene_plate_number_frequency'] = dict(plate_frequency)
+    aggregates['display_enabled_time_sim_s'] = stats([r['mission_sim_s'] for r in rows[:9]])
+    aggregates['display_disabled_time_sim_s'] = stats([r['mission_sim_s'] for r in rows[9:]])
     if passed:
         choices['fastest_accepted'] = min(passed, key=lambda r:r['mission_sim_s'])['run']
         display = [r for r in passed if r['judge_presentation_pass'] is True] or passed
@@ -237,6 +246,7 @@ def markdown(output, payload):
         f"| 已完成独立审计中人数核对 / 类别全部正确 | {a['person_count_matches_truth_runs']} / {a['person_all_classes_correct_runs']} 轮 |",
         f"| 车牌整牌字符正确 | {a['ocr_exact_characters']}/{a['ocr_total']} |",
         f"| OCR多帧一致且达到原阈值 | {a['ocr_consensus_successes']}/{a['ocr_total']} |",
+        f"| 不同场景车牌号码 | {a['distinct_scene_plate_numbers']} 个 |",
         f"| 全部20次任务均值 / 中位数 | {t['mean']:.3f} / {t['median']:.3f} 秒 |",
         f"| 全部20次最短 / 最长 / 样本标准差 | {t['min']:.3f} / {t['max']:.3f} / {t['sample_stddev']:.3f} 秒 |",
         f"| 通过轮次均值（n={p['n'] if p else 0}） | {p['mean']:.3f} 秒 |" if p else '| 通过轮次均值 | 无通过轮次 |',
@@ -248,6 +258,9 @@ def markdown(output, payload):
         '。人数/类别正确不等于模型概率已校准或训练问题已经解决。'+
         'OCR失败轮次未进入完成播报流程，原人物审计因缺音频证据不能完成；'+
         '报告人数一致与完整人物验收通过分开统计，缺失证据不标成通过。','',
+        f"开启judge显示的9轮均值{a['display_enabled_time_sim_s']['mean']:.3f}秒；"+
+        f"关闭judge显示的11轮均值{a['display_disabled_time_sim_s']['mean']:.3f}秒。"+
+        '这只是分组统计，OCR等待、定位和信号时序也会影响耗时，不能把差值全部归因于窗口。','',
         '![全部任务时长](mission_times.png)','',
         '## HOME：定位验收与实际车身回位','',
         '原完整审计使用AMCL/map合同位姿。补充检查以同一bag第一帧和最后一帧Gazebo车身真值相减，'+
@@ -274,6 +287,12 @@ def markdown(output, payload):
         if not r['independent_acceptance']:
             lines.append(f"- `{r['run']}`：原审计失败项 `{r['failed_audit_flags']}`。"+
                          '参阅原审计和对应源图，未回写结果。')
+            for point,frames in payload['details'][r['run']]['failed_ocr_frames'].items():
+                source = next(p for p in payload['details'][r['run']]['ocr'] if p['waypoint']==point)
+                lines.append(f"  `{point}` 真值 `{source['expected']}`；"+
+                    '逐帧原始读数/置信度：'+ '; '.join(
+                        f"`{f['raw']}` {f['confidence']:.5f}（{f['issue'] or '有效帧'}）" for f in frames)+
+                    '。保留0.85和至少2帧一致的原规则，未用真值补写识别结果。')
     for label,name in payload['selected_examples'].items():
         lines.append(f'- `{label}`：`{name}`，只作为明确标注的展示样例。')
     lines += ['', 'PPT可展示示例照片、终端与OCR裁剪，并同时报告20次总体通过率、时长范围及物理回位差异。'+
