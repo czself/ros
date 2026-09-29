@@ -547,7 +547,12 @@ class CmdVelWatchdog:
         self.publish_status(status)
         # Keep the control output and publication order unchanged. This
         # single record ties the actual output to its own gate decision.
-        self.decision_pub.publish(String(data=json.dumps(decision, separators=(',', ':'))))
+        try:
+            self.decision_pub.publish(String(data=json.dumps(decision, separators=(',', ':'))))
+        except Exception as error:
+            # A diagnostic publisher failure must not stop the safety timer.
+            # Missing decisions still fail the independent recording audit.
+            rospy.logwarn_throttle(1.0, 'command decision recording failed: %s', error)
 
 
 if __name__ == '__main__':
