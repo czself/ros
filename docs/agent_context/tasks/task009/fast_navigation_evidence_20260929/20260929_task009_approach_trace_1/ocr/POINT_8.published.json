@@ -1,0 +1,153 @@
+{
+  "waypoint": "POINT_8",
+  "text": "浙TF9E07",
+  "valid": true,
+  "confidence": 0.9737685918807983,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9738807082176208,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 128.11,
+      "recognition_band": [
+        0,
+        31,
+        336,
+        97
+      ],
+      "input_shape": [
+        66,
+        336,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_1/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_1/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "67c9d2123c1a4ba62a2352dbe4e6c7c8570933205dca47b462ac49f6d227e790",
+      "source_stamp": {
+        "secs": 615,
+        "nsecs": 570000000,
+        "seconds": 615.57
+      },
+      "box": [
+        837,
+        708,
+        1173,
+        846
+      ],
+      "image_sha256": "9def7d06710367254efa79946af773efde8cbb6125ce190cf2735a67f0a5d9f5"
+    },
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9740025997161865,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 92.567,
+      "recognition_band": [
+        0,
+        31,
+        336,
+        97
+      ],
+      "input_shape": [
+        66,
+        336,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_1/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_1/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "4eab95a9c594d41a453331f06cf5e2fc163d6589065e749fd029a772830d6e97",
+      "source_stamp": {
+        "secs": 615,
+        "nsecs": 399000000,
+        "seconds": 615.399
+      },
+      "box": [
+        837,
+        708,
+        1173,
+        846
+      ],
+      "image_sha256": "65b538cf0bace4ef14f422524a0f68cf14aa0671d6acb524c4d74e75e1a57b0e"
+    },
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9737685918807983,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 115.602,
+      "recognition_band": [
+        0,
+        31,
+        336,
+        97
+      ],
+      "input_shape": [
+        66,
+        336,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_1/ocr/POINT_8_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_1/ocr/POINT_8_frame_2.crop.input.png",
+      "recognition_image_sha256": "afbe879168e76d78a24dcc8d6b316350fd71e9eeb49eed79e59e5807b8dda2b3",
+      "source_stamp": {
+        "secs": 615,
+        "nsecs": 792000000,
+        "seconds": 615.792
+      },
+      "box": [
+        837,
+        708,
+        1173,
+        846
+      ],
+      "image_sha256": "fa0ed51f9f7aaecf942a394ab7b79588bbc74738c19d53d741c42cb03c17eb5f"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "24331eabc776414b03c8246b9db80f56b5887929583c61c6e0d1c4e0360527c9",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 341.095,
+  "low_resolution_comparison": {
+    "raw": "浙T·F9E07",
+    "text": "浙TF9E07",
+    "display": "浙T·F9E07",
+    "confidence": 0.9811908602714539,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 89.241,
+    "recognition_band": [
+      0,
+      10,
+      112,
+      33
+    ],
+    "input_shape": [
+      23,
+      112,
+      3
+    ],
+    "box": [
+      279,
+      236,
+      391,
+      282
+    ]
+  },
+  "source_stamp": {
+    "secs": 615,
+    "nsecs": 570000000,
+    "seconds": 615.57
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_1/ocr/POINT_8.annotated.png",
+  "published_stamp": 616.683
+}

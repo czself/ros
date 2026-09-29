@@ -1,0 +1,146 @@
+{
+  "waypoint": "POINT_9",
+  "text": "辽ZR6314",
+  "valid": true,
+  "confidence": 0.9475735425949097,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "辽Z·R63I4",
+      "text": "辽ZR6314",
+      "display": "辽Z·R6314",
+      "confidence": 0.9475735425949097,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 98.365,
+      "recognition_band": [
+        0,
+        36,
+        405,
+        120
+      ],
+      "input_shape": [
+        84,
+        405,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "c7da1f20dad401e87ab02e18e9d60295a07cfa6b7cb437df408540b0ff3fb5c0",
+      "source_stamp": {
+        "secs": 626,
+        "nsecs": 487000000,
+        "seconds": 626.487
+      },
+      "box": [
+        1008,
+        708,
+        1413,
+        879
+      ],
+      "image_sha256": "576fb87571c35a71c25367c8b47bb548bba4f44360d77698bdf170f76589977c"
+    },
+    {
+      "raw": "辽Z·R63I4",
+      "text": "辽ZR6314",
+      "display": "辽Z·R6314",
+      "confidence": 0.9520378708839417,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 101.812,
+      "recognition_band": [
+        0,
+        36,
+        405,
+        120
+      ],
+      "input_shape": [
+        84,
+        405,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "52d62fb24a90bfa2b9f559290abd6be334167bca813aadfacdfddf63b7939812",
+      "source_stamp": {
+        "secs": 626,
+        "nsecs": 282000000,
+        "seconds": 626.282
+      },
+      "box": [
+        1008,
+        708,
+        1413,
+        879
+      ],
+      "image_sha256": "c7826a0038831c8fb00ae9e4a5c64edfc701b14a0422f6df17d2f489580aabfb"
+    },
+    {
+      "raw": "辽Z·R63I4",
+      "text": "辽ZR6314",
+      "display": "辽Z·R6314",
+      "confidence": 0.9520482420921326,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 131.836,
+      "recognition_band": [
+        0,
+        36,
+        405,
+        120
+      ],
+      "input_shape": [
+        84,
+        405,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_9_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_9_frame_2.crop.input.png",
+      "recognition_image_sha256": "722c70dd9ef0230ef92e9887da4afd8612f5e2910e08756a93ea5c0c80fa1ea5",
+      "source_stamp": {
+        "secs": 626,
+        "nsecs": 80000000,
+        "seconds": 626.08
+      },
+      "box": [
+        1008,
+        708,
+        1413,
+        879
+      ],
+      "image_sha256": "e3a409eecbc56b04cdac437da8e693d998149fdc73698f04bd3b6349d6dd154c"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "d27ca09b8770a2b2b7733e92210fc1016bbf11dfd85811b9388e09c43cd9210b",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 337.275,
+  "low_resolution_comparison": {
+    "raw": "辽Z·R63I4",
+    "text": "辽ZR6314",
+    "display": "辽Z·R6314",
+    "confidence": 0.9166648387908936,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 120.687,
+    "recognition_band": [
+      0,
+      12,
+      135,
+      40
+    ],
+    "input_shape": [
+      28,
+      135,
+      3
+    ],
+    "box": [
+      336,
+      236,
+      471,
+      293
+    ]
+  }
+}

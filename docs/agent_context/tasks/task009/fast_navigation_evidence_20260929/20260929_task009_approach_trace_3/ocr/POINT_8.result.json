@@ -1,0 +1,146 @@
+{
+  "waypoint": "POINT_8",
+  "text": "学PYPVGM",
+  "valid": true,
+  "confidence": 0.9678418636322021,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "学P·YPVGM",
+      "text": "学PYPVGM",
+      "display": "学P·YPVGM",
+      "confidence": 0.968429684638977,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 140.723,
+      "recognition_band": [
+        0,
+        31,
+        324,
+        95
+      ],
+      "input_shape": [
+        64,
+        324,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_8_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_8_frame_0.crop.input.png",
+      "recognition_image_sha256": "4c5fa0483f821ab99636338aef8ce352f009f3de82122b68b744a9b63414163e",
+      "source_stamp": {
+        "secs": 616,
+        "nsecs": 362000000,
+        "seconds": 616.362
+      },
+      "box": [
+        783,
+        708,
+        1107,
+        843
+      ],
+      "image_sha256": "78770a43b7d7e878c5772b65d522d96aabf4203a2e28ec610379c17b3098ce04"
+    },
+    {
+      "raw": "学P·YPVGM",
+      "text": "学PYPVGM",
+      "display": "学P·YPVGM",
+      "confidence": 0.9678418636322021,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 84.113,
+      "recognition_band": [
+        0,
+        31,
+        324,
+        95
+      ],
+      "input_shape": [
+        64,
+        324,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_8_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_8_frame_1.crop.input.png",
+      "recognition_image_sha256": "153a08ef955417b09fe1230f1ccd25afd846280f53658dbdcc5fd965220b002c",
+      "source_stamp": {
+        "secs": 616,
+        "nsecs": 764000000,
+        "seconds": 616.764
+      },
+      "box": [
+        783,
+        708,
+        1107,
+        843
+      ],
+      "image_sha256": "006f7672e22d0b40e1f3802b089d4c653ba721b18ce95a5132397552f515e68f"
+    },
+    {
+      "raw": "学P·YPVGM",
+      "text": "学PYPVGM",
+      "display": "学P·YPVGM",
+      "confidence": 0.9678713083267212,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 85.909,
+      "recognition_band": [
+        0,
+        31,
+        324,
+        95
+      ],
+      "input_shape": [
+        64,
+        324,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_8_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_3/ocr/POINT_8_frame_2.crop.input.png",
+      "recognition_image_sha256": "9acf09ac944157ef0e4fef1f1b8843e166dbea8f2a5b0d283c1acc444fe12ca5",
+      "source_stamp": {
+        "secs": 616,
+        "nsecs": 562000000,
+        "seconds": 616.562
+      },
+      "box": [
+        783,
+        708,
+        1107,
+        843
+      ],
+      "image_sha256": "6a8650372aa469f5135137c5a074e160fed9225a0f87dc31c88b4bf2d59bf997"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "a69934b2b1692952956922e99b304cdb8b9c1624987a1270c1f84c45ae86567c",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 315.804,
+  "low_resolution_comparison": {
+    "raw": "学P·YPVGM",
+    "text": "学PYPVGM",
+    "display": "学P·YPVGM",
+    "confidence": 0.9651627540588379,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 107.535,
+    "recognition_band": [
+      0,
+      10,
+      108,
+      38
+    ],
+    "input_shape": [
+      28,
+      108,
+      3
+    ],
+    "box": [
+      261,
+      236,
+      369,
+      281
+    ]
+  }
+}

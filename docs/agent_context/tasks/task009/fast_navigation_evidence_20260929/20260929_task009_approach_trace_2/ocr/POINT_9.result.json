@@ -1,0 +1,111 @@
+{
+  "waypoint": "POINT_9",
+  "text": "学ABCDEF",
+  "valid": true,
+  "confidence": 0.9778422117233276,
+  "matching_frames": 2,
+  "frames": [
+    {
+      "raw": "学A·BCDEF",
+      "text": "学ABCDEF",
+      "display": "学A·BCDEF",
+      "confidence": 0.9778422117233276,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 115.861,
+      "recognition_band": [
+        0,
+        32,
+        411,
+        114
+      ],
+      "input_shape": [
+        82,
+        411,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_2/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_2/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "e943c45c10bbb3595a6a6452fa8adad186953307f4aad866bc5acd3fa7cb7de5",
+      "source_stamp": {
+        "secs": 626,
+        "nsecs": 138000000,
+        "seconds": 626.138
+      },
+      "box": [
+        1068,
+        711,
+        1479,
+        867
+      ],
+      "image_sha256": "7928b2d7f92b1c8f7929592f4b3df0e94f69d79cb9251944a19719d206ee3b33"
+    },
+    {
+      "raw": "学A·BCDEF",
+      "text": "学ABCDEF",
+      "display": "学A·BCDEF",
+      "confidence": 0.9778454303741455,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 99.612,
+      "recognition_band": [
+        0,
+        32,
+        411,
+        114
+      ],
+      "input_shape": [
+        82,
+        411,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_2/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_approach_trace_2/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "5de04b21195fb0b1fab59e97113ff13f7274113199a284a8096de57b28c8b50d",
+      "source_stamp": {
+        "secs": 626,
+        "nsecs": 338000000,
+        "seconds": 626.338
+      },
+      "box": [
+        1068,
+        711,
+        1479,
+        867
+      ],
+      "image_sha256": "c8bf0432530de088c229fb4da1438c966ba0cc8ac0d2bda8e028a6daafb42456"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "e723020828588c7183674698610a652048c0ca1cf56e565cf9b70370c84feca3",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 220.071,
+  "low_resolution_comparison": {
+    "raw": "学A·BCDEF",
+    "text": "学ABCDEF",
+    "display": "学A·BCDEF",
+    "confidence": 0.9872407913208008,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 143.675,
+    "recognition_band": [
+      0,
+      10,
+      137,
+      38
+    ],
+    "input_shape": [
+      28,
+      137,
+      3
+    ],
+    "box": [
+      356,
+      237,
+      493,
+      289
+    ]
+  }
+}
