@@ -305,7 +305,7 @@ def footprint_contact(texture, ordinary, x, y, yaw):
     return {'out_of_bounds': False, 'ordinary': False, 'conditional': conditional}
 
 
-def run_bag_audit(bag_path, texture_path, summary):
+def run_bag_audit(bag_path, texture_path, summary, require_command_decisions=False):
     texture = cv2.imread(str(texture_path), cv2.IMREAD_GRAYSCALE)
     if texture is None:
         raise RuntimeError('cannot read ground texture: ' + str(texture_path))
@@ -336,6 +336,7 @@ def run_bag_audit(bag_path, texture_path, summary):
     active_route_distance = active_route_time = 0.0
     progress_by_goal = collections.defaultdict(list)
     motor_commands = []
+    command_decisions = []
 
     def latest_at(series, stamp, default=None):
         times = [item[0] for item in series]
@@ -396,7 +397,7 @@ def run_bag_audit(bag_path, texture_path, summary):
               '/traffic_light/gate_status',
               '/traffic_light/state', '/traffic_light/time_remaining',
               '/inspection/traffic_light', '/inspection/yolo/metrics',
-              '/route/progress']
+              '/route/progress', '/traffic_light/command_decision']
     chassis_index = None
     for topic, message, bag_stamp in bag.read_messages(topics=topics):
         t = bag_stamp.to_sec()
@@ -448,6 +449,12 @@ def run_bag_audit(bag_path, texture_path, summary):
         elif topic == '/my_car/cmd_vel':
             motor_commands.append((t, float(message.linear.x),
                                    float(message.angular.z)))
+        elif topic == '/traffic_light/command_decision':
+            try:
+                decision = json.loads(message.data)
+            except (ValueError, TypeError):
+                decision = {}
+            command_decisions.append((t, decision))
         elif topic == '/gazebo/link_states':
             if chassis_index is None:
                 try:
@@ -560,12 +567,20 @@ def run_bag_audit(bag_path, texture_path, summary):
         'pass': yolo_pass,
     }
     gate_times = [event[0] for event in gate_events]
+    decision_pairing = None
+    if command_decisions or require_command_decisions:
+        from command_decision_audit import pair_command_decisions
+        decision_pairing = pair_command_decisions(motor_commands, command_decisions, gate_events)
     forward_command_seconds = rotation_command_seconds = 0.0
     maximum_forward_command = maximum_approach_command = 0.0
-    for (t0, linear, angular), (t1, _, _) in zip(
-            motor_commands, motor_commands[1:]):
-        index = bisect.bisect_right(gate_times, t0)-1
-        status = gate_events[index][1] if index >= 0 else 'CLEAR'
+    for command_index, (t0, linear, angular) in enumerate(motor_commands):
+        t1 = (motor_commands[command_index+1][0]
+              if command_index+1 < len(motor_commands) else t0)
+        if decision_pairing is not None:
+            status = decision_pairing['paired_statuses'][command_index] or 'UNPAIRED'
+        else:
+            index = bisect.bisect_right(gate_times, t0)-1
+            status = gate_events[index][1] if index >= 0 else 'CLEAR'
         dt = max(0.0, t1-t0)
         if 'WAIT_' not in status:
             if linear > 0.01:
@@ -603,6 +618,10 @@ def run_bag_audit(bag_path, texture_path, summary):
         'rotation_command_seconds_excluding_signal_waits': rotation_command_seconds,
         'maximum_forward_command_mps': maximum_forward_command,
         'maximum_signal_approach_command_mps': maximum_approach_command,
+        'command_decision_pairing_required': require_command_decisions,
+        'command_decision_pairing': ({key: value for key, value in decision_pairing.items()
+                                      if key != 'paired_statuses'}
+                                     if decision_pairing is not None else None),
     }
 
 
@@ -613,6 +632,8 @@ def main():
                         default=Path('/root/competition_ground_map.png'))
     parser.add_argument('--min-translation-speed', type=float, default=0.15)
     parser.add_argument('--max-mission-duration', type=float, default=180.0)
+    parser.add_argument('--require-command-decisions', action='store_true',
+                        help='Require same-cycle output/status records and moving-command coverage')
     parser.add_argument('--output', type=Path, default=None)
     args = parser.parse_args()
     summary_path = args.run_dir / 'run_summary.json'
@@ -647,7 +668,7 @@ def main():
                     parking.get('angular_speed_rps', 1e9) < 0.01 and
                     parking.get('stationary_seconds', 0.0) >= 2.0)
     photos = photo_audit(args.run_dir, summary)
-    bag_metrics = run_bag_audit(bag_path, args.texture, summary)
+    bag_metrics = run_bag_audit(bag_path, args.texture, summary, args.require_command_decisions)
     bag_pass = (bag_metrics['ordinary_paint_contact_samples'] == 0 and
                 bag_metrics['out_of_bounds_pose_samples'] == 0 and
                 not bag_metrics['unauthorized_conditional_contacts'] and
@@ -661,7 +682,9 @@ def main():
                   args.min_translation_speed and
                   bag_metrics['mission_duration_s'] <= args.max_mission_duration and
                   bag_metrics['maximum_forward_command_mps'] <= 0.35+1e-6 and
-                  bag_metrics['maximum_signal_approach_command_mps'] <= 0.12+1e-6)
+                  bag_metrics['maximum_signal_approach_command_mps'] <= 0.12+1e-6 and
+                  (bag_metrics['command_decision_pairing'] is None or
+                   bag_metrics['command_decision_pairing']['pass']))
     person_audit = None
     if summary.get('person_reporting_enabled'):
         from audit_person_report import audit

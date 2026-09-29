@@ -89,7 +89,7 @@ TOPICS=(
   /inspection/judge_display_image
   /inspection/traffic_light_confidence /inspection/yolo/metrics
   /traffic_light/state /traffic_light/time_remaining /traffic_light/gate_status
-  /traffic_light/braking /gazebo/link_states
+  /traffic_light/braking /traffic_light/command_decision /gazebo/link_states
 )
 stop_recorder() {
   docker exec "$CONTAINER" pkill -INT -x rosbag 2>/dev/null || true

@@ -114,6 +114,9 @@ class CmdVelWatchdog:
         self.braking_pub = rospy.Publisher(
             '/traffic_light/braking', Bool, queue_size=1, latch=True
         )
+        self.decision_pub = rospy.Publisher(
+            '/traffic_light/command_decision', String, queue_size=10)
+        self.decision_sequence = 0
         rospy.Subscriber('/my_car/cmd_vel_nav', Twist, self.command_cb, queue_size=1)
         rospy.Subscriber(
             '/inspection/traffic_light', String, self.detection_cb, queue_size=1
@@ -531,8 +534,20 @@ class CmdVelWatchdog:
                 # their safe in-place alignment behavior above.
                 command = self.zero()
                 status = white_line_status
+            stamp = rospy.Time.now()
+            self.decision_sequence += 1
+            decision = {
+                'schema_version': 1, 'sequence': self.decision_sequence,
+                'source_stamp': {'secs': int(stamp.secs), 'nsecs': int(stamp.nsecs),
+                                 'seconds': stamp.to_sec()},
+                'gate_status': status, 'linear_x': float(command.linear.x),
+                'angular_z': float(command.angular.z),
+            }
         self.pub.publish(command)
         self.publish_status(status)
+        # Keep the control output and publication order unchanged. This
+        # single record ties the actual output to its own gate decision.
+        self.decision_pub.publish(String(data=json.dumps(decision, separators=(',', ':'))))
 
 
 if __name__ == '__main__':
