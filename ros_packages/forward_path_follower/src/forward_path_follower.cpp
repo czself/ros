@@ -389,8 +389,11 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
     double best_score = -std::numeric_limits<double>::infinity();
     double best_w = 0.0;
     bool found = false;
-    const double offsets[] = {-0.10, 0.10, -0.20, 0.20, -0.35, 0.35};
-    for (int candidate = -1; candidate < 6; ++candidate) {
+    // Evaluate the computed curvature itself as well as straight motion and
+    // perturbations. Every candidate uses the same collision check and score.
+    const double offsets[] = {0.0, -0.10, 0.10, -0.20, 0.20, -0.35, 0.35};
+    const int candidate_count = static_cast<int>(sizeof(offsets) / sizeof(offsets[0]));
+    for (int candidate = -1; candidate < candidate_count; ++candidate) {
       const double requested_w = candidate < 0 ? 0.0 : preferred_w + offsets[candidate];
       const double w = std::max(-max_yaw_rate_,
           std::min(max_yaw_rate_, requested_w));
