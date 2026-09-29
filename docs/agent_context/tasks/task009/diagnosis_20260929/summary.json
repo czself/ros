@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "run": "20260929_task009_heading_2",
+      "goal": "POINT_5",
+      "position_tolerance_m": 0.025,
+      "first_mode_after_final_heading": "TRACKING",
+      "remaining_at_switch_m": 0.0307,
+      "final_heading_segments": 3,
+      "time_from_first_final_end_to_last_final_end_s": 4.798999999999978,
+      "gate_values_after_first_final": [
+        "CLEAR"
+      ],
+      "truth_axle_displacement_observations": [
+        {
+          "start_s": 580.18,
+          "after_initial_0_2_s_axle_displacement_mm": 1.9994157649368896,
+          "maximum_forward_command_mps": 0.0
+        },
+        {
+          "start_s": 583.108,
+          "after_initial_0_2_s_axle_displacement_mm": 2.0565250640785666,
+          "maximum_forward_command_mps": 0.0
+        },
+        {
+          "start_s": 585.441,
+          "after_initial_0_2_s_axle_displacement_mm": 2.7140048497484215,
+          "maximum_forward_command_mps": 0.0
+        }
+      ]
+    },
+    {
+      "run": "20260929_task009_heading_3",
+      "goal": "POINT_7",
+      "position_tolerance_m": 0.05,
+      "first_mode_after_final_heading": "ALIGNMENT_BRAKING",
+      "remaining_at_switch_m": 0.0512,
+      "final_heading_segments": 2,
+      "time_from_first_final_end_to_last_final_end_s": 3.9880000000000564,
+      "gate_values_after_first_final": [
+        "CLEAR"
+      ],
+      "truth_axle_displacement_observations": [
+        {
+          "start_s": 600.471,
+          "after_initial_0_2_s_axle_displacement_mm": 4.180641678558351,
+          "maximum_forward_command_mps": 0.0
+        },
+        {
+          "start_s": 604.072,
+          "after_initial_0_2_s_axle_displacement_mm": 6.259905928452592,
+          "maximum_forward_command_mps": 0.0
+        }
+      ]
+    },
+    {
+      "run": "20260929_task009_heading_3",
+      "goal": "POINT_9",
+      "position_tolerance_m": 0.03,
+      "first_mode_after_final_heading": "ALIGNMENT_BRAKING",
+      "remaining_at_switch_m": 0.0302,
+      "final_heading_segments": 2,
+      "time_from_first_final_end_to_last_final_end_s": 2.799000000000092,
+      "gate_values_after_first_final": [
+        "CLEAR"
+      ],
+      "truth_axle_displacement_observations": [
+        {
+          "start_s": 638.79,
+          "after_initial_0_2_s_axle_displacement_mm": 6.682328391138796,
+          "maximum_forward_command_mps": 0.0
+        },
+        {
+          "start_s": 642.331,
+          "after_initial_0_2_s_axle_displacement_mm": 3.257356966689786,
+          "maximum_forward_command_mps": 0.0
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "20260929_task009_heading_2.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_2/navigation_diagnosis.json",
+      "sha256": "0dfe417a7a6531af7d1e0909a5afde9426e7bb318624073fb39728bd69707bb6"
+    },
+    {
+      "path": "20260929_task009_heading_3.json",
+      "source": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_task009_heading_3/navigation_diagnosis.json",
+      "sha256": "f47330436be3707f6f467d22b928df74e3927c60088671904b6e501eb3b8d368"
+    }
+  ],
+  "note": "Additional phase time is observed time between final-heading segment ends, not a guaranteed removable-time estimate. Physical axle displacement is an offline clue; no slip/contact cause has been proven."
+}
