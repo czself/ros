@@ -9,7 +9,34 @@ import rosbag
 from diagnose_navigation_run import diagnose, yaw, angle
 
 
-def supplementary(run):
+def point7_summary(goal):
+    final = [r for r in goal['samples'] if r['mode'] in
+             ('FINAL_HEADING', 'GOAL_SETTLE', 'GOAL_REACHED')]
+    # Target yaw is in map; truth yaw is in world. Do not compare them without
+    # registering the frames. Use the received map-frame heading error here.
+    errors = [r['map_heading_error_rad'] for r in final]
+    nonzero = [e for e in errors if abs(e) > .01]
+    return {
+        'goal_window_duration_s': goal['window']['end']-goal['window']['start'],
+        'episodes': [{'mode': e['mode'], 'duration_s': e['end_s']-e['start_s']}
+                     for e in goal['episodes']],
+        'map_final_error_first_rad': errors[0] if errors else None,
+        'map_final_error_last_rad': errors[-1] if errors else None,
+        'map_final_error_sign_crossings_over_001rad': sum(
+            a*b < 0 for a,b in zip(nonzero,nonzero[1:])),
+        'scope': 'Map-frame estimated heading error sign crossings in final/settle '
+                 'phase. World truth yaw is retained as a trajectory only; no '
+                 'absolute map/world angular registration is assumed. Zero '
+                 'post-final reentry cannot exclude earlier large path turns.'}
+
+
+def supplementary(run, reuse=False):
+    if reuse:
+        previous = json.loads((run/'docs20_supplementary.json').read_text())
+        goal = previous['point7_diagnostic']['goals']['POINT_7']
+        previous['point7'] = point7_summary(goal)
+        previous['measurement_schema_version'] = 2
+        return previous
     first = last = None
     first_stamp = last_stamp = None
     with rosbag.Bag(str(run / 'motion.bag')) as bag:
@@ -39,31 +66,18 @@ def supplementary(run):
         physical['yaw_return_error_rad'] <= .04)
     diagnostic = diagnose(run, ['POINT_7'])
     goal = diagnostic['goals']['POINT_7']
-    final = [r for r in goal['samples'] if r['mode'] in
-             ('FINAL_HEADING', 'GOAL_SETTLE', 'GOAL_REACHED')]
-    target = goal['target_pose']['yaw']
-    errors = [angle(r['truth_chassis_pose'][2]-target) for r in final]
-    nonzero = [e for e in errors if abs(e) > .01]
-    reversals = sum(a*b < 0 for a, b in zip(nonzero, nonzero[1:]))
-    p7 = {
-        'goal_window_duration_s': goal['window']['end']-goal['window']['start'],
-        'episodes': [{'mode': e['mode'], 'duration_s': e['end_s']-e['start_s']}
-                     for e in goal['episodes']],
-        'physical_final_error_first_rad': errors[0] if errors else None,
-        'physical_final_error_last_rad': errors[-1] if errors else None,
-        'physical_final_error_sign_crossings_over_001rad': reversals,
-        'scope': 'Sign crossing in final/settle phase measures physical angular '
-                 'overshoot. Zero post-final path reentry alone cannot exclude '
-                 'the large path-alignment turn before photo heading.'}
+    p7 = point7_summary(goal)
     return {'run': run.name, 'physical_home': physical, 'point7': p7,
-            'point7_diagnostic': diagnostic}
+            'point7_diagnostic': diagnostic, 'measurement_schema_version': 2}
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('run', type=Path)
+    parser.add_argument('--reuse-physical', action='store_true',
+                        help='Recalculate heading definition from retained samples')
     args = parser.parse_args()
-    result = supplementary(args.run)
+    result = supplementary(args.run, args.reuse_physical)
     output = args.run / 'docs20_supplementary.json'
     output.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
     print(json.dumps({k:v for k,v in result.items() if k != 'point7_diagnostic'},
