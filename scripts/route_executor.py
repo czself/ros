@@ -1289,9 +1289,22 @@ class RouteExecutor:
         return parked
 
     def return_home(self, last_photo_position=None):
-        """Send exactly one final goal to the recorded birth pose and yaw."""
+        """Return to the recorded pose, compensating the measured HOME yaw bias.
+
+        The controller's map pose has shown a repeatable positive yaw offset at
+        the parking slot.  Keep the contract pose as the acceptance target and
+        apply only the configurable control-side correction for this final leg.
+        """
         self.status_pub.publish('RETURN_HOME')
-        return self.navigate_goal('HOME', self.birth_x, self.birth_y, self.birth_yaw)
+        control_offset = float(rospy.get_param(
+            '~home_heading_control_offset_rad', -0.029))
+        if not math.isfinite(control_offset) or abs(control_offset) > 0.15:
+            rospy.logerr('invalid HOME heading control offset: %.6f', control_offset)
+            return False
+        control_yaw = self.birth_yaw + control_offset
+        rospy.loginfo('HOME control yaw %.6f (contract %.6f, offset %.6f)',
+                      control_yaw, self.birth_yaw, control_offset)
+        return self.navigate_goal('HOME', self.birth_x, self.birth_y, control_yaw)
 
     def wheel_pose_map(self):
         """Transform fresh encoder odometry through the latest AMCL map->odom."""
