@@ -1,0 +1,59 @@
+[INFO] [1790688806.996441, 526.875000]: photo point 1/10 start: POINT_1 (1.71, -0.62)
+[INFO] [1790688806.999216, 526.876000]: POINT_1 ordered corridor clear: 0.977 m, endpoint cross-track 0.006 m, 50 samples
+[INFO] [1790688812.085259, 531.813000]: photo waypoint POINT_1 velocity/pose settled in 0.353 s
+[INFO] [1790688812.754452, 532.474000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_1/POINT_1_20260929_133332.png
+[INFO] [1790688812.761062, 532.477000]: navigation target reached: POINT_1 (1.71, -0.62)
+[INFO] [1790688812.764492, 532.485000]: photo point 2/10 start: POINT_2 (1.65, 1.08)
+[INFO] [1790688812.768272, 532.486000]: POINT_2 ordered corridor clear: 1.700 m, endpoint cross-track 0.065 m, 89 samples
+[INFO] [1790688826.672369, 546.014000]: photo waypoint POINT_2 velocity/pose settled in 0.357 s
+[INFO] [1790688827.362643, 546.694000]: [人物识别] POINT_2 帧546.230000000：本图3人，社区2人、外来1人；累计去重3人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/persons/POINT_2.png
+[INFO] [1790688827.365432, 546.698000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_2/POINT_2_20260929_133347.png
+[INFO] [1790688827.367052, 546.698000]: navigation target reached: POINT_2 (1.65, 1.08)
+[INFO] [1790688827.370672, 546.701000]: photo point 3/10 start: POINT_3 (1.09, 1.71)
+[INFO] [1790688827.378026, 546.704000]: POINT_3 ordered corridor clear: 1.151 m, endpoint cross-track 0.045 m, 61 samples
+[INFO] [1790688839.958076, 558.948000]: photo waypoint POINT_3 velocity/pose settled in 0.360 s
+[INFO] [1790688840.672828, 559.630000]: [人物识别] POINT_3 帧559.321000000：本图3人，社区3人、外来0人；累计去重6人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/persons/POINT_3.png
+[INFO] [1790688840.674643, 559.633000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_3/POINT_3_20260929_133400.png
+[INFO] [1790688840.676303, 559.633000]: navigation target reached: POINT_3 (1.09, 1.71)
+[INFO] [1790688840.677626, 559.634000]: photo point 4/10 start: POINT_4 (0.55, 0.83)
+[INFO] [1790688840.682146, 559.635000]: POINT_4 ordered corridor clear: 1.385 m, endpoint cross-track 0.046 m, 74 samples
+[INFO] [1790688853.285665, 571.879000]: photo waypoint POINT_4 velocity/pose settled in 0.357 s
+[INFO] [1790688853.982757, 572.567000]: [人物识别] POINT_4 帧572.095000000：本图3人，社区3人、外来0人；累计去重9人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/persons/POINT_4.png
+[INFO] [1790688853.987155, 572.569000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_4/POINT_4_20260929_133413.png
+[INFO] [1790688853.989768, 572.574000]: navigation target reached: POINT_4 (0.55, 0.83)
+[INFO] [1790688853.992540, 572.575000]: photo point 5/10 start: POINT_5 (0.48, 0.73)
+[INFO] [1790688853.995475, 572.578000]: POINT_5 ordered corridor clear: 0.099 m, endpoint cross-track 0.050 m, 8 samples
+[INFO] [1790688861.678684, 580.055000]: photo waypoint POINT_5 velocity/pose settled in 0.357 s
+[INFO] [1790688862.396652, 580.737000]: [人物识别] POINT_5 帧580.161000000：本图4人，社区3人、外来1人；累计去重13人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/persons/POINT_5.png
+[INFO] [1790688862.405424, 580.750000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_5/POINT_5_20260929_133422.png
+[INFO] [1790688862.409043, 580.754000]: navigation target reached: POINT_5 (0.48, 0.73)
+[INFO] [1790688862.415380, 580.760000]: photo point 6/10 start: POINT_6 (-0.17, 0.10)
+[INFO] [1790688862.421633, 580.763000]: POINT_6 ordered corridor clear: 1.209 m, endpoint cross-track 0.013 m, 62 samples
+[INFO] [1790688875.712600, 593.679000]: photo waypoint POINT_6 velocity/pose settled in 0.355 s
+[INFO] [1790688876.419963, 594.378000]: [人物识别] POINT_6 帧593.761000000：本图5人，社区5人、外来0人；累计去重18人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/persons/POINT_6.png
+[INFO] [1790688876.421539, 594.380000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_6/POINT_6_20260929_133436.png
+[INFO] [1790688876.422797, 594.381000]: navigation target reached: POINT_6 (-0.17, 0.10)
+[INFO] [1790688876.423813, 594.383000]: photo point 7/10 start: POINT_7 (-0.19, 0.04)
+[INFO] [1790688876.425135, 594.384000]: POINT_7 ordered corridor clear: 0.030 m, endpoint cross-track 0.043 m, 6 samples
+[INFO] [1790688882.630821, 600.426000]: photo waypoint POINT_7 velocity/pose settled in 0.359 s
+[INFO] [1790688883.297482, 601.074000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_7/POINT_7_20260929_133443.png
+[INFO] [1790688883.299413, 601.074000]: navigation target reached: POINT_7 (-0.19, 0.04)
+[INFO] [1790688883.300684, 601.075000]: photo point 8/10 start: POINT_8 (-1.70, -1.00)
+[INFO] [1790688883.305505, 601.076000]: POINT_8 ordered corridor clear: 2.454 m, endpoint cross-track 0.029 m, 125 samples
+[INFO] [1790688897.978269, 615.332000]: photo waypoint POINT_8 velocity/pose settled in 0.360 s
+[INFO] [1790688898.853561, 616.162000]: HD plate POINT_8: 330x135 crop, 3 distinct frames, local sharpness 137.9
+[INFO] [1790688898.878807, 616.196000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_8/POINT_8_20260929_133458.png
+[INFO] [1790688898.887651, 616.207000]: navigation target reached: POINT_8 (-1.70, -1.00)
+[INFO] [1790688898.889491, 616.209000]: photo point 9/10 start: POINT_9 (-1.08, -1.06)
+[INFO] [1790688898.894831, 616.209000]: POINT_9 ordered corridor clear: 0.646 m, endpoint cross-track 0.037 m, 36 samples
+[INFO] [1790688908.161289, 625.167000]: photo waypoint POINT_9 velocity/pose settled in 0.366 s
+[INFO] [1790688909.052350, 625.995000]: HD plate POINT_9: 426x168 crop, 3 distinct frames, local sharpness 114.1
+[INFO] [1790688909.063063, 626.017000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_9/POINT_9_20260929_133508.png
+[INFO] [1790688909.081457, 626.030000]: navigation target reached: POINT_9 (-1.08, -1.06)
+[INFO] [1790688909.086128, 626.038000]: photo point 10/10 start: POINT_10 (-0.53, -1.07)
+[INFO] [1790688909.088642, 626.039000]: POINT_10 ordered corridor clear: 0.550 m, endpoint cross-track 0.033 m, 31 samples
+[INFO] [1790688917.662946, 634.395000]: photo waypoint POINT_10 velocity/pose settled in 0.365 s
+[INFO] [1790688918.537912, 635.208000]: HD plate POINT_10: 405x168 crop, 3 distinct frames, local sharpness 110.5
+[INFO] [1790688918.542868, 635.213000]: photo saved at /root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_20/POINT_10/POINT_10_20260929_133518.png
+[INFO] [1790688918.553916, 635.226000]: navigation target reached: POINT_10 (-0.53, -1.07)
+[INFO] [1790688918.561343, 635.229000]: HOME ordered corridor clear: 2.667 m, endpoint cross-track 0.037 m, 136 samples
