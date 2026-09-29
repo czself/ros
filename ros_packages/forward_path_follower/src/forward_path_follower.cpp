@@ -36,7 +36,8 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
         target_xy_tolerance_(0.03), target_yaw_tolerance_(0.02),
         final_heading_position_margin_(0.0),
         prediction_time_(0.75), prediction_step_(0.05),
-        linear_accel_(0.75), angular_accel_(1.8), final_heading_gain_(1.8), last_v_(0.0),
+        linear_accel_(0.75), angular_accel_(1.8), final_heading_gain_(1.8),
+        goal_approach_gain_(0.8), last_v_(0.0),
         last_w_(0.0), have_last_command_(false), path_alignment_active_(false),
         final_heading_active_(false),
         goal_settle_tracking_(false), goal_settle_x_(0.0), goal_settle_y_(0.0),
@@ -71,6 +72,11 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
     private_nh.param("linear_accel", linear_accel_, 0.75);
     private_nh.param("angular_accel", angular_accel_, 1.8);
     private_nh.param("final_heading_gain", final_heading_gain_, 1.8);
+    private_nh.param("goal_approach_gain", goal_approach_gain_, 0.8);
+    if (!std::isfinite(goal_approach_gain_) || goal_approach_gain_ <= 0.0) {
+      ROS_ERROR("ForwardPathFollower: goal_approach_gain must be positive and finite");
+      return;
+    }
     private_nh.param("final_heading_position_margin", final_heading_position_margin_, 0.0);
     if (!std::isfinite(final_heading_position_margin_) || final_heading_position_margin_ < 0.0) {
       ROS_ERROR("ForwardPathFollower: final_heading_position_margin must be finite and nonnegative");
@@ -377,7 +383,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
     if (turn_ahead && turn_distance < 0.45)
       speed = std::min(speed, 0.18);
     if (goal_distance < 0.30)
-      speed = std::min(speed, std::max(0.025, 0.8 * goal_distance));
+      speed = std::min(speed, std::max(0.025, goal_approach_gain_ * goal_distance));
     speed *= std::max(0.32, std::cos(std::min(1.45, std::abs(heading_error))));
     const double speed_floor = goal_distance < 0.16 ? 0.025 : min_speed_;
     speed = std::max(speed_floor, speed);
@@ -802,7 +808,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
   double target_xy_tolerance_, target_yaw_tolerance_;
   double final_heading_position_margin_;
   double prediction_time_, prediction_step_;
-  double linear_accel_, angular_accel_, final_heading_gain_;
+  double linear_accel_, angular_accel_, final_heading_gain_, goal_approach_gain_;
   double last_v_, last_w_;
   bool have_last_command_;
   bool path_alignment_active_;

@@ -26,3 +26,4 @@ forward_path_follower:
   angular_accel: 1.8
   final_heading_gain: 2.4
   final_heading_position_margin: 0.01
+  goal_approach_gain: 1.2
