@@ -545,27 +545,7 @@ class RouteExecutor:
         # the watchdog may stop it at a painted line, leaving a wrong view.
         settle_seconds = max(0.15, float(
             rospy.get_param('~photo_settle_seconds', 0.3)))
-        settle_deadline = time.monotonic() + max(2.0, settle_seconds * 4.0)
-        still_since = None
-        while not rospy.is_shutdown() and time.monotonic() < settle_deadline:
-            self.cmd_pub.publish(Twist())
-            odom = self.latest_odom
-            now = time.monotonic()
-            if odom is not None:
-                odom_age = (rospy.Time.now() - odom.header.stamp).to_sec()
-                linear_speed = abs(odom.twist.twist.linear.x)
-                angular_speed = abs(odom.twist.twist.angular.z)
-                if odom_age <= 0.5 and linear_speed < 0.01 and angular_speed < 0.01:
-                    if still_since is None:
-                        still_since = now
-                    elif now - still_since >= settle_seconds:
-                        break
-                else:
-                    still_since = None
-            time.sleep(0.05)
-        else:
-            rospy.logwarn('photo waypoint %s failed: robot did not settle before capture', name)
-            return False
+        settle_started = time.monotonic()
         xy_tolerance = float(rospy.get_param('~photo_position_tolerance', 0.06))
         yaw_tolerance = float(rospy.get_param('~photo_heading_tolerance', 0.06))
         if name == 'POINT_3':
@@ -587,13 +567,24 @@ class RouteExecutor:
             yaw_tolerance = min(
                 yaw_tolerance,
                 float(rospy.get_param('~point_5_photo_heading_tolerance', 0.025)))
-        pose_deadline = time.monotonic() + max(2.0, settle_seconds * 8.0)
+        # Confirm velocity and pose together for one continuous interval.
+        # Preserve both original timeout budgets and all acceptance thresholds.
+        pose_deadline = (settle_started + max(2.0, settle_seconds * 4.0) +
+                         max(2.0, settle_seconds * 8.0))
         pose_still_since = None
         previous_pose = None
         pose_errors = (float('inf'), float('inf'))
         pose_error = None
         actual_x = actual_y = actual_yaw = 0.0
         while not rospy.is_shutdown() and time.monotonic() < pose_deadline:
+            self.cmd_pub.publish(Twist())
+            odom = self.latest_odom
+            motion_stable = False
+            if odom is not None:
+                odom_age = (rospy.Time.now() - odom.header.stamp).to_sec()
+                motion_stable = (0.0 <= odom_age <= 0.5 and
+                                 abs(odom.twist.twist.linear.x) < 0.01 and
+                                 abs(odom.twist.twist.angular.z) < 0.01)
             try:
                 stamp = self.tf_listener.getLatestCommonTime('map', 'base_footprint')
                 (actual_x, actual_y, _), actual_q = self.tf_listener.lookupTransform(
@@ -614,7 +605,7 @@ class RouteExecutor:
                                           actual_y - previous_pose[1]) <= 0.01 and
                                abs(self._angle_error(actual_yaw,
                                                      previous_pose[2])) <= 0.015)
-                if pose_matches and pose_stable:
+                if motion_stable and pose_matches and pose_stable:
                     if pose_still_since is None:
                         pose_still_since = now
                     elif now - pose_still_since >= settle_seconds:
@@ -633,6 +624,9 @@ class RouteExecutor:
                 'photo waypoint %s pose failed settle/tolerance: xy_error=%.3f m yaw_error=%.3f rad detail=%s',
                 name, pose_errors[0], pose_errors[1], pose_error)
             return False
+        settle_wait_s = time.monotonic() - settle_started
+        rospy.loginfo('photo waypoint %s velocity/pose settled in %.3f s',
+                      name, settle_wait_s)
         if self.latest_image is None:
             rospy.logwarn('photo waypoint %s reached but no camera frame is available', name)
             return False
@@ -708,6 +702,7 @@ class RouteExecutor:
                 if item.get('class') in ('resident', 'stranger'))
         self.accepted_photo_records.append({
             'waypoint': name, 'source_stamp': detection_record['source_stamp'],
+            'settle_wait_s': round(settle_wait_s, 4),
             'detector_counts': {label: sum(1 for item in counted_detections
                                             if item.get('class') == label)
                                 for label in ('resident', 'stranger', 'license_plate',
@@ -760,6 +755,7 @@ class RouteExecutor:
         with open(stem + '.detections.json', 'w', encoding='utf-8') as stream:
             json.dump(detection_record, stream, ensure_ascii=False, indent=2)
         evidence = {'waypoint': name, 'target_base_pose': {'x': x, 'y': y, 'yaw': yaw},
+                    'settle_wait_s': round(settle_wait_s, 4),
                     'image': stem + '.png', 'camera_topic': '/camera/image_raw',
                     'raw_image': stem + '.raw.png',
                     'annotated_image': stem + '.png',
