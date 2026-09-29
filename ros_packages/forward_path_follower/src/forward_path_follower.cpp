@@ -34,6 +34,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
         max_speed_(0.30), min_speed_(0.08), max_yaw_rate_(0.75),
         lookahead_(0.32), xy_tolerance_(0.03), yaw_tolerance_(0.02),
         target_xy_tolerance_(0.03), target_yaw_tolerance_(0.02),
+        final_heading_position_margin_(0.0),
         prediction_time_(0.75), prediction_step_(0.05),
         linear_accel_(0.75), angular_accel_(1.8), final_heading_gain_(1.8), last_v_(0.0),
         last_w_(0.0), have_last_command_(false), path_alignment_active_(false),
@@ -70,6 +71,11 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
     private_nh.param("linear_accel", linear_accel_, 0.75);
     private_nh.param("angular_accel", angular_accel_, 1.8);
     private_nh.param("final_heading_gain", final_heading_gain_, 1.8);
+    private_nh.param("final_heading_position_margin", final_heading_position_margin_, 0.0);
+    if (!std::isfinite(final_heading_position_margin_) || final_heading_position_margin_ < 0.0) {
+      ROS_ERROR("ForwardPathFollower: final_heading_position_margin must be finite and nonnegative");
+      return;
+    }
     if (!std::isfinite(final_heading_gain_) || final_heading_gain_ <= 0.0) {
       ROS_ERROR("ForwardPathFollower: final_heading_gain must be positive and finite");
       return;
@@ -237,10 +243,18 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
     }
 
     const double yaw_error = angles::shortest_angular_distance(yaw, goal_yaw);
-    if (goal_distance <= target_xy_tolerance_) {
+    // Enter the photo turn inside the acceptance radius, leaving room for
+    // position changes during rotation. Completion still uses the original
+    // tolerances; the entry margin never permits an out-of-tolerance result.
+    const double final_heading_entry_tolerance = std::max(0.005,
+        target_xy_tolerance_ - std::min(final_heading_position_margin_,
+                                       0.5 * target_xy_tolerance_));
+    if (!final_heading_active_ && goal_distance <= final_heading_entry_tolerance) {
       final_heading_active_ = true;
-    } else if (goal_distance > target_xy_tolerance_ + 0.02 ||
-               std::abs(yaw_error) <= target_yaw_tolerance_) {
+    } else if (final_heading_active_ &&
+               (goal_distance > target_xy_tolerance_ + 0.02 ||
+                (goal_distance > target_xy_tolerance_ &&
+                 std::abs(yaw_error) <= target_yaw_tolerance_))) {
       final_heading_active_ = false;
     }
     // AMCL can move the map pose slightly while the car turns in place.
@@ -783,6 +797,7 @@ class ForwardPathFollower : public nav_core::BaseLocalPlanner {
   double max_speed_, min_speed_, max_yaw_rate_, lookahead_;
   double xy_tolerance_, yaw_tolerance_;
   double target_xy_tolerance_, target_yaw_tolerance_;
+  double final_heading_position_margin_;
   double prediction_time_, prediction_step_;
   double linear_accel_, angular_accel_, final_heading_gain_;
   double last_v_, last_w_;

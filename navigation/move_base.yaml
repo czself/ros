@@ -25,3 +25,4 @@ forward_path_follower:
   linear_accel: 0.75
   angular_accel: 1.8
   final_heading_gain: 2.4
+  final_heading_position_margin: 0.01
