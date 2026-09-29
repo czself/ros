@@ -35,9 +35,13 @@ def pair_command_decisions(commands, decisions, gate_events, maximum_skew_s=.025
     used = set()
     statuses = [None]*len(commands)
     unmatched_moving = []
+    invalid_commands = []
     skews = []
     matched_moving = 0
     for index, (stamp, linear, angular) in enumerate(commands):
+        if not all(math.isfinite(v) for v in (stamp, linear, angular)):
+            invalid_commands.append({'command_index': index, 'reason': 'NONFINITE_COMMAND'})
+            continue
         moving = abs(linear) > .01 or abs(angular) > .05
         candidates = []
         low = bisect.bisect_left(times, stamp-maximum_skew_s)
@@ -69,12 +73,13 @@ def pair_command_decisions(commands, decisions, gate_events, maximum_skew_s=.025
             'command_records': len(commands), 'matched_commands': len(used),
             'matched_moving_commands': matched_moving,
             'unmatched_moving_commands': unmatched_moving, 'schema_errors': errors,
+            'invalid_commands': invalid_commands,
             'unmatched_moving_decisions': unmatched_moving_decisions,
             'maximum_allowed_pair_skew_s': maximum_skew_s,
             'maximum_observed_pair_skew_s': max(skews, default=0.0),
             'paired_statuses': statuses,
             'pass': (bool(decisions) and not errors and not unmatched_moving and
-                     not unmatched_moving_decisions),
+                     not unmatched_moving_decisions and not invalid_commands),
             'scope': 'Each moving Twist must match one unused decision by time and values, '
                      'and its public gate status must be present in the same time window. '
                      'Speed limits and independent green/paint checks are applied separately.'}
