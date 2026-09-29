@@ -1,0 +1,3 @@
+[车牌OCR] POINT_8：川N·H0U34；置信度0.980；3帧一致；图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_18/ocr/POINT_8.annotated.png
+[车牌OCR] POINT_9：桂V·K2T43；置信度0.922；3帧一致；图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_18/ocr/POINT_9.annotated.png
+[车牌OCR] POINT_10：学P·YPVGM；置信度0.982；3帧一致；图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20b_18/ocr/POINT_10.annotated.png

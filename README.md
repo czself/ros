@@ -7,7 +7,9 @@
 - [当前交接：测试结果、未完成问题、复现与回退](docs/agent_context/tasks/task009/HANDOFF_20260929.md)
 - [GitHub分支与归档标签清单](docs/agent_context/tasks/task009/GITHUB_BRANCHES_20260929.md)
 
-当前开发分支为 `codex/navigation-photo-run-progress`。最新三轮验证版本标签 `verified/navigation-fast-20260929`；旧基线标签 `verified/navigation-baseline-20260929`。GitHub默认分支 `main` 保留原状，查看最新工程与交接时请切换当前开发分支。
+正式版本放在 `main`，开发分支为 `codex/navigation-photo-run-progress`。最新三轮验证版本标签 `verified/navigation-fast-20260929`；旧基线标签 `verified/navigation-baseline-20260929`。
+
+新增 [20次任务完整统计与展示样例](docs/agent_context/tasks/task009/docs20_20260929/REPORT.md)，包含全部轮次、OCR失败、AMCL与实际车身回位差异、CSV和图表。既有回位验收采用AMCL，不能据此宣称实际车身精确回到出发姿态。20次数据来自同一冻结导航源码；正式PDF、PPT和视频应引用完整统计并标注展示样例。
 
 ## 当前运行入口
 

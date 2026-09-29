@@ -1,0 +1,146 @@
+{
+  "waypoint": "POINT_10",
+  "text": "冀K0BB17",
+  "valid": true,
+  "confidence": 0.9491373300552368,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9491373300552368,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 102.254,
+      "recognition_band": [
+        0,
+        34,
+        423,
+        117
+      ],
+      "input_shape": [
+        83,
+        423,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_04/ocr/POINT_10_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_04/ocr/POINT_10_frame_0.crop.input.png",
+      "recognition_image_sha256": "9a446baac9f79d4adb6e75d26d451cfcf79968da975c365c524ddd4f22b84286",
+      "source_stamp": {
+        "secs": 634,
+        "nsecs": 69000000,
+        "seconds": 634.069
+      },
+      "box": [
+        792,
+        711,
+        1215,
+        879
+      ],
+      "image_sha256": "a1c6aed84473e160d46e9c276d663c969802f940e1213ce486127612b3060860"
+    },
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.953168511390686,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 93.155,
+      "recognition_band": [
+        0,
+        34,
+        423,
+        117
+      ],
+      "input_shape": [
+        83,
+        423,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_04/ocr/POINT_10_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_04/ocr/POINT_10_frame_1.crop.input.png",
+      "recognition_image_sha256": "c1a48c0c5b1e9642bf8eea51e981d0290cca36cb7872b16fe4955ef34e8dfa9c",
+      "source_stamp": {
+        "secs": 634,
+        "nsecs": 278000000,
+        "seconds": 634.278
+      },
+      "box": [
+        792,
+        711,
+        1215,
+        879
+      ],
+      "image_sha256": "ed9e214b2237ea1ccac803c394a25c1c48d0910a9c42f6ea9834d077bb916f27"
+    },
+    {
+      "raw": "冀K·0BBI7",
+      "text": "冀K0BB17",
+      "display": "冀K·0BB17",
+      "confidence": 0.9551862478256226,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 84.923,
+      "recognition_band": [
+        0,
+        34,
+        423,
+        117
+      ],
+      "input_shape": [
+        83,
+        423,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_04/ocr/POINT_10_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_04/ocr/POINT_10_frame_2.crop.input.png",
+      "recognition_image_sha256": "81dfd5951572e804ad7fc87beec2e96ff67e3c96912abf175f51cdb41f367afe",
+      "source_stamp": {
+        "secs": 634,
+        "nsecs": 488000000,
+        "seconds": 634.488
+      },
+      "box": [
+        792,
+        711,
+        1215,
+        879
+      ],
+      "image_sha256": "b71e119681c16bcfff68aec48e6de9a74282e562d5c28be31dd37ce45c217298"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "a19e353a7f7fbcf76e1c87ea3b0878a48746cd8b50597224fbffe6c98c7b5263",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 285.676,
+  "low_resolution_comparison": {
+    "raw": "冀K·0BBI7",
+    "text": "冀K0BB17",
+    "display": "冀K·0BB17",
+    "confidence": 0.9260638952255249,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 89.723,
+    "recognition_band": [
+      0,
+      11,
+      141,
+      39
+    ],
+    "input_shape": [
+      28,
+      141,
+      3
+    ],
+    "box": [
+      264,
+      237,
+      405,
+      293
+    ]
+  }
+}

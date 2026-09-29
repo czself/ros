@@ -1,0 +1,155 @@
+{
+  "waypoint": "POINT_9",
+  "text": "",
+  "valid": false,
+  "confidence": 0.0,
+  "matching_frames": 0,
+  "frames": [
+    {
+      "raw": "晋Q·Q1IT7",
+      "text": "",
+      "display": "",
+      "confidence": 0.8454791307449341,
+      "valid": false,
+      "issue": "LOW_OCR_CONFIDENCE",
+      "elapsed_ms": 98.141,
+      "recognition_band": [
+        0,
+        37,
+        441,
+        125
+      ],
+      "input_shape": [
+        88,
+        441,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_01/ocr/POINT_9_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_01/ocr/POINT_9_frame_0.crop.input.png",
+      "recognition_image_sha256": "945a173c8b411139afdeda8cec4a08123fb87bb9b76299a749cdd672cbb26c19",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 846000000,
+        "seconds": 643.846
+      },
+      "box": [
+        1257,
+        708,
+        1698,
+        879
+      ],
+      "image_sha256": "fbdfe28e29f3b36d00796397d08be923599ddea446c72c2da3b8d102f7246dce"
+    },
+    {
+      "raw": "晋Q·Q1IT7",
+      "text": "",
+      "display": "",
+      "confidence": 0.841961145401001,
+      "valid": false,
+      "issue": "LOW_OCR_CONFIDENCE",
+      "elapsed_ms": 97.431,
+      "recognition_band": [
+        0,
+        37,
+        441,
+        125
+      ],
+      "input_shape": [
+        88,
+        441,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_01/ocr/POINT_9_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_01/ocr/POINT_9_frame_1.crop.input.png",
+      "recognition_image_sha256": "745606a780d9518e8d504c4ae5926636e6551cb411eb8b35fca385c254ab6548",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 442000000,
+        "seconds": 643.442
+      },
+      "box": [
+        1257,
+        708,
+        1698,
+        879
+      ],
+      "image_sha256": "f072e91a5e5fd47f4c9fa15ef99c65dcef63c1840262fca5a286cb460b51731e"
+    },
+    {
+      "raw": "晋Q·Q1IT7",
+      "text": "",
+      "display": "",
+      "confidence": 0.8427600860595703,
+      "valid": false,
+      "issue": "LOW_OCR_CONFIDENCE",
+      "elapsed_ms": 90.726,
+      "recognition_band": [
+        0,
+        37,
+        441,
+        125
+      ],
+      "input_shape": [
+        88,
+        441,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_01/ocr/POINT_9_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_01/ocr/POINT_9_frame_2.crop.input.png",
+      "recognition_image_sha256": "ecd8c9131b2561b88317397d71ca1258b9d848ccc9157f9ddceee4dae29aa4fa",
+      "source_stamp": {
+        "secs": 643,
+        "nsecs": 645000000,
+        "seconds": 643.645
+      },
+      "box": [
+        1257,
+        708,
+        1698,
+        879
+      ],
+      "image_sha256": "db43fbd20deb9b0bfbb93069f5605059992ff78850d9428def034609ce66c5ac"
+    }
+  ],
+  "issues": [
+    "NO_TWO_FRAME_VALID_CONSENSUS"
+  ],
+  "job_sha256": "1369a8d5d9d3446d223996fc7a131efee116d69a5082754c5ac3cc1500e1b991",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 292.58,
+  "low_resolution_comparison": {
+    "raw": "晋Q·QIIT7",
+    "text": "晋QQ11T7",
+    "display": "晋Q·Q11T7",
+    "confidence": 0.8802056312561035,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 90.557,
+    "recognition_band": [
+      0,
+      12,
+      147,
+      42
+    ],
+    "input_shape": [
+      30,
+      147,
+      3
+    ],
+    "box": [
+      419,
+      236,
+      566,
+      293
+    ]
+  },
+  "source_stamp": {
+    "secs": 643,
+    "nsecs": 846000000,
+    "seconds": 643.846
+  },
+  "annotated_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_01/ocr/POINT_9.annotated.png",
+  "published_stamp": 644.708
+}

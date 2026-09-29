@@ -1,0 +1,98 @@
+启动 Gazebo ...
+本次抽取车牌：冀K0BB17.jpg、赣N5B5T3.jpg、学ABCDEG.jpg
+等待 Gazebo ROS 服务 ...
+启动交通灯控制器 ...
+完成。状态话题：/traffic_light/state /traffic_light/time_remaining /traffic_light/ready
+Navigation ready: white/traffic gates, best.pt, laser+depth, sim time, AMCL TF, and forward path follower agree.
+导航已启动，RViz 已打开。地图: current_slam_preview_white_lines；轮编码器里程计 + AMCL；YOLO SHA-256: fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad；交通灯门控: true；白线门控: true。
+路线已开始：HOME → POINT_1…POINT_10 → HOME；strict=true；本次照片和运动bag: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+[人物识别] POINT_2 帧549.275000000：本图3人，社区2人、外来1人；累计去重3人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/persons/POINT_2.png
+[人物识别] PERSON_001 A街区 社区人员 置信度0.889，位置(1.323, 0.984)
+[人物识别] PERSON_002 A街区 社区人员 置信度0.689，位置(1.328, 1.049)
+[人物识别] PERSON_003 A街区 外来人员 置信度0.572，位置(1.326, 1.116)
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+[人物识别] POINT_3 帧562.121000000：本图3人，社区3人、外来0人；累计去重6人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/persons/POINT_3.png
+[人物识别] PERSON_004 A街区 社区人员 置信度0.815，位置(1.222, 1.312)
+[人物识别] PERSON_005 A街区 社区人员 置信度0.840，位置(1.158, 1.301)
+[人物识别] PERSON_006 A街区 社区人员 置信度0.861，位置(1.084, 1.299)
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+[人物识别] POINT_4 帧575.054000000：本图3人，社区3人、外来0人；累计去重9人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/persons/POINT_4.png
+[人物识别] PERSON_007 A街区 社区人员 置信度0.693，位置(0.882, 0.860)
+[人物识别] PERSON_008 A街区 社区人员 置信度0.855，位置(0.883, 0.783)
+[人物识别] PERSON_009 A街区 社区人员 置信度0.661，位置(0.897, 0.719)
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+[人物识别] POINT_5 帧582.654000000：本图4人，社区3人、外来1人；累计去重13人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/persons/POINT_5.png
+[人物识别] PERSON_010 B街区 社区人员 置信度0.910，位置(0.116, 0.669)
+[人物识别] PERSON_011 B街区 社区人员 置信度0.860，位置(0.126, 0.730)
+[人物识别] PERSON_012 B街区 外来人员 置信度0.818，位置(0.138, 0.795)
+[人物识别] PERSON_013 B街区 社区人员 置信度0.883，位置(0.143, 0.857)
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+[人物识别] POINT_6 帧595.987000000：本图5人，社区5人、外来0人；累计去重18人。图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/persons/POINT_6.png
+[人物识别] PERSON_014 B街区 社区人员 置信度0.863，位置(-0.244, 0.486)
+[人物识别] PERSON_015 B街区 社区人员 置信度0.836，位置(-0.182, 0.482)
+[人物识别] PERSON_016 B街区 社区人员 置信度0.863，位置(-0.129, 0.481)
+[人物识别] PERSON_017 B街区 社区人员 置信度0.909，位置(-0.069, 0.478)
+[人物识别] PERSON_018 B街区 社区人员 置信度0.840，位置(-0.008, 0.459)
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+[车牌OCR] POINT_8：学A·BCDEG；置信度0.984；3帧一致；图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/ocr/POINT_8.annotated.png
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+[车牌OCR] POINT_9：赣N·5B5T3；置信度0.987；3帧一致；图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/ocr/POINT_9.annotated.png
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+[车牌OCR] POINT_10：冀K·0BB17；置信度0.953；2帧一致；图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/ocr/POINT_10.annotated.png
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+路线仍在运行；照片目录: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02
+街区内共有18人，其中社区人员16人，外来人员2人。A街区9人，社区人员8人，外来人员1人。B街区9人，社区人员8人，外来人员1人。外来人员图片已保存。
+A街区发现外来人员PERSON_003，置信度0.572，图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/persons/POINT_2.png
+B街区发现外来人员PERSON_012，置信度0.818，图片：/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02/persons/POINT_5.png
+{"report_sha256": "c334f53fa5726190289517fcbdf7aad50252fc9f3afd96bf307baf8c18eeab86", "text": "街区内共有18人，其中社区人员16人，外来人员2人。A街区9人，社区人员8人，外来人员1人。B街区9人，社区人员8人，外来人员1人。外来人员图片已保存。", "synthesis_pass": true, "playback_requested": true, "playback_pass": true, "duration_s": 26.34829931972789}
+路线结束：COMPLETE_PARKED；bag已关闭并通过rosbag info；照片和数据: /home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_02

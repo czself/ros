@@ -1,0 +1,12 @@
+启动 Gazebo ...
+本次抽取车牌：学ABCDEK.jpg、晋QQ11T7.jpg、桂VK2T43.jpg
+等待 Gazebo ROS 服务 ...
+启动交通灯控制器 ...
+完成。状态话题：/traffic_light/state /traffic_light/time_remaining /traffic_light/ready
+Navigation ready: white/traffic gates, best.pt, laser+depth, sim time, AMCL TF, and forward path follower agree.
+导航已启动，RViz 已打开。地图: current_slam_preview_white_lines；轮编码器里程计 + AMCL；YOLO SHA-256: fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad；交通灯门控: true；白线门控: true。
+X Error of failed request:  BadWindow (invalid Window parameter)
+  Major opcode of failed request:  20 (X_GetProperty)
+  Resource id in failed request:  0x3a2db4d
+  Serial number of failed request:  103
+  Current serial number in output stream:  103

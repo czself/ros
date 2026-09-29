@@ -1,0 +1,652 @@
+{
+  "created_at": 1790684599.5460534,
+  "policy": "Removed only old 2026-09-27/28 motion bags; non-bag evidence retained.",
+  "count": 92,
+  "total_bytes": 436179750467,
+  "items": [
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_115820/motion.bag",
+      "run": "20260927_115820",
+      "name": "motion.bag",
+      "size_bytes": 1368169245,
+      "mtime": 1790481749.0091205
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_120842/motion.bag",
+      "run": "20260927_120842",
+      "name": "motion.bag",
+      "size_bytes": 84067887,
+      "mtime": 1790482164.8715944
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_121350/motion.bag",
+      "run": "20260927_121350",
+      "name": "motion.bag",
+      "size_bytes": 266679095,
+      "mtime": 1790482501.4162445
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_121819/motion.bag",
+      "run": "20260927_121819",
+      "name": "motion.bag",
+      "size_bytes": 206497173,
+      "mtime": 1790482761.1600263
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_125028/motion.bag",
+      "run": "20260927_125028",
+      "name": "motion.bag",
+      "size_bytes": 223907355,
+      "mtime": 1790484692.7275214
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_134705/motion.bag",
+      "run": "20260927_134705",
+      "name": "motion.bag",
+      "size_bytes": 708391148,
+      "mtime": 1790488067.2971344
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_134921/motion.bag",
+      "run": "20260927_134921",
+      "name": "motion.bag",
+      "size_bytes": 720680006,
+      "mtime": 1790488196.5350902
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_140023/motion.bag",
+      "run": "20260927_140023",
+      "name": "motion.bag",
+      "size_bytes": 709434095,
+      "mtime": 1790488862.7190554
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_140238/motion.bag",
+      "run": "20260927_140238",
+      "name": "motion.bag",
+      "size_bytes": 3960379388,
+      "mtime": 1790489010.8331652
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_140943/motion.bag",
+      "run": "20260927_140943",
+      "name": "motion.bag",
+      "size_bytes": 1352193785,
+      "mtime": 1790489440.4594367
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_141325/motion.bag",
+      "run": "20260927_141325",
+      "name": "motion.bag",
+      "size_bytes": 2216048878,
+      "mtime": 1790489682.1050224
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_141628/motion.bag",
+      "run": "20260927_141628",
+      "name": "motion.bag",
+      "size_bytes": 1405639621,
+      "mtime": 1790489857.6141896
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_141920/motion.bag",
+      "run": "20260927_141920",
+      "name": "motion.bag",
+      "size_bytes": 472384024,
+      "mtime": 1790490005.8023338
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_142343/motion.bag",
+      "run": "20260927_142343",
+      "name": "motion.bag",
+      "size_bytes": 3274568053,
+      "mtime": 1790490322.9496722
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_143558/motion.bag",
+      "run": "20260927_143558",
+      "name": "motion.bag",
+      "size_bytes": 1518821583,
+      "mtime": 1790491030.2498808
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_143851/motion.bag",
+      "run": "20260927_143851",
+      "name": "motion.bag",
+      "size_bytes": 1946228655,
+      "mtime": 1790491204.0922353
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_144828/motion.bag",
+      "run": "20260927_144828",
+      "name": "motion.bag",
+      "size_bytes": 1008068961,
+      "mtime": 1790491758.5973198
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_145530/motion.bag",
+      "run": "20260927_145530",
+      "name": "motion.bag",
+      "size_bytes": 1170812590,
+      "mtime": 1790492418.355593
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_150000/motion.bag",
+      "run": "20260927_150000",
+      "name": "motion.bag",
+      "size_bytes": 1701930488,
+      "mtime": 1790492935.3084245
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_150800/motion.bag",
+      "run": "20260927_150800",
+      "name": "motion.bag",
+      "size_bytes": 1827458917,
+      "mtime": 1790493285.9218488
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_151500/motion.bag",
+      "run": "20260927_151500",
+      "name": "motion.bag",
+      "size_bytes": 1298828227,
+      "mtime": 1790493941.1966681
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_152100/motion.bag",
+      "run": "20260927_152100",
+      "name": "motion.bag",
+      "size_bytes": 1772228388,
+      "mtime": 1790494145.7815948
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_152600/motion.bag",
+      "run": "20260927_152600",
+      "name": "motion.bag",
+      "size_bytes": 2507943753,
+      "mtime": 1790494447.7773647
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_153300/motion.bag",
+      "run": "20260927_153300",
+      "name": "motion.bag",
+      "size_bytes": 1396997386,
+      "mtime": 1790494636.7597568
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_153800/motion.bag",
+      "run": "20260927_153800",
+      "name": "motion.bag",
+      "size_bytes": 2687681218,
+      "mtime": 1790494856.1013522
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_154600/motion.bag",
+      "run": "20260927_154600",
+      "name": "motion.bag",
+      "size_bytes": 3852725987,
+      "mtime": 1790495186.772331
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_155200/motion.bag",
+      "run": "20260927_155200",
+      "name": "motion.bag",
+      "size_bytes": 4042840531,
+      "mtime": 1790495433.6813343
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_160000/motion.bag",
+      "run": "20260927_160000",
+      "name": "motion.bag",
+      "size_bytes": 3942474126,
+      "mtime": 1790495714.665721
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_161000/motion.bag",
+      "run": "20260927_161000",
+      "name": "motion.bag",
+      "size_bytes": 439100494,
+      "mtime": 1790495850.0418053
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_161600/motion.bag",
+      "run": "20260927_161600",
+      "name": "motion.bag",
+      "size_bytes": 3718275725,
+      "mtime": 1790496132.2965124
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_162200/motion.bag",
+      "run": "20260927_162200",
+      "name": "motion.bag",
+      "size_bytes": 3751549580,
+      "mtime": 1790496418.5624657
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_163000/motion.bag",
+      "run": "20260927_163000",
+      "name": "motion.bag",
+      "size_bytes": 1870291738,
+      "mtime": 1790496684.3096828
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_163800/motion.bag",
+      "run": "20260927_163800",
+      "name": "motion.bag",
+      "size_bytes": 4289624902,
+      "mtime": 1790496878.5161679
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_164200/motion.bag",
+      "run": "20260927_164200",
+      "name": "motion.bag",
+      "size_bytes": 4145564906,
+      "mtime": 1790497425.0735996
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_164900/motion.bag",
+      "run": "20260927_164900",
+      "name": "motion.bag",
+      "size_bytes": 2888790440,
+      "mtime": 1790497621.6255336
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_165000/motion.bag",
+      "run": "20260927_165000",
+      "name": "motion.bag",
+      "size_bytes": 6198145726,
+      "mtime": 1790497896.9435334
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_165800/motion.bag",
+      "run": "20260927_165800",
+      "name": "motion.bag",
+      "size_bytes": 4663128676,
+      "mtime": 1790498140.1355422
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_166000/motion.bag",
+      "run": "20260927_166000",
+      "name": "motion.bag",
+      "size_bytes": 6758173206,
+      "mtime": 1790498571.2607334
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_167200/motion.bag",
+      "run": "20260927_167200",
+      "name": "motion.bag",
+      "size_bytes": 7427131418,
+      "mtime": 1790499073.7917778
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_168000/motion.bag",
+      "run": "20260927_168000",
+      "name": "motion.bag",
+      "size_bytes": 5771885144,
+      "mtime": 1790499471.4028125
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_169000/motion.bag",
+      "run": "20260927_169000",
+      "name": "motion.bag",
+      "size_bytes": 4995836654,
+      "mtime": 1790499778.863394
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_170000/motion.bag",
+      "run": "20260927_170000",
+      "name": "motion.bag",
+      "size_bytes": 4680275944,
+      "mtime": 1790500053.9758022
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_171000/motion.bag",
+      "run": "20260927_171000",
+      "name": "motion.bag",
+      "size_bytes": 5291689499,
+      "mtime": 1790500275.7862122
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_171800/motion.bag",
+      "run": "20260927_171800",
+      "name": "motion.bag",
+      "size_bytes": 1991010414,
+      "mtime": 1790500486.5652134
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_172000/motion.bag",
+      "run": "20260927_172000",
+      "name": "motion.bag",
+      "size_bytes": 1407020765,
+      "mtime": 1790500711.5847619
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_172800/motion.bag",
+      "run": "20260927_172800",
+      "name": "motion.bag",
+      "size_bytes": 8612394124,
+      "mtime": 1790501345.3128562
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_173200/motion.bag",
+      "run": "20260927_173200",
+      "name": "motion.bag",
+      "size_bytes": 4894692265,
+      "mtime": 1790502580.2115238
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_173800/motion.bag",
+      "run": "20260927_173800",
+      "name": "motion.bag",
+      "size_bytes": 5531982450,
+      "mtime": 1790502814.143866
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_174000/motion.bag",
+      "run": "20260927_174000",
+      "name": "motion.bag",
+      "size_bytes": 440140132,
+      "mtime": 1790503083.9085798
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_174800/motion.bag",
+      "run": "20260927_174800",
+      "name": "motion.bag",
+      "size_bytes": 8282634281,
+      "mtime": 1790503452.3122334
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_175500/motion.bag",
+      "run": "20260927_175500",
+      "name": "motion.bag",
+      "size_bytes": 3434906753,
+      "mtime": 1790503701.6131296
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_180000/motion.bag",
+      "run": "20260927_180000",
+      "name": "motion.bag",
+      "size_bytes": 8210497734,
+      "mtime": 1790504011.5659368
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_180500/motion.bag",
+      "run": "20260927_180500",
+      "name": "motion.bag",
+      "size_bytes": 2206313522,
+      "mtime": 1790504157.6717956
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_181000/motion.bag",
+      "run": "20260927_181000",
+      "name": "motion.bag",
+      "size_bytes": 6939956629,
+      "mtime": 1790504779.487077
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_181200/motion.bag",
+      "run": "20260927_181200",
+      "name": "motion.bag",
+      "size_bytes": 3648771294,
+      "mtime": 1790504372.6822846
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_184250/motion.bag",
+      "run": "20260927_184250",
+      "name": "motion.bag",
+      "size_bytes": 5757404853,
+      "mtime": 1790505901.420814
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_185730/motion.bag",
+      "run": "20260927_185730",
+      "name": "motion.bag",
+      "size_bytes": 8778468487,
+      "mtime": 1790506856.2043712
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_191600/motion.bag",
+      "run": "20260927_191600",
+      "name": "motion.bag",
+      "size_bytes": 4344759831,
+      "mtime": 1790507884.0259123
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_192020/motion.bag",
+      "run": "20260927_192020",
+      "name": "motion.bag",
+      "size_bytes": 1693118235,
+      "mtime": 1790508084.454626
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_192600/motion.bag",
+      "run": "20260927_192600",
+      "name": "motion.bag",
+      "size_bytes": 8168061671,
+      "mtime": 1790508546.9096553
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_193230/motion.bag",
+      "run": "20260927_193230",
+      "name": "motion.bag",
+      "size_bytes": 8337583887,
+      "mtime": 1790508939.6252084
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_201230/motion.bag",
+      "run": "20260927_201230",
+      "name": "motion.bag",
+      "size_bytes": 8604184495,
+      "mtime": 1790511349.4155269
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_202900/motion.bag",
+      "run": "20260927_202900",
+      "name": "motion.bag",
+      "size_bytes": 4751851233,
+      "mtime": 1790512275.3009887
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_203700/motion.bag",
+      "run": "20260927_203700",
+      "name": "motion.bag",
+      "size_bytes": 7836047684,
+      "mtime": 1790512787.3404627
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_204820/motion.bag",
+      "run": "20260927_204820",
+      "name": "motion.bag",
+      "size_bytes": 8034189217,
+      "mtime": 1790513486.2608416
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_210955/motion.bag",
+      "run": "20260927_210955",
+      "name": "motion.bag",
+      "size_bytes": 8522447720,
+      "mtime": 1790514810.8262267
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_212620/motion.bag",
+      "run": "20260927_212620",
+      "name": "motion.bag",
+      "size_bytes": 6669895505,
+      "mtime": 1790515749.1534808
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_213420/motion.bag",
+      "run": "20260927_213420",
+      "name": "motion.bag",
+      "size_bytes": 7014460774,
+      "mtime": 1790516241.5864618
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_214510/motion.bag",
+      "run": "20260927_214510",
+      "name": "motion.bag",
+      "size_bytes": 7457330660,
+      "mtime": 1790516888.0673015
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_215450/motion.bag",
+      "run": "20260927_215450",
+      "name": "motion.bag",
+      "size_bytes": 8377555365,
+      "mtime": 1790517482.695887
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_220200/motion.bag",
+      "run": "20260927_220200",
+      "name": "motion.bag",
+      "size_bytes": 606507665,
+      "mtime": 1790517730.7606149
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_221400/motion.bag",
+      "run": "20260927_221400",
+      "name": "motion.bag",
+      "size_bytes": 611859227,
+      "mtime": 1790518487.1396933
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_222200/motion.bag",
+      "run": "20260927_222200",
+      "name": "motion.bag",
+      "size_bytes": 2518412020,
+      "mtime": 1790518915.0257888
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_222700/motion.bag",
+      "run": "20260927_222700",
+      "name": "motion.bag",
+      "size_bytes": 8200950966,
+      "mtime": 1790519364.1962652
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260927_223200/motion.bag",
+      "run": "20260927_223200",
+      "name": "motion.bag",
+      "size_bytes": 1149025889,
+      "mtime": 1790519611.5588875
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_133816/motion.bag",
+      "run": "20260928_133816",
+      "name": "motion.bag",
+      "size_bytes": 8813222182,
+      "mtime": 1790574111.5959032
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_134500/motion.bag",
+      "run": "20260928_134500",
+      "name": "motion.bag",
+      "size_bytes": 8195027571,
+      "mtime": 1790574446.978306
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_135500/motion.bag",
+      "run": "20260928_135500",
+      "name": "motion.bag",
+      "size_bytes": 8833229575,
+      "mtime": 1790575012.7405286
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_135919/motion.bag",
+      "run": "20260928_135919",
+      "name": "motion.bag",
+      "size_bytes": 8585401511,
+      "mtime": 1790575378.8701425
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_140509/motion.bag",
+      "run": "20260928_140509",
+      "name": "motion.bag",
+      "size_bytes": 8042793830,
+      "mtime": 1790575718.6083157
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_154715/motion.bag",
+      "run": "20260928_154715",
+      "name": "motion.bag",
+      "size_bytes": 7887533103,
+      "mtime": 1790581841.0069606
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_1/motion.bag",
+      "run": "20260928_judge_demo_1",
+      "name": "motion.bag",
+      "size_bytes": 4977123270,
+      "mtime": 1790598021.8086555
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_2/motion.bag",
+      "run": "20260928_judge_demo_2",
+      "name": "motion.bag",
+      "size_bytes": 9262262871,
+      "mtime": 1790598777.6284366
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_judge_demo_3/motion.bag",
+      "run": "20260928_judge_demo_3",
+      "name": "motion.bag",
+      "size_bytes": 9749335568,
+      "mtime": 1790601222.55351
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_1/motion.bag",
+      "run": "20260928_ocr_closer_1",
+      "name": "motion.bag",
+      "size_bytes": 8927806487,
+      "mtime": 1790594869.2853944
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_2/motion.bag",
+      "run": "20260928_ocr_closer_2",
+      "name": "motion.bag",
+      "size_bytes": 9113961123,
+      "mtime": 1790595357.8615828
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_closer_3/motion.bag",
+      "run": "20260928_ocr_closer_3",
+      "name": "motion.bag",
+      "size_bytes": 9457470160,
+      "mtime": 1790595824.8236268
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_hd_probe/motion.bag",
+      "run": "20260928_ocr_hd_probe",
+      "name": "motion.bag",
+      "size_bytes": 10041872813,
+      "mtime": 1790593046.506956
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_ocr_integrated_1/motion.bag",
+      "run": "20260928_ocr_integrated_1",
+      "name": "motion.bag",
+      "size_bytes": 10006389435,
+      "mtime": 1790593953.0772364
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_person_depth_probe/motion.bag",
+      "run": "20260928_person_depth_probe",
+      "name": "motion.bag",
+      "size_bytes": 10090915423,
+      "mtime": 1790583529.1114876
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_person_report_1/motion.bag",
+      "run": "20260928_person_report_1",
+      "name": "motion.bag",
+      "size_bytes": 7358927280,
+      "mtime": 1790584770.5176284
+    },
+    {
+      "path": "/root/ros1_ws/photo_stops/standee_route_runs/20260928_person_report_2/motion.bag",
+      "run": "20260928_person_report_2",
+      "name": "motion.bag",
+      "size_bytes": 9268497903,
+      "mtime": 1790585106.090805
+    }
+  ]
+}

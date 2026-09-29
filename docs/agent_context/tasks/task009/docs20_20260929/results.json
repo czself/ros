@@ -1,0 +1,5561 @@
+{
+  "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+  "runtime_commit": "d9a61b4",
+  "aggregates": {
+    "missions": 20,
+    "original_independent_passes": 16,
+    "original_independent_success_rate": 0.8,
+    "navigation_map_checks_passes": 19,
+    "person_count_matches_truth_runs": 18,
+    "person_reported_inventory_match_runs": 20,
+    "person_full_audit_pass_runs": 17,
+    "person_all_classes_correct_runs": 18,
+    "ocr_exact_plates": 58,
+    "ocr_consensus_successes": 58,
+    "ocr_total": 60,
+    "physical_home_passes": 0,
+    "all_mission_time_sim_s": {
+      "n": 20,
+      "mean": 136.30895,
+      "median": 132.82549999999998,
+      "min": 129.34299999999996,
+      "max": 148.37400000000002,
+      "sample_stddev": 7.352648849403305
+    },
+    "accepted_mission_time_sim_s": {
+      "n": 16,
+      "mean": 134.744125,
+      "median": 131.79649999999998,
+      "min": 129.34299999999996,
+      "max": 148.37400000000002,
+      "sample_stddev": 6.329706869200204
+    },
+    "point7_goal_s": {
+      "n": 20,
+      "mean": 6.332,
+      "median": 6.025,
+      "min": 4.93,
+      "max": 11.06,
+      "sample_stddev": 1.2711395633342881
+    },
+    "physical_chassis_return_cm": {
+      "n": 20,
+      "mean": 4.232889265781806,
+      "median": 3.9209628903742066,
+      "min": 2.0003240949847214,
+      "max": 6.943583581267235,
+      "sample_stddev": 1.3310106703326292
+    },
+    "physical_yaw_return_rad": {
+      "n": 20,
+      "mean": 0.12381475153668445,
+      "median": 0.12641338274050018,
+      "min": 0.042446351886859184,
+      "max": 0.22410897915476236,
+      "sample_stddev": 0.04952462302103004
+    },
+    "amcl_home_position_cm": {
+      "n": 20,
+      "mean": 1.4050247200719326,
+      "median": 1.5035676457904115,
+      "min": 0.276033683749646,
+      "max": 2.712364239164886,
+      "sample_stddev": 0.7157737637061226
+    },
+    "amcl_home_yaw_rad": {
+      "n": 20,
+      "mean": 0.030622835664315264,
+      "median": 0.030085881716137464,
+      "min": 0.026819848676271185,
+      "max": 0.03461600374271234,
+      "sample_stddev": 0.0023360449537120995
+    },
+    "person_min_confidence": 0.39173,
+    "all_point7_postfinal_reentries": 1,
+    "all_point7_map_final_sign_crossings": 0,
+    "matched_commands": 54235,
+    "actual_command_records": 54240,
+    "unmatched_moving_commands": 1,
+    "judge_tested_runs": 9,
+    "judge_passed_runs": 9,
+    "distinct_scene_plate_numbers": 15,
+    "scene_plate_number_frequency": {
+      "豫W5U8Y1": 4,
+      "晋QQ11T7": 4,
+      "学C88K55": 4,
+      "学ABCDEG": 4,
+      "赣N5B5T3": 2,
+      "冀K0BB17": 5,
+      "川NH0U34": 4,
+      "学B5B5T3": 4,
+      "浙TF9E07": 3,
+      "学ABCDEK": 6,
+      "桂VK2T43": 4,
+      "学R00136": 4,
+      "学PYPVGM": 5,
+      "学ABCDEF": 3,
+      "辽ZR6314": 4
+    },
+    "display_enabled_time_sim_s": {
+      "n": 9,
+      "mean": 137.141,
+      "median": 130.15599999999995,
+      "min": 129.34299999999996,
+      "max": 148.37400000000002,
+      "sample_stddev": 9.068656074634246
+    },
+    "display_disabled_time_sim_s": {
+      "n": 11,
+      "mean": 135.62818181818182,
+      "median": 133.289,
+      "min": 129.51300000000003,
+      "max": 146.66499999999996,
+      "sample_stddev": 5.982596506838499
+    }
+  },
+  "selected_examples": {
+    "fastest_accepted": "20260929_docs20_03",
+    "representative_with_display": "20260929_docs20_04",
+    "strong_visual_scores": "20260929_docs20b_19",
+    "point7_reentry_counterexample": "20260929_docs20_06"
+  },
+  "selection_note": "Examples are labeled; all twenty runs and all failures retained.",
+  "rows": [
+    {
+      "ordinal": 1,
+      "run": "20260929_docs20_01",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "FAILED",
+      "independent_acceptance": false,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 145.83399999999995,
+      "signal_wait_estimate_s": 13.16700000000003,
+      "mission_excluding_signal_estimate_s": 132.66699999999992,
+      "point7_goal_s": 7.83,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": false,
+      "person_count_matches_truth": false,
+      "person_all_classes_correct": false,
+      "person_max_position_error_cm": null,
+      "person_min_confidence": 0.70209,
+      "foreign_A_confidence": 0.78849,
+      "foreign_B_confidence": 0.84336,
+      "ocr_exact_count": 2,
+      "ocr_consensus_count": 2,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": false,
+      "ocr_min_reported_confidence": 0.0,
+      "home_amcl_position_cm": 0.276033683749646,
+      "home_amcl_heading_rad": 0.03418397932222361,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 3.8535858816989643,
+      "home_physical_axle_return_cm": 3.550654993570087,
+      "home_physical_yaw_return_rad": 0.10669026353346145,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2902,
+      "actual_command_records": 2902,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.1015625,
+      "yolo_window_latency_p95_ms": 199.33259999999981,
+      "yolo_max_frame_age_ms": 299.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 9419878042,
+      "failed_audit_flags": "parking_pass;person_report_pass;plate_ocr_pass"
+    },
+    {
+      "ordinal": 2,
+      "run": "20260929_docs20_02",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 143.9190000000001,
+      "signal_wait_estimate_s": 14.711999999999989,
+      "mission_excluding_signal_estimate_s": 129.2070000000001,
+      "point7_goal_s": 5.74,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 4.52262445095914,
+      "person_min_confidence": 0.57156,
+      "foreign_A_confidence": 0.57156,
+      "foreign_B_confidence": 0.81753,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9526932835578918,
+      "home_amcl_position_cm": 0.4239813490274213,
+      "home_amcl_heading_rad": 0.03135567228515512,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 5.278080778686619,
+      "home_physical_axle_return_cm": 4.938131671731903,
+      "home_physical_yaw_return_rad": 0.13865951255355036,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2862,
+      "actual_command_records": 2862,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.140625,
+      "yolo_window_latency_p95_ms": 198.45359999999982,
+      "yolo_max_frame_age_ms": 286.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 9126572655,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 3,
+      "run": "20260929_docs20_03",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 129.34299999999996,
+      "signal_wait_estimate_s": 0.0,
+      "mission_excluding_signal_estimate_s": 129.34299999999996,
+      "point7_goal_s": 4.93,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 6.263823505944897,
+      "person_min_confidence": 0.39173,
+      "foreign_A_confidence": 0.39173,
+      "foreign_B_confidence": 0.81787,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9759101867675781,
+      "home_amcl_position_cm": 2.3333327513833715,
+      "home_amcl_heading_rad": 0.026819848676271185,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 3.4783621784286547,
+      "home_physical_axle_return_cm": 2.6561303411451376,
+      "home_physical_yaw_return_rad": 0.17948076273628133,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2572,
+      "actual_command_records": 2572,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.133928571428571,
+      "yolo_window_latency_p95_ms": 190.55392999999995,
+      "yolo_max_frame_age_ms": 278.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 8103025057,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 4,
+      "run": "20260929_docs20_04",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 130.15599999999995,
+      "signal_wait_estimate_s": 0.3209999999999127,
+      "mission_excluding_signal_estimate_s": 129.83500000000004,
+      "point7_goal_s": 5.33,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 5.8266898137183825,
+      "person_min_confidence": 0.67003,
+      "foreign_A_confidence": 0.77054,
+      "foreign_B_confidence": 0.84307,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9407159090042114,
+      "home_amcl_position_cm": 0.31456633200306205,
+      "home_amcl_heading_rad": 0.03461600374271234,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 4.293749480814003,
+      "home_physical_axle_return_cm": 3.566746389158964,
+      "home_physical_yaw_return_rad": 0.15603574356780503,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2590,
+      "actual_command_records": 2590,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.174311926605505,
+      "yolo_window_latency_p95_ms": 194.04687999999982,
+      "yolo_max_frame_age_ms": 287.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 8127842854,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 5,
+      "run": "20260929_docs20_05",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "FAILED",
+      "independent_acceptance": false,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 148.26100000000008,
+      "signal_wait_estimate_s": 15.997999999999934,
+      "mission_excluding_signal_estimate_s": 132.26300000000015,
+      "point7_goal_s": 5.87,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": false,
+      "person_count_matches_truth": false,
+      "person_all_classes_correct": false,
+      "person_max_position_error_cm": null,
+      "person_min_confidence": 0.70064,
+      "foreign_A_confidence": 0.79336,
+      "foreign_B_confidence": 0.83849,
+      "ocr_exact_count": 2,
+      "ocr_consensus_count": 2,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": false,
+      "ocr_min_reported_confidence": 0.0,
+      "home_amcl_position_cm": 2.712364239164886,
+      "home_amcl_heading_rad": 0.028742459307882884,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 3.767554969221085,
+      "home_physical_axle_return_cm": 3.336353026628911,
+      "home_physical_yaw_return_rad": 0.08787450149099385,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2949,
+      "actual_command_records": 2949,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.1484375,
+      "yolo_window_latency_p95_ms": 193.73761999999988,
+      "yolo_max_frame_age_ms": 321.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 9266470465,
+      "failed_audit_flags": "parking_pass;person_report_pass;plate_ocr_pass"
+    },
+    {
+      "ordinal": 6,
+      "run": "20260929_docs20_06",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 148.37400000000002,
+      "signal_wait_estimate_s": 11.112999999999943,
+      "mission_excluding_signal_estimate_s": 137.26100000000008,
+      "point7_goal_s": 11.06,
+      "point7_final_segments": 2,
+      "point7_postfinal_path_reentries": 1,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 5.760505829950327,
+      "person_min_confidence": 0.62577,
+      "foreign_A_confidence": 0.75955,
+      "foreign_B_confidence": 0.87023,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9449788331985474,
+      "home_amcl_position_cm": 1.6773086551163539,
+      "home_amcl_heading_rad": 0.028693070864187927,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 6.943583581267235,
+      "home_physical_axle_return_cm": 5.9535473459003265,
+      "home_physical_yaw_return_rad": 0.1903629900264534,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2955,
+      "actual_command_records": 2955,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.134328358208955,
+      "yolo_window_latency_p95_ms": 187.03563999999986,
+      "yolo_max_frame_age_ms": 274.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 9257500394,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 7,
+      "run": "20260929_docs20_07",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 129.57100000000003,
+      "signal_wait_estimate_s": 0.07600000000002183,
+      "mission_excluding_signal_estimate_s": 129.495,
+      "point7_goal_s": 6.04,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 6.1057633140959675,
+      "person_min_confidence": 0.51397,
+      "foreign_A_confidence": 0.51397,
+      "foreign_B_confidence": 0.83279,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9498450756072998,
+      "home_amcl_position_cm": 0.3888548702815426,
+      "home_amcl_heading_rad": 0.02833120837138492,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 3.7197050607887445,
+      "home_physical_axle_return_cm": 3.3797386720815745,
+      "home_physical_yaw_return_rad": 0.12681319936936397,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2578,
+      "actual_command_records": 2578,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.140350877192983,
+      "yolo_window_latency_p95_ms": 199.43880999999985,
+      "yolo_max_frame_age_ms": 296.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 8132497841,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 8,
+      "run": "20260929_docs20_08",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 129.413,
+      "signal_wait_estimate_s": 0.0,
+      "mission_excluding_signal_estimate_s": 129.413,
+      "point7_goal_s": 5.93,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 4.524743510749382,
+      "person_min_confidence": 0.7359,
+      "foreign_A_confidence": 0.7359,
+      "foreign_B_confidence": 0.82444,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9490026235580444,
+      "home_amcl_position_cm": 1.8216845809319364,
+      "home_amcl_heading_rad": 0.030078130011467197,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 3.9883398990494485,
+      "home_physical_axle_return_cm": 3.8229571010588472,
+      "home_physical_yaw_return_rad": 0.05813805553186269,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2571,
+      "actual_command_records": 2572,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.15929203539823,
+      "yolo_window_latency_p95_ms": 206.63603999999978,
+      "yolo_max_frame_age_ms": 269.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 8169106531,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 9,
+      "run": "20260929_docs20_09",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 129.3979999999999,
+      "signal_wait_estimate_s": 0.0,
+      "mission_excluding_signal_estimate_s": 129.3979999999999,
+      "point7_goal_s": 5.98,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 4.330660933416949,
+      "person_min_confidence": 0.70901,
+      "foreign_A_confidence": 0.70901,
+      "foreign_B_confidence": 0.8493,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9556735754013062,
+      "home_amcl_position_cm": 1.505598270014846,
+      "home_amcl_heading_rad": 0.0282644425336247,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 2.541246911303062,
+      "home_physical_axle_return_cm": 2.290675053330692,
+      "home_physical_yaw_return_rad": 0.11445339051776982,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2574,
+      "actual_command_records": 2574,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.1875,
+      "yolo_window_latency_p95_ms": 198.5675999999998,
+      "yolo_max_frame_age_ms": 263.0,
+      "judge_presentation_pass": true,
+      "bag_size_bytes": 8155123520,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 10,
+      "run": "20260929_docs20b_11",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 130.952,
+      "signal_wait_estimate_s": 1.7749999999999773,
+      "mission_excluding_signal_estimate_s": 129.17700000000002,
+      "point7_goal_s": 5.48,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 5.831719175178212,
+      "person_min_confidence": 0.62531,
+      "foreign_A_confidence": 0.62531,
+      "foreign_B_confidence": 0.84592,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.8998443484306335,
+      "home_amcl_position_cm": 1.731948758154872,
+      "home_amcl_heading_rad": 0.030291333782370696,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 2.106115187401192,
+      "home_physical_axle_return_cm": 1.8809743743269152,
+      "home_physical_yaw_return_rad": 0.06631386876290213,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2605,
+      "actual_command_records": 2605,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.149122807017544,
+      "yolo_window_latency_p95_ms": 193.57569999999993,
+      "yolo_max_frame_age_ms": 311.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 8088394588,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 11,
+      "run": "20260929_docs20b_12",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 138.534,
+      "signal_wait_estimate_s": 1.9260000000000446,
+      "mission_excluding_signal_estimate_s": 136.60799999999995,
+      "point7_goal_s": 5.64,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 3.7375898345220953,
+      "person_min_confidence": 0.68884,
+      "foreign_A_confidence": 0.72499,
+      "foreign_B_confidence": 0.8647,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9165889024734497,
+      "home_amcl_position_cm": 1.190268518630211,
+      "home_amcl_heading_rad": 0.03411096197351848,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 2.0003240949847214,
+      "home_physical_axle_return_cm": 1.8275540205461682,
+      "home_physical_yaw_return_rad": 0.053968018436519216,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2755,
+      "actual_command_records": 2755,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.064,
+      "yolo_window_latency_p95_ms": 205.6117999999998,
+      "yolo_max_frame_age_ms": 285.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 8595442650,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 12,
+      "run": "20260929_docs20b_13",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 130.14200000000005,
+      "signal_wait_estimate_s": 1.8730000000000473,
+      "mission_excluding_signal_estimate_s": 128.269,
+      "point7_goal_s": 6.05,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 3.4835244905994323,
+      "person_min_confidence": 0.62763,
+      "foreign_A_confidence": 0.62763,
+      "foreign_B_confidence": 0.84233,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9542809724807739,
+      "home_amcl_position_cm": 2.0625039444880526,
+      "home_amcl_heading_rad": 0.03454009761352839,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 6.089662365684745,
+      "home_physical_axle_return_cm": 5.360275940994031,
+      "home_physical_yaw_return_rad": 0.14478327908786004,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2589,
+      "actual_command_records": 2589,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.12280701754386,
+      "yolo_window_latency_p95_ms": 208.8991799999998,
+      "yolo_max_frame_age_ms": 333.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 8132517672,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 13,
+      "run": "20260929_docs20b_14",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 137.19500000000005,
+      "signal_wait_estimate_s": 1.37399999999991,
+      "mission_excluding_signal_estimate_s": 135.82100000000014,
+      "point7_goal_s": 6.34,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 5.572048251419411,
+      "person_min_confidence": 0.73014,
+      "foreign_A_confidence": 0.76384,
+      "foreign_B_confidence": 0.83152,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.913804292678833,
+      "home_amcl_position_cm": 1.5879390070524957,
+      "home_amcl_heading_rad": 0.02903365152425308,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 3.635274629135958,
+      "home_physical_axle_return_cm": 3.269854789319182,
+      "home_physical_yaw_return_rad": 0.07117558887846709,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2730,
+      "actual_command_records": 2730,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.0894308943089435,
+      "yolo_window_latency_p95_ms": 202.26413999999986,
+      "yolo_max_frame_age_ms": 287.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 8390401986,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 14,
+      "run": "20260929_docs20b_15",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 136.41100000000006,
+      "signal_wait_estimate_s": 1.6180000000000518,
+      "mission_excluding_signal_estimate_s": 134.793,
+      "point7_goal_s": 6.31,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 5.058028954948615,
+      "person_min_confidence": 0.69419,
+      "foreign_A_confidence": 0.69419,
+      "foreign_B_confidence": 0.83069,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9326066374778748,
+      "home_amcl_position_cm": 1.0749042119549828,
+      "home_amcl_heading_rad": 0.030599091778822363,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 4.982052016437031,
+      "home_physical_axle_return_cm": 4.28913124588807,
+      "home_physical_yaw_return_rad": 0.1415029757815478,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2714,
+      "actual_command_records": 2715,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.097560975609756,
+      "yolo_window_latency_p95_ms": 212.4936799999998,
+      "yolo_max_frame_age_ms": 295.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 8290573503,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 15,
+      "run": "20260929_docs20b_16",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": false,
+      "navigation_map_checks_pass": false,
+      "mission_sim_s": 146.66499999999996,
+      "signal_wait_estimate_s": 15.587999999999965,
+      "mission_excluding_signal_estimate_s": 131.077,
+      "point7_goal_s": 7.07,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 4.946770578672352,
+      "person_min_confidence": 0.75821,
+      "foreign_A_confidence": 0.75821,
+      "foreign_B_confidence": 0.86555,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.8787317872047424,
+      "home_amcl_position_cm": 1.501537021565977,
+      "home_amcl_heading_rad": 0.02940366445935938,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 5.408186389657989,
+      "home_physical_axle_return_cm": 4.236225552301849,
+      "home_physical_yaw_return_rad": 0.22410897915476236,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2919,
+      "actual_command_records": 2920,
+      "unmatched_moving_commands": 1,
+      "command_pairing_pass": false,
+      "yolo_mean_processed_hz": 5.162790697674419,
+      "yolo_window_latency_p95_ms": 217.10939999999982,
+      "yolo_max_frame_age_ms": 297.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 9183183782,
+      "failed_audit_flags": "speed_pass"
+    },
+    {
+      "ordinal": 16,
+      "run": "20260929_docs20b_17",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": false,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 129.51300000000003,
+      "signal_wait_estimate_s": 1.5789999999999509,
+      "mission_excluding_signal_estimate_s": 127.93400000000008,
+      "point7_goal_s": 6.41,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": false,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 8.375882093518118,
+      "person_min_confidence": 0.69413,
+      "foreign_A_confidence": 0.69413,
+      "foreign_B_confidence": 0.8416,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9456182718276978,
+      "home_amcl_position_cm": 1.3452450583921802,
+      "home_amcl_heading_rad": 0.03136222338818939,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 4.121634794758887,
+      "home_physical_axle_return_cm": 4.096047082405783,
+      "home_physical_yaw_return_rad": 0.11991341621634334,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2579,
+      "actual_command_records": 2579,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.078947368421052,
+      "yolo_window_latency_p95_ms": 206.95836999999992,
+      "yolo_max_frame_age_ms": 322.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 7971710503,
+      "failed_audit_flags": "person_report_pass"
+    },
+    {
+      "ordinal": 17,
+      "run": "20260929_docs20b_18",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 145.61599999999999,
+      "signal_wait_estimate_s": 15.479999999999905,
+      "mission_excluding_signal_estimate_s": 130.13600000000008,
+      "point7_goal_s": 6.46,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 5.871512860793892,
+      "person_min_confidence": 0.44726,
+      "foreign_A_confidence": 0.44726,
+      "foreign_B_confidence": 0.83072,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9223933815956116,
+      "home_amcl_position_cm": 1.7176280780842563,
+      "home_amcl_heading_rad": 0.0331018134333847,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 3.7965835806707733,
+      "home_physical_axle_return_cm": 3.155359894729081,
+      "home_physical_yaw_return_rad": 0.1260135661116364,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2897,
+      "actual_command_records": 2897,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.15625,
+      "yolo_window_latency_p95_ms": 194.18465999999984,
+      "yolo_max_frame_age_ms": 300.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 9110205667,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 18,
+      "run": "20260929_docs20b_19",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 132.36199999999997,
+      "signal_wait_estimate_s": 1.77800000000002,
+      "mission_excluding_signal_estimate_s": 130.58399999999995,
+      "point7_goal_s": 6.01,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 4.5230283479244155,
+      "person_min_confidence": 0.65998,
+      "foreign_A_confidence": 0.78079,
+      "foreign_B_confidence": 0.83922,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9566649198532104,
+      "home_amcl_position_cm": 2.4668607583528157,
+      "home_amcl_heading_rad": 0.02971520827398244,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 6.397973662739336,
+      "home_physical_axle_return_cm": 5.5010639171987,
+      "home_physical_yaw_return_rad": 0.17420857956896918,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2633,
+      "actual_command_records": 2633,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.094827586206897,
+      "yolo_window_latency_p95_ms": 186.4880499999999,
+      "yolo_max_frame_age_ms": 289.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 8078300259,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 19,
+      "run": "20260929_docs20b_20",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 131.231,
+      "signal_wait_estimate_s": 1.969000000000051,
+      "mission_excluding_signal_estimate_s": 129.26199999999994,
+      "point7_goal_s": 5.84,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 5.15149458229869,
+      "person_min_confidence": 0.68744,
+      "foreign_A_confidence": 0.77203,
+      "foreign_B_confidence": 0.81458,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.9530452489852905,
+      "home_amcl_position_cm": 1.2353544111591666,
+      "home_amcl_heading_rad": 0.029120218523178695,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 3.444344207397728,
+      "home_physical_axle_return_cm": 2.695955330342425,
+      "home_physical_yaw_return_rad": 0.15335198752028045,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2611,
+      "actual_command_records": 2611,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.137931034482759,
+      "yolo_window_latency_p95_ms": 196.00109999999984,
+      "yolo_max_frame_age_ms": 330.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 8128547333,
+      "failed_audit_flags": ""
+    },
+    {
+      "ordinal": 20,
+      "run": "20260929_docs20b_21",
+      "source_commit": "5efd120a3f9ce9a3dde9d9cea584ac89d8cda5fc",
+      "route_status": "COMPLETE_PARKED",
+      "independent_acceptance": true,
+      "navigation_map_checks_pass": true,
+      "mission_sim_s": 133.289,
+      "signal_wait_estimate_s": 1.3719999999999573,
+      "mission_excluding_signal_estimate_s": 131.91700000000003,
+      "point7_goal_s": 6.32,
+      "point7_final_segments": 1,
+      "point7_postfinal_path_reentries": 0,
+      "point7_map_final_sign_crossings": 0,
+      "ordinary_white_contacts": 0,
+      "out_of_bounds_samples": 0,
+      "unauthorized_contacts": 0,
+      "green_authorizations": 2,
+      "green_authorizations_valid": true,
+      "person_total": 18,
+      "resident_total": 16,
+      "stranger_total": 2,
+      "person_reported_inventory_match": true,
+      "person_full_audit_pass": true,
+      "person_count_matches_truth": true,
+      "person_all_classes_correct": true,
+      "person_max_position_error_cm": 6.419980555494748,
+      "person_min_confidence": 0.69717,
+      "foreign_A_confidence": 0.77077,
+      "foreign_B_confidence": 0.81531,
+      "ocr_exact_count": 3,
+      "ocr_consensus_count": 3,
+      "ocr_expected_count": 3,
+      "plate_audit_pass": true,
+      "ocr_min_reported_confidence": 0.925002932548523,
+      "home_amcl_position_cm": 0.7325799019305775,
+      "home_amcl_heading_rad": 0.030093633420807734,
+      "home_amcl_tolerance_pass": true,
+      "home_physical_chassis_return_cm": 4.811425645509944,
+      "home_physical_axle_return_cm": 4.759103595476096,
+      "home_physical_yaw_return_rad": 0.042446351886859184,
+      "home_physical_3cm_004rad_pass": false,
+      "matched_commands": 2650,
+      "actual_command_records": 2652,
+      "unmatched_moving_commands": 0,
+      "command_pairing_pass": true,
+      "yolo_mean_processed_hz": 5.102564102564102,
+      "yolo_window_latency_p95_ms": 206.44999999999987,
+      "yolo_max_frame_age_ms": 345.0,
+      "judge_presentation_pass": null,
+      "bag_size_bytes": 8149847845,
+      "failed_audit_flags": ""
+    }
+  ],
+  "details": {
+    "20260929_docs20_01": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.48,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9633,
+          "max_cross_track_m": 0.0183,
+          "attempts": 1,
+          "position_error_m": 0.01826909975684382,
+          "heading_error_rad": 0.028500214638132793
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 10.98,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7056,
+          "max_cross_track_m": 0.0471,
+          "attempts": 1,
+          "position_error_m": 0.02240007666185455,
+          "heading_error_rad": 0.03325501521102492
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.62,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1186,
+          "max_cross_track_m": 0.0528,
+          "attempts": 1,
+          "position_error_m": 0.03807255948540428,
+          "heading_error_rad": 0.02897300543919035
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.48,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3788,
+          "max_cross_track_m": 0.0463,
+          "attempts": 1,
+          "position_error_m": 0.005797186979792037,
+          "heading_error_rad": 0.034519443608877015
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.95,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1154,
+          "max_cross_track_m": 0.0625,
+          "attempts": 1,
+          "position_error_m": 0.008140849995894267,
+          "heading_error_rad": 0.02005006217136238
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.7,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.207,
+          "max_cross_track_m": 0.0277,
+          "attempts": 1,
+          "position_error_m": 0.007495293229532064,
+          "heading_error_rad": 0.032083963276085425
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 7.83,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0283,
+          "max_cross_track_m": 0.0237,
+          "attempts": 1,
+          "position_error_m": 0.03920540728358977,
+          "heading_error_rad": 0.03270096605046068
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 29.0,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4504,
+          "max_cross_track_m": 0.0512,
+          "attempts": 1,
+          "position_error_m": 0.020685366046890474,
+          "heading_error_rad": 0.029996074820467733
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.16,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6338,
+          "max_cross_track_m": 0.0398,
+          "attempts": 1,
+          "position_error_m": 0.009394218736734138,
+          "heading_error_rad": 0.035189782377693886
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.02,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5299,
+          "max_cross_track_m": 0.0428,
+          "attempts": 1,
+          "position_error_m": 0.029107260228004774,
+          "heading_error_rad": 0.03267924972156799
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.64,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6675,
+          "max_cross_track_m": 0.0267,
+          "attempts": 1,
+          "position_error_m": 0.0027599906553409095,
+          "heading_error_rad": 0.034335703475865786
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "豫W5U8Y1",
+          "expected": "豫W5U8Y1",
+          "confidence": 0.8956235647201538,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "",
+          "expected": "晋QQ11T7",
+          "confidence": 0.0,
+          "exact_match": false,
+          "valid_consensus": false
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学C88K55",
+          "expected": "学C88K55",
+          "confidence": 0.9690755605697632,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 7.538000000000011,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.0639999999999645
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.7330000000000609
+          },
+          {
+            "mode": "ALIGNMENT_BRAKING",
+            "duration_s": 0.06799999999998363
+          },
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 0.6029999999999518
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.3290000000000646
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 2.2029999999999745
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.3969999999999345
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.07100000000002638
+          }
+        ],
+        "map_final_error_first_rad": -1.384714104636047,
+        "map_final_error_last_rad": -0.0327027858521145,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 527.969,
+        "last_stamp_s": 673.789,
+        "first_chassis_pose": [
+          1.7139331270159344,
+          -1.6008443774069414,
+          1.6031050205219726
+        ],
+        "last_chassis_pose": [
+          1.7393361675872827,
+          -1.6298219194782315,
+          1.709795284055434
+        ],
+        "chassis_return_error_cm": 3.8535858816989643,
+        "axle_return_error_cm": 3.550654993570087,
+        "yaw_return_error_rad": 0.10669026353346145,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {},
+      "failed_ocr_frames": {
+        "POINT_9": [
+          {
+            "raw": "晋Q·Q1IT7",
+            "text": "",
+            "confidence": 0.8454791307449341,
+            "valid": false,
+            "issue": "LOW_OCR_CONFIDENCE"
+          },
+          {
+            "raw": "晋Q·Q1IT7",
+            "text": "",
+            "confidence": 0.841961145401001,
+            "valid": false,
+            "issue": "LOW_OCR_CONFIDENCE"
+          },
+          {
+            "raw": "晋Q·Q1IT7",
+            "text": "",
+            "confidence": 0.8427600860595703,
+            "valid": false,
+            "issue": "LOW_OCR_CONFIDENCE"
+          }
+        ]
+      }
+    },
+    "20260929_docs20_02": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.39,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9695,
+          "max_cross_track_m": 0.0157,
+          "attempts": 1,
+          "position_error_m": 0.010235259323643619,
+          "heading_error_rad": 0.03276493767587896
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 12.06,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7057,
+          "max_cross_track_m": 0.0478,
+          "attempts": 1,
+          "position_error_m": 0.02498328876425605,
+          "heading_error_rad": 0.03192069228264405
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.31,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1183,
+          "max_cross_track_m": 0.0511,
+          "attempts": 1,
+          "position_error_m": 0.04031141480839282,
+          "heading_error_rad": 0.033799723247267544
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.31,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3735,
+          "max_cross_track_m": 0.0487,
+          "attempts": 1,
+          "position_error_m": 0.011338563368889882,
+          "heading_error_rad": 0.03545392996347432
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.65,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1123,
+          "max_cross_track_m": 0.0589,
+          "attempts": 1,
+          "position_error_m": 0.01705155711309587,
+          "heading_error_rad": 0.02041622523761408
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.69,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2042,
+          "max_cross_track_m": 0.0201,
+          "attempts": 1,
+          "position_error_m": 0.010003825412834054,
+          "heading_error_rad": 0.031431733696287045
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 5.74,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0262,
+          "max_cross_track_m": 0.0165,
+          "attempts": 1,
+          "position_error_m": 0.0424622776044388,
+          "heading_error_rad": 0.026816491235046147
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 29.5,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4476,
+          "max_cross_track_m": 0.0449,
+          "attempts": 1,
+          "position_error_m": 0.014508904379239941,
+          "heading_error_rad": 0.029816463572401863
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.03,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6326,
+          "max_cross_track_m": 0.0322,
+          "attempts": 1,
+          "position_error_m": 0.014944664710127028,
+          "heading_error_rad": 0.029608029350024045
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.13,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5229,
+          "max_cross_track_m": 0.0324,
+          "attempts": 1,
+          "position_error_m": 0.040606681512375516,
+          "heading_error_rad": 0.03032376412807003
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.71,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6679,
+          "max_cross_track_m": 0.0251,
+          "attempts": 1,
+          "position_error_m": 0.004239750570349201,
+          "heading_error_rad": 0.03134194044018246
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学ABCDEG",
+          "expected": "学ABCDEG",
+          "confidence": 0.9841145277023315,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "赣N5B5T3",
+          "expected": "赣N5B5T3",
+          "confidence": 0.9874886274337769,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "冀K0BB17",
+          "expected": "冀K0BB17",
+          "confidence": 0.9526932835578918,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.531000000000063,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.725999999999999
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.73599999999999
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.59800000000007
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.33599999999989905
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06000000000005912
+          }
+        ],
+        "map_final_error_first_rad": -0.8321388121266611,
+        "map_final_error_last_rad": -0.02681648360642574,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 528.377,
+        "last_stamp_s": 672.296,
+        "first_chassis_pose": [
+          1.714573858253767,
+          -1.603359810991682,
+          1.6068776711753152
+        ],
+        "last_chassis_pose": [
+          1.746670772727958,
+          -1.645259712565201,
+          1.7455371837288656
+        ],
+        "chassis_return_error_cm": 5.278080778686619,
+        "axle_return_error_cm": 4.938131671731903,
+        "yaw_return_error_rad": 0.13865951255355036,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20_03": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.22,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9611,
+          "max_cross_track_m": 0.0152,
+          "attempts": 1,
+          "position_error_m": 0.01856083932349195,
+          "heading_error_rad": 0.02781973447161845
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 10.8,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7032,
+          "max_cross_track_m": 0.0596,
+          "attempts": 1,
+          "position_error_m": 0.016758544434406556,
+          "heading_error_rad": 0.03157627757109971
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.37,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1188,
+          "max_cross_track_m": 0.0508,
+          "attempts": 1,
+          "position_error_m": 0.04215224358349134,
+          "heading_error_rad": 0.02914275248249409
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.33,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3846,
+          "max_cross_track_m": 0.0451,
+          "attempts": 1,
+          "position_error_m": 0.0023218518806797945,
+          "heading_error_rad": 0.029118294792068216
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.53,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1066,
+          "max_cross_track_m": 0.0454,
+          "attempts": 1,
+          "position_error_m": 0.01077921611909931,
+          "heading_error_rad": 0.021276697303425716
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.54,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.193,
+          "max_cross_track_m": 0.0262,
+          "attempts": 1,
+          "position_error_m": 0.023254167109446566,
+          "heading_error_rad": 0.02925828332341296
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 4.93,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0276,
+          "max_cross_track_m": 0.0152,
+          "attempts": 1,
+          "position_error_m": 0.04453252385759895,
+          "heading_error_rad": 0.02625487130647519
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.4,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4424,
+          "max_cross_track_m": 0.0263,
+          "attempts": 1,
+          "position_error_m": 0.015329587983981971,
+          "heading_error_rad": 0.035037200669655766
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.18,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6324,
+          "max_cross_track_m": 0.0355,
+          "attempts": 1,
+          "position_error_m": 0.014290731047453872,
+          "heading_error_rad": 0.031677038951599006
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.92,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5278,
+          "max_cross_track_m": 0.0364,
+          "attempts": 1,
+          "position_error_m": 0.0358986023940032,
+          "heading_error_rad": 0.035805240787227355
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.79,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.689,
+          "max_cross_track_m": 0.0357,
+          "attempts": 1,
+          "position_error_m": 0.023329494005135305,
+          "heading_error_rad": 0.026881463458917843
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "川NH0U34",
+          "expected": "川NH0U34",
+          "confidence": 0.9759101867675781,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学B5B5T3",
+          "expected": "学B5B5T3",
+          "confidence": 0.9874505996704102,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "浙TF9E07",
+          "expected": "浙TF9E07",
+          "confidence": 0.9858952760696411,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 4.801000000000045,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.4049999999999727
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.6599999999999682
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.2000000000000455
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.3990000000000009
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06700000000000728
+          }
+        ],
+        "map_final_error_first_rad": -0.4713012948639901,
+        "map_final_error_last_rad": -0.026259419180296284,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 527.13,
+        "last_stamp_s": 656.466,
+        "first_chassis_pose": [
+          1.7139683419903347,
+          -1.6008122865796064,
+          1.603205305438321
+        ],
+        "last_chassis_pose": [
+          1.747035555494159,
+          -1.611603937775081,
+          1.7826860681746024
+        ],
+        "chassis_return_error_cm": 3.4783621784286547,
+        "axle_return_error_cm": 2.6561303411451376,
+        "yaw_return_error_rad": 0.17948076273628133,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20_04": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 4.76,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9158,
+          "max_cross_track_m": 0.0194,
+          "attempts": 1,
+          "position_error_m": 0.01767050175842914,
+          "heading_error_rad": 0.0358487029849719
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 11.42,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7011,
+          "max_cross_track_m": 0.0461,
+          "attempts": 1,
+          "position_error_m": 0.028673438645445526,
+          "heading_error_rad": 0.028796717424077745
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.13,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1234,
+          "max_cross_track_m": 0.0371,
+          "attempts": 1,
+          "position_error_m": 0.04084256328133074,
+          "heading_error_rad": 0.0330119766676622
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.38,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3734,
+          "max_cross_track_m": 0.0395,
+          "attempts": 1,
+          "position_error_m": 0.013143955432419155,
+          "heading_error_rad": 0.028480952515292098
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.8,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1025,
+          "max_cross_track_m": 0.0419,
+          "attempts": 1,
+          "position_error_m": 0.022272702936927843,
+          "heading_error_rad": 0.020013427172913302
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.37,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.193,
+          "max_cross_track_m": 0.0304,
+          "attempts": 1,
+          "position_error_m": 0.022180886543254716,
+          "heading_error_rad": 0.032965528398682054
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 5.33,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0497,
+          "max_cross_track_m": 0.0209,
+          "attempts": 1,
+          "position_error_m": 0.025550495534567993,
+          "heading_error_rad": 0.031815164254627604
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.8,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4462,
+          "max_cross_track_m": 0.0393,
+          "attempts": 1,
+          "position_error_m": 0.015997890318590606,
+          "heading_error_rad": 0.0323668831431736
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.04,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6335,
+          "max_cross_track_m": 0.0479,
+          "attempts": 1,
+          "position_error_m": 0.015829823044877216,
+          "heading_error_rad": 0.029796671508009572
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.93,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5256,
+          "max_cross_track_m": 0.0555,
+          "attempts": 1,
+          "position_error_m": 0.03827009495471746,
+          "heading_error_rad": 0.028154770559627455
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.5,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6675,
+          "max_cross_track_m": 0.0289,
+          "attempts": 1,
+          "position_error_m": 0.00037390973812233903,
+          "heading_error_rad": 0.030991035810032486
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学ABCDEK",
+          "expected": "学ABCDEK",
+          "confidence": 0.9716405868530273,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "豫W5U8Y1",
+          "expected": "豫W5U8Y1",
+          "confidence": 0.9407159090042114,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "冀K0BB17",
+          "expected": "冀K0BB17",
+          "confidence": 0.9491373300552368,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.201000000000022,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.5989999999999327
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.8000000000000682
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.2679999999999154
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.39800000000002456
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06700000000000728
+          }
+        ],
+        "map_final_error_first_rad": -0.622628973192854,
+        "map_final_error_last_rad": -0.031816069015723876,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 527.431,
+        "last_stamp_s": 657.576,
+        "first_chassis_pose": [
+          1.7145817182724066,
+          -1.603267101611755,
+          1.606847784667986
+        ],
+        "last_chassis_pose": [
+          1.7553778683541559,
+          -1.6166574936488254,
+          1.762883528235791
+        ],
+        "chassis_return_error_cm": 4.293749480814003,
+        "axle_return_error_cm": 3.566746389158964,
+        "yaw_return_error_rad": 0.15603574356780503,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20_05": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 4.82,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.956,
+          "max_cross_track_m": 0.0137,
+          "attempts": 1,
+          "position_error_m": 0.01831252521575736,
+          "heading_error_rad": 0.025025389067178327
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 12.33,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.705,
+          "max_cross_track_m": 0.0477,
+          "attempts": 1,
+          "position_error_m": 0.02270008851389458,
+          "heading_error_rad": 0.029322823446955137
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.43,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1147,
+          "max_cross_track_m": 0.0565,
+          "attempts": 1,
+          "position_error_m": 0.0414127341163145,
+          "heading_error_rad": 0.03530977136318736
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.84,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3659,
+          "max_cross_track_m": 0.0365,
+          "attempts": 1,
+          "position_error_m": 0.02366542131046039,
+          "heading_error_rad": 0.03113046510101974
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.69,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1176,
+          "max_cross_track_m": 0.0429,
+          "attempts": 1,
+          "position_error_m": 0.010543044512833437,
+          "heading_error_rad": 0.021658807997828797
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.71,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1922,
+          "max_cross_track_m": 0.0244,
+          "attempts": 1,
+          "position_error_m": 0.01742339633486714,
+          "heading_error_rad": 0.030306235748409852
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 5.87,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0331,
+          "max_cross_track_m": 0.0183,
+          "attempts": 1,
+          "position_error_m": 0.03926961836008375,
+          "heading_error_rad": 0.0331523777143743
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 29.52,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4413,
+          "max_cross_track_m": 0.0372,
+          "attempts": 1,
+          "position_error_m": 0.018964903704828475,
+          "heading_error_rad": 0.030597830319277545
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.13,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6356,
+          "max_cross_track_m": 0.039,
+          "attempts": 1,
+          "position_error_m": 0.010718417664270587,
+          "heading_error_rad": 0.029722117488616195
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.96,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5246,
+          "max_cross_track_m": 0.0393,
+          "attempts": 1,
+          "position_error_m": 0.03599937631146928,
+          "heading_error_rad": 0.03444749429124804
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.54,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6965,
+          "max_cross_track_m": 0.0303,
+          "attempts": 1,
+          "position_error_m": 0.02712252934786259,
+          "heading_error_rad": 0.028746070318541147
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学ABCDEG",
+          "expected": "学ABCDEG",
+          "confidence": 0.9679970145225525,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "",
+          "expected": "晋QQ11T7",
+          "confidence": 0.0,
+          "exact_match": false,
+          "valid_consensus": false
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "桂VK2T43",
+          "expected": "桂VK2T43",
+          "confidence": 0.9974741339683533,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.734000000000037,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.8640000000000327
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.7989999999999782
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.5339999999999918
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.3990000000000009
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06700000000000728
+          }
+        ],
+        "map_final_error_first_rad": -0.8333898690141566,
+        "map_final_error_last_rad": -0.031381313631005714,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 527.221,
+        "last_stamp_s": 675.473,
+        "first_chassis_pose": [
+          1.7139555596272902,
+          -1.6008227232522527,
+          1.603167859082502
+        ],
+        "last_chassis_pose": [
+          1.7503264206775482,
+          -1.6106516352506925,
+          1.6910423605734959
+        ],
+        "chassis_return_error_cm": 3.767554969221085,
+        "axle_return_error_cm": 3.336353026628911,
+        "yaw_return_error_rad": 0.08787450149099385,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {},
+      "failed_ocr_frames": {
+        "POINT_9": [
+          {
+            "raw": "晋Q·Q1IT7",
+            "text": "",
+            "confidence": 0.8498823642730713,
+            "valid": false,
+            "issue": "LOW_OCR_CONFIDENCE"
+          },
+          {
+            "raw": "晋Q·Q1IT7",
+            "text": "晋QQ11T7",
+            "confidence": 0.8511543273925781,
+            "valid": true,
+            "issue": null
+          }
+        ]
+      }
+    },
+    "20260929_docs20_06": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 4.98,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9631,
+          "max_cross_track_m": 0.018,
+          "attempts": 1,
+          "position_error_m": 0.017271355920015163,
+          "heading_error_rad": 0.03193031530560875
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 11.47,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7078,
+          "max_cross_track_m": 0.0473,
+          "attempts": 1,
+          "position_error_m": 0.027401818779491664,
+          "heading_error_rad": 0.030226577760596122
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.33,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1138,
+          "max_cross_track_m": 0.0502,
+          "attempts": 1,
+          "position_error_m": 0.03969519677103202,
+          "heading_error_rad": 0.027434096849255463
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.32,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3717,
+          "max_cross_track_m": 0.0482,
+          "attempts": 1,
+          "position_error_m": 0.014470282709173245,
+          "heading_error_rad": 0.027574332594425897
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.6,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1188,
+          "max_cross_track_m": 0.0471,
+          "attempts": 1,
+          "position_error_m": 0.01240626439621419,
+          "heading_error_rad": 0.02110867485231058
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.79,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2085,
+          "max_cross_track_m": 0.0261,
+          "attempts": 1,
+          "position_error_m": 0.012661100295109032,
+          "heading_error_rad": 0.03309647683606798
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 11.06,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0509,
+          "max_cross_track_m": 0.0443,
+          "attempts": 1,
+          "position_error_m": 0.02230714221369282,
+          "heading_error_rad": 0.03128942568242721
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 24.56,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4418,
+          "max_cross_track_m": 0.0301,
+          "attempts": 1,
+          "position_error_m": 0.017768643963316604,
+          "heading_error_rad": 0.030694269904974814
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.28,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6388,
+          "max_cross_track_m": 0.0489,
+          "attempts": 1,
+          "position_error_m": 0.01393561307555432,
+          "heading_error_rad": 0.030477825270443404
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 12.44,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5178,
+          "max_cross_track_m": 0.0495,
+          "attempts": 1,
+          "position_error_m": 0.039871242880325224,
+          "heading_error_rad": 0.03361207806167865
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.5,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6675,
+          "max_cross_track_m": 0.0428,
+          "attempts": 1,
+          "position_error_m": 0.01677312131004101,
+          "heading_error_rad": 0.02868635644674011
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学R00136",
+          "expected": "学R00136",
+          "confidence": 0.9449788331985474,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学C88K55",
+          "expected": "学C88K55",
+          "confidence": 0.9493810534477234,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学PYPVGM",
+          "expected": "学PYPVGM",
+          "confidence": 0.9796118140220642,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 10.807000000000016,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.064000000000078
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 1.0659999999999172
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.9330000000001064
+          },
+          {
+            "mode": "ALIGNMENT_BRAKING",
+            "duration_s": 0.06699999999989359
+          },
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 1.5350000000000819
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.5309999999999491
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 2.0670000000000073
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.4010000000000673
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06799999999998363
+          }
+        ],
+        "map_final_error_first_rad": -1.1881790283603688,
+        "map_final_error_last_rad": -0.03128771035682254,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 527.437,
+        "last_stamp_s": 675.811,
+        "first_chassis_pose": [
+          1.7145809166753638,
+          -1.6032754648924668,
+          1.6068525005559129
+        ],
+        "last_chassis_pose": [
+          1.7819010217332305,
+          -1.5862655045749885,
+          1.7972154905823663
+        ],
+        "chassis_return_error_cm": 6.943583581267235,
+        "axle_return_error_cm": 5.9535473459003265,
+        "yaw_return_error_rad": 0.1903629900264534,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20_07": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.28,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9707,
+          "max_cross_track_m": 0.0177,
+          "attempts": 1,
+          "position_error_m": 0.009872704247851829,
+          "heading_error_rad": 0.031266488809351234
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 11.01,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7012,
+          "max_cross_track_m": 0.0492,
+          "attempts": 1,
+          "position_error_m": 0.02514832852714628,
+          "heading_error_rad": 0.035216117235390865
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.12,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.125,
+          "max_cross_track_m": 0.0396,
+          "attempts": 1,
+          "position_error_m": 0.03354869332827127,
+          "heading_error_rad": 0.03657658656835161
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.68,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.377,
+          "max_cross_track_m": 0.0445,
+          "attempts": 1,
+          "position_error_m": 0.008799731952331621,
+          "heading_error_rad": 0.030171802202122275
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.59,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1103,
+          "max_cross_track_m": 0.0431,
+          "attempts": 1,
+          "position_error_m": 0.012508984118386812,
+          "heading_error_rad": 0.01953102231457369
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.73,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2142,
+          "max_cross_track_m": 0.0204,
+          "attempts": 1,
+          "position_error_m": 0.0013678013460284002,
+          "heading_error_rad": 0.032488269272914476
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 6.04,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0246,
+          "max_cross_track_m": 0.0179,
+          "attempts": 1,
+          "position_error_m": 0.04005192835069188,
+          "heading_error_rad": 0.031947293064455096
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 14.14,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.443,
+          "max_cross_track_m": 0.0647,
+          "attempts": 1,
+          "position_error_m": 0.01877985458738194,
+          "heading_error_rad": 0.027140039243339853
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.24,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.633,
+          "max_cross_track_m": 0.0333,
+          "attempts": 1,
+          "position_error_m": 0.015135685742149152,
+          "heading_error_rad": 0.0287965026797008
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.86,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5295,
+          "max_cross_track_m": 0.0296,
+          "attempts": 1,
+          "position_error_m": 0.03357045121706151,
+          "heading_error_rad": 0.03175996735805375
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.91,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6675,
+          "max_cross_track_m": 0.0201,
+          "attempts": 1,
+          "position_error_m": 0.003888673352094456,
+          "heading_error_rad": 0.028320083932005694
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "川NH0U34",
+          "expected": "川NH0U34",
+          "confidence": 0.9775523543357849,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学ABCDEF",
+          "expected": "学ABCDEF",
+          "confidence": 0.978552520275116,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "冀K0BB17",
+          "expected": "冀K0BB17",
+          "confidence": 0.9498450756072998,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.866999999999962,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.0009999999999764
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.6660000000000537
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.66599999999994
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.3990000000000009
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06600000000003092
+          }
+        ],
+        "map_final_error_first_rad": -0.9627940439966705,
+        "map_final_error_last_rad": -0.03194816959902713,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 527.302,
+        "last_stamp_s": 656.864,
+        "first_chassis_pose": [
+          1.714580794152059,
+          -1.6032783149215246,
+          1.6068523085870066
+        ],
+        "last_chassis_pose": [
+          1.7389562478405838,
+          -1.6313756071648053,
+          1.7336655079563705
+        ],
+        "chassis_return_error_cm": 3.7197050607887445,
+        "axle_return_error_cm": 3.3797386720815745,
+        "yaw_return_error_rad": 0.12681319936936397,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20_08": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.32,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9675,
+          "max_cross_track_m": 0.0169,
+          "attempts": 1,
+          "position_error_m": 0.012379873044350925,
+          "heading_error_rad": 0.02964559295777036
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 11.31,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.708,
+          "max_cross_track_m": 0.0479,
+          "attempts": 1,
+          "position_error_m": 0.023316577194920328,
+          "heading_error_rad": 0.03323763616552755
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.36,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1264,
+          "max_cross_track_m": 0.0566,
+          "attempts": 1,
+          "position_error_m": 0.038208299165951295,
+          "heading_error_rad": 0.028228080235795927
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.68,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.377,
+          "max_cross_track_m": 0.0501,
+          "attempts": 1,
+          "position_error_m": 0.00830154929627095,
+          "heading_error_rad": 0.03399618618448771
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.94,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1235,
+          "max_cross_track_m": 0.076,
+          "attempts": 1,
+          "position_error_m": 0.003367889615319152,
+          "heading_error_rad": 0.019031520080987827
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.8,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1975,
+          "max_cross_track_m": 0.0286,
+          "attempts": 1,
+          "position_error_m": 0.014716095866744976,
+          "heading_error_rad": 0.030508056219385793
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 5.93,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.035,
+          "max_cross_track_m": 0.0148,
+          "attempts": 1,
+          "position_error_m": 0.03484933558914297,
+          "heading_error_rad": 0.03148310050905412
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 14.26,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4469,
+          "max_cross_track_m": 0.0339,
+          "attempts": 1,
+          "position_error_m": 0.012906507312430569,
+          "heading_error_rad": 0.031098221425601258
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.24,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6372,
+          "max_cross_track_m": 0.0344,
+          "attempts": 1,
+          "position_error_m": 0.009270472493485083,
+          "heading_error_rad": 0.03134866238425804
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.77,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5141,
+          "max_cross_track_m": 0.0349,
+          "attempts": 1,
+          "position_error_m": 0.04476628334830515,
+          "heading_error_rad": 0.029171041736144158
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.65,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6853,
+          "max_cross_track_m": 0.0275,
+          "attempts": 1,
+          "position_error_m": 0.018210463092050582,
+          "heading_error_rad": 0.030070028118064807
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "豫W5U8Y1",
+          "expected": "豫W5U8Y1",
+          "confidence": 0.9490026235580444,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "辽ZR6314",
+          "expected": "辽ZR6314",
+          "confidence": 0.9494044780731201,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学ABCDEG",
+          "expected": "学ABCDEG",
+          "confidence": 0.9826029539108276,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.802999999999997,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.8619999999999663
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.6680000000000064
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.7340000000000373
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.39799999999991087
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06700000000000728
+          }
+        ],
+        "map_final_error_first_rad": -0.8970149002472003,
+        "map_final_error_last_rad": -0.031483331372408774,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 527.44,
+        "last_stamp_s": 656.842,
+        "first_chassis_pose": [
+          1.7139499028722864,
+          -1.6008297007904007,
+          1.603150964204242
+        ],
+        "last_chassis_pose": [
+          1.7386117265972223,
+          -1.6321742372456614,
+          1.6612890197361048
+        ],
+        "chassis_return_error_cm": 3.9883398990494485,
+        "axle_return_error_cm": 3.8229571010588472,
+        "yaw_return_error_rad": 0.05813805553186269,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20_09": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.02,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9618,
+          "max_cross_track_m": 0.0144,
+          "attempts": 1,
+          "position_error_m": 0.01888246619733905,
+          "heading_error_rad": 0.026924198316565118
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 11.51,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.697,
+          "max_cross_track_m": 0.0474,
+          "attempts": 1,
+          "position_error_m": 0.020943456914448835,
+          "heading_error_rad": 0.03499051361477923
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.34,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1378,
+          "max_cross_track_m": 0.0458,
+          "attempts": 1,
+          "position_error_m": 0.025429490610456296,
+          "heading_error_rad": 0.030406447409519366
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.34,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3689,
+          "max_cross_track_m": 0.0467,
+          "attempts": 1,
+          "position_error_m": 0.01572144597937763,
+          "heading_error_rad": 0.02995164290706311
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.9,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1171,
+          "max_cross_track_m": 0.0613,
+          "attempts": 1,
+          "position_error_m": 0.014700663017040719,
+          "heading_error_rad": 0.023311222268544297
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.88,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.204,
+          "max_cross_track_m": 0.0303,
+          "attempts": 1,
+          "position_error_m": 0.012999207347355548,
+          "heading_error_rad": 0.02805550583191807
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 5.98,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0252,
+          "max_cross_track_m": 0.0192,
+          "attempts": 1,
+          "position_error_m": 0.0469140182614823,
+          "heading_error_rad": 0.031168815229706937
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.6,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4453,
+          "max_cross_track_m": 0.0313,
+          "attempts": 1,
+          "position_error_m": 0.013848147445050907,
+          "heading_error_rad": 0.027783185459506088
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.17,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6318,
+          "max_cross_track_m": 0.0345,
+          "attempts": 1,
+          "position_error_m": 0.015355797912260048,
+          "heading_error_rad": 0.029087776080988007
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.97,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5339,
+          "max_cross_track_m": 0.0343,
+          "attempts": 1,
+          "position_error_m": 0.031733433537610996,
+          "heading_error_rad": 0.0348368608676759
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.51,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6822,
+          "max_cross_track_m": 0.0269,
+          "attempts": 1,
+          "position_error_m": 0.015055281964699112,
+          "heading_error_rad": 0.02830178971207986
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学C88K55",
+          "expected": "学C88K55",
+          "confidence": 0.9556735754013062,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学PYPVGM",
+          "expected": "学PYPVGM",
+          "confidence": 0.974854052066803,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学R00136",
+          "expected": "学R00136",
+          "confidence": 0.9559302926063538,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.868000000000052,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.062999999999988
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.6000000000000227
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.6660000000000537
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.40300000000002
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06299999999998818
+          }
+        ],
+        "map_final_error_first_rad": -1.0093774589224354,
+        "map_final_error_last_rad": -0.031168820821755983,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 527.646,
+        "last_stamp_s": 657.036,
+        "first_chassis_pose": [
+          1.71394501552858,
+          -1.6008331064856594,
+          1.603137297328798
+        ],
+        "last_chassis_pose": [
+          1.7289242946842618,
+          -1.6213614961545275,
+          1.7175906878465679
+        ],
+        "chassis_return_error_cm": 2.541246911303062,
+        "axle_return_error_cm": 2.290675053330692,
+        "yaw_return_error_rad": 0.11445339051776982,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_11": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.29,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9608,
+          "max_cross_track_m": 0.0202,
+          "attempts": 1,
+          "position_error_m": 0.01865316978288312,
+          "heading_error_rad": 0.03362525721222598
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 13.61,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7019,
+          "max_cross_track_m": 0.0492,
+          "attempts": 1,
+          "position_error_m": 0.017203152025016447,
+          "heading_error_rad": 0.029675311039521368
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.49,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1281,
+          "max_cross_track_m": 0.0554,
+          "attempts": 1,
+          "position_error_m": 0.03864996392140172,
+          "heading_error_rad": 0.03015463137582675
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.7,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3762,
+          "max_cross_track_m": 0.0476,
+          "attempts": 1,
+          "position_error_m": 0.00921786438685492,
+          "heading_error_rad": 0.03513953266785363
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.75,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1198,
+          "max_cross_track_m": 0.0564,
+          "attempts": 1,
+          "position_error_m": 0.003859247585531872,
+          "heading_error_rad": 0.02353354165183472
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.86,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.187,
+          "max_cross_track_m": 0.0305,
+          "attempts": 1,
+          "position_error_m": 0.02338230239643617,
+          "heading_error_rad": 0.030144271324703764
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 5.48,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0378,
+          "max_cross_track_m": 0.019,
+          "attempts": 1,
+          "position_error_m": 0.03769351524754837,
+          "heading_error_rad": 0.03147311666078334
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.83,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4501,
+          "max_cross_track_m": 0.0365,
+          "attempts": 1,
+          "position_error_m": 0.009326484601837848,
+          "heading_error_rad": 0.031966763602187635
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.3,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6445,
+          "max_cross_track_m": 0.0332,
+          "attempts": 1,
+          "position_error_m": 0.006088314202189044,
+          "heading_error_rad": 0.028408273847441157
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.98,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5253,
+          "max_cross_track_m": 0.0334,
+          "attempts": 1,
+          "position_error_m": 0.026211057132277983,
+          "heading_error_rad": 0.02843203760536217
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.47,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6675,
+          "max_cross_track_m": 0.0261,
+          "attempts": 1,
+          "position_error_m": 0.01731959996460283,
+          "heading_error_rad": 0.03028746951199568
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学ABCDEK",
+          "expected": "学ABCDEK",
+          "confidence": 0.9722592234611511,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "晋QQ11T7",
+          "expected": "晋QQ11T7",
+          "confidence": 0.8998443484306335,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学B5B5T3",
+          "expected": "学B5B5T3",
+          "confidence": 0.9772782325744629,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.33400000000006,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.6620000000000346
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.6660000000000537
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.4689999999999372
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.39800000000002456
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06600000000003092
+          }
+        ],
+        "map_final_error_first_rad": -0.7243924003353728,
+        "map_final_error_last_rad": -0.03147416107472312,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 523.923,
+        "last_stamp_s": 654.874,
+        "first_chassis_pose": [
+          1.7146057776509476,
+          -1.6029786899096876,
+          1.6067642254569052
+        ],
+        "last_chassis_pose": [
+          1.7302516238899097,
+          -1.6170776123410988,
+          1.6730780942198074
+        ],
+        "chassis_return_error_cm": 2.106115187401192,
+        "axle_return_error_cm": 1.8809743743269152,
+        "yaw_return_error_rad": 0.06631386876290213,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_12": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 4.77,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.932,
+          "max_cross_track_m": 0.0188,
+          "attempts": 1,
+          "position_error_m": 0.01745096674599955,
+          "heading_error_rad": 0.022669201874354394
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 13.52,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7031,
+          "max_cross_track_m": 0.0498,
+          "attempts": 1,
+          "position_error_m": 0.016811919778270415,
+          "heading_error_rad": 0.026416252841992005
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.46,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1255,
+          "max_cross_track_m": 0.0571,
+          "attempts": 1,
+          "position_error_m": 0.031433586249405066,
+          "heading_error_rad": 0.02977995781084708
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.71,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3706,
+          "max_cross_track_m": 0.0416,
+          "attempts": 1,
+          "position_error_m": 0.01470617331653757,
+          "heading_error_rad": 0.029763079917178418
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.62,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1235,
+          "max_cross_track_m": 0.0533,
+          "attempts": 1,
+          "position_error_m": 0.002729313307903199,
+          "heading_error_rad": 0.020664389473137958
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.8,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1963,
+          "max_cross_track_m": 0.0314,
+          "attempts": 1,
+          "position_error_m": 0.01470165450966599,
+          "heading_error_rad": 0.03246167903193231
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 5.64,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0243,
+          "max_cross_track_m": 0.0174,
+          "attempts": 1,
+          "position_error_m": 0.04200037963526562,
+          "heading_error_rad": 0.028150080723722937
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 14.08,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4526,
+          "max_cross_track_m": 0.0288,
+          "attempts": 1,
+          "position_error_m": 0.016892822587125666,
+          "heading_error_rad": 0.02758133518029404
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.27,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6341,
+          "max_cross_track_m": 0.0383,
+          "attempts": 1,
+          "position_error_m": 0.012013192221412517,
+          "heading_error_rad": 0.02882279123163411
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.03,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5129,
+          "max_cross_track_m": 0.0366,
+          "attempts": 1,
+          "position_error_m": 0.04661831829401852,
+          "heading_error_rad": 0.030397026459711762
+        },
+        {
+          "name": "HOME",
+          "duration_s": 25.23,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6771,
+          "max_cross_track_m": 0.0469,
+          "attempts": 1,
+          "position_error_m": 0.012617816107811422,
+          "heading_error_rad": 0.031623708440678966
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "浙TF9E07",
+          "expected": "浙TF9E07",
+          "confidence": 0.9796244502067566,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学PYPVGM",
+          "expected": "学PYPVGM",
+          "confidence": 0.9816126227378845,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "辽ZR6314",
+          "expected": "辽ZR6314",
+          "confidence": 0.9165889024734497,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.4669999999999845,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.6639999999999873
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.8020000000000209
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.4650000000000318
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.40300000000002
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06299999999998818
+          }
+        ],
+        "map_final_error_first_rad": -0.8033692101774266,
+        "map_final_error_last_rad": -0.02815008284980136,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 526.046,
+        "last_stamp_s": 664.575,
+        "first_chassis_pose": [
+          1.7140334015469072,
+          -1.600746741526209,
+          1.603390244209528
+        ],
+        "last_chassis_pose": [
+          1.7279995709509188,
+          -1.6150672080226642,
+          1.6573582626460472
+        ],
+        "chassis_return_error_cm": 2.0003240949847214,
+        "axle_return_error_cm": 1.8275540205461682,
+        "yaw_return_error_rad": 0.053968018436519216,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_13": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 4.68,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.917,
+          "max_cross_track_m": 0.025,
+          "attempts": 1,
+          "position_error_m": 0.01762722565732069,
+          "heading_error_rad": 0.038429513439342644
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 13.73,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7067,
+          "max_cross_track_m": 0.0497,
+          "attempts": 1,
+          "position_error_m": 0.016534599678098283,
+          "heading_error_rad": 0.026003802678390642
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.31,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1181,
+          "max_cross_track_m": 0.05,
+          "attempts": 1,
+          "position_error_m": 0.04207749654283492,
+          "heading_error_rad": 0.031149308633116938
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.66,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3689,
+          "max_cross_track_m": 0.0481,
+          "attempts": 1,
+          "position_error_m": 0.020804061747945184,
+          "heading_error_rad": 0.031651501834560454
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.81,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1237,
+          "max_cross_track_m": 0.0463,
+          "attempts": 1,
+          "position_error_m": 0.010679583872593226,
+          "heading_error_rad": 0.018530807255393113
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.46,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1965,
+          "max_cross_track_m": 0.0274,
+          "attempts": 1,
+          "position_error_m": 0.018141002774113214,
+          "heading_error_rad": 0.030746350353523248
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 6.05,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0327,
+          "max_cross_track_m": 0.0217,
+          "attempts": 1,
+          "position_error_m": 0.0409721869756927,
+          "heading_error_rad": 0.024914614311720484
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.66,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4472,
+          "max_cross_track_m": 0.0329,
+          "attempts": 1,
+          "position_error_m": 0.012240474169585024,
+          "heading_error_rad": 0.030266295001749377
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.06,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6288,
+          "max_cross_track_m": 0.0399,
+          "attempts": 1,
+          "position_error_m": 0.01762879700301664,
+          "heading_error_rad": 0.02995149553539833
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.89,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5297,
+          "max_cross_track_m": 0.0459,
+          "attempts": 1,
+          "position_error_m": 0.03772888233844479,
+          "heading_error_rad": 0.029312714443104904
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.86,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6895,
+          "max_cross_track_m": 0.0413,
+          "attempts": 1,
+          "position_error_m": 0.020619575166020733,
+          "heading_error_rad": 0.03454478758272539
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "赣N5B5T3",
+          "expected": "赣N5B5T3",
+          "confidence": 0.9542809724807739,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学ABCDEK",
+          "expected": "学ABCDEK",
+          "confidence": 0.9804556369781494,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学ABCDEF",
+          "expected": "学ABCDEF",
+          "confidence": 0.9789706468582153,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.868000000000052,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.92999999999995
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.7360000000001037
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.6649999999999636
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.39800000000002456
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06700000000000728
+          }
+        ],
+        "map_final_error_first_rad": -0.9481215103714522,
+        "map_final_error_last_rad": -0.020425334067208478,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 524.84,
+        "last_stamp_s": 654.97,
+        "first_chassis_pose": [
+          1.7140390140153974,
+          -1.6007417913859936,
+          1.603418061572392
+        ],
+        "last_chassis_pose": [
+          1.77416395885504,
+          -1.6104056302108938,
+          1.7482013406602521
+        ],
+        "chassis_return_error_cm": 6.089662365684745,
+        "axle_return_error_cm": 5.360275940994031,
+        "yaw_return_error_rad": 0.14478327908786004,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_14": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.54,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9668,
+          "max_cross_track_m": 0.019,
+          "attempts": 1,
+          "position_error_m": 0.018207908826558986,
+          "heading_error_rad": 0.028929423022518108
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 12.51,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.6978,
+          "max_cross_track_m": 0.051,
+          "attempts": 1,
+          "position_error_m": 0.023122943584985536,
+          "heading_error_rad": 0.03536089578012769
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.55,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1271,
+          "max_cross_track_m": 0.0473,
+          "attempts": 1,
+          "position_error_m": 0.037643178250303826,
+          "heading_error_rad": 0.030683535879173277
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.58,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3631,
+          "max_cross_track_m": 0.0444,
+          "attempts": 1,
+          "position_error_m": 0.022069292820353022,
+          "heading_error_rad": 0.03203758916093296
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.89,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1162,
+          "max_cross_track_m": 0.0418,
+          "attempts": 1,
+          "position_error_m": 0.018384418927151067,
+          "heading_error_rad": 0.018463007804271327
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 13.04,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2046,
+          "max_cross_track_m": 0.0184,
+          "attempts": 1,
+          "position_error_m": 0.00850023412690514,
+          "heading_error_rad": 0.02725049597687601
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 6.34,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0262,
+          "max_cross_track_m": 0.0193,
+          "attempts": 1,
+          "position_error_m": 0.04201080460921532,
+          "heading_error_rad": 0.033645342196151784
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.45,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4478,
+          "max_cross_track_m": 0.0258,
+          "attempts": 1,
+          "position_error_m": 0.01275814577386281,
+          "heading_error_rad": 0.031500569629681285
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.23,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6401,
+          "max_cross_track_m": 0.035,
+          "attempts": 1,
+          "position_error_m": 0.009222064186855781,
+          "heading_error_rad": 0.025531259426696096
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.0,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5092,
+          "max_cross_track_m": 0.0389,
+          "attempts": 1,
+          "position_error_m": 0.046754578929428574,
+          "heading_error_rad": 0.03139670443623643
+        },
+        {
+          "name": "HOME",
+          "duration_s": 24.82,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6802,
+          "max_cross_track_m": 0.0395,
+          "attempts": 1,
+          "position_error_m": 0.01587910134226588,
+          "heading_error_rad": 0.029020049141394333
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学PYPVGM",
+          "expected": "学PYPVGM",
+          "confidence": 0.9820190072059631,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学C88K55",
+          "expected": "学C88K55",
+          "confidence": 0.9421079158782959,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学R00136",
+          "expected": "学R00136",
+          "confidence": 0.913804292678833,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 6.134999999999991,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.201999999999998
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.5960000000000036
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.8010000000000446
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.40300000000002
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06299999999998818
+          }
+        ],
+        "map_final_error_first_rad": -1.1326360240100584,
+        "map_final_error_last_rad": -0.033493115289620956,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 525.641,
+        "last_stamp_s": 662.826,
+        "first_chassis_pose": [
+          1.714610130036987,
+          -1.6029278080679328,
+          1.60674656313553
+        ],
+        "last_chassis_pose": [
+          1.749644649596902,
+          -1.593227055410026,
+          1.677922152013997
+        ],
+        "chassis_return_error_cm": 3.635274629135958,
+        "axle_return_error_cm": 3.269854789319182,
+        "yaw_return_error_rad": 0.07117558887846709,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_15": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.09,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.961,
+          "max_cross_track_m": 0.0171,
+          "attempts": 1,
+          "position_error_m": 0.018459103018397226,
+          "heading_error_rad": 0.03296211139683236
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 13.23,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.6981,
+          "max_cross_track_m": 0.0448,
+          "attempts": 1,
+          "position_error_m": 0.021303154989538966,
+          "heading_error_rad": 0.03314871140433428
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.16,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1225,
+          "max_cross_track_m": 0.0449,
+          "attempts": 1,
+          "position_error_m": 0.0395250694390679,
+          "heading_error_rad": 0.02736555754151415
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.24,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3637,
+          "max_cross_track_m": 0.0465,
+          "attempts": 1,
+          "position_error_m": 0.020970811977914807,
+          "heading_error_rad": 0.028969989901059603
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.86,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1219,
+          "max_cross_track_m": 0.0552,
+          "attempts": 1,
+          "position_error_m": 0.013404009039003276,
+          "heading_error_rad": 0.01826650373994074
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.8,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2076,
+          "max_cross_track_m": 0.0281,
+          "attempts": 1,
+          "position_error_m": 0.008624399121011522,
+          "heading_error_rad": 0.031660592537124055
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 6.31,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.018,
+          "max_cross_track_m": 0.02,
+          "attempts": 1,
+          "position_error_m": 0.04128871943607861,
+          "heading_error_rad": 0.03279720968070565
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.85,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4485,
+          "max_cross_track_m": 0.0302,
+          "attempts": 1,
+          "position_error_m": 0.00887213249558799,
+          "heading_error_rad": 0.026016251939057215
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.05,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6286,
+          "max_cross_track_m": 0.0496,
+          "attempts": 1,
+          "position_error_m": 0.02159018999681562,
+          "heading_error_rad": 0.03299426687368757
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.98,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5225,
+          "max_cross_track_m": 0.0574,
+          "attempts": 1,
+          "position_error_m": 0.043791795834137504,
+          "heading_error_rad": 0.03416513544086631
+        },
+        {
+          "name": "HOME",
+          "duration_s": 24.29,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6762,
+          "max_cross_track_m": 0.0426,
+          "attempts": 1,
+          "position_error_m": 0.011096944274959511,
+          "heading_error_rad": 0.027470078982912538
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学ABCDEF",
+          "expected": "学ABCDEF",
+          "confidence": 0.9711993336677551,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "桂VK2T43",
+          "expected": "桂VK2T43",
+          "confidence": 0.9326066374778748,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学ABCDEK",
+          "expected": "学ABCDEK",
+          "confidence": 0.9785999059677124,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 6.069999999999936,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.1970000000000027
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.5339999999999918
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.8659999999999854
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.3369999999999891
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06600000000003092
+          }
+        ],
+        "map_final_error_first_rad": -1.16836770942231,
+        "map_final_error_last_rad": -0.032798131585739305,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 524.579,
+        "last_stamp_s": 660.983,
+        "first_chassis_pose": [
+          1.714606093438646,
+          -1.6029750763560056,
+          1.6067616736326729
+        ],
+        "last_chassis_pose": [
+          1.7630887110376925,
+          -1.6144432941858629,
+          1.7482646494142207
+        ],
+        "chassis_return_error_cm": 4.982052016437031,
+        "axle_return_error_cm": 4.28913124588807,
+        "yaw_return_error_rad": 0.1415029757815478,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_16": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.39,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9699,
+          "max_cross_track_m": 0.0196,
+          "attempts": 1,
+          "position_error_m": 0.009506187237054441,
+          "heading_error_rad": 0.030047916655709935
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 12.38,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7051,
+          "max_cross_track_m": 0.0494,
+          "attempts": 1,
+          "position_error_m": 0.016765108826785495,
+          "heading_error_rad": 0.027641235344693094
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.64,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1157,
+          "max_cross_track_m": 0.05,
+          "attempts": 1,
+          "position_error_m": 0.04194226946472669,
+          "heading_error_rad": 0.029692459918964294
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.56,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.379,
+          "max_cross_track_m": 0.0467,
+          "attempts": 1,
+          "position_error_m": 0.008522137003964023,
+          "heading_error_rad": 0.03557575499964783
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.86,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1117,
+          "max_cross_track_m": 0.0403,
+          "attempts": 1,
+          "position_error_m": 0.008279644088210619,
+          "heading_error_rad": 0.017990440207194182
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.97,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2155,
+          "max_cross_track_m": 0.0248,
+          "attempts": 1,
+          "position_error_m": 0.0031511581539660364,
+          "heading_error_rad": 0.03208485041971887
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 7.07,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0249,
+          "max_cross_track_m": 0.034,
+          "attempts": 1,
+          "position_error_m": 0.039425203995164755,
+          "heading_error_rad": 0.029138866772608463
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 29.02,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4433,
+          "max_cross_track_m": 0.0335,
+          "attempts": 1,
+          "position_error_m": 0.014946208543904755,
+          "heading_error_rad": 0.030557695889720238
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.17,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6339,
+          "max_cross_track_m": 0.0449,
+          "attempts": 1,
+          "position_error_m": 0.01248779619967612,
+          "heading_error_rad": 0.03354056666093075
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.14,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5177,
+          "max_cross_track_m": 0.0441,
+          "attempts": 1,
+          "position_error_m": 0.044636075676672646,
+          "heading_error_rad": 0.028857827160557292
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.75,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6809,
+          "max_cross_track_m": 0.0234,
+          "attempts": 1,
+          "position_error_m": 0.015008300467798616,
+          "heading_error_rad": 0.029548593975575077
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "川NH0U34",
+          "expected": "川NH0U34",
+          "confidence": 0.9062587022781372,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "辽ZR6314",
+          "expected": "辽ZR6314",
+          "confidence": 0.9190165996551514,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "晋QQ11T7",
+          "expected": "晋QQ11T7",
+          "confidence": 0.8787317872047424,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 6.80600000000004,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.3290000000000646
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.8659999999999854
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 2.134999999999991
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.33299999999997
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.07100000000002638
+          }
+        ],
+        "map_final_error_first_rad": -1.3647617897471427,
+        "map_final_error_last_rad": -0.02913885316735776,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 524.733,
+        "last_stamp_s": 671.376,
+        "first_chassis_pose": [
+          1.7140197138226736,
+          -1.600761941785639,
+          1.6033609094062518
+        ],
+        "last_chassis_pose": [
+          1.767042934523846,
+          -1.5901136522984516,
+          1.827469888561014
+        ],
+        "chassis_return_error_cm": 5.408186389657989,
+        "axle_return_error_cm": 4.236225552301849,
+        "yaw_return_error_rad": 0.22410897915476236,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_17": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 4.78,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9345,
+          "max_cross_track_m": 0.0205,
+          "attempts": 1,
+          "position_error_m": 0.0170840751765612,
+          "heading_error_rad": 0.025291179988104373
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 12.86,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7067,
+          "max_cross_track_m": 0.0517,
+          "attempts": 1,
+          "position_error_m": 0.01456091505275196,
+          "heading_error_rad": 0.03256966270202488
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.45,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.118,
+          "max_cross_track_m": 0.0518,
+          "attempts": 1,
+          "position_error_m": 0.03779734168700506,
+          "heading_error_rad": 0.029196282706366317
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.29,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3691,
+          "max_cross_track_m": 0.0427,
+          "attempts": 1,
+          "position_error_m": 0.017700395429926873,
+          "heading_error_rad": 0.03681762573066473
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.59,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1086,
+          "max_cross_track_m": 0.0461,
+          "attempts": 1,
+          "position_error_m": 0.01919104552808419,
+          "heading_error_rad": 0.01994501999514473
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.52,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.196,
+          "max_cross_track_m": 0.023,
+          "attempts": 1,
+          "position_error_m": 0.01478105291676999,
+          "heading_error_rad": 0.029493189595211074
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 6.41,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0283,
+          "max_cross_track_m": 0.0208,
+          "attempts": 1,
+          "position_error_m": 0.03847779517620084,
+          "heading_error_rad": 0.028661459487140387
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.87,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4507,
+          "max_cross_track_m": 0.0283,
+          "attempts": 1,
+          "position_error_m": 0.01757226514164071,
+          "heading_error_rad": 0.03299847547182977
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 8.91,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6359,
+          "max_cross_track_m": 0.0353,
+          "attempts": 1,
+          "position_error_m": 0.010568618388086802,
+          "heading_error_rad": 0.02951035350152642
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.05,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5215,
+          "max_cross_track_m": 0.0388,
+          "attempts": 1,
+          "position_error_m": 0.03878829642112608,
+          "heading_error_rad": 0.029136849402911388
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.85,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6691,
+          "max_cross_track_m": 0.0196,
+          "attempts": 1,
+          "position_error_m": 0.013452472623625462,
+          "heading_error_rad": 0.03135346031448427
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学ABCDEK",
+          "expected": "学ABCDEK",
+          "confidence": 0.9767613410949707,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学B5B5T3",
+          "expected": "学B5B5T3",
+          "confidence": 0.9899884462356567,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "冀K0BB17",
+          "expected": "冀K0BB17",
+          "confidence": 0.9456182718276978,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 6.201999999999998,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.9990000000000236
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.7959999999999354
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.8680000000000518
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.4009999999999536
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06600000000003092
+          }
+        ],
+        "map_final_error_first_rad": -1.0718950368575517,
+        "map_final_error_last_rad": -0.028661553307391063,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 526.346,
+        "last_stamp_s": 655.859,
+        "first_chassis_pose": [
+          1.7140301961161686,
+          -1.6007495360821604,
+          1.6033846867831256
+        ],
+        "last_chassis_pose": [
+          1.722609280489865,
+          -1.6410631398586242,
+          1.723298102999469
+        ],
+        "chassis_return_error_cm": 4.121634794758887,
+        "axle_return_error_cm": 4.096047082405783,
+        "yaw_return_error_rad": 0.11991341621634334,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": false,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_18": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.67,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9704,
+          "max_cross_track_m": 0.0166,
+          "attempts": 1,
+          "position_error_m": 0.012577018845656835,
+          "heading_error_rad": 0.03273101652681909
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 12.14,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7115,
+          "max_cross_track_m": 0.0552,
+          "attempts": 1,
+          "position_error_m": 0.018643591680980433,
+          "heading_error_rad": 0.032116712454495655
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.65,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1052,
+          "max_cross_track_m": 0.0515,
+          "attempts": 1,
+          "position_error_m": 0.04791891038424087,
+          "heading_error_rad": 0.028115066991606374
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.87,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3807,
+          "max_cross_track_m": 0.042,
+          "attempts": 1,
+          "position_error_m": 0.007881203198606619,
+          "heading_error_rad": 0.028332047387887044
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.82,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1025,
+          "max_cross_track_m": 0.0496,
+          "attempts": 1,
+          "position_error_m": 0.016514014451220093,
+          "heading_error_rad": 0.018048832234072807
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.96,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2052,
+          "max_cross_track_m": 0.0242,
+          "attempts": 1,
+          "position_error_m": 0.01015037704535851,
+          "heading_error_rad": 0.03007904941600681
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 6.46,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0287,
+          "max_cross_track_m": 0.0228,
+          "attempts": 1,
+          "position_error_m": 0.038687035134680844,
+          "heading_error_rad": 0.02880728318208403
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 28.69,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4423,
+          "max_cross_track_m": 0.0312,
+          "attempts": 1,
+          "position_error_m": 0.024107183573487345,
+          "heading_error_rad": 0.027635053256770847
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.19,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6434,
+          "max_cross_track_m": 0.0351,
+          "attempts": 1,
+          "position_error_m": 0.003964684332611073,
+          "heading_error_rad": 0.03031238144660087
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 7.78,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5231,
+          "max_cross_track_m": 0.0402,
+          "attempts": 1,
+          "position_error_m": 0.029679263608437634,
+          "heading_error_rad": 0.030349554465469497
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.69,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6842,
+          "max_cross_track_m": 0.027,
+          "attempts": 1,
+          "position_error_m": 0.01717623680318437,
+          "heading_error_rad": 0.03310209232916983
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "川NH0U34",
+          "expected": "川NH0U34",
+          "confidence": 0.9802263975143433,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "桂VK2T43",
+          "expected": "桂VK2T43",
+          "confidence": 0.9223933815956116,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学PYPVGM",
+          "expected": "学PYPVGM",
+          "confidence": 0.9821857213973999,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 6.267000000000053,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.134999999999991
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.6649999999999636
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.933999999999969
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.40399999999999636
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06100000000003547
+          }
+        ],
+        "map_final_error_first_rad": -1.1243346722710388,
+        "map_final_error_last_rad": -0.030933377026835185,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 526.063,
+        "last_stamp_s": 671.674,
+        "first_chassis_pose": [
+          1.7140192292892353,
+          -1.6007628449705973,
+          1.6033560454278948
+        ],
+        "last_chassis_pose": [
+          1.7500647278229686,
+          -1.5888411536494582,
+          1.7293696115395312
+        ],
+        "chassis_return_error_cm": 3.7965835806707733,
+        "axle_return_error_cm": 3.155359894729081,
+        "yaw_return_error_rad": 0.1260135661116364,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_19": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 4.63,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9247,
+          "max_cross_track_m": 0.016,
+          "attempts": 1,
+          "position_error_m": 0.01805569402635355,
+          "heading_error_rad": 0.004658995040747849
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 13.28,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.6973,
+          "max_cross_track_m": 0.0475,
+          "attempts": 1,
+          "position_error_m": 0.02127060650151192,
+          "heading_error_rad": 0.033535654157432315
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.39,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1351,
+          "max_cross_track_m": 0.0441,
+          "attempts": 1,
+          "position_error_m": 0.03060178752501483,
+          "heading_error_rad": 0.029709820092707062
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.69,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3785,
+          "max_cross_track_m": 0.037,
+          "attempts": 1,
+          "position_error_m": 0.013199412798263348,
+          "heading_error_rad": 0.02840722863044463
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.82,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.111,
+          "max_cross_track_m": 0.0406,
+          "attempts": 1,
+          "position_error_m": 0.008934006132691859,
+          "heading_error_rad": 0.018146542668920882
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.75,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2144,
+          "max_cross_track_m": 0.0269,
+          "attempts": 1,
+          "position_error_m": 0.008140478449882036,
+          "heading_error_rad": 0.03223176445768172
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 6.01,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0387,
+          "max_cross_track_m": 0.021,
+          "attempts": 1,
+          "position_error_m": 0.02934160714570603,
+          "heading_error_rad": 0.029562154931250362
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 13.33,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4367,
+          "max_cross_track_m": 0.0342,
+          "attempts": 1,
+          "position_error_m": 0.023786513153657565,
+          "heading_error_rad": 0.028847465458254673
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.05,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6238,
+          "max_cross_track_m": 0.0419,
+          "attempts": 1,
+          "position_error_m": 0.02259333785703389,
+          "heading_error_rad": 0.03058523169462246
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.13,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5329,
+          "max_cross_track_m": 0.0403,
+          "attempts": 1,
+          "position_error_m": 0.03957469475206336,
+          "heading_error_rad": 0.0294829060558357
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.95,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6887,
+          "max_cross_track_m": 0.042,
+          "attempts": 1,
+          "position_error_m": 0.02339456373647416,
+          "heading_error_rad": 0.029199910459694944
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "学ABCDEG",
+          "expected": "学ABCDEG",
+          "confidence": 0.965572714805603,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "辽ZR6314",
+          "expected": "辽ZR6314",
+          "confidence": 0.9566649198532104,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "学B5B5T3",
+          "expected": "学B5B5T3",
+          "confidence": 0.9910373687744141,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.801999999999907,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.0019999999999527
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.6649999999999636
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.66700000000003
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.3350000000000364
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06499999999994088
+          }
+        ],
+        "map_final_error_first_rad": -0.9627078536705018,
+        "map_final_error_last_rad": -0.029562253054769005,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 525.431,
+        "last_stamp_s": 657.784,
+        "first_chassis_pose": [
+          1.7140481177908082,
+          -1.600732416853862,
+          1.6034369963761026
+        ],
+        "last_chassis_pose": [
+          1.777924844267623,
+          -1.6043615370663669,
+          1.7776455759450718
+        ],
+        "chassis_return_error_cm": 6.397973662739336,
+        "axle_return_error_cm": 5.5010639171987,
+        "yaw_return_error_rad": 0.17420857956896918,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_20": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 4.73,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9636,
+          "max_cross_track_m": 0.0152,
+          "attempts": 1,
+          "position_error_m": 0.016662013434999758,
+          "heading_error_rad": 0.027518904649544096
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 13.53,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.7096,
+          "max_cross_track_m": 0.0474,
+          "attempts": 1,
+          "position_error_m": 0.022242378020627503,
+          "heading_error_rad": 0.028712860412440477
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.21,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1236,
+          "max_cross_track_m": 0.0449,
+          "attempts": 1,
+          "position_error_m": 0.030650952614458608,
+          "heading_error_rad": 0.029945578346523227
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.23,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3772,
+          "max_cross_track_m": 0.0501,
+          "attempts": 1,
+          "position_error_m": 0.008257286065079328,
+          "heading_error_rad": 0.028304063010913157
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 7.32,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1175,
+          "max_cross_track_m": 0.0502,
+          "attempts": 1,
+          "position_error_m": 0.009355720196395061,
+          "heading_error_rad": 0.02204950279116933
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.92,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.1893,
+          "max_cross_track_m": 0.0208,
+          "attempts": 1,
+          "position_error_m": 0.022045163157402063,
+          "heading_error_rad": 0.037538727599601085
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 5.84,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0393,
+          "max_cross_track_m": 0.0203,
+          "attempts": 1,
+          "position_error_m": 0.040721657728170615,
+          "heading_error_rad": 0.03017202046169576
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 14.3,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4482,
+          "max_cross_track_m": 0.0457,
+          "attempts": 1,
+          "position_error_m": 0.01112880732326566,
+          "heading_error_rad": 0.03419363791166097
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 8.87,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6283,
+          "max_cross_track_m": 0.0338,
+          "attempts": 1,
+          "position_error_m": 0.018244102077635372,
+          "heading_error_rad": 0.03227701044171294
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.18,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5499,
+          "max_cross_track_m": 0.0368,
+          "attempts": 1,
+          "position_error_m": 0.0178095471354843,
+          "heading_error_rad": 0.03132992903607956
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.87,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6675,
+          "max_cross_track_m": 0.0368,
+          "attempts": 1,
+          "position_error_m": 0.011385811495290134,
+          "heading_error_rad": 0.02497340114364799
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "冀K0BB17",
+          "expected": "冀K0BB17",
+          "confidence": 0.95343017578125,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学ABCDEK",
+          "expected": "学ABCDEK",
+          "confidence": 0.9786945581436157,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "豫W5U8Y1",
+          "expected": "豫W5U8Y1",
+          "confidence": 0.9530452489852905,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 5.673999999999978,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 2.863999999999919
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.6040000000000418
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.6649999999999636
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.39800000000002456
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.07299999999997908
+          }
+        ],
+        "map_final_error_first_rad": -0.90984377844998,
+        "map_final_error_last_rad": -0.03017264267608999,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 524.627,
+        "last_stamp_s": 655.845,
+        "first_chassis_pose": [
+          1.7140338385859413,
+          -1.6007463851518597,
+          1.6033911743333595
+        ],
+        "last_chassis_pose": [
+          1.747644005587552,
+          -1.608276815154673,
+          1.75674316185364
+        ],
+        "chassis_return_error_cm": 3.444344207397728,
+        "axle_return_error_cm": 2.695955330342425,
+        "yaw_return_error_rad": 0.15335198752028045,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    },
+    "20260929_docs20b_21": {
+      "goals": [
+        {
+          "name": "POINT_1",
+          "duration_s": 5.29,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.9644,
+          "max_cross_track_m": 0.0155,
+          "attempts": 1,
+          "position_error_m": 0.015324340399646728,
+          "heading_error_rad": 0.03211458455379046
+        },
+        {
+          "name": "POINT_2",
+          "duration_s": 12.92,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.702,
+          "max_cross_track_m": 0.048,
+          "attempts": 1,
+          "position_error_m": 0.01690095545833307,
+          "heading_error_rad": 0.02702042918065262
+        },
+        {
+          "name": "POINT_3",
+          "duration_s": 12.66,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.124,
+          "max_cross_track_m": 0.0534,
+          "attempts": 1,
+          "position_error_m": 0.037137339199020944,
+          "heading_error_rad": 0.029959869450388865
+        },
+        {
+          "name": "POINT_4",
+          "duration_s": 12.57,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.3726,
+          "max_cross_track_m": 0.046,
+          "attempts": 1,
+          "position_error_m": 0.014892466861042902,
+          "heading_error_rad": 0.02907716972165153
+        },
+        {
+          "name": "POINT_5",
+          "duration_s": 6.65,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.1105,
+          "max_cross_track_m": 0.0456,
+          "attempts": 1,
+          "position_error_m": 0.014005747125223102,
+          "heading_error_rad": 0.017425027916772008
+        },
+        {
+          "name": "POINT_6",
+          "duration_s": 12.67,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 1.2167,
+          "max_cross_track_m": 0.0273,
+          "attempts": 1,
+          "position_error_m": 0.0017719220946946768,
+          "heading_error_rad": 0.03671446061511019
+        },
+        {
+          "name": "POINT_7",
+          "duration_s": 6.32,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.0226,
+          "max_cross_track_m": 0.0244,
+          "attempts": 1,
+          "position_error_m": 0.03815406102457062,
+          "heading_error_rad": 0.03156393931596613
+        },
+        {
+          "name": "POINT_8",
+          "duration_s": 14.16,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.4523,
+          "max_cross_track_m": 0.0394,
+          "attempts": 1,
+          "position_error_m": 0.014047695405135244,
+          "heading_error_rad": 0.025126376064525724
+        },
+        {
+          "name": "POINT_9",
+          "duration_s": 9.15,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.6365,
+          "max_cross_track_m": 0.043,
+          "attempts": 1,
+          "position_error_m": 0.009935593863733392,
+          "heading_error_rad": 0.029813644717018754
+        },
+        {
+          "name": "POINT_10",
+          "duration_s": 8.05,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 0.5194,
+          "max_cross_track_m": 0.047,
+          "attempts": 1,
+          "position_error_m": 0.04051886328929159,
+          "heading_error_rad": 0.035048667227542296
+        },
+        {
+          "name": "HOME",
+          "duration_s": 17.72,
+          "action_state": 3,
+          "result": "ACTION_RESULT",
+          "route_progress_m": 2.6763,
+          "max_cross_track_m": 0.0318,
+          "attempts": 1,
+          "position_error_m": 0.0073361414784696615,
+          "heading_error_rad": 0.030102964202138205
+        }
+      ],
+      "ocr": [
+        {
+          "waypoint": "POINT_8",
+          "text": "浙TF9E07",
+          "expected": "浙TF9E07",
+          "confidence": 0.9866487383842468,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_9",
+          "text": "学R00136",
+          "expected": "学R00136",
+          "confidence": 0.925002932548523,
+          "exact_match": true,
+          "valid_consensus": true
+        },
+        {
+          "waypoint": "POINT_10",
+          "text": "桂VK2T43",
+          "expected": "桂VK2T43",
+          "confidence": 0.9426555633544922,
+          "exact_match": true,
+          "valid_consensus": true
+        }
+      ],
+      "point7": {
+        "goal_window_duration_s": 6.069999999999936,
+        "episodes": [
+          {
+            "mode": "ALIGNING_TO_PATH",
+            "duration_s": 3.197999999999979
+          },
+          {
+            "mode": "TRACKING",
+            "duration_s": 0.5349999999999682
+          },
+          {
+            "mode": "FINAL_HEADING",
+            "duration_s": 1.8630000000000564
+          },
+          {
+            "mode": "GOAL_SETTLE",
+            "duration_s": 0.3390000000000555
+          },
+          {
+            "mode": "GOAL_REACHED",
+            "duration_s": 0.06599999999991724
+          }
+        ],
+        "map_final_error_first_rad": -1.1509990146694367,
+        "map_final_error_last_rad": -0.03156405791033734,
+        "map_final_error_sign_crossings_over_001rad": 0,
+        "scope": "Map-frame estimated heading error sign crossings in final/settle phase. World truth yaw is retained as a trajectory only; no absolute map/world angular registration is assumed. Zero post-final reentry cannot exclude earlier large path turns."
+      },
+      "physical_home": {
+        "first_stamp_s": 524.722,
+        "last_stamp_s": 658.003,
+        "first_chassis_pose": [
+          1.7146054057605635,
+          -1.6029834012788817,
+          1.6067643746630578
+        ],
+        "last_chassis_pose": [
+          1.729593718624385,
+          -1.648703551669309,
+          1.649210726549917
+        ],
+        "chassis_return_error_cm": 4.811425645509944,
+        "axle_return_error_cm": 4.759103595476096,
+        "yaw_return_error_rad": 0.042446351886859184,
+        "scope": "First/last physical poses in closed bag, same world frame. Not an absolute map/world registration or runtime input.",
+        "chassis_within_3cm_004rad": false
+      },
+      "person_audit_checks": {
+        "reported_complete": true,
+        "truth_inventory_available": true,
+        "counts_match_truth": true,
+        "one_to_one_truth_coverage": true,
+        "all_classes_correct": true,
+        "all_positions_within_8cm": true,
+        "unique_person_ids": true,
+        "required_views_synchronized": true,
+        "foreign_crops_saved": true,
+        "terminal_report_saved": true,
+        "audio_report_hash_matches": true,
+        "audio_text_matches": true,
+        "audio_synthesized_and_played": true,
+        "audio_nonempty": true
+      },
+      "failed_ocr_frames": {}
+    }
+  },
+  "raw_data_root": "/home/sz/ros1_ws/photo_stops/standee_route_runs",
+  "startup_attempts_outside_twenty_missions": [
+    {
+      "run": "20260929_docs20_10",
+      "reason": "BadWindow before task dispatch"
+    },
+    {
+      "run": "20260929_docs20_11",
+      "reason": "Operator batch restart, exit 141, no task result"
+    },
+    {
+      "run": "20260929_docs20_12",
+      "reason": "Batch stopped during startup, no task dispatch"
+    }
+  ]
+}

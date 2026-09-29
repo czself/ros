@@ -1,0 +1,19 @@
+{
+  "run": "20260929_docs20_02",
+  "pair_key": [
+    "image_topic",
+    "source_stamp.secs",
+    "source_stamp.nsecs"
+  ],
+  "event_counts": {
+    "yolo": 715,
+    "person": 5,
+    "ocr": 3
+  },
+  "sequence_increases": true,
+  "required_categories_complete": true,
+  "missing_images": [],
+  "missing_terminal_lines": [],
+  "pass": true,
+  "scope": "Recorded source pairs, terminal lines, categories and event order. Visual layout reviewed separately using screenshots."
+}

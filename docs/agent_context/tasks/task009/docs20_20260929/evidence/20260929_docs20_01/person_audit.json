@@ -1,0 +1,5 @@
+{
+  "pass": false,
+  "error": "[Errno 2] No such file or directory: '/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_01/person_report.audio.json'",
+  "reason": "PERSON_EVIDENCE_INCOMPLETE_OR_INVALID"
+}

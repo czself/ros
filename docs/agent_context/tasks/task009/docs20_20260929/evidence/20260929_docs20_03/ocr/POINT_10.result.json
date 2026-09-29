@@ -1,0 +1,146 @@
+{
+  "waypoint": "POINT_10",
+  "text": "浙TF9E07",
+  "valid": true,
+  "confidence": 0.9858952760696411,
+  "matching_frames": 3,
+  "frames": [
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9878299236297607,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 92.847,
+      "recognition_band": [
+        0,
+        36,
+        405,
+        120
+      ],
+      "input_shape": [
+        84,
+        405,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_10_frame_0.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_10_frame_0.crop.input.png",
+      "recognition_image_sha256": "43b2471efda3ad1472f5a369aecc16082888fb83e8047a50be824f17c3caa486",
+      "source_stamp": {
+        "secs": 633,
+        "nsecs": 328000000,
+        "seconds": 633.328
+      },
+      "box": [
+        909,
+        708,
+        1314,
+        879
+      ],
+      "image_sha256": "53dac17430b908c0fee4dd0b89bb744f118fc9c74330883ada41e804eae053cc"
+    },
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9858952760696411,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 97.821,
+      "recognition_band": [
+        0,
+        36,
+        405,
+        120
+      ],
+      "input_shape": [
+        84,
+        405,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_10_frame_1.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_10_frame_1.crop.input.png",
+      "recognition_image_sha256": "09de2c6221db529c00ab7d2e9ba5269877f07f4e8417c2550063be849be6cbaa",
+      "source_stamp": {
+        "secs": 632,
+        "nsecs": 921000000,
+        "seconds": 632.921
+      },
+      "box": [
+        909,
+        708,
+        1314,
+        879
+      ],
+      "image_sha256": "5b10af048ec4c296ffcb73fa01a8c0cbf712240c2ddea0a227f340027e32010d"
+    },
+    {
+      "raw": "浙T·F9E07",
+      "text": "浙TF9E07",
+      "display": "浙T·F9E07",
+      "confidence": 0.9874022603034973,
+      "valid": true,
+      "issue": null,
+      "elapsed_ms": 95.191,
+      "recognition_band": [
+        0,
+        36,
+        405,
+        120
+      ],
+      "input_shape": [
+        84,
+        405,
+        3
+      ],
+      "crop_image": "/root/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_10_frame_2.crop.png",
+      "recognition_image": "/home/sz/ros1_ws/photo_stops/standee_route_runs/20260929_docs20_03/ocr/POINT_10_frame_2.crop.input.png",
+      "recognition_image_sha256": "171c399dacf1ce02e6616420ebea42bed72471abc5f3ef0e586eb580abdb6207",
+      "source_stamp": {
+        "secs": 633,
+        "nsecs": 125000000,
+        "seconds": 633.125
+      },
+      "box": [
+        909,
+        708,
+        1314,
+        879
+      ],
+      "image_sha256": "f254d8eeec0e24f910af4471a43674efa96f74b25fae74dfc14144993854f35f"
+    }
+  ],
+  "issues": [],
+  "job_sha256": "cd6c5e286eef3d90324c42915728a635a264479171ffd9b73c3808c2a61cc0e2",
+  "engine": "PaddleOCR recognition-only",
+  "model_name": "PP-OCRv5_mobile_rec",
+  "source": "camera pixels only; no material names or scene truth",
+  "total_elapsed_ms": 291.844,
+  "low_resolution_comparison": {
+    "raw": "浙T·F9E07",
+    "text": "浙TF9E07",
+    "display": "浙T·F9E07",
+    "confidence": 0.9840870499610901,
+    "valid": true,
+    "issue": null,
+    "elapsed_ms": 85.128,
+    "recognition_band": [
+      0,
+      12,
+      135,
+      40
+    ],
+    "input_shape": [
+      28,
+      135,
+      3
+    ],
+    "box": [
+      303,
+      236,
+      438,
+      293
+    ]
+  }
+}

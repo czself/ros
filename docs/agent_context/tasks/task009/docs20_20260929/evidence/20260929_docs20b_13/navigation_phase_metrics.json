@@ -1,0 +1,73 @@
+{
+  "run": "20260929_docs20b_13",
+  "signal_wait_estimate_s": 1.8730000000000473,
+  "state_seconds": {
+    "UNKNOWN": 3.493000000000052,
+    "TRACKING": 67.6360000000002,
+    "GOAL_SETTLE": 4.191000000000145,
+    "GOAL_REACHED": 14.398999999999887,
+    "SIGNAL_WAIT": 1.8730000000000473,
+    "ALIGNMENT_BRAKING": 0.5970000000000937,
+    "ALIGNING_TO_PATH": 16.38499999999965,
+    "FINAL_HEADING": 21.541999999999916
+  },
+  "by_goal": {
+    "POINT_1": {
+      "final_segments": 0,
+      "path_alignment_segments": 0,
+      "reentries_after_final": 0
+    },
+    "POINT_2": {
+      "final_segments": 1,
+      "path_alignment_segments": 2,
+      "reentries_after_final": 0
+    },
+    "POINT_3": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_4": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_5": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_6": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_7": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_8": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_9": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "POINT_10": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    },
+    "HOME": {
+      "final_segments": 1,
+      "path_alignment_segments": 1,
+      "reentries_after_final": 0
+    }
+  },
+  "route_config_sha256": "a9f91580c04552bb0500290ad720dcaad299fc9d3d1dccc32ca9029d494369c3",
+  "definition": "State integration on controller/gate events capped at 0.1 s; goals matched by target coordinates and executor progress. Reentry means FINAL_HEADING directly transitions to a moving/braking path mode. Counts alone do not prove an action is unnecessary; state and physical pose replay are required."
+}
