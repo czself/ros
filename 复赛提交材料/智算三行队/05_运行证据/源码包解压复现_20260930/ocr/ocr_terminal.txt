@@ -1,0 +1,3 @@
+[车牌OCR] POINT_8：桂V·K2T43；置信度0.941；3帧一致；图片：/root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/runtime_data/native_repro_1/ocr/POINT_8.annotated.png
+[车牌OCR] POINT_9：学A·BCDEK；置信度0.978；3帧一致；图片：/root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/runtime_data/native_repro_1/ocr/POINT_9.annotated.png
+[车牌OCR] POINT_10：豫W·5U8Y1；置信度0.959；3帧一致；图片：/root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/runtime_data/native_repro_1/ocr/POINT_10.annotated.png

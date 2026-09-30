@@ -1,0 +1,280 @@
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Using CATKIN_DEVEL_PREFIX: /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/devel
+-- Using CMAKE_PREFIX_PATH: /opt/ros/noetic
+-- This workspace overlays: /opt/ros/noetic
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using Debian Python package layout
+-- Found PY_em: /usr/lib/python3/dist-packages/em.py  
+-- Using empy: /usr/lib/python3/dist-packages/em.py
+-- Using CATKIN_ENABLE_TESTING: ON
+-- Call enable_testing()
+-- Using CATKIN_TEST_RESULTS_DIR: /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/build/test_results
+-- Forcing gtest/gmock from source, though one was otherwise available.
+-- Found gtest sources under '/usr/src/googletest': gtests will be built
+-- Found gmock sources under '/usr/src/googletest': gmock will be built
+-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+-- Found Threads: TRUE  
+-- Using Python nosetests: /usr/bin/nosetests3
+-- catkin 0.8.12
+-- BUILD_SHARED_LIBS is on
+-- BUILD_SHARED_LIBS is on
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- ~~  traversing 4 packages in topological order:
+-- ~~  - community_inspection
+-- ~~  - tl_vision
+-- ~~  - forward_path_follower
+-- ~~  - safe_escape_recovery
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- +++ processing catkin package: 'community_inspection'
+-- ==> add_subdirectory(community_inspection)
+-- +++ processing catkin package: 'tl_vision'
+-- ==> add_subdirectory(tl_vision)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+*** Arguments ['zip_safe'] to setup() not supported in catkin devel space in setup.py of tl_vision
+-- tl_vision: 4 messages, 0 services
+-- Installing devel-space wrapper /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/src/tl_vision/scripts/tl_vision_node to /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/devel/lib/tl_vision
+-- Installing devel-space wrapper /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/src/tl_vision/scripts/tl_vision_ocr_node to /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/devel/lib/tl_vision
+-- Installing devel-space wrapper /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/src/tl_vision/scripts/tl_vision_offline to /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/devel/lib/tl_vision
+-- +++ processing catkin package: 'forward_path_follower'
+-- ==> add_subdirectory(forward_path_follower)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- +++ processing catkin package: 'safe_escape_recovery'
+-- ==> add_subdirectory(safe_escape_recovery)
+-- Using these message generators: gencpp;geneus;genlisp;gennodejs;genpy
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/build
+Scanning dependencies of target sensor_msgs_generate_messages_py
+Scanning dependencies of target _tl_vision_generate_messages_check_deps_Detection
+[  0%] Built target sensor_msgs_generate_messages_py
+Scanning dependencies of target _tl_vision_generate_messages_check_deps_PlateText
+[  0%] Built target _tl_vision_generate_messages_check_deps_Detection
+Scanning dependencies of target _tl_vision_generate_messages_check_deps_DetectionArray
+[  0%] Built target _tl_vision_generate_messages_check_deps_PlateText
+Scanning dependencies of target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target _tl_vision_generate_messages_check_deps_DetectionArray
+Scanning dependencies of target _tl_vision_generate_messages_check_deps_PlateCrop
+Scanning dependencies of target sensor_msgs_generate_messages_cpp
+[  0%] Built target sensor_msgs_generate_messages_cpp
+Scanning dependencies of target std_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target _tl_vision_generate_messages_check_deps_PlateCrop
+Scanning dependencies of target sensor_msgs_generate_messages_eus
+Scanning dependencies of target std_msgs_generate_messages_eus
+[  0%] Built target sensor_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_eus
+Scanning dependencies of target sensor_msgs_generate_messages_lisp
+Scanning dependencies of target std_msgs_generate_messages_lisp
+[  0%] Built target sensor_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_lisp
+Scanning dependencies of target sensor_msgs_generate_messages_nodejs
+Scanning dependencies of target std_msgs_generate_messages_nodejs
+[  0%] Built target sensor_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_nodejs
+Scanning dependencies of target nav_msgs_generate_messages_lisp
+Scanning dependencies of target _catkin_empty_exported_target
+[  0%] Built target nav_msgs_generate_messages_lisp
+[  0%] Built target _catkin_empty_exported_target
+Scanning dependencies of target geometry_msgs_generate_messages_nodejs
+Scanning dependencies of target geometry_msgs_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_lisp
+Scanning dependencies of target geometry_msgs_generate_messages_py
+Scanning dependencies of target geometry_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_cpp
+Scanning dependencies of target geometry_msgs_generate_messages_eus
+Scanning dependencies of target visualization_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target visualization_msgs_generate_messages_py
+Scanning dependencies of target visualization_msgs_generate_messages_nodejs
+Scanning dependencies of target visualization_msgs_generate_messages_lisp
+[  0%] Built target visualization_msgs_generate_messages_nodejs
+[  0%] Built target visualization_msgs_generate_messages_lisp
+Scanning dependencies of target roscpp_generate_messages_py
+Scanning dependencies of target roscpp_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target roscpp_generate_messages_nodejs
+Scanning dependencies of target tf_generate_messages_nodejs
+Scanning dependencies of target dynamic_reconfigure_gencfg
+[  0%] Built target tf_generate_messages_nodejs
+[  0%] Built target dynamic_reconfigure_gencfg
+Scanning dependencies of target dynamic_reconfigure_generate_messages_eus
+Scanning dependencies of target tf2_msgs_generate_messages_cpp
+[  0%] Built target dynamic_reconfigure_generate_messages_eus
+[  0%] Built target tf2_msgs_generate_messages_cpp
+Scanning dependencies of target dynamic_reconfigure_generate_messages_lisp
+Scanning dependencies of target roscpp_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target dynamic_reconfigure_generate_messages_lisp
+Scanning dependencies of target base_local_planner_generate_messages_cpp
+Scanning dependencies of target base_local_planner_generate_messages_eus
+[  0%] Built target base_local_planner_generate_messages_cpp
+[  0%] Built target base_local_planner_generate_messages_eus
+Scanning dependencies of target base_local_planner_generate_messages_lisp
+Scanning dependencies of target base_local_planner_generate_messages_nodejs
+[  0%] Built target base_local_planner_generate_messages_lisp
+[  0%] Built target base_local_planner_generate_messages_nodejs
+Scanning dependencies of target base_local_planner_generate_messages_py
+Scanning dependencies of target nav_msgs_generate_messages_eus
+[  0%] Built target base_local_planner_generate_messages_py
+[  0%] Built target nav_msgs_generate_messages_eus
+Scanning dependencies of target roscpp_generate_messages_eus
+Scanning dependencies of target base_local_planner_gencfg
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target base_local_planner_gencfg
+Scanning dependencies of target tf2_msgs_generate_messages_eus
+Scanning dependencies of target tf_generate_messages_cpp
+[  0%] Built target tf2_msgs_generate_messages_eus
+Scanning dependencies of target map_msgs_generate_messages_cpp
+[  0%] Built target tf_generate_messages_cpp
+[  0%] Built target map_msgs_generate_messages_cpp
+Scanning dependencies of target costmap_2d_generate_messages_cpp
+Scanning dependencies of target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target costmap_2d_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+Scanning dependencies of target actionlib_generate_messages_cpp
+Scanning dependencies of target actionlib_msgs_generate_messages_py
+[  0%] Built target actionlib_generate_messages_cpp
+[  0%] Built target actionlib_msgs_generate_messages_py
+Scanning dependencies of target costmap_2d_generate_messages_lisp
+Scanning dependencies of target roscpp_generate_messages_lisp
+[  0%] Built target costmap_2d_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_lisp
+Scanning dependencies of target actionlib_generate_messages_lisp
+Scanning dependencies of target costmap_2d_generate_messages_eus
+[  0%] Built target actionlib_generate_messages_lisp
+[  0%] Built target costmap_2d_generate_messages_eus
+Scanning dependencies of target costmap_2d_generate_messages_nodejs
+Scanning dependencies of target tf2_msgs_generate_messages_lisp
+[  0%] Built target costmap_2d_generate_messages_nodejs
+[  0%] Built target tf2_msgs_generate_messages_lisp
+Scanning dependencies of target costmap_2d_gencfg
+Scanning dependencies of target map_msgs_generate_messages_py
+[  0%] Built target map_msgs_generate_messages_py
+[  0%] Built target costmap_2d_gencfg
+Scanning dependencies of target costmap_2d_generate_messages_py
+Scanning dependencies of target nav_msgs_generate_messages_py
+[  0%] Built target costmap_2d_generate_messages_py
+[  0%] Built target nav_msgs_generate_messages_py
+Scanning dependencies of target tf_generate_messages_lisp
+Scanning dependencies of target dynamic_reconfigure_generate_messages_cpp
+[  0%] Built target tf_generate_messages_lisp
+[  0%] Built target dynamic_reconfigure_generate_messages_cpp
+Scanning dependencies of target rosgraph_msgs_generate_messages_eus
+Scanning dependencies of target visualization_msgs_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target visualization_msgs_generate_messages_eus
+Scanning dependencies of target nav_msgs_generate_messages_cpp
+Scanning dependencies of target tf_generate_messages_eus
+[  0%] Built target nav_msgs_generate_messages_cpp
+[  0%] Built target tf_generate_messages_eus
+Scanning dependencies of target rosgraph_msgs_generate_messages_lisp
+Scanning dependencies of target dynamic_reconfigure_generate_messages_py
+[  0%] Built target dynamic_reconfigure_generate_messages_py
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+Scanning dependencies of target actionlib_msgs_generate_messages_eus
+Scanning dependencies of target map_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target map_msgs_generate_messages_nodejs
+Scanning dependencies of target nav_msgs_generate_messages_nodejs
+Scanning dependencies of target rosgraph_msgs_generate_messages_py
+[  0%] Built target nav_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_py
+Scanning dependencies of target rosgraph_msgs_generate_messages_cpp
+Scanning dependencies of target actionlib_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_eus
+Scanning dependencies of target actionlib_msgs_generate_messages_cpp
+Scanning dependencies of target map_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target map_msgs_generate_messages_eus
+Scanning dependencies of target visualization_msgs_generate_messages_cpp
+Scanning dependencies of target actionlib_generate_messages_nodejs
+[  0%] Built target visualization_msgs_generate_messages_cpp
+[  0%] Built target actionlib_generate_messages_nodejs
+Scanning dependencies of target actionlib_generate_messages_py
+Scanning dependencies of target tf_generate_messages_py
+[  0%] Built target actionlib_generate_messages_py
+[  0%] Built target tf_generate_messages_py
+Scanning dependencies of target actionlib_msgs_generate_messages_lisp
+Scanning dependencies of target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+Scanning dependencies of target tf2_msgs_generate_messages_nodejs
+Scanning dependencies of target dynamic_reconfigure_generate_messages_nodejs
+[  0%] Built target tf2_msgs_generate_messages_nodejs
+[  0%] Built target dynamic_reconfigure_generate_messages_nodejs
+Scanning dependencies of target tf2_msgs_generate_messages_py
+Scanning dependencies of target map_msgs_generate_messages_lisp
+[  0%] Built target tf2_msgs_generate_messages_py
+[  0%] Built target map_msgs_generate_messages_lisp
+Scanning dependencies of target tl_vision_generate_messages_py
+Scanning dependencies of target safe_escape_recovery
+[  3%] Generating Python from MSG tl_vision/Detection
+[  7%] Building CXX object safe_escape_recovery/CMakeFiles/safe_escape_recovery.dir/src/safe_escape_recovery.cpp.o
+[ 11%] Generating Python from MSG tl_vision/DetectionArray
+[ 15%] Generating Python from MSG tl_vision/PlateCrop
+[ 19%] Generating Python from MSG tl_vision/PlateText
+[ 23%] Generating Python msg __init__.py for tl_vision
+[ 23%] Built target tl_vision_generate_messages_py
+Scanning dependencies of target tl_vision_generate_messages_cpp
+[ 26%] Generating C++ code from tl_vision/Detection.msg
+[ 30%] Generating C++ code from tl_vision/DetectionArray.msg
+[ 34%] Generating C++ code from tl_vision/PlateCrop.msg
+[ 38%] Generating C++ code from tl_vision/PlateText.msg
+[ 38%] Built target tl_vision_generate_messages_cpp
+Scanning dependencies of target tl_vision_generate_messages_eus
+[ 42%] Generating EusLisp code from tl_vision/Detection.msg
+[ 46%] Generating EusLisp code from tl_vision/DetectionArray.msg
+[ 50%] Generating EusLisp code from tl_vision/PlateCrop.msg
+[ 53%] Generating EusLisp code from tl_vision/PlateText.msg
+[ 57%] Generating EusLisp manifest code for tl_vision
+[ 57%] Built target tl_vision_generate_messages_eus
+Scanning dependencies of target tl_vision_generate_messages_lisp
+[ 61%] Generating Lisp code from tl_vision/Detection.msg
+[ 65%] Generating Lisp code from tl_vision/DetectionArray.msg
+[ 69%] Generating Lisp code from tl_vision/PlateCrop.msg
+[ 73%] Generating Lisp code from tl_vision/PlateText.msg
+[ 73%] Built target tl_vision_generate_messages_lisp
+Scanning dependencies of target tl_vision_generate_messages_nodejs
+[ 76%] Generating Javascript code from tl_vision/Detection.msg
+[ 80%] Generating Javascript code from tl_vision/DetectionArray.msg
+[ 84%] Generating Javascript code from tl_vision/PlateCrop.msg
+[ 88%] Generating Javascript code from tl_vision/PlateText.msg
+[ 88%] Built target tl_vision_generate_messages_nodejs
+Scanning dependencies of target forward_path_follower
+[ 92%] Building CXX object forward_path_follower/CMakeFiles/forward_path_follower.dir/src/forward_path_follower.cpp.o
+[ 96%] Linking CXX shared library /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/devel/lib/libsafe_escape_recovery.so
+[ 96%] Built target safe_escape_recovery
+Scanning dependencies of target tl_vision_generate_messages
+[ 96%] Built target tl_vision_generate_messages
+[100%] Linking CXX shared library /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/devel/lib/libforward_path_follower.so
+[100%] Built target forward_path_follower
+Base path: /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码
+Source space: /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/src
+Build space: /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/build
+Devel space: /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/devel
+Install space: /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/install
+Creating symlink "/root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/src/CMakeLists.txt" pointing to "/opt/ros/noetic/share/catkin/cmake/toplevel.cmake"
+####
+#### Running command: "cmake /root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/src -DCATKIN_DEVEL_PREFIX=/root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/devel -DCMAKE_INSTALL_PREFIX=/root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/install -G Unix Makefiles" in "/root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/build"
+####
+####
+#### Running command: "make -j2" in "/root/ros1_ws/native_zip_test_v6_20260930/智算三行队-智慧社区复赛工程代码/build"
+####

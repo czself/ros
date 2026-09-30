@@ -229,6 +229,10 @@ def copy_reproduction(evidence, run, packaged_workspace):
         target = folder / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, target)
+    build_log = original_workspace / 'catkin_build.log'
+    if not build_log.is_file() or 'Built target forward_path_follower' not in build_log.read_text(errors='replace'):
+        raise ValueError('Independent catkin build log is missing or incomplete')
+    shutil.copy2(build_log, folder / 'catkin_build.log')
     for source in (run / 'persons/POINT_2.png',
                    run / 'ocr/POINT_8.annotated.png',
                    next(p for p in (run / 'POINT_7').glob('*.png')
@@ -260,6 +264,7 @@ def copy_reproduction(evidence, run, packaged_workspace):
             'physical_home_yaw_rad': physical['yaw_return_error_rad'],
             'bag_retained_locally': True,
             'fresh_machine_dependency_install': 'not_tested_here',
+            'catkin_build_log_sha256': sha(build_log),
             'audit_sha256': sha(run / 'independent_audit.json')}
 
 

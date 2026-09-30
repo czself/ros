@@ -1,0 +1,30 @@
+{
+  "team": "智算三行队",
+  "source_git_commit": "4daa40922c7df1a2aff12ebc628164f84e6d8495",
+  "engineering_zip": "01_工程代码/智算三行队-智慧社区复赛工程代码.zip",
+  "engineering_zip_bytes": 71344287,
+  "engineering_zip_sha256": "e05f312b7e53a01f238e94e237ce2b469518c9ad0d411f1634a6308a21b789c9",
+  "engineering_zip_under_150MB": true,
+  "engineering_status": "passed_unpacked_noetic_reproduction",
+  "technical_pdf": "not_created",
+  "presentation_pdf": "not_created",
+  "comprehensive_mp4": "not_created",
+  "local_paddle_model_sha256": "2460da90875937c94db97eba74ae3d9e5d4c4c57c42f1f41531c09a26bcc771a",
+  "validation": {
+    "zip_crc": true,
+    "docker_files_in_zip": false,
+    "unpacked_reproduction": {
+      "run_id": "native_repro_1",
+      "source_unpacked_zip_matches_final_runtime": true,
+      "catkin_packages_built": 4,
+      "independent_audit_pass": true,
+      "mission_sim_s": 138.94600000000003,
+      "physical_home_error_cm": 5.242824360864016,
+      "physical_home_yaw_rad": 0.07872352667433002,
+      "bag_retained_locally": true,
+      "fresh_machine_dependency_install": "not_tested_here",
+      "audit_sha256": "b52bfa735f2410c943f8d2c30484c3dfae5a45791d930433b816d742e17f4063",
+      "catkin_build_log_sha256": "d17e1b52ca3e7a4fd49543e17c22e231bb87bdbb3d4f942d0d3840a0834cda50"
+    }
+  }
+}
