@@ -39,13 +39,13 @@ OCR 采用独立主机环境：首次执行 `./scripts/setup_paddle_ocr.sh`，�
 ## 复赛材料整理
 
 ```bash
-python3 scripts/organize_submission.py --team 智算三行队
+python3 scripts/build_repro_submission.py --team 智算三行队
 ```
 
-默认整理目录：`/home/sz/game/复赛提交材料/智算三行队`。内容为 ROS src 工程、正式命名 ZIP、技术方案草稿、幻灯片提纲、视频脚本/素材、运行证据和历史参考。整理只生成副本，保留原工作区。工程副本补齐检测权重并提供独立容器环境说明。
+默认整理目录：当前工程下的 `复赛提交材料/智算三行队`。正式工程 ZIP 只含 ROS Noetic/Gazebo 源码、地图、模型、权重、原生启动/审计脚本与 README，不含 Docker 文件、镜像、缓存或数GB bag。当前版本已在已有 Noetic 环境中从解压副本编译四个 catkin 包并完整执行十点任务，原独立审计通过；新机器首次依赖安装仍需复测。技术方案、PPT与视频目录清楚标记尚未完成的正式文件。
 
 - [材料整理说明](submission/README.md)
-- [当前技术方案草稿](docs/technical_solution.md)
+- [当前技术方案整理稿](submission/技术方案草稿.md)
 - [答辩提纲](submission/答辩展示提纲.md)
 - [视频录制脚本](submission/视频录制脚本.md)
 - [高清OCR改进与证据记录](docs/agent_context/tasks/task008/ocr_hd_20260928.md)

@@ -200,11 +200,76 @@ def copy_evidence(output, team, metrics):
     return evidence
 
 
+def copy_reproduction(evidence, run, packaged_workspace):
+    """Archive one completed run of the same unpacked runtime, without its bag."""
+    audit = json.loads((run / 'independent_audit.json').read_text())
+    summary = json.loads((run / 'run_summary.json').read_text())
+    original_workspace = run.parent.parent
+    original_manifest = json.loads((original_workspace / 'PACKAGE_MANIFEST.json').read_text())
+    ignored = {'README.md', 'native_audit.sh'}
+    differences = [name for name, expected in original_manifest['files'].items()
+                   if name not in ignored and sha(packaged_workspace / name) != expected]
+    if differences:
+        raise ValueError('Tested runtime differs from final ZIP: ' + ', '.join(differences[:5]))
+    if not (audit['acceptance_pass'] and summary['route_status'] == 'COMPLETE_PARKED'
+            and audit['plate_ocr_pass'] and audit['person_report_pass']
+            and len(summary['goals']) == 11 and (run / 'motion.bag').is_file()):
+        raise ValueError('Reproduction evidence is not a completed, audited full task')
+    audio = json.loads((run / 'person_report.audio.json').read_text())
+    if not audio['synthesis_pass'] or not audio['playback_pass']:
+        raise ValueError('Reproduction audio evidence failed')
+    folder = evidence / '源码包解压复现_20260930'
+    folder.mkdir()
+    names = ('run_summary.json', 'independent_audit.json',
+             'navigation_phase_metrics.json', 'docs20_supplementary.json',
+             'person_audit.json', 'plate_audit.json', 'person_report.audio.json',
+             'people_terminal.txt', 'ocr/ocr_terminal.txt', 'ocr_scene_materials.txt')
+    for name in names:
+        source = run / name
+        target = folder / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+    for source in (run / 'persons/POINT_2.png',
+                   run / 'ocr/POINT_8.annotated.png',
+                   next(p for p in (run / 'POINT_7').glob('*.png')
+                        if not p.name.endswith('.raw.png'))):
+        target = folder / '图片' / source.name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+    physical = json.loads((run / 'docs20_supplementary.json').read_text())['physical_home']
+    readme = (f'# 解压源码独立 ROS Noetic 复现：{run.name}\n\n'
+              '使用正式工程ZIP v6解压得到的四个catkin包，在现有Noetic环境新建隔离工作空间编译并启动；'
+              '主机OCR复用了版本相符的Python3.12环境。Docker镜像和构建文件不在源码ZIP里。'
+              '第一次试跑因旧仿真同时占用计算资源，POINT_1无合格同步帧而停止；'
+              '清理旧仿真后，这一轮从同一ZIP新编号完成11个目标。\n\n'
+              f"原独立审计：`{audit['acceptance_pass']}`；任务时长 {audit['bag_audit']['mission_duration_s']:.3f} 仿真秒；"
+              f"普通白线接触 {audit['bag_audit']['ordinary_paint_contact_samples']}；"
+              f"未授权接触 {len(audit['bag_audit']['unauthorized_conditional_contacts'])}；"
+              f"人物 {summary['person_report']['counts']}；车牌3/3正确；"
+              f"命令配对 {audit['bag_audit']['command_decision_pairing']['matched_commands']}/"
+              f"{audit['bag_audit']['command_decision_pairing']['command_records']}。\n\n"
+              f"物理车身起终点差：{physical['chassis_return_error_cm']:.3f}厘米、"
+              f"{physical['yaw_return_error_rad']:.5f}弧度；这一项未达到额外设定的3厘米/0.04弧度目标。"
+              '早期独立审计HOME使用AMCL，两个指标不可混同。新电脑的首次依赖安装未在本机证实，'
+              '本次结论限定为已有Noetic与Paddle环境中从ZIP独立解压编译和执行。\n')
+    write(folder / 'README.md', readme)
+    return {'run_id': run.name, 'source_unpacked_zip_matches_final_runtime': True,
+            'catkin_packages_built': 4, 'independent_audit_pass': True,
+            'mission_sim_s': audit['bag_audit']['mission_duration_s'],
+            'physical_home_error_cm': physical['chassis_return_error_cm'],
+            'physical_home_yaw_rad': physical['yaw_return_error_rad'],
+            'bag_retained_locally': True,
+            'fresh_machine_dependency_install': 'not_tested_here',
+            'audit_sha256': sha(run / 'independent_audit.json')}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--team', default='智算三行队')
     parser.add_argument('--output', type=Path, default=ROOT / '复赛提交材料')
     parser.add_argument('--weights', type=Path, default=Path('/home/sz/下载/best.pt'))
+    parser.add_argument('--repro-run', type=Path,
+                        help='Completed audited run of an unpacked candidate ZIP')
     args = parser.parse_args()
     if not args.team or any(ch in args.team for ch in '/\\\0'):
         parser.error('队名包含非法路径字符')
@@ -246,7 +311,9 @@ def main():
         if archive.testzip() is not None:
             raise SystemExit('ZIP CRC 校验失败')
     metrics = json.loads((ROOT/'docs/agent_context/tasks/task009/docs20_20260929/results.json').read_text())
-    copy_evidence(stage, args.team, metrics)
+    evidence = copy_evidence(stage, args.team, metrics)
+    reproduction = (copy_reproduction(evidence, args.repro_run, workspace)
+                    if args.repro_run is not None else None)
     for directory in ('02_技术方案', '03_答辩展示', '04_综合展示视频', '06_规则与参考'):
         (stage / directory).mkdir()
     for source_name, target in (
@@ -263,11 +330,13 @@ def main():
                'engineering_zip': str(Path('01_工程代码') / zip_path.name),
                'engineering_zip_bytes': size, 'engineering_zip_sha256': sha(zip_path),
                'engineering_zip_under_150MB': True,
-               'engineering_status': 'packaged_unverified_runtime',
+               'engineering_status': ('passed_unpacked_noetic_reproduction'
+                                      if reproduction else 'packaged_unverified_runtime'),
                'technical_pdf': 'not_created', 'presentation_pdf': 'not_created',
                'comprehensive_mp4': 'not_created',
                'local_paddle_model_sha256': sha(paddle_model),
-               'validation': {'zip_crc': True, 'full_unpacked_reproduction': 'not_run'}}
+               'validation': {'zip_crc': True, 'docker_files_in_zip': False,
+                              'unpacked_reproduction': reproduction or 'not_run'}}
     write(stage / 'inventory.json', json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
     result.parent.mkdir(parents=True, exist_ok=True)
     stage.rename(result)
