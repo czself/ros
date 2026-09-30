@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.log
+/复赛提交材料/*/01_工程代码/*/
+/复赛提交材料/*/runtime_data/
+/复赛提交材料/*/.venv-ocr/
