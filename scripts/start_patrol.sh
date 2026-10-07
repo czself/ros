@@ -10,6 +10,7 @@ MAP_NAME="${1:-}"
 "$ROOT_DIR/scripts/start_navigation.sh" "/root/ros1_ws/maps/$MAP_NAME.yaml"
 docker cp "$ROOT_DIR/scripts/patrol_controller.py" "$CONTAINER:/root/patrol_controller.py"
 docker cp "$ROOT_DIR/scripts/route_executor.py" "$CONTAINER:/root/route_executor.py"
+docker cp "$ROOT_DIR/scripts/home_alignment.py" "$CONTAINER:/root/home_alignment.py"
 docker cp "$ROOT_DIR/scripts/visual_inspector.py" "$CONTAINER:/root/visual_inspector.py"
 docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; rosnode kill /patrol_controller /route_executor /visual_inspector 2>/dev/null || true'
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/visual_inspector.py >/root/visual_inspector.log 2>&1'

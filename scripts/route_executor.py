@@ -31,6 +31,10 @@ from tf.transformations import quaternion_from_euler
 from person_reporting import (PersonCounter, annotate_people, calibrated_intrinsics,
                               collect_observations, save_report)
 from hd_plate_capture import HDPlateCapture
+from home_alignment import (HOME_REFINEMENT_TIMEOUT_S,
+                            HOME_XY_TOLERANCE_M, HOME_YAW_TOLERANCE_RAD,
+                            home_navigation_tolerances,
+                            should_retry_home_alignment)
 
 
 CONTRACT_PATH = '/root/navigation/inner_route.yaml'
@@ -1289,9 +1293,45 @@ class RouteExecutor:
         return parked
 
     def return_home(self, last_photo_position=None):
-        """Send exactly one final goal to the recorded birth pose and yaw."""
+        """Return to HOME with one bounded retry for a successful pose mismatch."""
         self.status_pub.publish('RETURN_HOME')
-        return self.navigate_goal('HOME', self.birth_x, self.birth_y, self.birth_yaw)
+        original_xy_tolerance = float(rospy.get_param('~photo_nav_xy_tolerance', 0.04))
+        original_yaw_tolerance = float(
+            rospy.get_param('~photo_nav_heading_tolerance', 0.05))
+        home_xy_tolerance, home_yaw_tolerance = home_navigation_tolerances(
+            original_xy_tolerance, original_yaw_tolerance)
+        original_timeout = self.timeout
+        try:
+            rospy.set_param('~photo_nav_xy_tolerance', home_xy_tolerance)
+            rospy.set_param('~photo_nav_heading_tolerance', home_yaw_tolerance)
+            if self.navigate_goal('HOME', self.birth_x, self.birth_y, self.birth_yaw):
+                return True
+
+            event = self.goal_events[-1] if self.goal_events else {}
+            action_succeeded = event.get('action_state') == GoalStatus.SUCCEEDED
+            if not should_retry_home_alignment(
+                    event.get('result'), action_succeeded, attempts=0):
+                return False
+
+            event['home_refinement_retry'] = {
+                'attempt': 1,
+                'reason': 'ARRIVAL_MISMATCH',
+                'position_error_m': event.get('position_error_m'),
+                'heading_error_rad': event.get('heading_error_rad'),
+                'xy_tolerance_m': home_xy_tolerance,
+                'yaw_tolerance_rad': home_yaw_tolerance,
+            }
+            self.status_pub.publish('HOME_FINAL_ALIGNMENT')
+            self.timeout = min(original_timeout, HOME_REFINEMENT_TIMEOUT_S)
+            corrected = self.navigate_goal(
+                'HOME', self.birth_x, self.birth_y, self.birth_yaw)
+            if not corrected:
+                self.status_pub.publish('FAILED:HOME_ALIGNMENT')
+            return corrected
+        finally:
+            self.timeout = original_timeout
+            rospy.set_param('~photo_nav_xy_tolerance', original_xy_tolerance)
+            rospy.set_param('~photo_nav_heading_tolerance', original_yaw_tolerance)
 
     def wheel_pose_map(self):
         """Transform fresh encoder odometry through the latest AMCL map->odom."""
@@ -1364,7 +1404,8 @@ class RouteExecutor:
             linear = abs(message.twist.twist.linear.x)
             angular = abs(message.twist.twist.angular.z)
             last_pose = (x, y, yaw, distance, yaw_error, linear, angular)
-            pose_ok = distance <= 0.03 and yaw_error <= 0.04
+            pose_ok = (distance <= HOME_XY_TOLERANCE_M and
+                       yaw_error <= HOME_YAW_TOLERANCE_RAD)
             stopped = linear < 0.01 and angular < 0.01
             if not pose_ok:
                 self.status_pub.publish('FAILED:HOME_POSE')

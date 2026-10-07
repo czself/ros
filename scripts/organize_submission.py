@@ -14,6 +14,7 @@ BEST_SHA = 'fe502091a4e964371eee3b08ec26029ad653019250d5406e13dc68ce8969a2ad'
 ACTIVE_SCRIPTS = {
     'start_sim.sh', 'randomize_car_plates.py', 'traffic_light_controller.py',
     'start_navigation.sh', 'start_standee_photo_route.sh', 'route_executor.py',
+    'home_alignment.py',
     'runtime_control.py', 'cmd_vel_watchdog.py', 'wheel_encoder_odom.py',
     'goal_sanitizer.py', 'navigation_goal_safety.py', 'check_foundation.py',
     'check_navigation_readiness.py', 'yolo_inspector.py', 'person_reporting.py',

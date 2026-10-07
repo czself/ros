@@ -35,6 +35,7 @@ ENFORCE_TRAFFIC=true \
   "$ROOT_DIR/scripts/start_navigation.sh" "$MAP_FILE"
 
 docker cp "$ROOT_DIR/scripts/route_executor.py" "$CONTAINER:/root/route_executor.py"
+docker cp "$ROOT_DIR/scripts/home_alignment.py" "$CONTAINER:/root/home_alignment.py"
 docker cp "$ROOT_DIR/scripts/person_reporting.py" "$CONTAINER:/root/person_reporting.py"
 docker cp "$ROOT_DIR/scripts/hd_plate_capture.py" "$CONTAINER:/root/hd_plate_capture.py"
 docker exec "$CONTAINER" mkdir -p "$PHOTO_DIR"
