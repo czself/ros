@@ -22,11 +22,12 @@ class CalibratedRouteTest(unittest.TestCase):
     def test_real_texture_preflight(self):
         self.assertEqual(preflight(self.geometry, self.points), [])
 
-    def test_screenshot_topology_and_same_birth(self):
+    def test_calibrated_topology_and_same_birth(self):
         np.testing.assert_array_equal(self.points[0], self.points[-1])
         actual = np.sign(np.diff(self.points, axis=0)).astype(int).tolist()
-        self.assertEqual(actual, [[0, 1], [-1, 0], [0, -1], [-1, 0],
-                                  [0, -1], [1, 0], [0, -1]])
+        self.assertEqual(actual, [[0, 1], [-1, 1], [-1, 0], [-1, -1],
+                                  [0, -1], [-1, -1], [-1, 0], [-1, -1],
+                                  [0, -1], [1, -1], [1, 0], [1, -1], [0, -1]])
 
     def test_midsegment_paint_is_rejected(self):
         # Put one prohibited texture pixel at an otherwise clear segment's
@@ -63,7 +64,8 @@ class CalibratedRouteTest(unittest.TestCase):
             s = copy.deepcopy(samples[-1]); s.update(t=t, speed=0.)
             samples.append(s); t += .05
         return {'result': 'COMPLETE', 'planned': self.points.tolist(),
-                'completed_segments': list(range(7)), 'samples': samples}
+                'completed_segments': list(range(len(self.points) - 1)),
+                'samples': samples}
 
     def test_claimed_completion_without_trajectory_is_rejected(self):
         self.assertFalse(audit({'result': 'COMPLETE'}, self.geometry, self.points)['accepted'])
