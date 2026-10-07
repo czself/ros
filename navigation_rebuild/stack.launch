@@ -1,0 +1,42 @@
+<launch>
+  <arg name="map_file" />
+  <arg name="localization_map_file" />
+  <include file="/root/navigation/robot.launch" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" required="true" />
+  <node pkg="map_server" type="map_server" name="localization_map_server"
+        args="$(arg localization_map_file)" required="true">
+    <remap from="map" to="/map_localization" />
+    <remap from="map_metadata" to="/map_localization_metadata" />
+  </node>
+  <node pkg="amcl" type="amcl" name="amcl" output="screen" required="true" clear_params="true">
+    <param name="use_map_topic" value="true" />
+    <remap from="map" to="/map_localization" />
+    <param name="global_frame_id" value="map" />
+    <param name="odom_frame_id" value="odom" />
+    <param name="base_frame_id" value="base_footprint" />
+    <param name="tf_broadcast" value="true" />
+    <param name="odom_model_type" value="diff-corrected" />
+    <param name="odom_alpha1" value="0.20" />
+    <param name="odom_alpha2" value="0.20" />
+    <param name="odom_alpha3" value="0.20" />
+    <param name="odom_alpha4" value="0.20" />
+    <param name="min_particles" value="500" />
+    <param name="max_particles" value="1500" />
+    <param name="laser_model_type" value="likelihood_field" />
+    <param name="laser_max_beams" value="90" />
+    <param name="update_min_d" value="0.04" />
+    <param name="update_min_a" value="0.06" />
+    <param name="transform_tolerance" value="0.5" />
+    <param name="initial_pose_x" value="1.714860" />
+    <param name="initial_pose_y" value="-1.599947" />
+    <param name="initial_pose_a" value="1.606236" />
+  </node>
+  <node pkg="move_base" type="move_base" name="move_base" output="screen" required="true" clear_params="true">
+    <remap from="cmd_vel" to="/my_car/cmd_vel_rebuild" />
+    <rosparam file="/root/navigation_rebuild/move_base.yaml" command="load" />
+    <rosparam file="/root/navigation_rebuild/common_costmap.yaml" command="load" ns="global_costmap" />
+    <rosparam file="/root/navigation_rebuild/global_costmap.yaml" command="load" />
+    <rosparam file="/root/navigation_rebuild/common_costmap.yaml" command="load" ns="local_costmap" />
+    <rosparam file="/root/navigation_rebuild/local_costmap.yaml" command="load" />
+  </node>
+</launch>

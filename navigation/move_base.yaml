@@ -14,7 +14,10 @@ safe_escape:
   min_distance: 0.12
   safety_margin: 0.04
   speed: 0.10
-oscillation_timeout: 8.0
+# The traffic gate can hold the robot through the full 10 s red phase while a
+# move_base goal remains active. Delay oscillation recovery until after that
+# normal wait, or it will clear the costmaps and launch an escape maneuver.
+oscillation_timeout: 25.0
 oscillation_distance: 0.06
 base_global_planner: navfn/NavfnROS
 base_local_planner: dwa_local_planner/DWAPlannerROS

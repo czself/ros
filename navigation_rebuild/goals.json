@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "frame": "map",
+  "source": "navigation/standee_photo_route.json, measured photo poses",
+  "goals": [
+    {"name": "POINT_1", "x": 1.7062, "y": -0.5707, "yaw": 1.6168, "tasks": ["photo", "traffic_light"]},
+    {"name": "POINT_2", "x": 1.6502, "y": 1.0790, "yaw": -2.9764, "tasks": ["photo"]},
+    {"name": "POINT_3", "x": 1.1002, "y": 1.6213, "yaw": -1.4895, "tasks": ["photo"]},
+    {"name": "POINT_4", "x": 0.5463, "y": 0.8263, "yaw": 0.0304, "tasks": ["photo"]},
+    {"name": "POINT_5", "x": 0.4804, "y": 0.6776, "yaw": -3.1381, "tasks": ["photo"]},
+    {"name": "POINT_6", "x": -0.1657, "y": 0.1601, "yaw": 1.5003, "tasks": ["photo"]},
+    {"name": "POINT_7", "x": -0.3148, "y": 0.0650, "yaw": -3.1177, "tasks": ["photo", "traffic_light"]},
+    {"name": "POINT_8", "x": -1.7130, "y": -0.8000, "yaw": -1.4114, "tasks": ["photo"]},
+    {"name": "POINT_9", "x": -1.0846, "y": -1.0630, "yaw": -1.4824, "tasks": ["photo"]},
+    {"name": "POINT_10", "x": -0.5347, "y": -1.0731, "yaw": -1.4087, "tasks": ["photo"]},
+    {"name": "HOME", "x": 1.714860, "y": -1.599947, "yaw": 1.606236, "tasks": ["none"], "timeout_s": 100.0}
+  ]
+}

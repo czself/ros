@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 *.pyo
 *.log
+.pytest_cache/
+
+# 大体积文件与提交材料，不入库
+复赛提交材料/
+*.mp4

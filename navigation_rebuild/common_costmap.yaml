@@ -1,0 +1,17 @@
+footprint: [[0.042, 0.085], [0.042, -0.085], [-0.147, -0.085], [-0.147, 0.085]]
+footprint_padding: 0.0
+transform_tolerance: 0.5
+obstacle_layer:
+  observation_sources: laser
+  laser:
+    topic: /scan
+    data_type: LaserScan
+    sensor_frame: lidar_link
+    marking: true
+    clearing: true
+    obstacle_range: 3.30
+    raytrace_range: 3.5
+    inf_is_valid: true
+inflation_layer:
+  inflation_radius: 0.15
+  cost_scaling_factor: 5.0
