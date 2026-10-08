@@ -58,6 +58,7 @@ fi
 "$ROOT_DIR/scripts/start_sim.sh" --restart
 docker cp "$ROOT_DIR/navigation/." "$CONTAINER:/root/navigation"
 docker cp "$ROOT_DIR/navigation/route_contract.yaml" "$CONTAINER:/root/navigation/route_contract.yaml"
+docker cp "$ROOT_DIR/scripts/wheel_odometry.py" "$CONTAINER:/root/wheel_odometry.py"
 docker cp "$ROOT_DIR/scripts/wheel_encoder_odom.py" "$CONTAINER:/root/wheel_encoder_odom.py"
 docker cp "$ROOT_DIR/scripts/cmd_vel_watchdog.py" "$CONTAINER:/root/cmd_vel_watchdog.py"
 docker cp "$ROOT_DIR/scripts/yolo_inspector.py" "$CONTAINER:/root/yolo_inspector.py"

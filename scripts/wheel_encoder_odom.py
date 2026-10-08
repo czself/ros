@@ -16,6 +16,8 @@ import rospy
 import tf2_ros
 from geometry_msgs.msg import TransformStamped
 from nav_msgs.msg import Odometry
+from wheel_odometry import (integrate_encoder_pose, signed_velocity,
+                            validate_yaw_scale)
 
 
 def planar_yaw(quaternion):
@@ -24,23 +26,11 @@ def planar_yaw(quaternion):
                       1.0 - 2.0 * (quaternion.y ** 2 + quaternion.z ** 2))
 
 
-def signed_velocity(previous, current, dt):
-    """Return forward and yaw velocity from two (x, y, yaw) encoder poses."""
-    if not math.isfinite(dt) or dt <= 0.0:
-        raise ValueError('encoder interval must be positive and finite')
-    if not all(math.isfinite(value) for value in previous + current):
-        raise ValueError('encoder pose must be finite')
-    turn = math.atan2(math.sin(current[2] - previous[2]),
-                      math.cos(current[2] - previous[2]))
-    heading = previous[2] + 0.5 * turn
-    forward = ((current[0] - previous[0]) * math.cos(heading)
-               + (current[1] - previous[1]) * math.sin(heading)) / dt
-    return forward, turn / dt
-
-
 class WheelEncoderOdom:
     def __init__(self):
         self.last = None
+        self.yaw_scale = validate_yaw_scale(
+            rospy.get_param('~yaw_scale', 1.0))
         self.publisher = rospy.Publisher('/odom', Odometry, queue_size=5)
         self.broadcaster = tf2_ros.TransformBroadcaster()
         self.static_broadcaster = tf2_ros.StaticTransformBroadcaster()
@@ -61,8 +51,8 @@ class WheelEncoderOdom:
         self.subscriber = rospy.Subscriber(
             rospy.get_param('~input_topic', '/my_car/wheel_odom'),
             Odometry, self.callback, queue_size=5, tcp_nodelay=True)
-        rospy.loginfo('navigation odometry uses wheel encoders; '
-                      'AMCL must publish map -> odom')
+        rospy.loginfo('navigation odometry uses wheel encoders; yaw_scale=%.4f; '
+                      'AMCL must publish map -> odom', self.yaw_scale)
 
     def callback(self, message):
         if (message.header.frame_id.lstrip('/') != 'odom'
@@ -80,19 +70,32 @@ class WheelEncoderOdom:
             self.last = None
             return
         previous = self.last
-        self.last = (stamp, sample)
         # Do not invent an initial velocity; wait for the next wheel sample.
         if previous is None:
+            self.last = (stamp, sample, sample)
             return
         dt = (stamp - previous[0]).to_sec()
         if dt <= 0.0:
             rospy.logwarn_throttle(5.0, 'wheel odometry time reset/duplicate; '
                                    'waiting for the next sample')
+            corrected_baseline = (sample if stamp < previous[0]
+                                  else previous[2])
+            self.last = (stamp, sample, corrected_baseline)
             return
-        forward, yaw_rate = signed_velocity(previous[1], sample, dt)
+        corrected_sample = integrate_encoder_pose(
+            previous[1], sample, previous[2], self.yaw_scale)
+        self.last = (stamp, sample, corrected_sample)
+        forward, yaw_rate = signed_velocity(previous[2], corrected_sample, dt)
         odometry = copy.deepcopy(message)
         odometry.header.frame_id = 'odom'
         odometry.child_frame_id = 'base_footprint'
+        odometry.pose.pose.position.x = corrected_sample[0]
+        odometry.pose.pose.position.y = corrected_sample[1]
+        half_yaw = 0.5 * corrected_sample[2]
+        odometry.pose.pose.orientation.x = 0.0
+        odometry.pose.pose.orientation.y = 0.0
+        odometry.pose.pose.orientation.z = math.sin(half_yaw)
+        odometry.pose.pose.orientation.w = math.cos(half_yaw)
         odometry.twist.twist.linear.x = forward
         odometry.twist.twist.linear.y = 0.0
         odometry.twist.twist.angular.z = yaw_rate
@@ -101,10 +104,10 @@ class WheelEncoderOdom:
         transform = TransformStamped()
         transform.header = odometry.header
         transform.child_frame_id = odometry.child_frame_id
-        transform.transform.translation.x = pose.position.x
-        transform.transform.translation.y = pose.position.y
+        transform.transform.translation.x = corrected_sample[0]
+        transform.transform.translation.y = corrected_sample[1]
         transform.transform.translation.z = pose.position.z
-        transform.transform.rotation = pose.orientation
+        transform.transform.rotation = odometry.pose.pose.orientation
         self.broadcaster.sendTransform(transform)
 
 

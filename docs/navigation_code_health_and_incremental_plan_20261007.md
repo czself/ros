@@ -121,3 +121,5 @@
 - 临时 world 将轮距改为0.1418 m后，正向0.9 rad/s的受控转角比降至1.005；四档（±0.3、±0.9 rad/s）结果为0.939、1.005、0.900、1.030。每档在速度命令结束后又等了1.5秒，因此低速结果包含停转阶段的余动，不能当作纯稳态比例。
 - 同一临时参数下，全路线运行 `20261008_home_wheel_sep_candidate_01` 于仿真时刻635.787 s在 POINT_10 以 `NO_ROUTE_PROGRESS` 失败；当时剩余距离0.559 m、进度0、门控 `CLEAR`、导航输出速度为0。该运行没有证明失败由轮距值引起，但足以说明候选方案未通过路线验收，故不合入正式 world 或 `models/my_car/model.sdf`。
 - 后续先定位 POINT_10 临时失败的局部规划原因，再用中间轮距做同一受控转向与全路线对照；只有在路线安全验收通过且 HOME 真值误差改善后，才提交校准值。报告和PPT的20轮数据仍未改。
+- 已加可选 encoder yaw scale 适配器：`scripts/wheel_odometry.py` 负责保持前进距离、按比例修正轮编码器增量角；`WheelEncoderOdom` 只将修正后的 pose/twist 发到导航 `/odom` 和 TF，Gazebo 轮速命令与原始 `/my_car/wheel_odom` 不改。私有参数 `~yaw_scale` 默认1.0，默认值逐样本保留原始 encoder pose。
+- 新增轮里程计纯函数测试后，HOME/路线/人物统计/轮里程计相关测试共29通过；`compileall` 与 `git diff --check` 通过。下一步在隔离路线启动中临时设 `~yaw_scale=0.983`，对比 `COMPLETE_PARKED`、Gazebo HOME 真值、AMCL/TF误差及POINT_10进度；通过前不更改默认值。
