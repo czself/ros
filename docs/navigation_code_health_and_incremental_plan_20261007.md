@@ -108,3 +108,14 @@
 - Noetic AMCL 在没有重采样/强制发布时会复用 `latest_tf_` 重新广播变换；该行为与 bag 中 TF 时间戳持续更新、变换值不变相符。[AMCL 源码](https://github.com/ros-planning/navigation/blob/noetic-devel/amcl/src/amcl_node.cpp)
 - 当前代码先请求无运动更新并等待请求之后的 `/amcl_pose`，再分别测量 AMCL pose 和 TF 误差、按较大误差验收。因此两者分歧会失败关闭，不会再由单独的 TF 误差误报泊车成功。全路线验证此修正仍待完成。
 - 轮距参数 `0.13572 m` 与轮心几何间距 `0.133 m` 的2%差异仍是待测因素，不能单凭这次 bag 确认为主因，也没有改动。后续用隔离的受控原地转向测量轮编码器角度与Gazebo车身角度，再判断是否需要校准轮距或转速/加速度。
+
+## AMCL 新样本仍与车身真值分离；轮编码器转角比例复核
+
+日期：2026-10-08
+代码：`a1aec2e`（生产代码；本轮未修改）
+
+- 运行 `/tmp/ros1_ws_home_validation/photo_stops/standee_route_runs/20261008_home_tf_regression_01/motion.bag` 全路线状态为 `COMPLETE_PARKED`。HOME 新鲜 AMCL 样本在 656.223 s，航向 1.57144 rad；TF 合成航向约 1.5714 rad，均在 0.04 rad验收限内。但停稳后的 Gazebo chassis 真值航向约 1.47533 rad，目标为1.606236 rad，真实误差约−0.1309 rad；AMCL/TF与真值仍差约0.096 rad。新鲜度修正阻止不了地图定位本身的偏差。
+- 从 POINT_10 结果到 HOME 停稳，真值航向变化约2.9605 rad，轮编码器里程计变化约3.1685 rad，相差约0.208 rad（约7%）。
+- 在旧 `wheelSeparation=0.13572 m` 下做四次受控原地转向，正向0.3/0.9 rad/s的编码器/真值转角比分别为1.046/1.042，反向分别为1.060/1.033；输出速度命令与请求值一致。正反向、两种速度都显示编码器转角偏大，支持“有效轮距/滑移标定不匹配”的判断。
+- 临时 world 将轮距改为0.1418 m后，正向0.9 rad/s的受控转角比降至1.005；但临时全路线在 POINT_10 因 `NO_ROUTE_PROGRESS` 失败，进度保持0且门控为 `CLEAR`。这说明单独改大轮距会引入路线风险，因此候选值没有合入正式 world 或 `models/my_car/model.sdf`。
+- 后续先定位 POINT_10 临时失败的局部规划原因，再用中间轮距做同一受控转向与全路线对照；只有在路线安全验收通过且 HOME 真值误差改善后，才提交校准值。报告和PPT的20轮数据仍未改。
