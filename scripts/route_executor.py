@@ -32,7 +32,8 @@ from tf.transformations import quaternion_from_euler
 from person_reporting import (PersonCounter, annotate_people, calibrated_intrinsics,
                               collect_observations, save_report)
 from hd_plate_capture import HDPlateCapture
-from home_alignment import (HOME_REFINEMENT_TIMEOUT_S,
+from home_alignment import (HOME_AMCL_REFRESH_INTERVAL_S,
+                            HOME_REFINEMENT_TIMEOUT_S,
                             HOME_XY_TOLERANCE_M, HOME_YAW_TOLERANCE_RAD,
                             amcl_sample_is_newer,
                             home_navigation_tolerances,
@@ -1403,16 +1404,19 @@ class RouteExecutor:
             return self.map_pose()
 
     def request_fresh_amcl_pose(self, timeout_s=2.0):
-        """Force one stationary laser update and return its new AMCL pose."""
+        """Repeat stationary laser updates until AMCL publishes a fresh pose."""
         service = '/request_nomotion_update'
         try:
             rospy.wait_for_service(service, timeout=1.0)
+            request_update = rospy.ServiceProxy(service, Empty)
             request_stamp = rospy.Time.now().to_sec()
-            rospy.ServiceProxy(service, Empty)()
         except (rospy.ROSException, rospy.ServiceException) as error:
             raise RuntimeError('AMCL no-motion update failed: %s' % error)
 
         deadline = time.monotonic() + timeout_s
+        next_request = 0.0
+        request_count = 0
+        message = None
         while not rospy.is_shutdown() and time.monotonic() < deadline:
             with self.amcl_pose_lock:
                 message = self.latest_amcl_pose
@@ -1421,9 +1425,26 @@ class RouteExecutor:
                                          message.header.stamp.to_sec())):
                 age = (rospy.Time.now() - message.header.stamp).to_sec()
                 if -0.05 <= age <= 1.0:
+                    rospy.loginfo(
+                        'HOME received fresh AMCL pose after %d no-motion request(s): '
+                        'stamp=%.3f', request_count,
+                        message.header.stamp.to_sec())
                     return message
+            now_wall = time.monotonic()
+            if now_wall >= next_request:
+                try:
+                    request_update()
+                except rospy.ServiceException as error:
+                    raise RuntimeError('AMCL no-motion update failed: %s' % error)
+                request_count += 1
+                next_request = now_wall + HOME_AMCL_REFRESH_INTERVAL_S
             time.sleep(0.01)
-        raise RuntimeError('AMCL did not publish a fresh pose after the no-motion update')
+        last_pose_stamp = ('none' if message is None else
+                           '%.3f' % message.header.stamp.to_sec())
+        raise RuntimeError(
+            'AMCL did not publish a fresh pose after %d no-motion request(s) '
+            '(request stamp=%.3f, last pose stamp=%s)' %
+            (request_count, request_stamp, last_pose_stamp))
 
     def map_pose(self):
         deadline = time.monotonic() + 0.5

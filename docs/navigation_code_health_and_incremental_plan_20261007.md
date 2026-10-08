@@ -50,7 +50,7 @@
 4. 校正后继续使用现有 2 秒静止验收；将AMCL样本时间、AMCL与TF各自的误差、速度和最终停稳情况写入运行总结。
 5. 同时检查 `+π/-π` 角度误差边界，避免把角度环绕误判为大偏差。不得使用固定 yaw 偏置。
 
-进展：HOME容差与一次有界重试已实现；现在增加AMCL无运动更新，并要求HOME验收使用请求之后的AMCL样本且与TF误差同时过阈值。纯Python测试覆盖新旧时间戳判断；尚需ROS/Gazebo验证服务调用及实际校正。
+进展：HOME容差与一次有界重试已实现；AMCL fresh-pose 检查已加入，并要求HOME验收使用请求之后的AMCL样本且与TF误差同时过阈值。第一次全路线集成验证暴露出“单次无运动更新不一定发布新 `/amcl_pose`”；根因和新的限时重复请求修正见下方记录。修正后的代码目前通过24项相关非ROS测试，仍需在仿真中复验。
 
 通过条件：HOME只使用请求之后的AMCL样本；AMCL与map TF均满足阈值；一次校正仅由成功动作后的位姿误差触发；缺样本时失败关闭；其他waypoint不变。
 
@@ -84,3 +84,15 @@
 - 结论：新增逻辑能在AMCL位姿不匹配时进行一次有界重校正；本轮没有触发该分支。更关键的是，AMCL验收通过时，Gazebo车身真值仍未回到阈值内，单靠HOME重发不能解决这个偏差。下一步先核对 `map → odom → base_footprint`、轮式里程计与车身参考点/驱动轴偏移，再决定控制或标定修改。
 - 本次关闭了OCR，属于HOME导航与停稳检查，不代表完整提交验收。该单轮结果只记入本计划，不纳入后续20轮统计；技术报告和答辩PPT均未改动。
 - 仿真容器在测试前已停止。本次运行结束后已再次停止容器，运行文件保存在 `/home/sz/ros1_ws/photo_stops/standee_route_runs/20261008_home_refine_trial_01/`。
+
+## AMCL fresh-pose 集成失败与根因
+
+日期：2026-10-08
+代码：`dd7d759`（失败复现）；限时重复请求修正待推送
+运行：`/home/sz/ros1_ws/navigation_diagnostics/home_amcl_refresh_20261008/pose_route_01.bag`
+
+- 全路线到达 HOME 后，`/route/status` 于仿真时刻 755.119 s 变为 `FAILED:MISSION`。bag 中 `/scan` 仍持续约 10 Hz；`/amcl_pose` 在 752.730 s 后直到 806.266 s 才再出现样本，间隔约 53.5 s。后一个样本对应之后手动调用无运动更新服务。
+- 当时 AMCL 参数 `resample_interval=2`。ROS Noetic 源码显示 `/request_nomotion_update` 只把 `m_force_update` 设为 true；下一个激光回调据此处理一次激光，但 `/amcl_pose` 只在 `resampled` 或首次强制发布时输出。重采样间隔为2时，单次服务请求可能只处理一帧而没有发布 pose；是否碰巧发布取决于重采样计数所处相位。[源码](https://github.com/ros-planning/navigation/blob/noetic-devel/amcl/src/amcl_node.cpp)
+- 因此失败不是扫描中断，也不是已证明的时间戳偏移；现有实现只调用服务一次，却要求随后一定有新 `/amcl_pose`。这项假设不成立。HOME-only 的一次成功只说明该次重采样相位恰好允许发布。
+- 修正是在原2秒总等待时间内每隔0.25秒再次请求无运动更新，直到收到时间戳晚于首次请求且年龄有效的 AMCL pose；仍不接受旧样本，超时仍失败关闭。失败信息增加请求次数、请求时间和最后样本时间。
+- 相关 HOME/路线/人物统计测试为24通过，编译与 `git diff --check` 通过。下一步需推送此修正，再在隔离仿真中重跑单路线确认重采样相位问题确实消失；随后比较 AMCL、TF、轮式里程计与 Gazebo 真值。20轮报告和PPT数据未改。

@@ -7,6 +7,7 @@ HOME_XY_TOLERANCE_M = 0.03
 HOME_YAW_TOLERANCE_RAD = 0.04
 HOME_REFINEMENT_RETRY_LIMIT = 1
 HOME_REFINEMENT_TIMEOUT_S = 12.0
+HOME_AMCL_REFRESH_INTERVAL_S = 0.25
 
 
 def home_navigation_tolerances(xy_tolerance, yaw_tolerance):

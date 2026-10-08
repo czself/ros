@@ -3,7 +3,8 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from home_alignment import (HOME_XY_TOLERANCE_M, HOME_YAW_TOLERANCE_RAD,
+from home_alignment import (HOME_AMCL_REFRESH_INTERVAL_S,
+                            HOME_XY_TOLERANCE_M, HOME_YAW_TOLERANCE_RAD,
                             amcl_sample_is_newer,
                             home_navigation_tolerances,
                             should_retry_home_alignment)
@@ -32,6 +33,10 @@ class HomeAlignmentPolicyTest(unittest.TestCase):
         self.assertFalse(amcl_sample_is_newer(10.0, 10.0))
         self.assertFalse(amcl_sample_is_newer(10.0, 9.9))
         self.assertFalse(amcl_sample_is_newer(10.0, float('nan')))
+
+    def test_amcl_refresh_retries_at_a_bounded_interval(self):
+        self.assertGreater(HOME_AMCL_REFRESH_INTERVAL_S, 0.0)
+        self.assertLessEqual(HOME_AMCL_REFRESH_INTERVAL_S, 0.5)
 
 
 if __name__ == '__main__':
