@@ -32,6 +32,7 @@ from tf.transformations import quaternion_from_euler
 from person_reporting import (PersonCounter, annotate_people, calibrated_intrinsics,
                               collect_observations, save_report)
 from hd_plate_capture import HDPlateCapture
+from run_artifacts import write_run_summary
 from home_alignment import (HOME_AMCL_REFRESH_INTERVAL_S,
                             HOME_REFINEMENT_TIMEOUT_S,
                             HOME_XY_TOLERANCE_M, HOME_YAW_TOLERANCE_RAD,
@@ -194,6 +195,7 @@ class RouteExecutor:
             self.photo_acceptance = photo_config.get('photo_acceptance_criteria', {})
         else:
             self.photo_acceptance = {}
+        self.mission_error = None
         self.goal_events = []
         self.latest_gate_status = 'CLEAR'
         self.gate_wall_time = 0.0
@@ -1522,36 +1524,64 @@ class RouteExecutor:
         return False
 
     def finish(self, success):
-        import os
-        self.client.cancel_all_goals()
-        self.cmd_pub.publish(Twist())
-        if self.capture_photos:
-            os.makedirs(self.photo_dir, exist_ok=True)
-            person_report = None
-            if self.person_counter is not None:
+        """Stop, save every outcome, then publish the final status."""
+        finalization_errors = []
+        for operation, callback in (
+                ('cancel_goals', self.client.cancel_all_goals),
+                ('stop_motion', lambda: self.cmd_pub.publish(Twist()))):
+            try:
+                callback()
+            except Exception as error:
+                finalization_errors.append({'operation': operation,
+                                            'type': type(error).__name__,
+                                            'detail': str(error)})
+                success = False
+                rospy.logerr('mission finalization %s failed: %s', operation, error)
+        person_report = None
+        if self.capture_photos and self.person_counter is not None:
+            try:
                 person_report = save_report(self.person_counter, self.photo_dir)
-                with open(os.path.join(self.photo_dir,'person_reporting_config.json'),'w',encoding='utf-8') as stream:
-                    json.dump(self.person_config,stream,ensure_ascii=False,indent=2)
-                self.person_report_pub.publish(String(data=json.dumps(person_report,ensure_ascii=False)))
-            report = {'route_status': 'COMPLETE_PARKED' if success else 'FAILED',
-                      'localization': 'wheel_encoders+AMCL',
-                      'map_file': rospy.get_param('/map_server/map_file', ''),
-                      'goals': self.goal_events, 'parking': getattr(self, 'parking', None),
-                      'strict_acceptance': self.strict_acceptance,
-                      'yolo_checkpoint_sha256': BEST_PT_SHA256,
-                      'accepted_photo_records': self.accepted_photo_records,
-                      'person_boxes_by_view': getattr(self, 'person_boxes_by_view', None),
-                      'outsider_boxes_by_view': getattr(self, 'outsider_boxes_by_view', None),
-                      'person_reporting_enabled': self.person_counter is not None,
-                      'hd_plate_capture_enabled': self.hd_capture is not None,
-                      'ocr_enabled': self.ocr_enabled,
-                      'ocr_results': self.ocr_results,
-                      'person_report': person_report,
-                      'photo_points': [name for name, *_ in self.route],
-                      'completed_photos': sorted(os.listdir(self.photo_dir))}
-            with open(os.path.join(self.photo_dir, 'run_summary.json'), 'w') as stream:
-                json.dump(report, stream, indent=2)
+                with open(os.path.join(self.photo_dir, 'person_reporting_config.json'),
+                          'w', encoding='utf-8') as stream:
+                    json.dump(self.person_config, stream, ensure_ascii=False, indent=2)
+                self.person_report_pub.publish(String(data=json.dumps(
+                    person_report, ensure_ascii=False)))
+            except Exception as error:
+                finalization_errors.append({'operation': 'person_report',
+                                            'type': type(error).__name__,
+                                            'detail': str(error)})
+                success = False
+                rospy.logerr('mission person report save failed: %s', error)
+        report = {
+            'route_status': 'COMPLETE_PARKED' if success else 'FAILED',
+            'localization': 'wheel_encoders+AMCL',
+            'map_file': rospy.get_param('/map_server/map_file', ''),
+            'goals': self.goal_events, 'parking': getattr(self, 'parking', None),
+            'capture_photos': self.capture_photos,
+            'mission_error': self.mission_error,
+            'finalization_errors': finalization_errors,
+            'strict_acceptance': self.strict_acceptance,
+            'yolo_checkpoint_sha256': BEST_PT_SHA256,
+            'accepted_photo_records': self.accepted_photo_records,
+            'person_boxes_by_view': getattr(self, 'person_boxes_by_view', None),
+            'outsider_boxes_by_view': getattr(self, 'outsider_boxes_by_view', None),
+            'person_reporting_enabled': self.person_counter is not None,
+            'hd_plate_capture_enabled': self.hd_capture is not None,
+            'ocr_enabled': self.ocr_enabled,
+            'ocr_results': self.ocr_results,
+            'person_report': person_report,
+            'photo_points': [name for name, *_ in self.route],
+        }
+        try:
+            os.makedirs(self.photo_dir, exist_ok=True)
+            report['completed_photos'] = sorted(os.listdir(self.photo_dir))
+            write_run_summary(self.photo_dir, report)
+        except Exception as error:
+            rospy.logerr('mission summary save failed: %s', error)
+            self.status_pub.publish('FAILED:SUMMARY_WRITE')
+            return False
         self.status_pub.publish('COMPLETE_PARKED' if success else 'FAILED:MISSION')
+        return bool(success)
 
 
 if __name__ == '__main__':
@@ -1562,8 +1592,9 @@ if __name__ == '__main__':
     success = False
     try:
         success = executor.run()
-    except (rospy.ROSException, RuntimeError, tf.Exception) as error:
+    except Exception as error:
+        executor.mission_error = {'type': type(error).__name__, 'detail': str(error)}
         rospy.logerr("mission stopped: %s", error)
     finally:
-        executor.finish(success)
+        success = executor.finish(success)
     raise SystemExit(0 if success else 1)
