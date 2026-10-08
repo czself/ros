@@ -55,6 +55,10 @@ elif data.get("publisher") != "/slam_gmapping" or not data.get("session_id"):
 PY2
 fi
 # Each new navigation session loads a fresh triplet of plate textures.
+LOCALIZATION_TMP="$(mktemp -d /tmp/navigation-localization.XXXXXX)"
+LOCALIZATION_BASENAME="${MAP_BASENAME}_localization"
+python3 "$ROOT_DIR/scripts/prepare_localization_map.py" \
+  "$ROOT_DIR/maps/$MAP_BASENAME.yaml" "$LOCALIZATION_TMP/$LOCALIZATION_BASENAME"
 "$ROOT_DIR/scripts/start_sim.sh" --restart
 docker cp "$ROOT_DIR/navigation/." "$CONTAINER:/root/navigation"
 docker cp "$ROOT_DIR/navigation/route_contract.yaml" "$CONTAINER:/root/navigation/route_contract.yaml"
@@ -79,6 +83,9 @@ docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; cd /root/r
 docker exec "$CONTAINER" mkdir -p /root/ros1_ws/maps
 docker cp "$ROOT_DIR/maps/$MAP_BASENAME.yaml" "$CONTAINER:/root/ros1_ws/maps/$MAP_BASENAME.yaml"
 docker cp "$ROOT_DIR/maps/$MAP_BASENAME.pgm" "$CONTAINER:/root/ros1_ws/maps/$MAP_BASENAME.pgm"
+docker cp "$LOCALIZATION_TMP/$LOCALIZATION_BASENAME.yaml" "$CONTAINER:/root/ros1_ws/maps/$LOCALIZATION_BASENAME.yaml"
+docker cp "$LOCALIZATION_TMP/$LOCALIZATION_BASENAME.pgm" "$CONTAINER:/root/ros1_ws/maps/$LOCALIZATION_BASENAME.pgm"
+python3 -c 'import shutil,sys; shutil.rmtree(sys.argv[1])' "$LOCALIZATION_TMP"
 if [[ -f "$ROOT_DIR/maps/$MAP_BASENAME.manifest.json" ]]; then
   docker cp "$ROOT_DIR/maps/$MAP_BASENAME.manifest.json" "$CONTAINER:/root/ros1_ws/maps/$MAP_BASENAME.manifest.json"
 fi
@@ -87,7 +94,7 @@ docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec py
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/goal_sanitizer.py >/root/goal_sanitizer.log 2>&1'
 docker exec "$CONTAINER" bash -lc "source /opt/ros/noetic/setup.bash; rosparam set /cmd_vel_watchdog/enforce_traffic $ENFORCE_TRAFFIC; rosparam set /cmd_vel_watchdog/enforce_white_lines $ENFORCE_WHITE_LINES; rosparam set /cmd_vel_watchdog/traffic_min_confidence 0.50; rosparam set /cmd_vel_watchdog/expected_yolo_sha256 $BEST_PT_SHA256"
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; exec python3 /root/cmd_vel_watchdog.py >/root/cmd_vel_watchdog.log 2>&1'
-docker exec -d "$CONTAINER" bash -lc "source /root/ros1_ws/devel/setup.bash; exec roslaunch /root/navigation/navigation.launch map_file:=/root/ros1_ws/maps/$MAP_BASENAME.yaml observation_sources:='$OBSERVATION_SOURCES' global_observation_sources:='$GLOBAL_OBSERVATION_SOURCES' initial_x:=1.714860 initial_y:=-1.599947 initial_yaw:=1.606236 >/root/navigation.log 2>&1"
+docker exec -d "$CONTAINER" bash -lc "source /root/ros1_ws/devel/setup.bash; exec roslaunch /root/navigation/navigation.launch map_file:=/root/ros1_ws/maps/$MAP_BASENAME.yaml localization_map_file:=/root/ros1_ws/maps/$LOCALIZATION_BASENAME.yaml observation_sources:='$OBSERVATION_SOURCES' global_observation_sources:='$GLOBAL_OBSERVATION_SOURCES' initial_x:=1.714860 initial_y:=-1.599947 initial_yaw:=1.606236 >/root/navigation.log 2>&1"
 docker exec -d "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; export MPLBACKEND=Agg; exec python3 /root/yolo_inspector.py _model:=/root/yolo/best.pt _conf_threshold:=0.15 _traffic_min_confidence:=0.50 _process_hz:=5.5 >/root/yolo_inspector.log 2>&1'
 sleep 6
 docker exec "$CONTAINER" bash -lc 'source /opt/ros/noetic/setup.bash; rosnode ping -c 1 /map_server >/dev/null && rosnode ping -c 1 /amcl >/dev/null && rosnode ping -c 1 /move_base >/dev/null && rosnode ping -c 1 /cmd_vel_watchdog >/dev/null && rosnode ping -c 1 /yolo_inspector >/dev/null'

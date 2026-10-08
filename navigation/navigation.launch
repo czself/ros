@@ -1,5 +1,6 @@
 <launch>
   <arg name="map_file" />
+  <arg name="localization_map_file" default="$(arg map_file)" />
   <arg name="observation_sources" default="laser depth" />
   <arg name="global_observation_sources" default="" />
   <arg name="initial_x" default="1.71499" />
@@ -7,7 +8,16 @@
   <arg name="initial_yaw" default="1.5708" />
   <include file="/root/navigation/robot.launch" />
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" required="true" />
+  <node pkg="map_server" type="map_server" name="localization_map_server"
+        args="$(arg localization_map_file)" required="true">
+    <remap from="map" to="localization_map" />
+    <remap from="map_metadata" to="localization_map_metadata" />
+    <remap from="static_map" to="localization_static_map" />
+  </node>
   <node pkg="amcl" type="amcl" name="amcl" output="screen" required="true" clear_params="true">
+    <param name="use_map_topic" value="true" />
+    <param name="first_map_only" value="true" />
+    <remap from="map" to="localization_map" />
     <param name="global_frame_id" value="map" />
     <param name="odom_frame_id" value="odom" />
     <param name="base_frame_id" value="base_footprint" />

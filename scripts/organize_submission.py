@@ -17,6 +17,7 @@ ACTIVE_SCRIPTS = {
     'home_alignment.py',
     'runtime_control.py', 'cmd_vel_watchdog.py', 'wheel_encoder_odom.py',
     'wheel_odometry.py',
+    'prepare_localization_map.py',
     'goal_sanitizer.py', 'navigation_goal_safety.py', 'check_foundation.py',
     'check_navigation_readiness.py', 'yolo_inspector.py', 'person_reporting.py',
     'announce_people.py', 'render_person_report.py', 'audit_person_report.py',
