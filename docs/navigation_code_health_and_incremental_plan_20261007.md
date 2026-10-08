@@ -45,3 +45,12 @@
 - 隔离 ROS 实际导入生产类验证：不拍照成功、不拍照失败、人物报告写入失败，三项均保存正确状态。测试使用专用诊断话题及模拟动作客户端，没有控制或取消车辆任务。
 - 产物：`/tmp/ros1_ws_home_validation/navigation_diagnostics/run_summary_fix_20261008/`。
 - 方法结构对比确认：只改初始化与收尾，导航、十点动作与停车方法未改；未重跑全路线，不将上述检查算作全任务验收。
+
+### SLAM 建图入口：轮编码器里程计
+
+- 修改前 GitHub 检查点：`codex/before-slam-wheel-odom-20261008`（`8ad106f`）。
+- 手动 SLAM 入口 `scripts/start_slam_mapping.sh` 使用现有 `wheel_encoder_odom.py` 和 `wheel_odometry.py`，替换 `model_state_odom.py`；GMapping 仍由实时 `/scan` 建图。
+- 已实际启动并打开 RViz。运行检查确认 `/map` 的唯一发布者是 `/slam_gmapping`，`/odom` 的唯一发布者是 `/wheel_encoder_odom`；轮编码器节点订阅 `/my_car/wheel_odom`，建图和里程计节点均不订阅 Gazebo ModelStates/LinkStates 真值。
+- 检查文件：`/home/sz/ros1_ws/navigation_diagnostics/slam_wheel_mapping_20261008/check.json`。目前只生成起点的初始地图，不宣称已完成全场建图或已补齐完整视频。
+- 当前 world 的编码器插件仍为仿真传感器；实车需要替换轮编码器输入并重新标定。仿真重置出生位姿属于测试场景初始化，未作为在线 SLAM 位姿输入。
+- 自动探索入口和 `survey_mapper` 尚未迁移；不得用手动入口完成迁移来宣称所有建图路径已消除真值依赖。
