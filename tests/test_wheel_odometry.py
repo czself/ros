@@ -4,11 +4,28 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from wheel_odometry import (integrate_encoder_pose, signed_velocity,
+from wheel_odometry import (align_encoder_sample, integrate_encoder_pose, signed_velocity,
                             validate_yaw_scale)
 
 
 class WheelOdometryTest(unittest.TestCase):
+    def test_initial_alignment_removes_arbitrary_encoder_origin(self):
+        self.assertEqual(align_encoder_sample((5.,-3.,.7),(5.,-3.,.7),0.),(0.,0.,0.))
+
+    def test_alignment_rotates_translation_and_preserves_relative_turn(self):
+        x,y,yaw=align_encoder_sample((6.,-3.,.8),(5.,-3.,0.),math.pi/2)
+        self.assertAlmostEqual(x,0.)
+        self.assertAlmostEqual(y,1.)
+        self.assertAlmostEqual(yaw,math.pi/2+.8)
+
+    def test_alignment_handles_heading_wrap(self):
+        pose=align_encoder_sample((0.,0.,math.radians(-170)),(0.,0.,math.radians(170)),0.)
+        self.assertAlmostEqual(pose[2],math.radians(20))
+
+    def test_nonfinite_alignment_is_rejected(self):
+        with self.assertRaises(ValueError):
+            align_encoder_sample((0.,0.,0.),(0.,0.,0.),float('nan'))
+
     def test_scale_one_preserves_the_encoder_pose(self):
         previous_raw = (0.0, 0.0, 0.0)
         current_raw = (0.7, 0.2, 0.8)

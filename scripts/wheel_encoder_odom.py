@@ -11,12 +11,13 @@ successive encoder-integrated poses before giving the message to DWA.
 """
 import copy
 import math
+import os
 
 import rospy
 import tf2_ros
 from geometry_msgs.msg import TransformStamped
 from nav_msgs.msg import Odometry
-from wheel_odometry import (integrate_encoder_pose, signed_velocity,
+from wheel_odometry import (align_encoder_sample, integrate_encoder_pose, signed_velocity,
                             validate_yaw_scale)
 
 
@@ -29,6 +30,12 @@ def planar_yaw(quaternion):
 class WheelEncoderOdom:
     def __init__(self):
         self.last = None
+        self.encoder_origin = None
+        self.initial_yaw = os.environ.get('SLAM_ENCODER_INITIAL_YAW')
+        if self.initial_yaw is not None:
+            self.initial_yaw = float(self.initial_yaw)
+            if not math.isfinite(self.initial_yaw):
+                raise ValueError('initial encoder heading must be finite')
         self.yaw_scale = validate_yaw_scale(
             rospy.get_param('~yaw_scale', 1.0))
         self.publisher = rospy.Publisher('/odom', Odometry, queue_size=5)
@@ -69,6 +76,10 @@ class WheelEncoderOdom:
             rospy.logerr_throttle(5.0, 'discarding non-finite wheel odometry')
             self.last = None
             return
+        if self.initial_yaw is not None:
+            if self.encoder_origin is None:
+                self.encoder_origin = sample
+            sample = align_encoder_sample(sample, self.encoder_origin, self.initial_yaw)
         previous = self.last
         # Do not invent an initial velocity; wait for the next wheel sample.
         if previous is None:

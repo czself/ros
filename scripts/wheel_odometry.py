@@ -51,3 +51,14 @@ def integrate_encoder_pose(previous_raw, current_raw, previous_corrected,
         previous_corrected[1] + forward_distance * math.sin(corrected_heading),
         previous_corrected[2] + corrected_turn,
     )
+
+
+def align_encoder_sample(sample, origin, initial_yaw):
+    """Rigidly align a mapping session to its configured starting heading."""
+    if not all(math.isfinite(value) for value in sample+origin+(initial_yaw,)):
+        raise ValueError('encoder alignment must be finite')
+    turn=initial_yaw-origin[2]
+    c,s=math.cos(turn),math.sin(turn)
+    dx,dy=sample[0]-origin[0],sample[1]-origin[1]
+    return (c*dx-s*dy,s*dx+c*dy,
+            normalize_angle(initial_yaw+normalize_angle(sample[2]-origin[2])))
