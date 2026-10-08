@@ -22,7 +22,7 @@ ACTIVE_SCRIPTS = {
     'check_navigation_readiness.py', 'yolo_inspector.py', 'person_reporting.py',
     'announce_people.py', 'render_person_report.py', 'audit_person_report.py',
     'audit_standee_photo_run.py', 'audit_white_line_constraints.py', 'audit_calibrated_run.py',
-    'start_slam_mapping.sh', 'start_autonomous_mapping.sh', 'model_state_odom.py',
+    'start_slam_mapping.sh', 'slam_route_survey.py', 'start_autonomous_mapping.sh', 'model_state_odom.py',
     'survey_mapper.py', 'view_autonomous_mapping.sh', 'teleop.sh', 'car_teleop.py',
     'save_slam_map.sh', 'verify_slam_map.py', 'capture_tf_evidence.py',
     'coverage_report.py', 'build_white_line_navigation_map.py',
