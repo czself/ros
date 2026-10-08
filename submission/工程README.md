@@ -51,7 +51,7 @@ cd src/community_inspection
 ./scripts/save_slam_map.sh demo_slam manual_frontier operator_requested demo_session manual_teleop
 ```
 
-自动建图入口为 `scripts/start_autonomous_mapping.sh`；它使用预先规划的巡查路线，不能表述为已实现对任意未知场景的通用探索。建图模式的 `model_state_odom.py` 使用 Gazebo 位姿生成仿真里程计，属于仿真依赖；当前十点导航则使用轮编码器里程计与 AMCL。实车建图必须改为实际编码器/IMU 里程计。
+手动建图入口 `scripts/start_slam_mapping.sh` 使用轮编码器里程计适配器和实时激光；自动建图入口 `scripts/start_autonomous_mapping.sh` 使用预先规划的巡查路线，不能表述为已实现对任意未知场景的通用探索。自动建图的 `model_state_odom.py` 仍使用 Gazebo 位姿生成仿真里程计，属于仿真依赖；当前十点导航使用轮编码器里程计与 AMCL。实车建图必须改为实际编码器/IMU 里程计。
 
 固定场景的十点完整巡检使用已整理的默认地图：
 
