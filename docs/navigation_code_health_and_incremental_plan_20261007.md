@@ -97,3 +97,14 @@
 - 修正是在原2秒总等待时间内每隔0.25秒再次请求无运动更新，直到收到时间戳晚于首次请求且年龄有效的 AMCL pose；仍不接受旧样本，超时仍失败关闭。失败信息增加请求次数、请求时间和最后样本时间。
 - 相关 HOME/路线/人物统计测试为24通过，编译与 `git diff --check` 通过。之后把 `a1aec2e` 中的生产脚本复制到运行容器，在机器人静止、`/my_car/cmd_vel=0` 时连续两次直接执行 `request_fresh_amcl_pose()`；两次都在第2次服务请求后返回新样本，时间戳分别为1225.984 s、1226.285 s。测试不发导航目标或速度指令，没有移动机器人。
 - 这项直接仿真检查验证了AMCL重复请求机制，但还没有覆盖全路线后的完整调用链。下一步是在隔离仿真中重跑单路线，检查 `COMPLETE_PARKED`、AMCL/TF/轮式里程计与Gazebo真值；20轮报告和PPT数据未改。
+
+## HOME 末端 TF 内容过旧的证据
+
+来源：`20261008_home_refine_trial_01/motion.bag`，首次完整路线
+
+- 最后一条 `/amcl_pose` 的样本时间为 667.849 s，航向 1.708115 rad。该时刻附近 `odom→base_footprint` 航向约 0.0656 rad，`map→odom` 航向约 1.64095 rad；合成 map 航向约 1.7066 rad，与 AMCL pose 一致。
+- 车身随后停稳：`odom→base_footprint` 航向降到约 0.00004 rad，Gazebo `my_car::chassis` 真值停在约 1.72331 rad。但 AMCL 没有新 pose，`map→odom` 的数值仍为约 1.64095 rad；AMCL 继续给这个旧变换发带有新时间戳的 TF。于是 `map→odom→base_footprint` 合成航向约 1.641 rad，看起来新鲜、内容却没有跟上编码器末端变化。
+- 旧验收在HOME成功后只读取 TF，记录航向误差约 0.03475 rad并报告 `COMPLETE_PARKED`；同一时段 Gazebo 车身相对目标航向差约 0.1171 rad。这里的关键失效是用 TF 时间戳代替定位估计的新鲜度。
+- Noetic AMCL 在没有重采样/强制发布时会复用 `latest_tf_` 重新广播变换；该行为与 bag 中 TF 时间戳持续更新、变换值不变相符。[AMCL 源码](https://github.com/ros-planning/navigation/blob/noetic-devel/amcl/src/amcl_node.cpp)
+- 当前代码先请求无运动更新并等待请求之后的 `/amcl_pose`，再分别测量 AMCL pose 和 TF 误差、按较大误差验收。因此两者分歧会失败关闭，不会再由单独的 TF 误差误报泊车成功。全路线验证此修正仍待完成。
+- 轮距参数 `0.13572 m` 与轮心几何间距 `0.133 m` 的2%差异仍是待测因素，不能单凭这次 bag 确认为主因，也没有改动。后续用隔离的受控原地转向测量轮编码器角度与Gazebo车身角度，再判断是否需要校准轮距或转速/加速度。
