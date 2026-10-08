@@ -4,6 +4,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from home_alignment import (HOME_XY_TOLERANCE_M, HOME_YAW_TOLERANCE_RAD,
+                            amcl_sample_is_newer,
                             home_navigation_tolerances,
                             should_retry_home_alignment)
 
@@ -25,6 +26,12 @@ class HomeAlignmentPolicyTest(unittest.TestCase):
     def test_invalid_tolerance_is_rejected(self):
         with self.assertRaises(ValueError):
             home_navigation_tolerances(float('nan'), .04)
+
+    def test_amcl_refresh_requires_a_newer_finite_sample(self):
+        self.assertTrue(amcl_sample_is_newer(10.0, 10.1))
+        self.assertFalse(amcl_sample_is_newer(10.0, 10.0))
+        self.assertFalse(amcl_sample_is_newer(10.0, 9.9))
+        self.assertFalse(amcl_sample_is_newer(10.0, float('nan')))
 
 
 if __name__ == '__main__':

@@ -24,3 +24,11 @@ def should_retry_home_alignment(result, action_succeeded, attempts):
     """Retry only a successful action whose final pose misses HOME tolerance."""
     return (attempts < HOME_REFINEMENT_RETRY_LIMIT and action_succeeded and
             result == 'ARRIVAL_MISMATCH')
+
+
+def amcl_sample_is_newer(request_stamp_s, pose_stamp_s):
+    """Accept only an AMCL pose captured after the requested laser update."""
+    request_stamp_s = float(request_stamp_s)
+    pose_stamp_s = float(pose_stamp_s)
+    return (math.isfinite(request_stamp_s) and math.isfinite(pose_stamp_s) and
+            pose_stamp_s > request_stamp_s)

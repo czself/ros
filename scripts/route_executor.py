@@ -21,18 +21,20 @@ import yaml
 import tf
 from actionlib_msgs.msg import GoalStatus
 from cv_bridge import CvBridge
-from geometry_msgs.msg import PoseStamped, Twist
+from geometry_msgs.msg import PoseStamped, PoseWithCovarianceStamped, Twist
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 from nav_msgs.msg import OccupancyGrid, Odometry
 from navigation_goal_safety import GridFootprintChecker, DEFAULT_FOOTPRINT
 from sensor_msgs.msg import Image, CameraInfo
 from std_msgs.msg import String
+from std_srvs.srv import Empty
 from tf.transformations import quaternion_from_euler
 from person_reporting import (PersonCounter, annotate_people, calibrated_intrinsics,
                               collect_observations, save_report)
 from hd_plate_capture import HDPlateCapture
 from home_alignment import (HOME_REFINEMENT_TIMEOUT_S,
                             HOME_XY_TOLERANCE_M, HOME_YAW_TOLERANCE_RAD,
+                            amcl_sample_is_newer,
                             home_navigation_tolerances,
                             should_retry_home_alignment)
 
@@ -240,6 +242,10 @@ class RouteExecutor:
         self.latest_odom = None
         rospy.Subscriber('/odom', Odometry,
                          lambda message: setattr(self, 'latest_odom', message), queue_size=1)
+        self.latest_amcl_pose = None
+        self.amcl_pose_lock = threading.Lock()
+        rospy.Subscriber('/amcl_pose', PoseWithCovarianceStamped,
+                         self._amcl_pose_cb, queue_size=1)
         rospy.on_shutdown(self.stop_motion)
         self.latest_image = None
         self.latest_image_stamp = None
@@ -446,6 +452,10 @@ class RouteExecutor:
     def _gate_cb(self, message):
         self.latest_gate_status = message.data
         self.gate_wall_time = time.monotonic()
+
+    def _amcl_pose_cb(self, message):
+        with self.amcl_pose_lock:
+            self.latest_amcl_pose = message
 
     def depth_geometry(self, depth=None):
         """Return robust depth and horizontal coverage diagnostics in metres."""
@@ -1178,10 +1188,39 @@ class RouteExecutor:
                  'max_cross_track_m': round(max_cross_track, 4),
                  'attempts': 1}
         if state == GoalStatus.SUCCEEDED and reason == 'ACTION_RESULT':
+            fresh_amcl_pose = None
+            if name == 'HOME':
+                try:
+                    fresh_amcl_pose = self.request_fresh_amcl_pose()
+                except RuntimeError as error:
+                    event['result'] = 'AMCL_REFRESH_FAILED'
+                    event['detail'] = str(error)
+                    self.goal_events.append(event)
+                    rospy.logerr('HOME AMCL refresh failed: %s', error)
+                    return False
             try:
                 actual_x, actual_y, actual_yaw = self.map_pose()
-                xy_error = math.hypot(actual_x - x, actual_y - y)
-                yaw_error = abs(self._angle_error(yaw, actual_yaw))
+                tf_xy_error = math.hypot(actual_x - x, actual_y - y)
+                tf_yaw_error = abs(self._angle_error(yaw, actual_yaw))
+                xy_error, yaw_error = tf_xy_error, tf_yaw_error
+                event.update({'map_tf_position_error_m': tf_xy_error,
+                              'map_tf_heading_error_rad': tf_yaw_error})
+                if fresh_amcl_pose is not None:
+                    pose = fresh_amcl_pose.pose.pose
+                    q = pose.orientation
+                    amcl_yaw = math.atan2(
+                        2 * (q.w * q.z + q.x * q.y),
+                        1 - 2 * (q.y * q.y + q.z * q.z))
+                    amcl_xy_error = math.hypot(
+                        pose.position.x - x, pose.position.y - y)
+                    amcl_yaw_error = abs(self._angle_error(yaw, amcl_yaw))
+                    xy_error = max(tf_xy_error, amcl_xy_error)
+                    yaw_error = max(tf_yaw_error, amcl_yaw_error)
+                    event.update({
+                        'amcl_pose_stamp_s': fresh_amcl_pose.header.stamp.to_sec(),
+                        'amcl_position_error_m': amcl_xy_error,
+                        'amcl_heading_error_rad': amcl_yaw_error,
+                    })
                 event.update({'position_error_m': xy_error,
                               'heading_error_rad': yaw_error})
                 if (xy_error <= nav_xy_tolerance and
@@ -1356,6 +1395,29 @@ class RouteExecutor:
             return self.wheel_pose_map()
         except (tf.Exception, RuntimeError):
             return self.map_pose()
+
+    def request_fresh_amcl_pose(self, timeout_s=2.0):
+        """Force one stationary laser update and return its new AMCL pose."""
+        service = '/request_nomotion_update'
+        try:
+            rospy.wait_for_service(service, timeout=1.0)
+            request_stamp = rospy.Time.now().to_sec()
+            rospy.ServiceProxy(service, Empty)()
+        except (rospy.ROSException, rospy.ServiceException) as error:
+            raise RuntimeError('AMCL no-motion update failed: %s' % error)
+
+        deadline = time.monotonic() + timeout_s
+        while not rospy.is_shutdown() and time.monotonic() < deadline:
+            with self.amcl_pose_lock:
+                message = self.latest_amcl_pose
+            if (message is not None and
+                    amcl_sample_is_newer(request_stamp,
+                                         message.header.stamp.to_sec())):
+                age = (rospy.Time.now() - message.header.stamp).to_sec()
+                if -0.05 <= age <= 1.0:
+                    return message
+            time.sleep(0.01)
+        raise RuntimeError('AMCL did not publish a fresh pose after the no-motion update')
 
     def map_pose(self):
         deadline = time.monotonic() + 0.5
