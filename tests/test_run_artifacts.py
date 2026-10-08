@@ -39,6 +39,18 @@ def executor(directory, photos=False):
 
 
 class RunArtifactsTest(unittest.TestCase):
+    def test_new_summary_can_be_read_from_the_host_workspace(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path=write_run_summary(directory, {'route_status':'FAILED'})
+            self.assertEqual(os.stat(path).st_mode & 0o777, 0o644)
+
+    def test_replacement_preserves_explicit_existing_permissions(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path=write_run_summary(directory, {'route_status':'FAILED'})
+            os.chmod(path, 0o640)
+            write_run_summary(directory, {'route_status':'COMPLETE_PARKED'})
+            self.assertEqual(os.stat(path).st_mode & 0o777, 0o640)
+
     def test_atomic_summary_contains_complete_json(self):
         with tempfile.TemporaryDirectory() as directory:
             path = write_run_summary(directory, {'route_status': 'FAILED', 'detail': '失败'})

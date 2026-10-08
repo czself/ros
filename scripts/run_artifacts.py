@@ -1,6 +1,7 @@
 """Persist complete run summaries without exposing a partially written JSON file."""
 import json
 import os
+import stat
 import tempfile
 
 
@@ -17,6 +18,11 @@ def write_run_summary(directory, report):
             stream.write('\n')
             stream.flush()
             os.fsync(stream.fileno())
+        try:
+            mode = stat.S_IMODE(os.stat(path).st_mode)
+        except FileNotFoundError:
+            mode = 0o644
+        os.chmod(temporary, mode)
         os.replace(temporary, path)
         temporary = None
         return path
