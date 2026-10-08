@@ -1221,6 +1221,12 @@ class RouteExecutor:
                         'amcl_position_error_m': amcl_xy_error,
                         'amcl_heading_error_rad': amcl_yaw_error,
                     })
+                    rospy.loginfo(
+                        'HOME post-scan check: AMCL stamp=%.3f xy=%.3f m yaw=%.3f rad; '
+                        'TF xy=%.3f m yaw=%.3f rad; limits=%.3f m / %.3f rad',
+                        fresh_amcl_pose.header.stamp.to_sec(), amcl_xy_error,
+                        amcl_yaw_error, tf_xy_error, tf_yaw_error,
+                        nav_xy_tolerance, nav_yaw_tolerance)
                 event.update({'position_error_m': xy_error,
                               'heading_error_rad': yaw_error})
                 if (xy_error <= nav_xy_tolerance and
